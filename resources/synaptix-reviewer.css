@@ -401,7 +401,7 @@ body{
 }
 .snx-footer-course{
   font-family:var(--mono);font-size:10px;font-weight:600;
-  letter-spacing:0.14em;text-transform:uppercase;color:var(--text-muted);
+  letter-spacing:0.14em;text-transform:uppercase;
 }
 .snx-footer-divider{
   font-family:var(--mono);font-size:10px;color:var(--text-muted);opacity:0.4;
@@ -479,4 +479,14 @@ body{
   .ghost-glyph{display:none}
   .snx-footer{display:none}
   .section-card,.code-block,.tree-block,.keypoints,.summary-block,.concept-card,.concept-block{break-inside:avoid}
+}
+
+
+.footer-course-link {
+    text-decoration: none;
+    color:var(--text-muted)
+}
+
+.footer-course-link:hover {
+    color: var(--orange);
 }
