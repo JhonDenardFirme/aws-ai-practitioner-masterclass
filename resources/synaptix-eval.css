@@ -407,7 +407,7 @@ body{background:var(--bg-base);color:var(--text-primary);font-family:var(--sans)
   display:flex;align-items:baseline;gap:10px;padding-bottom:13px;
   border-bottom:1px solid var(--border);margin-bottom:13px;
 }
-.snx-footer-course{font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-muted)}
+.snx-footer-course{font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;}
 .snx-footer-divider{font-family:var(--mono);font-size:10px;color:var(--text-muted);opacity:0.4}
 .snx-footer-module{font-family:var(--mono);font-size:11px;font-weight:500;color:var(--text-secondary);letter-spacing:0.04em}
 
@@ -467,4 +467,14 @@ body{background:var(--bg-base);color:var(--text-primary);font-family:var(--sans)
   .submit-wrap,.snx-footer,.fc-flip-btn,.fc-actions,.fc-nav{display:none}
   .results{display:block}
   .qcard,.key-wrap,.imperial-panel,.sc-context,.sc-model{break-inside:avoid}
+}
+
+
+.footer-course-link {
+    text-decoration: none;
+    color:var(--text-muted)
+}
+
+.footer-course-link:hover {
+    color: var(--orange);
 }
