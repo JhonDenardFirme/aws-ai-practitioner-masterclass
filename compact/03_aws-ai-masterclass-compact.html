@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en" data-synaptix="3.1">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Responsible Artificial Intelligence Practices &mdash; AWS-AI Masterclass (Compact)</title>
+<link rel="stylesheet" href="../resources/css/synaptix-reviewer.css?v=3.1"/>
+<script src="../resources/js/synaptix-reviewer.js?v=3.1" defer></script>
+</head>
+<body>
+<div class="doc-wrap">
+<div class="doc-header">
+  <div class="badges">
+    <span class="badge badge-type">Compact &middot; Mid</span>
+    <span class="badge badge-mod">Module 3 of 9</span>
+  </div>
+  <div class="doc-title">Responsible Artificial Intelligence Practices</div>
+  <div class="doc-subtitle">source: L5 &mdash; Developing Generative AI Solutions (pasted notes) &middot; generated 2026-07-08 &middot; Synaptix v3.1</div>
+  <div class="stat-row">
+    <div class="stat-item"><div class="stat-val">9</div><div class="stat-lbl">Sections</div></div>
+    <div class="stat-item"><div class="stat-val">34</div><div class="stat-lbl">Subsections</div></div>
+    <div class="stat-item"><div class="stat-val">0</div><div class="stat-lbl">Code Blocks</div></div>
+    <div class="stat-item"><div class="stat-val">3</div><div class="stat-lbl">Enriched</div></div>
+  </div>
+</div>
+<div class="doc-body">
+  <div class="module-label"><span class="module-num">Module 3</span><div class="module-rule"></div></div>
+  <div class="module-title">Responsible Artificial Intelligence Practices</div>
+
+  <div class="overview">
+    <div class="overview-label">Module Overview</div>
+    <div class="overview-grid">
+      <div class="overview-item"><span class="ov-letter">A</span><div><div class="ov-title">Responsible AI Fundamentals</div><div class="ov-desc">What Responsible AI means across the full model lifecycle, and how traditional AI differs from generative AI in what it requires.</div></div></div>
+      <div class="overview-item"><span class="ov-letter">B</span><div><div class="ov-title">Responsible AI Challenges</div><div class="ov-desc">How bias and variance drive the accuracy problem in traditional models, and the distinct set of challenges generative AI introduces on top.</div></div></div>
+      <div class="overview-item"><span class="ov-letter">C</span><div><div class="ov-title">Core Dimensions of Responsible AI</div><div class="ov-desc">Eight dimensions that together define what a responsible AI system must satisfy, and the business benefits of getting them right.</div></div></div>
+      <div class="overview-item"><span class="ov-letter">D</span><div><div class="ov-title">AWS Tools for Responsible AI</div><div class="ov-desc">The AWS toolchain spanning model building, evaluation, safety guardrails, bias detection, explainability, monitoring, and governance documentation.</div></div></div>
+      <div class="overview-item"><span class="ov-letter">E</span><div><div class="ov-title">Responsible Model Selection</div><div class="ov-desc">How to define a use case narrowly enough to evaluate models against, and the performance, sustainability, agency, and economic factors that follow.</div></div></div>
+      <div class="overview-item"><span class="ov-letter">F</span><div><div class="ov-title">Responsible Dataset Preparation</div><div class="ov-desc">How balance, diversity, and ongoing curation in a training dataset directly determine whether the resulting model is fair.</div></div></div>
+      <div class="overview-item"><span class="ov-letter">G</span><div><div class="ov-title">Transparent and Explainable AI</div><div class="ov-desc">The distinction between transparency and explainability, the black-box trade-off, and the specific techniques used to open a model up.</div></div></div>
+      <div class="overview-item"><span class="ov-letter">H</span><div><div class="ov-title">Model Trade-Offs</div><div class="ov-desc">Why trade-offs between performance, safety, privacy, and openness are inevitable in AI system design.</div></div></div>
+      <div class="overview-item"><span class="ov-letter">I</span><div><div class="ov-title">Human-Centered AI Design</div><div class="ov-desc">Design principles that keep AI systems usable and fair, plus RLHF as the mechanism for aligning model behavior with human values.</div></div></div>
+    </div>
+    <div class="overview-divider"></div>
+    <div class="meta-row">
+      <div class="meta-item"><div class="meta-lbl">Prerequisites</div><div class="meta-val">Module 1 (AI/ML fundamentals), Module 2 (AI use cases), Module 6 (fine-tuning and RLHF basics)</div></div>
+      <div class="meta-item"><div class="meta-lbl">Leads to</div><div class="meta-val">Module 7 (security, compliance, governance in depth), hands-on SageMaker Clarify and Guardrails labs</div></div>
+    </div>
+  </div>
+
+  <div class="intro">
+    <div class="intro-label">Module Introduction</div>
+    <p>Full lifecycle for shipping a Gen AI application: <b class="b-orange">define</b> the use case, <b class="b-orange">select</b> a Foundation Model, <b class="b-orange">improve</b> it with prompting/RAG/fine-tuning, <b class="b-orange">evaluate</b>, then <b class="b-orange">deploy</b> &mdash; looping back as feedback arrives.</p>
+  </div>
+
+  <div class="section-card">
+    <div class="section-hdr">
+      <span class="section-letter" style="color:var(--sky);background:var(--sky-dim);border:1px solid rgba(93,184,242,0.2)">A</span>
+      <span class="section-title">Responsible AI Fundamentals</span>
+      <span class="ghost-glyph">A</span>
+    </div>
+    <div class="section-body">
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">A1</span><span class="sub-title">What Responsible AI Is</span></div>
+        <div class="sub-body">
+          <p><span class="kw-cyan def">Responsible AI</span> means building ethical, transparent, trustworthy AI systems, with the goal of minimizing harm and ensuring accountability.</p>
+          <div class="concept-grid"><div class="concept-card cc-orange"><div class="cc-label">Design</div><ul class="cc-list"><li>Ethical planning before any code is written</li></ul></div><div class="concept-card cc-sky"><div class="cc-label">Development</div><ul class="cc-list"><li>Active bias mitigation during building</li></ul></div><div class="concept-card cc-cyan"><div class="cc-label">Deployment</div><ul class="cc-list"><li>Safe release into production</li></ul></div><div class="concept-card cc-purple"><div class="cc-label">Monitoring</div><ul class="cc-list"><li>Continuous oversight after launch</li></ul></div><div class="concept-card cc-green"><div class="cc-label">Evaluation</div><ul class="cc-list"><li>Ongoing performance and ethics checks</li></ul></div></div>
+          <div class="kp-inline"><span class="kp-tag">Key</span>Responsible AI applies across five lifecycle stages: Design, Development, Deployment, Monitoring, Evaluation</div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">A2</span><span class="sub-title">Organizational Requirements</span></div>
+        <div class="sub-body">
+          <p>Making Responsible AI real requires four organizational commitments, not just good intentions from individual engineers.</p>
+          <div class="concept-grid"><div class="concept-card cc-orange"><div class="cc-label">Transparency + Accountability</div><ul class="cc-list"><li>Monitoring mechanisms that make behavior visible</li></ul></div><div class="concept-card cc-sky"><div class="cc-label">Leadership Oversight</div><ul class="cc-list"><li>Responsible AI governance owned at the top, not delegated away</li></ul></div><div class="concept-card cc-cyan"><div class="cc-label">Expert Teams</div><ul class="cc-list"><li>Staff specifically trained in ethical AI practice</li></ul></div><div class="concept-card cc-purple"><div class="cc-label">Guideline Compliance</div><ul class="cc-list"><li>Following established standards, not improvising</li></ul></div></div>
+          <div class="kp-inline"><span class="kp-tag">Key</span>Four organizational requirements: Transparency+Accountability, Leadership Oversight, Expert Teams, Guideline Compliance</div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">A3</span><span class="sub-title">Traditional AI vs. Generative AI</span></div>
+        <div class="sub-body">
+          <p><b class="b-orange">Traditional AI</b> is a single-task prediction model &mdash; classification or ranking &mdash; that requires labeled training data, with recommendation systems as a typical example.</p>
+          <div class="kp-inline"><span class="kp-tag">Key</span>Traditional AI predicts (classification, ranking, labeled data). Generative AI creates (text/images/code, FM-based, prompt-driven).</div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">A4</span><span class="sub-title">Generative AI Business Value</span></div>
+        <div class="sub-body">
+          <p>Three value drivers explain why organizations adopt generative AI despite its added responsibility burden.</p>
+          <div class="concept-grid"><div class="concept-card cc-orange"><div class="cc-label">Creativity</div><ul class="cc-list"><li>Generating genuinely new content</li></ul></div><div class="concept-card cc-sky"><div class="cc-label">Productivity</div><ul class="cc-list"><li>Automating existing workflows</li></ul></div><div class="concept-card cc-cyan"><div class="cc-label">Connectivity</div><ul class="cc-list"><li>Improving user engagement</li></ul></div></div>
+          <div class="kp-inline"><span class="kp-tag">Key</span>Three business value drivers: Creativity, Productivity, Connectivity</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <div class="section-hdr">
+      <span class="section-letter" style="color:var(--cyan);background:var(--cyan-dim);border:1px solid rgba(94,234,212,0.2)">B</span>
+      <span class="section-title">Responsible AI Challenges</span>
+      <span class="ghost-glyph">B</span>
+    </div>
+    <div class="section-body">
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">B1</span><span class="sub-title">The Accuracy Problem: Bias and Variance</span></div>
+        <div class="sub-body">
+          <p>Model accuracy problems trace back to training data, and specifically to two properties.</p>
+          <div class="kp-inline"><span class="kp-tag">Key</span>Bias = missing key features, causes underfitting. Variance = sensitivity to noise, causes overfitting.</div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">B2</span><span class="sub-title">The Bias-Variance Trade-off</span></div>
+        <div class="sub-body">
+          <p>The goal is an optimal balance between bias and variance.</p>
+          <div class="concept-grid"><div class="concept-card cc-orange"><div class="cc-label">Underfitted</div><ul class="cc-list"><li>High Bias, Low Variance &mdash; the model is too simple to capture real patterns</li></ul></div><div class="concept-card cc-sky"><div class="cc-label">Overfitted</div><ul class="cc-list"><li>Low Bias, High Variance &mdash; the model has memorized noise instead of learning patterns</li></ul></div><div class="concept-card cc-cyan"><div class="cc-label">Balanced</div><ul class="cc-list"><li>Low Bias, Low Variance &mdash; the ideal state, generalizes well to new data</li></ul></div></div>
+          <div class="kp-inline"><span class="kp-tag">Key</span>A balanced model generalizes well &mdash; the module's key insight for this subsection</div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">B3</span><span class="sub-title">Mitigation Techniques</span></div>
+        <div class="sub-body">
+          <p>Six techniques address bias, variance, or both &mdash; applied individually or in combination depending on which failure mode a model is showing.</p>
+          <div class="concept-grid"><div class="concept-card cc-orange"><div class="cc-label">Cross-Validation</div><ul class="cc-list"><li>Detects overfitting before deployment</li></ul></div><div class="concept-card cc-sky"><div class="cc-label">Increase Data</div><ul class="cc-list"><li>Improves learning by giving the model more to generalize from</li></ul></div><div class="concept-card cc-cyan"><div class="cc-label">Regularization</div><ul class="cc-list"><li>Penalizes model complexity directly</li></ul></div><div class="concept-card cc-purple"><div class="cc-label">Simpler Models</div><ul class="cc-list"><li>Reduces overfitting by lowering capacity to memorize</li></ul></div><div class="concept-card cc-green"><div class="cc-label">Dimensionality Reduction</div><ul class="cc-list"><li>Reduces the number of features the model must handle</li></ul></div><div class="concept-card cc-amber"><div class="cc-label">Early Stopping</div><ul class="cc-list"><li>Halts training before the model starts memorizing noise</li></ul></div></div>
+          <div class="kp-inline"><span class="kp-tag">Key</span>Six mitigation techniques: Cross-Validation, Increase Data, Regularization, Simpler Models, Dimensionality Reduction, Early Stopping</div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">B4</span><span class="sub-title">Generative AI Challenges</span></div>
+        <div class="sub-body">
+          <p>Generative AI introduces five challenges beyond the bias/variance problem, each with real business consequences.</p>
+          <div class="concept-grid"><div class="concept-card cc-orange"><div class="cc-label">Toxicity</div><ul class="cc-list"><li>Generation of harmful content</li></ul></div><div class="concept-card cc-sky"><div class="cc-label">Hallucinations</div><ul class="cc-list"><li>False but plausible outputs</li></ul></div><div class="concept-card cc-cyan"><div class="cc-label">Intellectual Property</div><ul class="cc-list"><li>Risk of duplicating protected content</li></ul></div><div class="concept-card cc-purple"><div class="cc-label">Plagiarism/Cheating</div><ul class="cc-list"><li>Misuse in academic or professional work</li></ul></div><div class="concept-card cc-green"><div class="cc-label">Work Disruption</div><ul class="cc-list"><li>Job displacement concerns</li></ul></div></div>
+          <div class="kp-inline"><span class="kp-tag">Key</span>Hallucinations = plausible but false outputs &mdash; the module's recurring key definition</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <div class="section-hdr">
+      <span class="section-letter" style="color:var(--purple);background:var(--purple-dim);border:1px solid rgba(167,139,250,0.2)">C</span>
+      <span class="section-title">Core Dimensions of Responsible AI</span>
+      <span class="ghost-glyph">C</span>
+    </div>
+    <div class="section-body">
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">C1</span><span class="sub-title">The Eight Dimensions</span></div>
+        <div class="sub-body">
+          <p>Eight dimensions define Responsible AI comprehensively.</p>
+          <div class="concept-grid"><div class="concept-card cc-orange"><div class="cc-label">Fairness</div><ul class="cc-list"><li>Avoiding discrimination in outcomes</li></ul></div><div class="concept-card cc-sky"><div class="cc-label">Explainability</div><ul class="cc-list"><li>Making WHY a decision was made understandable</li></ul></div><div class="concept-card cc-cyan"><div class="cc-label">Transparency</div><ul class="cc-list"><li>Making HOW a decision was made visible</li></ul></div><div class="concept-card cc-purple"><div class="cc-label">Privacy &amp; Security</div><ul class="cc-list"><li>Protecting the data a system touches</li></ul></div><div class="concept-card cc-green"><div class="cc-label">Veracity &amp; Robustness</div><ul class="cc-list"><li>Staying reliable under uncertainty</li></ul></div><div class="concept-card cc-amber"><div class="cc-label">Governance</div><ul class="cc-list"><li>Enforcing policy consistently</li></ul></div><div class="concept-card cc-orange"><div class="cc-label">Safety</div><ul class="cc-list"><li>Preventing harm to users or third parties</li></ul></div><div class="concept-card cc-sky"><div class="cc-label">Controllability</div><ul class="cc-list"><li>Allowing behavior to be guided or corrected</li></ul></div></div>
+          <div class="kp-inline"><span class="kp-tag">Key</span>Eight dimensions: Fairness, Explainability, Transparency, Privacy &amp; Security, Veracity &amp; Robustness, Governance, Safety, Controllability<span class="kp-sep">&rsaquo;</span>No single dimension is sufficient on its own &mdash; the module's core warning</div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">C2</span><span class="sub-title">Business Benefits</span></div>
+        <div class="sub-body">
+          <p>Investing in these eight dimensions pays back across six measurable business benefits.</p>
+          <div class="concept-grid"><div class="concept-card cc-orange"><div class="cc-label">Trust &amp; Reputation</div><ul class="cc-list"><li>User confidence in the system</li></ul></div><div class="concept-card cc-sky"><div class="cc-label">Regulatory Compliance</div><ul class="cc-list"><li>Meeting external legal requirements</li></ul></div><div class="concept-card cc-cyan"><div class="cc-label">Risk Reduction</div><ul class="cc-list"><li>Fewer costly failures</li></ul></div><div class="concept-card cc-purple"><div class="cc-label">Competitive Advantage</div><ul class="cc-list"><li>Ethical practice as a market differentiator</li></ul></div><div class="concept-card cc-green"><div class="cc-label">Better Decisions</div><ul class="cc-list"><li>More reliable outputs to act on</li></ul></div><div class="concept-card cc-amber"><div class="cc-label">Improved Products &amp; Business</div><ul class="cc-list"><li>Driving creative and innovative solutions</li></ul></div></div>
+          <div class="kp-inline"><span class="kp-tag">Key</span>Six business benefits: Trust &amp; Reputation, Regulatory Compliance, Risk Reduction, Competitive Advantage, Better Decisions, Improved Products &amp; Business</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <div class="section-hdr">
+      <span class="section-letter" style="color:var(--orange);background:var(--orange-dim);border:1px solid rgba(251,146,60,0.2)">D</span>
+      <span class="section-title">AWS Tools for Responsible AI</span>
+      <span class="ghost-glyph">D</span>
+    </div>
+    <div class="section-body">
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">D1</span><span class="sub-title">SageMaker AI vs. Amazon Bedrock</span></div>
+        <div class="sub-body">
+          <p><b class="b-orange">Amazon SageMaker AI</b> is a fully-managed ML lifecycle platform for building, training, and deploying models, with distributed training, secure production environments, and multi-IDE workflow support.</p>
+          <div class="kp-inline"><span class="kp-tag">Key</span>Bedrock = generative AI platform. SageMaker = full ML lifecycle platform. The module's core distinction.</div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">D2</span><span class="sub-title">Foundation Model Evaluation</span></div>
+        <div class="sub-body">
+          <p><b class="b-salmon">Model evaluation is required before deployment</b>, and Bedrock supports it through three complementary approaches.</p>
+          <div class="concept-grid"><div class="concept-card cc-orange"><div class="cc-label">Automatic Evaluation</div><ul class="cc-list"><li>Metrics: accuracy, robustness, toxicity</li></ul></div><div class="concept-card cc-sky"><div class="cc-label">Human Evaluation</div><ul class="cc-list"><li>Metrics: style, friendliness, brand alignment &mdash; via internal team or AWS reviewers</li></ul></div><div class="concept-card cc-cyan"><div class="cc-label">SageMaker AI Clarify</div><ul class="cc-list"><li>Supports automated FM evaluation, focused on responsible AI metrics and bias awareness</li></ul></div></div>
+          <div class="kp-inline"><span class="kp-tag">Key</span>Model evaluation's purpose: select the best model for the specific use case</div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">D3</span><span class="sub-title">Guardrails for Amazon Bedrock</span></div>
+        <div class="sub-body">
+          <p><span class="kw-cyan def">Guardrails</span> enforce safe interactions across models, monitoring both user inputs and model outputs to detect violations in real time.</p>
+          <div class="concept-grid"><div class="concept-card cc-orange"><div class="cc-label">Block Undesirable Topics</div><ul class="cc-list"><li>Restricts content outside an approved domain</li></ul></div><div class="concept-card cc-sky"><div class="cc-label">Filter Harmful Content</div><ul class="cc-list"><li>Blocks hate, violence, and abuse</li></ul></div><div class="concept-card cc-cyan"><div class="cc-label">Redact PII</div><ul class="cc-list"><li>Protects personal data from exposure</li></ul></div><div class="concept-card cc-purple"><div class="cc-label">Policy Enforcement</div><ul class="cc-list"><li>Applies custom rules per use case</li></ul></div></div>
+          <div class="kp-inline"><span class="kp-tag">Key</span>Guardrails add an extra safety layer across models &mdash; the module's key insight for this subsection</div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">D4</span><span class="sub-title">Bias Detection and Data Balancing</span></div>
+        <div class="sub-body">
+          <p><span class="kw-cyan def">SageMaker AI Clarify</span> detects bias through feature-level analysis (e.g., gender, age), producing visual reports and metrics.</p>
+          <div class="concept-grid"><div class="concept-card cc-orange"><div class="cc-label">Random Undersampling</div><ul class="cc-list"><li>Reduces the majority class to match the minority</li></ul></div><div class="concept-card cc-sky"><div class="cc-label">Random Oversampling</div><ul class="cc-list"><li>Duplicates minority-class examples to match the majority</li></ul></div><div class="concept-card cc-cyan"><div class="cc-label">SMOTE</div><ul class="cc-list"><li>Synthetic data generation for underrepresented classes</li></ul></div></div>
+          <div class="kp-inline"><span class="kp-tag">Key</span>Bias detection + data balancing = fair models &mdash; the module's key insight for this subsection</div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">D5</span><span class="sub-title">Model Prediction Explanation</span></div>
+        <div class="sub-body">
+          <p><span class="kw-cyan def">SageMaker AI Clarify + Experiments</span> produce feature contribution scores per individual prediction, plus aggregated importance describing overall model behavior.</p>
+          <div class="kp-inline"><span class="kp-tag">Key</span>Explainability identifies key drivers of predictions &mdash; the module's key insight for this subsection</div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">D6</span><span class="sub-title">Monitoring and Human Review</span></div>
+        <div class="sub-body">
+          <p><span class="kw-cyan def">SageMaker Model Monitor</span> tracks production performance, detects data drift and quality issues, and sends alerts for anomalies.</p>
+          <div class="kp-inline"><span class="kp-tag">Key</span>Monitoring + human review = continuous Responsible AI &mdash; the module's key insight for this subsection</div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">D7</span><span class="sub-title">Governance Improvement Tools</span></div>
+        <div class="sub-body">
+          <p>Three SageMaker tools together provide centralized model tracking, risk and bias visibility, and lifecycle documentation.</p>
+          <div class="concept-grid"><div class="concept-card cc-orange"><div class="cc-label">SageMaker Role Manager</div><ul class="cc-list"><li>Defines permissions across the ML lifecycle</li></ul></div><div class="concept-card cc-sky"><div class="cc-label">SageMaker Model Cards</div><ul class="cc-list"><li>Documents model details for governance review</li></ul></div><div class="concept-card cc-cyan"><div class="cc-label">SageMaker Model Dashboard</div><ul class="cc-list"><li>Monitors model behavior centrally</li></ul></div></div>
+          <div class="kp-inline"><span class="kp-tag">Key</span>Governance ensures compliance + accountability &mdash; the module's key insight for this subsection</div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">D8</span><span class="sub-title">Transparency Tools</span></div>
+        <div class="sub-body">
+          <p><b class="b-orange">AWS AI Service Cards</b> document a service's use cases, limitations, responsible design, and best practices.</p>
+          <div class="kp-inline"><span class="kp-tag">Key</span>Transparency = documentation + visibility &mdash; the module's key insight for this subsection</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <div class="section-hdr">
+      <span class="section-letter" style="color:var(--sky);background:var(--sky-dim);border:1px solid rgba(93,184,242,0.2)">E</span>
+      <span class="section-title">Responsible Model Selection</span>
+      <span class="ghost-glyph">E</span>
+    </div>
+    <div class="section-body">
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">E1</span><span class="sub-title">Define the Use Case Narrowly</span></div>
+        <div class="sub-body">
+          <p><b class="b-salmon">Use Case &ne; Technology</b> &mdash; a use case must specify the target audience, expected output, and constraints before any model comparison is meaningful.</p>
+          <div class="kp-inline"><span class="kp-tag">Key</span>Use Case &ne; Technology &mdash; a use case must specify audience, output, and constraints</div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">E2</span><span class="sub-title">Performance Factors</span></div>
+        <div class="sub-body">
+          <p>Five factors determine whether a specific model actually performs well for a narrowly defined use case.</p>
+          <div class="concept-grid"><div class="concept-card cc-orange"><div class="cc-label">Customization</div><ul class="cc-list"><li>How well the model supports tuning</li></ul></div><div class="concept-card cc-sky"><div class="cc-label">Model Size</div><ul class="cc-list"><li>Parameter count, trading off capability and cost</li></ul></div><div class="concept-card cc-cyan"><div class="cc-label">Latency</div><ul class="cc-list"><li>Response time under real load</li></ul></div><div class="concept-card cc-purple"><div class="cc-label">Context Window</div><ul class="cc-list"><li>Maximum usable input size</li></ul></div><div class="concept-card cc-green"><div class="cc-label">Licensing</div><ul class="cc-list"><li>Usage restrictions on the model</li></ul></div></div>
+          <div class="kp-inline"><span class="kp-tag">Key</span>Five performance factors: Customization, Model Size, Latency, Context Window, Licensing</div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">E3</span><span class="sub-title">Dataset Consideration and Sustainability</span></div>
+        <div class="sub-body">
+          <p><b class="b-salmon">Model performance = model + dataset</b> &mdash; the same model evaluated on different datasets can perform very differently, so evaluation must happen across datasets, not once.</p>
+          <div class="concept-grid"><div class="concept-card cc-orange"><div class="cc-label">Energy Consumption</div><ul class="cc-list"><li>Direct carbon impact of running the model</li></ul></div><div class="concept-card cc-sky"><div class="cc-label">Resource Usage</div><ul class="cc-list"><li>Hardware demand required for operation</li></ul></div><div class="concept-card cc-cyan"><div class="cc-label">Environmental Impact</div><ul class="cc-list"><li>Long-term effects of sustained deployment</li></ul></div></div>
+          <div class="kp-inline"><span class="kp-tag">Key</span>Model performance = model + dataset &mdash; the module's key insight for this subsection</div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">E4</span><span class="sub-title">Responsible Agency</span></div>
+        <div class="sub-body">
+          <p>When a model takes autonomous action, four agency-specific factors become part of model selection.</p>
+          <div class="concept-grid"><div class="concept-card cc-orange"><div class="cc-label">Value Alignment</div><ul class="cc-list"><li>Consistency with human ethics</li></ul></div><div class="concept-card cc-sky"><div class="cc-label">Reasoning Skills</div><ul class="cc-list"><li>Capacity for moral decision-making</li></ul></div><div class="concept-card cc-cyan"><div class="cc-label">Autonomy Level</div><ul class="cc-list"><li>Degree of human oversight retained</li></ul></div><div class="concept-card cc-purple"><div class="cc-label">Accountability</div><ul class="cc-list"><li>Whether decisions remain transparent and traceable</li></ul></div></div>
+          <div class="kp-inline"><span class="kp-tag">Key</span>Four responsible agency factors: Value Alignment, Reasoning Skills, Autonomy Level, Accountability</div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">E5</span><span class="sub-title">Economic Considerations</span></div>
+        <div class="sub-body">
+          <p>Model selection also carries three economic dimensions that extend beyond the immediate deployment.</p>
+          <div class="concept-grid"><div class="concept-card cc-orange"><div class="cc-label">Benefits</div><ul class="cc-list"><li>Efficiency gains from adoption</li></ul></div><div class="concept-card cc-sky"><div class="cc-label">Risks</div><ul class="cc-list"><li>Job displacement concerns</li></ul></div><div class="concept-card cc-cyan"><div class="cc-label">Market Impact</div><ul class="cc-list"><li>Broader inequality concerns from AI adoption at scale</li></ul></div></div>
+          <div class="kp-inline"><span class="kp-tag">Key</span>Three economic considerations: Benefits, Risks, Market Impact</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <div class="section-hdr">
+      <span class="section-letter" style="color:var(--cyan);background:var(--cyan-dim);border:1px solid rgba(94,234,212,0.2)">F</span>
+      <span class="section-title">Responsible Dataset Preparation</span>
+      <span class="ghost-glyph">F</span>
+    </div>
+    <div class="section-body">
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">F1</span><span class="sub-title">Balanced Datasets and Inclusive Collection</span></div>
+        <div class="sub-body">
+          <p>A <span class="kw-cyan def">Balanced Dataset</span> provides equal representation, with the specific goal of preventing bias.</p>
+          <div class="kp-inline"><span class="kp-tag">Key</span>Data bias = model bias &mdash; the module's core warning for this section</div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">F2</span><span class="sub-title">Data Curation</span></div>
+        <div class="sub-body">
+          <p>Three ongoing curation practices keep a dataset fair and usable over time, not just at initial collection.</p>
+          <div class="concept-grid"><div class="concept-card cc-orange"><div class="cc-label">Preprocessing</div><ul class="cc-list"><li>Cleaning data before it's usable</li></ul></div><div class="concept-card cc-sky"><div class="cc-label">Augmentation</div><ul class="cc-list"><li>Adding samples to strengthen underrepresented cases</li></ul></div><div class="concept-card cc-cyan"><div class="cc-label">Auditing</div><ul class="cc-list"><li>Continuous checks, not a one-time pass</li></ul></div></div>
+          <div class="kp-inline"><span class="kp-tag">Key</span>Three curation practices: Preprocessing, Augmentation, Auditing</div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">F3</span><span class="sub-title">Use Case Alignment</span></div>
+        <div class="sub-body">
+          <p>A dataset must match the problem context it's being used for &mdash; a dataset that's balanced and diverse for one use case may still be the wrong dataset entirely for a different one.</p>
+          <div class="kp-inline"><span class="kp-tag">Key</span>Dataset must match the problem context &mdash; balance alone doesn't guarantee fit</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <div class="section-hdr">
+      <span class="section-letter" style="color:var(--purple);background:var(--purple-dim);border:1px solid rgba(167,139,250,0.2)">G</span>
+      <span class="section-title">Transparent and Explainable AI</span>
+      <span class="ghost-glyph">G</span>
+    </div>
+    <div class="section-body">
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">G1</span><span class="sub-title">Transparency vs. Explainability</span></div>
+        <div class="sub-body">
+          <p><span class="kw-cyan def">Transparency</span> is about HOW a model works.</p>
+          <div class="kp-inline"><span class="kp-tag">Key</span>Transparency = HOW. Explainability = WHY. The module's core distinction.</div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">G2</span><span class="sub-title">Black Box Models</span></div>
+        <div class="sub-body">
+          <p>A <span class="kw-cyan def">Black Box Model</span> offers no internal visibility, trading transparency for high performance.</p>
+          <div class="concept-grid"><div class="concept-card cc-orange"><div class="cc-label">Trust</div><ul class="cc-list"><li>User confidence increases when behavior can be inspected</li></ul></div><div class="concept-card cc-sky"><div class="cc-label">Debugging</div><ul class="cc-list"><li>Fixes become easier with internal visibility</li></ul></div><div class="concept-card cc-cyan"><div class="cc-label">Insight</div><ul class="cc-list"><li>Understanding behavior enables better decisions about the model</li></ul></div></div>
+          <div class="kp-inline"><span class="kp-tag">Key</span>Black box models trade transparency for high performance &mdash; the fundamental tension of this section</div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">G3</span><span class="sub-title">Explainability Techniques</span></div>
+        <div class="sub-body">
+          <p>Three named techniques open up an otherwise opaque model's decision-making, each working differently.</p>
+          <div class="concept-grid"><div class="concept-card cc-orange"><div class="cc-label">SHAP</div><ul class="cc-list"><li>Feature contribution scoring for individual predictions</li></ul></div><div class="concept-card cc-sky"><div class="cc-label">LIME</div><ul class="cc-list"><li>Local explanations around a specific prediction</li></ul></div><div class="concept-card cc-cyan"><div class="cc-label">Counterfactuals</div><ul class="cc-list"><li>Shows alternative outcomes under changed inputs</li></ul></div></div>
+          <div class="kp-inline"><span class="kp-tag">Key</span>Three explainability techniques: SHAP, LIME, Counterfactuals</div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">G4</span><span class="sub-title">Risks of Explainability, and AWS Tools</span></div>
+        <div class="sub-body">
+          <p>Pursuing explainability carries its own risks: higher cost, security risks, privacy exposure, and false transparency expectations (assuming an explanation is more complete than it actually is).</p>
+          <div class="kp-inline"><span class="kp-tag">Key</span>Explainability risks: Higher Cost, Security Risks, Privacy Exposure, False Transparency Expectations</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <div class="section-hdr">
+      <span class="section-letter" style="color:var(--orange);background:var(--orange-dim);border:1px solid rgba(251,146,60,0.2)">H</span>
+      <span class="section-title">Model Trade-Offs</span>
+      <span class="ghost-glyph">H</span>
+    </div>
+    <div class="section-body">
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">H1</span><span class="sub-title">Core Trade-offs</span></div>
+        <div class="sub-body">
+          <p><b class="b-orange">Interpretability vs.</p>
+          <div class="kp-inline"><span class="kp-tag">Key</span>Trade-offs are inevitable in AI system design &mdash; the module's central thesis<span class="kp-sep">&rsaquo;</span>Five trade-off pairs: Interpretability/Performance, Safety/Transparency, Privacy/Visibility, Security/Auditability, Filtering/Openness</div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">H2</span><span class="sub-title">Controllability</span></div>
+        <div class="sub-body">
+          <p><span class="kw-cyan def">Controllability</span> is the ability to steer an AI system's outputs.</p>
+          <div class="kp-inline"><span class="kp-tag">Key</span>Higher controllability supports better fairness, but the achievable level depends on model architecture</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <div class="section-hdr">
+      <span class="section-letter" style="color:var(--sky);background:var(--sky-dim);border:1px solid rgba(93,184,242,0.2)">I</span>
+      <span class="section-title">Human-Centered AI Design</span>
+      <span class="ghost-glyph">I</span>
+    </div>
+    <div class="section-body">
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">I1</span><span class="sub-title">Human-Centered Design Principles</span></div>
+        <div class="sub-body">
+          <p><span class="kw-cyan def">Human-Centered Design (HCD)</span> is user-focused system design aimed at usability and clarity.</p>
+          <div class="concept-grid"><div class="concept-card cc-orange"><div class="cc-label">Amplified Decision-Making</div><ul class="cc-list"><li>Clarity, Simplicity, Usability, Reflexivity, Accountability</li></ul></div><div class="concept-card cc-sky"><div class="cc-label">Unbiased Decision-Making</div><ul class="cc-list"><li>Identify bias, ensure fair processes, train users</li></ul></div><div class="concept-card cc-cyan"><div class="cc-label">Human + AI Learning</div><ul class="cc-list"><li>Cognitive apprenticeship, personalization, user-centered design</li></ul></div></div>
+          <div class="kp-inline"><span class="kp-tag">Key</span>Three HCD principle groups: Amplified Decision-Making, Unbiased Decision-Making, Human + AI Learning</div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">I2</span><span class="sub-title">Reinforcement Learning from Human Feedback (RLHF)</span></div>
+        <div class="sub-body">
+          <p><span class="kw-cyan def">RLHF</span> is human-guided learning, with the specific purpose of aligning a model with human values.</p>
+          <div class="kp-inline"><span class="kp-tag">Key</span>RLHF aligns AI with human intent &mdash; the module's key insight for this section<span class="kp-sep">&rsaquo;</span>AWS tool: SageMaker Ground Truth, for human feedback integration</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="summary-block"><div class="summary-label">Module Summary</div><ul class="summary-list"><li>Responsible AI applies across the entire lifecycle &mdash; Design, Development, Deployment, Monitoring, Evaluation &mdash; not just at launch, and traditional AI (predicts) differs fundamentally from generative AI (creates) in what it requires.</li><li>Bias causes underfitting; variance causes overfitting; a balanced model has both low bias and low variance and generalizes well &mdash; six mitigation techniques address this trade-off directly.</li><li>Eight dimensions define Responsible AI comprehensively (Fairness, Explainability, Transparency, Privacy &amp; Security, Veracity &amp; Robustness, Governance, Safety, Controllability), and no single dimension is sufficient alone.</li><li>AWS operationalizes Responsible AI through a specific toolchain: Bedrock (generative AI platform) and SageMaker (ML lifecycle platform), with Guardrails, Clarify, Data Wrangler, Model Monitor, A2I, and Model Cards covering safety, bias, explainability, monitoring, and documentation respectively.</li><li>Transparency (HOW) and Explainability (WHY) are distinct; trade-offs between performance, safety, privacy, and openness are inevitable; and Human-Centered Design plus RLHF are the mechanisms that keep a system's behavior aligned with human values.</li></ul></div>
+</div>
+
+<footer class="snx-footer">
+  <div class="snx-footer-meta">
+    <span class="snx-footer-course">AWS-AI Masterclass</span>
+    <span class="snx-footer-divider">&middot;</span>
+    <span class="snx-footer-module">Module 3 &middot; Responsible Artificial Intelligence Practices</span>
+  </div>
+  <nav class="snx-footer-nav" aria-label="Artifact navigation">
+    <a class="snx-nav-prev" href="../compact/02_aws-ai-masterclass-compact.html"><span class="snx-nav-chevron">&lsaquo;</span>Previous</a>
+    <div class="snx-nav-hub">
+      <a class="snx-hub-btn snx-hub-btn-module" href="../modules/03_aws-ai-masterclass-reviewer.html">Module</a>
+      <a class="snx-hub-btn snx-hub-btn-compact" href="../compact/03_aws-ai-masterclass-compact.html" aria-current="page">Compact</a>
+      <a class="snx-hub-btn snx-hub-btn-tree" href="../trees/03_aws-ai-masterclass-tree.html">Tree</a>
+      <a class="snx-hub-btn snx-hub-btn-quiz" href="../quizzes/03_aws-ai-masterclass-quiz.html">Quiz</a>
+      <a class="snx-hub-btn snx-hub-btn-recall" href="../recalls/03_aws-ai-masterclass-recall.html">Recall</a>
+    </div>
+    <a class="snx-nav-next" href="../compact/04_aws-ai-masterclass-compact.html">Next<span class="snx-nav-chevron">&rsaquo;</span></a>
+  </nav>
+</footer>
+</body>
+</html>

@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en" data-synaptix="3.1">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>From Theory to Practice with PartyRock &mdash; AWS-AI Masterclass</title>
+<link rel="stylesheet" href="../resources/css/synaptix-reviewer.css?v=3.1"/>
+<script src="../resources/js/synaptix-reviewer.js?v=3.1" defer></script>
+</head>
+<body>
+<div class="doc-wrap">
+<div class="doc-header">
+  <div class="badges">
+    <span class="badge badge-type">Comprehensive &middot; High</span>
+    <span class="badge badge-mod">Module 9 of 9</span>
+  </div>
+  <div class="doc-title">From Theory to Practice with PartyRock</div>
+  <div class="doc-subtitle">source: L5 &mdash; Developing Generative AI Solutions (pasted notes) &middot; generated 2026-07-08 &middot; Synaptix v3.1</div>
+  <div class="stat-row">
+    <div class="stat-item"><div class="stat-val">8</div><div class="stat-lbl">Sections</div></div>
+    <div class="stat-item"><div class="stat-val">29</div><div class="stat-lbl">Subsections</div></div>
+    <div class="stat-item"><div class="stat-val">0</div><div class="stat-lbl">Code Blocks</div></div>
+    <div class="stat-item"><div class="stat-val">0</div><div class="stat-lbl">Enriched</div></div>
+  </div>
+</div>
+<div class="doc-body">
+  <div class="module-label"><span class="module-num">Module 9</span><div class="module-rule"></div></div>
+  <div class="module-title">From Theory to Practice with PartyRock</div>
+
+  <div class="overview">
+    <div class="overview-label">Module Overview</div>
+    <div class="overview-grid">
+      <div class="overview-item"><span class="ov-letter">A</span><div><div class="ov-title">Introduction to PartyRock</div><div class="ov-desc">What PartyRock is, why it exists, and the stateless/stateful distinction that shapes how its apps behave.</div></div></div>
+      <div class="overview-item"><span class="ov-letter">B</span><div><div class="ov-title">Understanding PartyRock Architecture</div><div class="ov-desc">What PartyRock abstracts away from traditional Foundation Model development, and the AI modalities it exposes.</div></div></div>
+      <div class="overview-item"><span class="ov-letter">C</span><div><div class="ov-title">Creating Apps with Whiskers</div><div class="ov-desc">How PartyRock's AI app-building assistant turns a plain-language description into a working, reusable application.</div></div></div>
+      <div class="overview-item"><span class="ov-letter">D</span><div><div class="ov-title">Editing and Remixing Apps</div><div class="ov-desc">Manual control over an app's widgets, prompt chaining for multi-step reasoning, and the model/temperature settings that shape output.</div></div></div>
+      <div class="overview-item"><span class="ov-letter">E</span><div><div class="ov-title">Generating Images with PartyRock</div><div class="ov-desc">How diffusion models turn text prompts into images through latent space navigation and progressive denoising.</div></div></div>
+      <div class="overview-item"><span class="ov-letter">F</span><div><div class="ov-title">Data Analysis with PartyRock</div><div class="ov-desc">Why LLMs handle spreadsheets poorly, and how PartyRock routes calculations to a specialized database engine instead.</div></div></div>
+      <div class="overview-item"><span class="ov-letter">G</span><div><div class="ov-title">Building AI Productivity Apps</div><div class="ov-desc">The practical workflow for building a PartyRock app from scratch, and why an app beats a one-time chat conversation.</div></div></div>
+      <div class="overview-item"><span class="ov-letter">H</span><div><div class="ov-title">Advanced Concepts and Practical Insights</div><div class="ov-desc">How PartyRock's concepts generalize to enterprise AI systems, and the limitations and best practices worth carrying forward.</div></div></div>
+    </div>
+    <div class="overview-divider"></div>
+    <div class="meta-row">
+      <div class="meta-item"><div class="meta-lbl">Prerequisites</div><div class="meta-val">Module 5 (FM fundamentals), Module 6 (agents), Module 8 (prompt engineering, Chain-of-Thought)</div></div>
+      <div class="meta-item"><div class="meta-lbl">Leads to</div><div class="meta-val">Hands-on PartyRock app-building exercises, enterprise AI workflow design, production prompt-chaining architecture</div></div>
+    </div>
+  </div>
+
+  <div class="intro">
+    <div class="intro-label">Module Introduction</div>
+    <p>Every concept covered so far in this masterclass &mdash; Foundation Model selection, RAG and fine-tuning, governance and security, prompt engineering itself &mdash; has been discussed at the level of theory and API. This module puts all of it into a single hands-on platform: PartyRock, AWS's free no-code Gen AI playground built on Amazon Bedrock, where the same concepts become drag-and-drop widgets instead of code.</p>
+    <p>The module moves from PartyRock's basic architecture and its AI app-building assistant, Whiskers, through manual editing and prompt chaining, into two specialized modalities &mdash; image generation via diffusion models and data analysis via OLAP engines &mdash; before closing with how these same patterns generalize directly to enterprise AI systems.</p>
+  </div>
+
+  <div class="section-card">
+    <div class="section-hdr">
+      <span class="section-letter" style="color:var(--sky);background:var(--sky-dim);border:1px solid rgba(93,184,242,0.2)">A</span>
+      <span class="section-title">Introduction to PartyRock</span>
+      <span class="ghost-glyph">A</span>
+    </div>
+    <div class="section-body">
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">A1</span><span class="sub-title">What PartyRock Is</span></div>
+        <div class="sub-body">
+          <p><span class="kw-cyan def">PartyRock</span> is AWS's free, no-code generative AI playground, built on Amazon Bedrock, for experimenting with AI applications across text generation, image creation, and data analysis. It requires no infrastructure management, API configuration, backend scaling, or cloud deployment setup &mdash; the entire point is removing everything between an idea and a working app.</p>
+          <p><b class="b-salmon">PartyRock apps are NOT simple chatbots.</b> They are structured interfaces that define controlled AI behavior &mdash; a distinction that runs through the whole module: an app constrains and repeats a workflow, where a chat is a single unconstrained conversation.</p>
+          <div class="keypoints"><div class="kp-label">Key Points</div><ul class="kp-list"><li>PartyRock = free, no-code AI app-building playground on Amazon Bedrock</li><li>PartyRock apps are structured, controlled interfaces &mdash; not simple chatbots</li></ul></div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">A2</span><span class="sub-title">Key Benefits</span></div>
+        <div class="sub-body">
+          <p>Five benefits define why PartyRock is a useful entry point into applied Gen AI, beyond just being free.</p>
+          <div class="concept-grid"><div class="concept-card cc-orange"><div class="cc-label">Rapid AI Experimentation</div><ul class="cc-list"><li>Test ideas in minutes without setup overhead</li></ul></div><div class="concept-card cc-sky"><div class="cc-label">Beginner-Friendly Development</div><ul class="cc-list"><li>No coding background required to build a working app</li></ul></div><div class="concept-card cc-cyan"><div class="cc-label">Reusable AI Applications</div><ul class="cc-list"><li>Build once, run repeatedly with different inputs</li></ul></div><div class="concept-card cc-purple"><div class="cc-label">Shareable Workflows</div><ul class="cc-list"><li>Publish an app for others to use directly</li></ul></div><div class="concept-card cc-green"><div class="cc-label">Faster Understanding of AI Capabilities and Limitations</div><ul class="cc-list"><li>Hands-on experimentation builds intuition faster than reading alone</li></ul></div></div>
+          <div class="keypoints"><div class="kp-label">Key Points</div><ul class="kp-list"><li>Five benefits: Rapid Experimentation, Beginner-Friendly, Reusable, Shareable, Faster Understanding</li></ul></div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">A3</span><span class="sub-title">Stateless vs. Stateful Applications</span></div>
+        <div class="sub-body">
+          <p>A <b class="b-orange">stateless</b> app resets after every execution, with no memory persistence between runs. A <b class="b-orange">stateful</b> app retains previous context or data, supporting continuity between interactions. Which behavior an app has depends entirely on how its widgets are designed, not on PartyRock as a platform.</p>
+          <div class="keypoints"><div class="kp-label">Key Points</div><ul class="kp-list"><li>Stateless = resets every run, no memory. Stateful = retains context across interactions.</li></ul></div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">A4</span><span class="sub-title">Zero-Shot Capability</span></div>
+        <div class="sub-body">
+          <p>PartyRock apps lean heavily on <span class="kw-cyan def">zero-shot capability</span> &mdash; using a Foundation Model's pre-trained &ldquo;world knowledge&rdquo; to perform tasks without additional training. Four task types illustrate this well.</p>
+          <div class="concept-grid"><div class="concept-card cc-orange"><div class="cc-label">Trip Planning</div><ul class="cc-list"><li>Generates itineraries from general travel knowledge</li></ul></div><div class="concept-card cc-sky"><div class="cc-label">Code Generation</div><ul class="cc-list"><li>Produces working code without task-specific training</li></ul></div><div class="concept-card cc-cyan"><div class="cc-label">Report Writing</div><ul class="cc-list"><li>Structures written output from general writing competence</li></ul></div><div class="concept-card cc-purple"><div class="cc-label">Brainstorming</div><ul class="cc-list"><li>Generates ideas without needing prior examples</li></ul></div></div>
+          <div class="keypoints"><div class="kp-label">Key Points</div><ul class="kp-list"><li>Zero-shot capability means no additional training is needed for these tasks to work</li></ul></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <div class="section-hdr">
+      <span class="section-letter" style="color:var(--cyan);background:var(--cyan-dim);border:1px solid rgba(94,234,212,0.2)">B</span>
+      <span class="section-title">Understanding PartyRock Architecture</span>
+      <span class="ghost-glyph">B</span>
+    </div>
+    <div class="section-body">
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">B1</span><span class="sub-title">The Application Layer</span></div>
+        <div class="sub-body">
+          <p>PartyRock's <span class="kw-cyan def">Application Layer</span> sits between the user and Amazon Bedrock, handling API orchestration, infrastructure scaling, and Foundation Model access automatically. Every drag-and-drop widget action behind the scenes generates API requests, passes prompts to Bedrock, and handles inference &mdash; invisibly to the person building the app.</p>
+          <p><b class="b-orange">PartyRock simplifies infrastructure but still relies on enterprise-grade AWS AI services underneath</b> &mdash; the simplicity is a UI layer, not a different underlying technology.</p>
+          <div class="keypoints"><div class="kp-label">Key Points</div><ul class="kp-list"><li>Application Layer components: API Orchestration, Infrastructure Scaling, Foundation Model Access</li></ul></div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">B2</span><span class="sub-title">Traditional FM Development Problems, Solved</span></div>
+        <div class="sub-body">
+          <p>Five specific pain points define traditional Foundation Model development &mdash; PartyRock's entire value proposition is removing all five.</p>
+          <div class="concept-grid"><div class="concept-card cc-orange"><div class="cc-label">API Key Management</div><ul class="cc-list"><li>No credentials to provision, rotate, or secure manually</li></ul></div><div class="concept-card cc-sky"><div class="cc-label">SDK Integration</div><ul class="cc-list"><li>No client libraries to install or configure</li></ul></div><div class="concept-card cc-cyan"><div class="cc-label">Environment Configuration</div><ul class="cc-list"><li>No local or cloud environment setup required</li></ul></div><div class="concept-card cc-purple"><div class="cc-label">Cloud Scaling Complexity</div><ul class="cc-list"><li>No capacity planning or autoscaling configuration</li></ul></div><div class="concept-card cc-green"><div class="cc-label">Infrastructure Maintenance</div><ul class="cc-list"><li>No servers or services to patch or monitor</li></ul></div></div>
+          <div class="keypoints"><div class="kp-label">Key Points</div><ul class="kp-list"><li>PartyRock's solution: abstract backend complexity, focus on creativity and workflows, enable immediate experimentation</li></ul></div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">B3</span><span class="sub-title">AI Modalities in PartyRock</span></div>
+        <div class="sub-body">
+          <p>PartyRock exposes three AI modalities, each mapping to a distinct category of widget and use case.</p>
+          <div class="concept-grid"><div class="concept-card cc-orange"><div class="cc-label">Text Generation</div><ul class="cc-list"><li>Summaries, reports, recommendations</li></ul></div><div class="concept-card cc-sky"><div class="cc-label">Image Creation</div><ul class="cc-list"><li>Illustrations, wallpapers, concept art</li></ul></div><div class="concept-card cc-cyan"><div class="cc-label">Data Analysis</div><ul class="cc-list"><li>CSV insights, trends, query generation</li></ul></div></div>
+          <div class="keypoints"><div class="kp-label">Key Points</div><ul class="kp-list"><li>Three modalities: Text Generation, Image Creation, Data Analysis</li></ul></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <div class="section-hdr">
+      <span class="section-letter" style="color:var(--purple);background:var(--purple-dim);border:1px solid rgba(167,139,250,0.2)">C</span>
+      <span class="section-title">Creating Apps with Whiskers</span>
+      <span class="ghost-glyph">C</span>
+    </div>
+    <div class="section-body">
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">C1</span><span class="sub-title">From Prompting to App Building</span></div>
+        <div class="sub-body">
+          <p><span class="kw-cyan def">Whiskers</span> is PartyRock's AI app-building assistant, automatically generating app structures, widgets, prompts, and workflows from a plain-language description. It solves a specific problem with raw chatbot usage: repeated long prompts, inconsistent outputs, and user fatigue from re-explaining context every time.</p>
+          <p>The app-based solution offers reusable templates, controlled workflows, and consistent responses &mdash; the same underlying model, but wrapped in structure that removes repetition.</p>
+          <div class="keypoints"><div class="kp-label">Key Points</div><ul class="kp-list"><li>Whiskers automatically generates app structures, widgets, prompts, and workflows from a description</li></ul></div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">C2</span><span class="sub-title">Example: Workout Planner App</span></div>
+        <div class="sub-body">
+          <p>A concrete Whiskers-built example: a Workout Planner takes four inputs &mdash; fitness level, workout frequency, focus area, physical limitations &mdash; and produces three outputs: personalized routines, recovery guidance, and weekly schedules. The same four inputs can be resubmitted any number of times, always producing a consistent, on-topic result.</p>
+          <div class="keypoints"><div class="kp-label">Key Points</div><ul class="kp-list"><li>Workout Planner inputs: fitness level, workout frequency, focus area, physical limitations</li><li>Workout Planner outputs: personalized routines, recovery guidance, weekly schedules</li></ul></div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">C3</span><span class="sub-title">Automated Prompt Engineering and Variable Injection</span></div>
+        <div class="sub-body">
+          <p>Whiskers automatically defines the persona, constraints, variables, instructions, and output structure behind an app's prompts &mdash; the user never writes raw prompt text. <span class="kw-cyan def">Variable Injection</span> is the mechanism underneath: user inputs like <code>{Fitness Level}</code>, <code>{Workout Duration}</code>, or <code>{Goal}</code> are dynamically inserted into a predefined prompt template, producing customized output without ever rewriting the prompt itself.</p>
+          <div class="keypoints"><div class="kp-label">Key Points</div><ul class="kp-list"><li>Variable Injection: user inputs are dynamically inserted into a fixed prompt template</li></ul></div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">C4</span><span class="sub-title">Benefits of Variable Injection</span></div>
+        <div class="sub-body">
+          <p>Variable injection delivers four concrete benefits over manually re-typing a prompt each time.</p>
+          <div class="concept-grid"><div class="concept-card cc-orange"><div class="cc-label">Repeatability</div><ul class="cc-list"><li>The same template produces consistent structure across runs</li></ul></div><div class="concept-card cc-sky"><div class="cc-label">Consistency</div><ul class="cc-list"><li>Output format and quality don't drift between uses</li></ul></div><div class="concept-card cc-cyan"><div class="cc-label">Scalability</div><ul class="cc-list"><li>One template serves any number of users or inputs</li></ul></div><div class="concept-card cc-purple"><div class="cc-label">Faster User Interaction</div><ul class="cc-list"><li>Users fill fields instead of writing full prompts</li></ul></div></div>
+          <div class="keypoints"><div class="kp-label">Key Points</div><ul class="kp-list"><li>App sharing supports public publishing, shareable links, and reusable workflows</li></ul></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <div class="section-hdr">
+      <span class="section-letter" style="color:var(--orange);background:var(--orange-dim);border:1px solid rgba(251,146,60,0.2)">D</span>
+      <span class="section-title">Editing and Remixing Apps</span>
+      <span class="ghost-glyph">D</span>
+    </div>
+    <div class="section-body">
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">D1</span><span class="sub-title">Remixing and Prompt Architecting</span></div>
+        <div class="sub-body">
+          <p><span class="kw-cyan def">Remixing</span> creates an editable copy of an existing app, while <span class="kw-cyan def">Prompt Architecting</span> is the manual design of information flow between widgets &mdash; the hands-on counterpart to Whiskers' automated generation.</p>
+          <div class="keypoints"><div class="kp-label">Key Points</div><ul class="kp-list"><li>Remixing = editable copy of an existing app. Prompt Architecting = manual information-flow design.</li></ul></div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">D2</span><span class="sub-title">Widget Categories</span></div>
+        <div class="sub-body">
+          <p>Every PartyRock app is assembled from three widget categories, combined to define both the app's inputs and its behavior.</p>
+          <div class="concept-grid"><div class="concept-card cc-orange"><div class="cc-label">Input Widgets</div><ul class="cc-list"><li>Text inputs, file uploads, sliders, dropdown menus</li></ul></div><div class="concept-card cc-sky"><div class="cc-label">AI Output Widgets</div><ul class="cc-list"><li>Text generation, image generation, chat outputs</li></ul></div><div class="concept-card cc-cyan"><div class="cc-label">Static Widgets</div><ul class="cc-list"><li>Labels, instructions, fixed information</li></ul></div></div>
+          <div class="keypoints"><div class="kp-label">Key Points</div><ul class="kp-list"><li>Three widget categories: Input Widgets, AI Output Widgets, Static Widgets</li><li>Manual editing covers: drag widgets, resize layouts, modify prompts, change AI models, configure parameters</li></ul></div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">D3</span><span class="sub-title">Prompt Chaining</span></div>
+        <div class="sub-body">
+          <p><span class="kw-cyan def">Prompt Chaining</span> feeds one widget's output into another widget as input, creating a multi-step reasoning pipeline &mdash; for example: brainstorm ideas &rarr; summarize ideas &rarr; generate final proposal. <b class="b-green">Prompt chaining improves contextual grounding because later steps depend on earlier generated outputs</b>, rather than each step reasoning from scratch.</p>
+          <div class="concept-grid"><div class="concept-card cc-orange"><div class="cc-label">Reduced Hallucination</div><ul class="cc-list"><li>Later steps build on already-generated, grounded content</li></ul></div><div class="concept-card cc-sky"><div class="cc-label">More Grounded Outputs</div><ul class="cc-list"><li>Each stage has real prior output to work from, not just the raw prompt</li></ul></div><div class="concept-card cc-cyan"><div class="cc-label">Better Workflow Structure</div><ul class="cc-list"><li>Complex tasks decompose into manageable stages</li></ul></div><div class="concept-card cc-purple"><div class="cc-label">Improved Reliability</div><ul class="cc-list"><li>Errors are easier to isolate to a specific stage</li></ul></div></div>
+          <div class="keypoints"><div class="kp-label">Key Points</div><ul class="kp-list"><li>Prompt chaining: output of one widget becomes input to the next</li><li>Four benefits: Reduced Hallucination, More Grounded Outputs, Better Structure, Improved Reliability</li></ul></div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">D4</span><span class="sub-title">Strategic Model Orchestration and Temperature Tuning</span></div>
+        <div class="sub-body">
+          <p><span class="kw-cyan def">Strategic Model Orchestration</span> assigns different models to different workflow stages: <b class="b-orange">fast models</b> for formatting and simple tasks, <b class="b-orange">advanced models</b> for reasoning and creativity &mdash; matching model cost and capability to what each step actually needs.</p>
+          <p><span class="kw-cyan def">Temperature Tuning</span> controls creativity versus determinism per widget: <b class="b-orange">low temperature</b> is deterministic, focused, and reliable; <b class="b-orange">high temperature</b> is creative, diverse, and experimental. A single app can mix both &mdash; low temperature for a data-summary widget, high temperature for a creative-brainstorm widget.</p>
+          <div class="keypoints"><div class="kp-label">Key Points</div><ul class="kp-list"><li>Model orchestration: fast models for simple tasks, advanced models for reasoning/creativity</li><li>Temperature: low = deterministic/focused, high = creative/diverse</li></ul></div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">D5</span><span class="sub-title">Variables Tab</span></div>
+        <div class="sub-body">
+          <p>The <span class="kw-cyan def">Variables Tab</span> stores hidden reusable values, improving prompt management and reducing interface clutter &mdash; a place to define a value once and reference it across multiple widgets without repeating it in every prompt.</p>
+          <div class="keypoints"><div class="kp-label">Key Points</div><ul class="kp-list"><li>Variables Tab: hidden reusable values, reduces clutter, improves prompt management</li></ul></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <div class="section-hdr">
+      <span class="section-letter" style="color:var(--sky);background:var(--sky-dim);border:1px solid rgba(93,184,242,0.2)">E</span>
+      <span class="section-title">Generating Images with PartyRock</span>
+      <span class="ghost-glyph">E</span>
+    </div>
+    <div class="section-body">
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">E1</span><span class="sub-title">Diffusion Models and Latent Space</span></div>
+        <div class="sub-body">
+          <p>The <span class="kw-cyan def">Image Playground</span> uses <b class="b-orange">diffusion models</b>, which generate images from random noise, guided by textual prompts. Underneath, models interpret prompts through <span class="kw-cyan def">Latent Space</span> &mdash; a mathematical, multi-dimensional representation of concepts, where every idea (&ldquo;pizza,&rdquo; &ldquo;watercolor,&rdquo; &ldquo;minimalist sketch&rdquo;) exists as a vector inside that conceptual map.</p>
+          <div class="keypoints"><div class="kp-label">Key Points</div><ul class="kp-list"><li>Diffusion models generate images from random noise, guided by text</li><li>Latent Space: a mathematical, multi-dimensional map where concepts exist as vectors</li></ul></div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">E2</span><span class="sub-title">The Denoising Process</span></div>
+        <div class="sub-body">
+          <p><span class="kw-cyan def">Denoising</span> is the actual image-generation mechanism: generation starts with random static noise, and the AI gradually removes that noise while the prompt guides the forming structure, until a final coherent image emerges. It's a progressive refinement process, not a single-step lookup.</p>
+          <div class="keypoints"><div class="kp-label">Key Points</div><ul class="kp-list"><li>Denoising: random noise &rarr; progressive noise removal, prompt-guided &rarr; coherent final image</li></ul></div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">E3</span><span class="sub-title">Prompt Weights and Image Configuration</span></div>
+        <div class="sub-body">
+          <p>Style keywords like &ldquo;oil painting,&rdquo; &ldquo;cyberpunk,&rdquo; or &ldquo;watercolor&rdquo; act as <span class="kw-cyan def">Prompt Weights</span>, strongly influencing image appearance. Four configuration options give further control beyond the prompt text itself.</p>
+          <div class="concept-grid"><div class="concept-card cc-orange"><div class="cc-label">Aspect Ratios</div><ul class="cc-list"><li>Controls the image's width-to-height proportions</li></ul></div><div class="concept-card cc-sky"><div class="cc-label">Color Guidance</div><ul class="cc-list"><li>Steers the palette used in generation</li></ul></div><div class="concept-card cc-cyan"><div class="cc-label">Style Changes</div><ul class="cc-list"><li>Applies an artistic style across the whole image</li></ul></div><div class="concept-card cc-purple"><div class="cc-label">Composition Adjustments</div><ul class="cc-list"><li>Controls framing and subject placement</li></ul></div></div>
+          <div class="keypoints"><div class="kp-label">Key Points</div><ul class="kp-list"><li>Prompt weights: style keywords strongly influence appearance</li><li>Four configuration options: Aspect Ratios, Color Guidance, Style Changes, Composition Adjustments</li></ul></div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">E4</span><span class="sub-title">Why Prompt Precision Matters</span></div>
+        <div class="sub-body">
+          <p>The same base subject &mdash; e.g. an aardvark &mdash; can become a watercolor piece, a pencil sketch, or a portrait wallpaper purely by changing prompt wording. <b class="b-orange">Generic prompts</b> produce ambiguous output; <b class="b-orange">detailed prompts</b> produce better control, higher consistency, and improved artistic direction &mdash; the same precision principle from Module 8 applied to a visual modality.</p>
+          <div class="keypoints"><div class="kp-label">Key Points</div><ul class="kp-list"><li>Generic prompts = ambiguous output. Detailed prompts = better control, consistency, and direction.</li></ul></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <div class="section-hdr">
+      <span class="section-letter" style="color:var(--cyan);background:var(--cyan-dim);border:1px solid rgba(94,234,212,0.2)">F</span>
+      <span class="section-title">Data Analysis with PartyRock</span>
+      <span class="ghost-glyph">F</span>
+    </div>
+    <div class="section-body">
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">F1</span><span class="sub-title">The Structured Data Paradox</span></div>
+        <div class="sub-body">
+          <p>The <span class="kw-cyan def">Structured Data Paradox</span>: LLMs struggle with spreadsheets because transformers process sequential tokens linearly, not two-dimensional tables. That mismatch produces three specific, recurring problems.</p>
+          <div class="concept-grid"><div class="concept-card cc-orange"><div class="cc-label">Confused Column Relationships</div><ul class="cc-list"><li>Linear token processing loses a table's row/column structure</li></ul></div><div class="concept-card cc-sky"><div class="cc-label">Context Window Exhaustion</div><ul class="cc-list"><li>Large tables can exceed the model's usable context length</li></ul></div><div class="concept-card cc-cyan"><div class="cc-label">Poor Mathematical Reliability</div><ul class="cc-list"><li>LLMs are not reliable calculators for exact arithmetic</li></ul></div></div>
+          <div class="keypoints"><div class="kp-label">Key Points</div><ul class="kp-list"><li>Structured Data Paradox: LLMs struggle with tables and calculations because they process tokens linearly, not as 2D tables</li></ul></div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">F2</span><span class="sub-title">PartyRock's Solution: OLAP Engine Integration</span></div>
+        <div class="sub-body">
+          <p>Rather than asking the LLM to calculate directly, PartyRock integrates embedded <span class="kw-cyan def">OLAP engines</span> &mdash; specialized analytical databases optimized for large-scale querying, such as DuckDB &mdash; alongside SQL generation workflows. <b class="b-salmon">The LLM does NOT directly calculate spreadsheet values. The OLAP engine performs the calculations deterministically</b> &mdash; the model's job is translation, not arithmetic.</p>
+          <div class="keypoints"><div class="kp-label">Key Points</div><ul class="kp-list"><li>OLAP Engine Integration ensures accurate, deterministic data analysis; example engine: DuckDB</li><li>The LLM translates natural language to SQL; the OLAP engine does the actual math</li></ul></div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">F3</span><span class="sub-title">The Tool Execution Loop</span></div>
+        <div class="sub-body">
+          <p>The <span class="kw-cyan def">Tool Execution Loop</span> follows a fixed sequence: the user asks a question in natural language, the AI inspects the schema, the AI generates a SQL query, the database executes the calculation, and the results are summarized back in English. Example queries include identifying peak return season, product return categories, or generating recommendations from the underlying data.</p>
+          <div class="keypoints"><div class="kp-label">Key Points</div><ul class="kp-list"><li>Tool Execution Loop: question &rarr; inspect schema &rarr; generate SQL &rarr; execute &rarr; summarize in English</li></ul></div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">F4</span><span class="sub-title">Transparency Features and Benefits</span></div>
+        <div class="sub-body">
+          <p>PartyRock's data analysis workflow stays inspectable rather than opaque, and delivers four concrete benefits over raw LLM-only analysis.</p>
+          <div class="concept-grid"><div class="concept-card cc-orange"><div class="cc-label">Accurate Calculations</div><ul class="cc-list"><li>Deterministic engine execution instead of LLM approximation</li></ul></div><div class="concept-card cc-sky"><div class="cc-label">Large Dataset Support</div><ul class="cc-list"><li>Database engines scale past what fits in an LLM's context window</li></ul></div><div class="concept-card cc-cyan"><div class="cc-label">Natural Language Analytics</div><ul class="cc-list"><li>No SQL knowledge required from the end user</li></ul></div><div class="concept-card cc-purple"><div class="cc-label">Non-Technical Accessibility</div><ul class="cc-list"><li>Opens data analysis to users without a data background</li></ul></div></div>
+          <div class="keypoints"><div class="kp-label">Key Points</div><ul class="kp-list"><li>Transparency features: view generated queries, inspect reasoning process, download results</li></ul></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <div class="section-hdr">
+      <span class="section-letter" style="color:var(--purple);background:var(--purple-dim);border:1px solid rgba(167,139,250,0.2)">G</span>
+      <span class="section-title">Building AI Productivity Apps</span>
+      <span class="ghost-glyph">G</span>
+    </div>
+    <div class="section-body">
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">G1</span><span class="sub-title">Project Workflow</span></div>
+        <div class="sub-body">
+          <p>Building on PartyRock.aws (no AWS account required) follows a fixed six-step workflow: identify a real-world problem, describe the app to Whiskers, generate the initial app, add widgets, test outputs, then publish and share. Every recommended app idea in this module &mdash; Workout Buddy, Study Planner, Meal Prep Assistant, Trip Planner, Meeting Generator, Event Planner &mdash; follows this same sequence.</p>
+          <p>Required components for any app: a minimum of 2 input widgets and 2 output widgets &mdash; the floor for something that qualifies as a structured, reusable app rather than a static page.</p>
+          <div class="keypoints"><div class="kp-label">Key Points</div><ul class="kp-list"><li>Project workflow: Identify problem &rarr; Describe to Whiskers &rarr; Generate app &rarr; Add widgets &rarr; Test outputs &rarr; Publish and share</li><li>Minimum requirements: 2 input widgets, 2 output widgets</li></ul></div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">G2</span><span class="sub-title">Why Apps Beat One-Time Chats</span></div>
+        <div class="sub-body">
+          <p>The module frames this as a direct comparison: four properties where a structured app consistently outperforms repeated ad-hoc chatting.</p>
+          <div class="concept-grid"><div class="concept-card cc-orange"><div class="cc-label">Repetitive Prompting vs. Reusable Workflow</div><ul class="cc-list"><li>A chatbot forces re-typing context every time; an app stores it once</li></ul></div><div class="concept-card cc-sky"><div class="cc-label">Inconsistent Outputs vs. Structured Outputs</div><ul class="cc-list"><li>A chatbot's format can drift; an app's output shape stays fixed</li></ul></div><div class="concept-card cc-cyan"><div class="cc-label">Hard to Scale vs. Shareable System</div><ul class="cc-list"><li>A chat thread is personal; a published app serves any number of users</li></ul></div><div class="concept-card cc-purple"><div class="cc-label">Manual Context Input vs. Automated Variable Injection</div><ul class="cc-list"><li>A chatbot needs re-explaining; an app's fields do the work automatically</li></ul></div></div>
+          <div class="keypoints"><div class="kp-label">Key Points</div><ul class="kp-list"><li>This module transitions students from AI theory to AI solution architecture</li><li>Students now design prompts, build workflows, configure reasoning pipelines, and control AI behavior directly</li></ul></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <div class="section-hdr">
+      <span class="section-letter" style="color:var(--orange);background:var(--orange-dim);border:1px solid rgba(251,146,60,0.2)">H</span>
+      <span class="section-title">Advanced Concepts and Practical Insights</span>
+      <span class="ghost-glyph">H</span>
+    </div>
+    <div class="section-body">
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">H1</span><span class="sub-title">PartyRock as an AI Orchestration Layer</span></div>
+        <div class="sub-body">
+          <p>PartyRock isn't just a toy &mdash; it operationalizes the exact prompt engineering concepts from Module 8, made concrete and interactive.</p>
+          <div class="concept-grid"><div class="concept-card cc-orange"><div class="cc-label">Prompt Templates</div><ul class="cc-list"><li>The reusable structures behind every app's consistent output</li></ul></div><div class="concept-card cc-sky"><div class="cc-label">Few-Shot Structures</div><ul class="cc-list"><li>Example-driven guidance embedded in generated prompts</li></ul></div><div class="concept-card cc-cyan"><div class="cc-label">Chained Prompting</div><ul class="cc-list"><li>Multi-step reasoning pipelines via prompt chaining</li></ul></div><div class="concept-card cc-purple"><div class="cc-label">Context Injection</div><ul class="cc-list"><li>Variable injection delivering dynamic, relevant context</li></ul></div><div class="concept-card cc-green"><div class="cc-label">Parameter Tuning</div><ul class="cc-list"><li>Temperature and model selection per widget</li></ul></div></div>
+          <div class="keypoints"><div class="kp-label">Key Points</div><ul class="kp-list"><li>PartyRock demonstrates workflow automation, AI abstraction, prompt management, and multi-model coordination in one platform</li></ul></div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">H2</span><span class="sub-title">Enterprise Relevance</span></div>
+        <div class="sub-body">
+          <p>The concepts learned building PartyRock apps transfer directly to five categories of real enterprise AI system.</p>
+          <div class="concept-grid"><div class="concept-card cc-orange"><div class="cc-label">SaaS AI Assistants</div><ul class="cc-list"><li>Customer-facing AI features embedded in software products</li></ul></div><div class="concept-card cc-sky"><div class="cc-label">Internal Productivity Systems</div><ul class="cc-list"><li>Employee-facing tools built on the same orchestration principles</li></ul></div><div class="concept-card cc-cyan"><div class="cc-label">AI-Powered Dashboards</div><ul class="cc-list"><li>Data analysis workflows scaled to enterprise reporting</li></ul></div><div class="concept-card cc-purple"><div class="cc-label">Customer Service Automation</div><ul class="cc-list"><li>Structured, chained response workflows instead of raw chat</li></ul></div><div class="concept-card cc-green"><div class="cc-label">Enterprise Workflow Agents</div><ul class="cc-list"><li>Multi-step automation echoing Module 6's agent concepts</li></ul></div></div>
+          <div class="keypoints"><div class="kp-label">Key Points</div><ul class="kp-list"><li>Key AI engineering concepts demonstrated: API orchestration, structured prompting, model routing, AI workflow pipelines, human-AI interaction design, context engineering</li></ul></div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">H3</span><span class="sub-title">Common Limitations and Best Practices</span></div>
+        <div class="sub-body">
+          <p>PartyRock removes infrastructure friction, but it doesn't remove the underlying limitations of generative AI itself &mdash; six best practices help manage what remains.</p>
+          <div class="concept-grid"><div class="concept-card cc-orange"><div class="cc-label">Hallucinations Still Possible</div><ul class="cc-list"><li>Structure reduces but never eliminates hallucination risk</li></ul></div><div class="concept-card cc-sky"><div class="cc-label">Incorrect Prompts Reduce Quality</div><ul class="cc-list"><li>Garbage in, garbage out still applies inside an app</li></ul></div><div class="concept-card cc-cyan"><div class="cc-label">Poor Variable Design Causes Ambiguity</div><ul class="cc-list"><li>Vague variable names or scope confuse the underlying prompt</li></ul></div><div class="concept-card cc-purple"><div class="cc-label">Weak Chaining May Propagate Errors</div><ul class="cc-list"><li>A bad early-stage output corrupts every stage downstream</li></ul></div></div>
+          <div class="keypoints"><div class="kp-label">Key Points</div><ul class="kp-list"><li>Best practices: use clear variables, separate tasks into stages, tune temperature carefully, ground outputs with context, use chaining for complex tasks, match model strength to task complexity</li></ul></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="summary-block"><div class="summary-label">Module Summary</div><ul class="summary-list"><li>PartyRock is a free, no-code AI app-building playground on Amazon Bedrock that abstracts away API management, infrastructure scaling, and cloud provisioning entirely.</li><li>Whiskers automatically generates app structure, prompts, and widgets from a plain description, using Variable Injection to make prompts reusable and repeatable without rewriting them.</li><li>Prompt Chaining links widget outputs into multi-step reasoning pipelines, reducing hallucination by grounding later steps in earlier generated output; Strategic Model Orchestration and Temperature Tuning further shape each stage's behavior.</li><li>Image generation runs on diffusion models navigating latent space through a denoising process; data analysis solves the Structured Data Paradox by routing calculations to a deterministic OLAP engine instead of the LLM itself.</li><li>PartyRock operationalizes core prompt engineering concepts (templates, few-shot structure, chaining, context injection, parameter tuning) in a form that transfers directly to enterprise SaaS assistants, dashboards, and workflow agents.</li></ul></div>
+</div>
+
+<footer class="snx-footer">
+  <div class="snx-footer-meta">
+    <span class="snx-footer-course">AWS-AI Masterclass</span>
+    <span class="snx-footer-divider">&middot;</span>
+    <span class="snx-footer-module">Module 9 &middot; From Theory to Practice with PartyRock</span>
+  </div>
+  <nav class="snx-footer-nav" aria-label="Artifact navigation">
+    <a class="snx-nav-prev" href="../modules/08_aws-ai-masterclass-reviewer.html"><span class="snx-nav-chevron">&lsaquo;</span>Previous</a>
+    <div class="snx-nav-hub">
+      <a class="snx-hub-btn snx-hub-btn-module" href="../modules/09_aws-ai-masterclass-reviewer.html" aria-current="page">Module</a>
+      <a class="snx-hub-btn snx-hub-btn-compact" href="../compact/09_aws-ai-masterclass-compact.html">Compact</a>
+      <a class="snx-hub-btn snx-hub-btn-tree" href="../trees/09_aws-ai-masterclass-tree.html">Tree</a>
+      <a class="snx-hub-btn snx-hub-btn-quiz" href="../quizzes/09_aws-ai-masterclass-quiz.html">Quiz</a>
+      <a class="snx-hub-btn snx-hub-btn-recall" href="../recalls/09_aws-ai-masterclass-recall.html">Recall</a>
+    </div>
+  </nav>
+</footer>
+</body>
+</html>

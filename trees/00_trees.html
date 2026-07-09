@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en" data-synaptix="3.1">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Tree Collection &mdash; AWS-AI Masterclass</title>
+<link rel="stylesheet" href="../resources/css/synaptix-index.css?v=3.1"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+</head>
+<body>
+<div class="wrap">
+
+  <a class="idx-back" href="../index.html"><i class="fa-solid fa-arrow-left"></i> Back to Course Index</a>
+
+  <div class="col-header">
+    <div class="col-eyebrow">AWS-AI Masterclass &middot; Structure Trees</div>
+    <div class="col-title">Tree Collection</div>
+    <div class="col-desc">Directory-style structural outlines for rapid mental mapping and memorization.</div>
+    <div class="col-meta"><span class="badge b-yellow">9 Modules</span><span class="badge b-sky">Tree Collection</span></div>
+  </div>
+
+  <div class="col-stats">
+    <div class="col-stat"><div class="col-stat-val" id="snx-stat-total">9</div><div class="col-stat-lbl">Total Modules</div></div>
+    <div class="col-stat"><div class="col-stat-val" id="snx-stat-visible">9</div><div class="col-stat-lbl">Showing</div></div>
+  </div>
+
+  <div class="col-filters">
+    <button class="col-filter-btn active" data-filter="all" onclick="snxIndex.filterBy('all')">All</button>
+    <button class="col-filter-btn" data-filter="Foundational" onclick="snxIndex.filterBy('Foundational')">Foundational</button>
+    <button class="col-filter-btn" data-filter="Introduction" onclick="snxIndex.filterBy('Introduction')">Introduction</button>
+    <button class="col-filter-btn" data-filter="Core Concept" onclick="snxIndex.filterBy('Core Concept')">Core Concept</button>
+    <button class="col-filter-btn" data-filter="Technique" onclick="snxIndex.filterBy('Technique')">Technique</button>
+    <button class="col-filter-btn" data-filter="Implementation" onclick="snxIndex.filterBy('Implementation')">Implementation</button>
+  </div>
+
+  <div class="col-search">
+    <i class="fa-solid fa-magnifying-glass col-search-icon"></i>
+    <input class="col-search-input" id="snx-search" type="text" placeholder="Search modules..."/>
+  </div>
+
+  <div class="sec-lbl">Modules</div>
+  <div id="snx-collection"></div>
+
+  <footer class="idx-footer">
+    <div class="idx-footer-left">AWS-AI Masterclass &mdash; Synaptix v3.1</div>
+    <div class="idx-footer-right mono">Runtime v3.1</div>
+  </footer>
+
+</div>
+<script src="../resources/js/synaptix-index.js?v=3.1"></script>
+<script>
+snxIndex.init([
+  {
+    id: '01',
+    title: 'Fundamentals of Machine Learning and Artificial Intelligence',
+    description: 'The AI/ML/DL/Generative AI hierarchy, model architectures, and the AWS AI stack that everything else in this course builds on.',
+    tag: 'Foundational',
+    color: 'orange',
+    sections: 9,
+    duration: '55 min',
+    reviewer: '../modules/01_aws-ai-masterclass-reviewer.html',
+    compact: '../compact/01_aws-ai-masterclass-compact.html',
+    tree: '../trees/01_aws-ai-masterclass-tree.html',
+    quiz: '../quizzes/01_aws-ai-masterclass-quiz.html',
+    recall: '../recalls/01_aws-ai-masterclass-recall.html'
+  },
+  {
+    id: '02',
+    title: 'Exploring Artificial Intelligence Use Cases and Applications',
+    description: 'Real-world AI use cases across six industries, the four core application domains, and when ML is actually the right tool.',
+    tag: 'Introduction',
+    color: 'sky',
+    sections: 10,
+    duration: '60 min',
+    reviewer: '../modules/02_aws-ai-masterclass-reviewer.html',
+    compact: '../compact/02_aws-ai-masterclass-compact.html',
+    tree: '../trees/02_aws-ai-masterclass-tree.html',
+    quiz: '../quizzes/02_aws-ai-masterclass-quiz.html',
+    recall: '../recalls/02_aws-ai-masterclass-recall.html'
+  },
+  {
+    id: '03',
+    title: 'Responsible Artificial Intelligence Practices',
+    description: "Ethical, transparent, trustworthy AI practice across the full model lifecycle, backed by AWS's governance and explainability tooling.",
+    tag: 'Core Concept',
+    color: 'cyan',
+    sections: 9,
+    duration: '60 min',
+    reviewer: '../modules/03_aws-ai-masterclass-reviewer.html',
+    compact: '../compact/03_aws-ai-masterclass-compact.html',
+    tree: '../trees/03_aws-ai-masterclass-tree.html',
+    quiz: '../quizzes/03_aws-ai-masterclass-quiz.html',
+    recall: '../recalls/03_aws-ai-masterclass-recall.html'
+  },
+  {
+    id: '04',
+    title: 'Developing Machine Learning Solutions',
+    description: 'The end-to-end ML lifecycle from business goal to deployment, evaluation metrics, and the MLOps discipline that keeps models reliable.',
+    tag: 'Core Concept',
+    color: 'purple',
+    sections: 21,
+    duration: '90 min',
+    reviewer: '../modules/04_aws-ai-masterclass-reviewer.html',
+    compact: '../compact/04_aws-ai-masterclass-compact.html',
+    tree: '../trees/04_aws-ai-masterclass-tree.html',
+    quiz: '../quizzes/04_aws-ai-masterclass-quiz.html',
+    recall: '../recalls/04_aws-ai-masterclass-recall.html'
+  },
+  {
+    id: '05',
+    title: 'Developing Generative AI Solutions',
+    description: 'The generative AI application lifecycle: defining a use case, selecting a Foundation Model, and improving it with RAG and fine-tuning.',
+    tag: 'Core Concept',
+    color: 'green',
+    sections: 6,
+    duration: '45 min',
+    reviewer: '../modules/05_aws-ai-masterclass-reviewer.html',
+    compact: '../compact/05_aws-ai-masterclass-compact.html',
+    tree: '../trees/05_aws-ai-masterclass-tree.html',
+    quiz: '../quizzes/05_aws-ai-masterclass-quiz.html',
+    recall: '../recalls/05_aws-ai-masterclass-recall.html'
+  },
+  {
+    id: '06',
+    title: 'Optimizing Foundation Models',
+    description: 'Optimizing a selected Foundation Model with RAG, vector databases, agents, and fine-tuning &mdash; grounded in two AnyCompany business cases.',
+    tag: 'Technique',
+    color: 'amber',
+    sections: 9,
+    duration: '55 min',
+    reviewer: '../modules/06_aws-ai-masterclass-reviewer.html',
+    compact: '../compact/06_aws-ai-masterclass-compact.html',
+    tree: '../trees/06_aws-ai-masterclass-tree.html',
+    quiz: '../quizzes/06_aws-ai-masterclass-quiz.html',
+    recall: '../recalls/06_aws-ai-masterclass-recall.html'
+  },
+  {
+    id: '07',
+    title: 'Security, Compliance, and Governance for AI Solutions',
+    description: 'Security, governance, and compliance for AI solutions &mdash; Defense in Depth, the OWASP Top 10 for LLMs, and the AWS security toolchain.',
+    tag: 'Core Concept',
+    color: 'orange',
+    sections: 17,
+    duration: '75 min',
+    reviewer: '../modules/07_aws-ai-masterclass-reviewer.html',
+    compact: '../compact/07_aws-ai-masterclass-compact.html',
+    tree: '../trees/07_aws-ai-masterclass-tree.html',
+    quiz: '../quizzes/07_aws-ai-masterclass-quiz.html',
+    recall: '../recalls/07_aws-ai-masterclass-recall.html'
+  },
+  {
+    id: '08',
+    title: 'Essentials of Prompt Engineering',
+    description: 'Crafting effective prompts, tuning inference parameters, and defending against Poisoning, Injection, Exposure, Leaking, and Jailbreaking.',
+    tag: 'Technique',
+    color: 'sky',
+    sections: 12,
+    duration: '65 min',
+    reviewer: '../modules/08_aws-ai-masterclass-reviewer.html',
+    compact: '../compact/08_aws-ai-masterclass-compact.html',
+    tree: '../trees/08_aws-ai-masterclass-tree.html',
+    quiz: '../quizzes/08_aws-ai-masterclass-quiz.html',
+    recall: '../recalls/08_aws-ai-masterclass-recall.html'
+  },
+  {
+    id: '09',
+    title: 'From Theory to Practice with PartyRock',
+    description: 'Hands-on Gen AI app-building with PartyRock &mdash; Whiskers, prompt chaining, image generation, and OLAP-backed data analysis.',
+    tag: 'Implementation',
+    color: 'cyan',
+    sections: 8,
+    duration: '50 min',
+    reviewer: '../modules/09_aws-ai-masterclass-reviewer.html',
+    compact: '../compact/09_aws-ai-masterclass-compact.html',
+    tree: '../trees/09_aws-ai-masterclass-tree.html',
+    quiz: '../quizzes/09_aws-ai-masterclass-quiz.html',
+    recall: '../recalls/09_aws-ai-masterclass-recall.html'
+  }
+]);
+</script>
+</body>
+</html>

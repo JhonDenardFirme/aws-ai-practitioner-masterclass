@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en" data-synaptix="3.1">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Security, Compliance, and Governance for AI Solutions &mdash; AWS-AI Masterclass (Tree)</title>
+<link rel="stylesheet" href="../resources/css/synaptix-reviewer.css?v=3.1"/>
+<script src="../resources/js/synaptix-reviewer.js?v=3.1" defer></script>
+</head>
+<body>
+<div class="doc-wrap">
+<div class="doc-header">
+  <div class="badges">
+    <span class="badge badge-type">Tree &middot; Structure Only</span>
+    <span class="badge badge-mod">Module 7 of 7</span>
+  </div>
+  <div class="doc-title">Security, Compliance, and Governance for AI Solutions</div>
+  <div class="doc-subtitle">source: L5 &mdash; Developing Generative AI Solutions (pasted notes) &middot; generated 2026-07-08 &middot; Synaptix v3.1</div>
+  <div class="stat-row">
+    <div class="stat-item"><div class="stat-val">17</div><div class="stat-lbl">Sections</div></div>
+    <div class="stat-item"><div class="stat-val">39</div><div class="stat-lbl">Subsections</div></div>
+    <div class="stat-item"><div class="stat-val">0</div><div class="stat-lbl">Code Blocks</div></div>
+    <div class="stat-item"><div class="stat-val">0</div><div class="stat-lbl">Enriched</div></div>
+  </div>
+</div>
+<div class="doc-body">
+  <div class="module-label"><span class="module-num">Module 7</span><div class="module-rule"></div></div>
+  <div class="module-title">Security, Compliance, and Governance for AI Solutions</div>
+
+  <div class="section-card"><div class="section-body">
+  <div class="tree-block"><span class="tm">Module 7. Security, Compliance, and Governance for AI Solutions</span>
+
+<span class="tc">├─── </span><span class="ts">A. Foundations of Security, Governance, and Compliance</span>
+<span class="tc">│   ├─── </span><span class="tb">A1. Security, Governance, and Compliance Defined</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Security &mdash; Protects Confidentiality, Integrity, and Availability (the CIA Triad)</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Security &mdash; Focus: cybersecurity, infrastructure protection, threat prevention</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Governance &mdash; Ensures organizational oversight, risk management, business value alignment</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Governance &mdash; Focus: policies, accountability, strategic decision-making</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Compliance &mdash; Ensures adherence to laws, regulatory conformity, industry standards</span>
+<span class="tc">│   │   └─── </span><span class="tl">Compliance &mdash; Validates that security and governance actually meet external requirements</span>
+<span class="tc">│   └─── </span><span class="tb">A2. Why These Functions Matter</span>
+<span class="tc">│       ├─── </span><span class="tl">Protect Operations &mdash; Keeps organizational operations running without disruption</span>
+<span class="tc">│       ├─── </span><span class="tl">Prevent Legal Liabilities &mdash; Reduces exposure to lawsuits and regulatory penalties</span>
+<span class="tc">│       ├─── </span><span class="tl">Build Customer Trust &mdash; Demonstrates the organization handles data and decisions responsibly</span>
+<span class="tc">│       └─── </span><span class="tl">Support Responsible AI &mdash; Provides the operational foundation responsible AI deployment depends on</span>
+<span class="tc">├─── </span><span class="ts">B. Defense in Depth Strategy for AI Systems</span>
+<span class="tc">│   ├─── </span><span class="tb">B1. What Defense in Depth Is</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Defense in Depth = multiple security layers working together</span>
+<span class="tc">│   │   └─── </span><span class="tl">Purpose: prevent attacks, detect threats, respond to incidents, recover from failures</span>
+<span class="tc">│   └─── </span><span class="tb">B2. The Seven Defense Layers</span>
+<span class="tc">│       ├─── </span><span class="tl">1. Data Protection &mdash; Data at rest: AWS KMS encryption, customer-managed keys, S3 Versioning</span>
+<span class="tc">│       ├─── </span><span class="tl">1. Data Protection &mdash; Data in transit: AWS Certificate Manager, AWS Private CA, AWS PrivateLink</span>
+<span class="tc">│       ├─── </span><span class="tl">2. Identity &amp; Access Management &mdash; Ensures only authorized entities gain access via AWS IAM</span>
+<span class="tc">│       ├─── </span><span class="tl">2. Identity &amp; Access Management &mdash; Controls roles, policies, permissions, authentication</span>
+<span class="tc">│       ├─── </span><span class="tl">3. Application Protection &mdash; Protects against unauthorized access, DoS attacks, data breaches</span>
+<span class="tc">│       ├─── </span><span class="tl">3. Application Protection &mdash; AWS Shield, Amazon Cognito</span>
+<span class="tc">│       ├─── </span><span class="tl">4. Network &amp; Edge Protection &mdash; Secures network boundaries, traffic flow, cloud perimeter</span>
+<span class="tc">│       ├─── </span><span class="tl">4. Network &amp; Edge Protection &mdash; Amazon VPC, AWS WAF</span>
+<span class="tc">│       ├─── </span><span class="tl">5. Infrastructure Protection &mdash; Protects compute resources, cloud infrastructure, availability, and integrity</span>
+<span class="tc">│       ├─── </span><span class="tl">5. Infrastructure Protection &mdash; IAM, Network ACLs</span>
+<span class="tc">│       ├─── </span><span class="tl">6. Threat Detection &amp; Incident Response &mdash; Detection: AWS Security Hub, Amazon GuardDuty</span>
+<span class="tc">│       ├─── </span><span class="tl">6. Threat Detection &amp; Incident Response &mdash; Response: AWS Lambda, Amazon EventBridge</span>
+<span class="tc">│       ├─── </span><span class="tl">7. Policies, Procedures &amp; Awareness &mdash; Enforces least privilege access and governance awareness</span>
+<span class="tc">│       └─── </span><span class="tl">7. Policies, Procedures &amp; Awareness &mdash; IAM Access Analyzer, short-term credentials</span>
+<span class="tc">├─── </span><span class="ts">C. Governance and Compliance Strategy</span>
+<span class="tc">│   ├─── </span><span class="tb">C1. The AI Governance Board</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Legal &mdash; Represents regulatory and contractual risk</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Compliance &mdash; Ensures alignment with industry and legal standards</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Data Privacy &mdash; Represents personal and regulated data concerns</span>
+<span class="tc">│   │   ├─── </span><span class="tl">AI Experts &mdash; Bring technical understanding of model behavior and limitations</span>
+<span class="tc">│   │   └─── </span><span class="tl">Business Stakeholders &mdash; Represent organizational value and risk tolerance</span>
+<span class="tc">│   ├─── </span><span class="tb">C2. Governance Responsibilities</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Risk Oversight &mdash; Ongoing identification and management of AI-related risk</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Policy Creation &mdash; Writing the rules that govern data, model, and deployment lifecycle</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Ethical Review &mdash; Evaluating AI decisions and use cases against ethical standards</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Compliance Management &mdash; Ensuring policies actually satisfy external regulatory requirements</span>
+<span class="tc">│   │   └─── </span><span class="tl">Decision-Making Processes &mdash; Defining who approves what, and under what criteria</span>
+<span class="tc">│   └─── </span><span class="tb">C3. Benefits of Governance</span>
+<span class="tc">│       ├─── </span><span class="tl">Enables Scalable Deployment &mdash; Clear policy lets AI expand across the organization without re-litigating risk each time</span>
+<span class="tc">│       ├─── </span><span class="tl">Enables Business Transformation &mdash; Confidence in AI systems supports bigger, riskier initiatives</span>
+<span class="tc">│       ├─── </span><span class="tl">Prevents Ethical Violations &mdash; Structured review catches problems before they reach production</span>
+<span class="tc">│       ├─── </span><span class="tl">Prevents Legal Penalties &mdash; Compliance alignment reduces regulatory exposure</span>
+<span class="tc">│       └─── </span><span class="tl">Prevents Reputational Damage &mdash; Public trust survives incidents better when governance was visibly in place</span>
+<span class="tc">├─── </span><span class="ts">D. Compliance Standards and Frameworks</span>
+<span class="tc">│   ├─── </span><span class="tb">D1. AWS Compliance Coverage</span>
+<span class="tc">│   │   └─── </span><span class="tl">AWS supports 143+ compliance certifications across global standards</span>
+<span class="tc">│   └─── </span><span class="tb">D2. Common Compliance Standards</span>
+<span class="tc">│       ├─── </span><span class="tl">NIST &mdash; U.S. federal security framework</span>
+<span class="tc">│       ├─── </span><span class="tl">NIST &mdash; Focus: Confidentiality, Integrity, Availability</span>
+<span class="tc">│       ├─── </span><span class="tl">ENISA &mdash; EU cybersecurity guidance</span>
+<span class="tc">│       ├─── </span><span class="tl">ENISA &mdash; Focus: digital trust, cybersecurity certification</span>
+<span class="tc">│       ├─── </span><span class="tl">ISO &mdash; International security management standards, e.g. ISO/IEC 27002</span>
+<span class="tc">│       ├─── </span><span class="tl">SOC Reports &mdash; Third-party audits of AWS controls, validating operational compliance</span>
+<span class="tc">│       ├─── </span><span class="tl">HIPAA &mdash; Protects healthcare information &mdash; applies to Protected Health Information (PHI)</span>
+<span class="tc">│       ├─── </span><span class="tl">GDPR &mdash; EU privacy regulation protecting personal data and privacy rights</span>
+<span class="tc">│       └─── </span><span class="tl">PCI DSS &mdash; Payment card security standard protecting financial transaction data</span>
+<span class="tc">├─── </span><span class="ts">E. AI-Specific Governance Challenges</span>
+<span class="tc">│   ├─── </span><span class="tb">E1. Complexity, Dynamism, and Emergence</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Complexity and Opacity &mdash; AI systems are difficult to interpret and often behave as black boxes &mdash; even their own developers can't always explain a specific output.</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Dynamism and Adaptability &mdash; AI models can evolve after deployment, changing behavior over time in ways a governance policy written at launch may not anticipate.</span>
+<span class="tc">│   │   └─── </span><span class="tl">Emergent Capabilities &mdash; Unexpected behaviors can emerge that were never explicitly programmed &mdash; a governance risk unique to large-scale learned systems.</span>
+<span class="tc">│   ├─── </span><span class="tb">E2. Unique AI Risks</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Algorithmic Bias &mdash; Systematic unfairness in outputs, caused by biased training data, embedded human assumptions, or historical discrimination patterns baked into the data.</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Privacy Violations &mdash; AI may expose sensitive data; improper handling creates direct compliance failure risk, not just reputational risk.</span>
+<span class="tc">│   │   └─── </span><span class="tl">Misinformation &mdash; AI can generate inaccurate content; hallucinations specifically create trust issues that compound over repeated use.</span>
+<span class="tc">│   └─── </span><span class="tb">E3. Algorithm Accountability</span>
+<span class="tc">│       ├─── </span><span class="tl">Accountable AI must be explainable and auditable</span>
+<span class="tc">│       └─── </span><span class="tl">Example laws: EU Artificial Intelligence Act, NYC Automated Decision Systems Law</span>
+<span class="tc">├─── </span><span class="ts">F. Regulated Workloads</span>
+<span class="tc">│   ├─── </span><span class="tb">F1. What Makes a Workload Regulated</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Auditing &mdash; Records and decisions must be independently reviewable</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Data Retention &mdash; Data must be archived for a defined legal period</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Compliance Certifications &mdash; The workload must meet a named external standard</span>
+<span class="tc">│   │   └─── </span><span class="tl">Legal Oversight &mdash; Legal counsel is involved in workload design or review</span>
+<span class="tc">│   └─── </span><span class="tb">F2. Examples and Diagnostic Questions</span>
+<span class="tc">│       ├─── </span><span class="tl">Common regulated industries: financial services, healthcare, aerospace</span>
+<span class="tc">│       └─── </span><span class="tl">Four diagnostic questions determine regulated status</span>
+<span class="tc">├─── </span><span class="ts">G. AWS Services for Governance and Compliance</span>
+<span class="tc">│   └─── </span><span class="tb">G1. Governance and Compliance Services</span>
+<span class="tc">│       ├─── </span><span class="tl">AWS Config &mdash; Tracks resource configurations, historical changes, and relationships between resources</span>
+<span class="tc">│       ├─── </span><span class="tl">AWS Config &mdash; Use cases: governance, compliance auditing, troubleshooting configuration changes</span>
+<span class="tc">│       ├─── </span><span class="tl">Amazon Inspector &mdash; Vulnerability management: detects CVEs, weak cryptography, network exposure, code vulnerabilities</span>
+<span class="tc">│       ├─── </span><span class="tl">Amazon Inspector &mdash; Continuous scanning with risk scoring</span>
+<span class="tc">│       ├─── </span><span class="tl">AWS Audit Manager &mdash; Automates evidence collection, compliance assessments, and audit preparation</span>
+<span class="tc">│       ├─── </span><span class="tl">AWS Artifact &mdash; Provides compliance reports, security certifications, and audit documentation</span>
+<span class="tc">│       ├─── </span><span class="tl">AWS CloudTrail &mdash; Logs user actions, API activity, and AWS service events for operational auditing</span>
+<span class="tc">│       └─── </span><span class="tl">AWS Trusted Advisor &mdash; Provides best-practice recommendations for security, cost, and performance</span>
+<span class="tc">├─── </span><span class="ts">H. Data Governance Strategies for AI</span>
+<span class="tc">│   ├─── </span><span class="tb">H1. What Data Governance Covers</span>
+<span class="tc">│   │   └─── </span><span class="tl">AI systems are only as trustworthy as their data &mdash; the module's key insight for this section</span>
+<span class="tc">│   ├─── </span><span class="tb">H2. Data Quality, Lineage, and Provenance</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Data Quality and Integrity &mdash; Ensures accuracy, completeness, and consistency through data validation, cleansing, lineage tracking, and provenance documentation.</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Data Lineage &mdash; Tracks the origin, transformation, and movement of data as it moves through a pipeline.</span>
+<span class="tc">│   │   └─── </span><span class="tl">Data Provenance &mdash; Identifies a dataset's historical source, usage history, and how it has evolved over time.</span>
+<span class="tc">│   ├─── </span><span class="tb">H3. Data Protection, Lifecycle, and Responsible AI</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Data Protection and Privacy &mdash; Protects sensitive, personal, and regulated information through encryption, access controls, incident response, and breach mitigation.</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Data Lifecycle Management &mdash; Governs storage, archiving, retention, and deletion across five stages: collection, processing, storage, consumption, disposal/archiving.</span>
+<span class="tc">│   │   └─── </span><span class="tl">Responsible AI &mdash; Promotes fairness, transparency, accountability, and bias mitigation through active bias monitoring, fairness auditing, team education, and consequence analysis.</span>
+<span class="tc">│   └─── </span><span class="tb">H4. Governance Structures, Roles, and Data Sharing</span>
+<span class="tc">│       ├─── </span><span class="tl">Data Stewards &mdash; Manage day-to-day data quality and usage rules</span>
+<span class="tc">│       ├─── </span><span class="tl">Data Owners &mdash; Hold accountability for a given dataset's governance</span>
+<span class="tc">│       └─── </span><span class="tl">Data Custodians &mdash; Handle the technical storage and protection of data</span>
+<span class="tc">├─── </span><span class="ts">I. Data Management Concepts</span>
+<span class="tc">│   ├─── </span><span class="tb">I1. Data Lifecycles and Logging</span>
+<span class="tc">│   │   └─── </span><span class="tl">Data logging supports monitoring, debugging, and auditing simultaneously</span>
+<span class="tc">│   ├─── </span><span class="tb">I2. Data Residency, Monitoring, and Drift</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Data Residency &mdash; The physical location where data is stored &mdash; a key concern for GDPR compliance, data sovereignty, and regional restrictions.</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Data Monitoring &mdash; Continuously tracks data quality, data drift, and anomalies as new data flows through the system.</span>
+<span class="tc">│   │   └─── </span><span class="tl">Data Drift &mdash; Occurs when the input data distribution changes over time, gradually invalidating assumptions the model was trained on.</span>
+<span class="tc">│   └─── </span><span class="tb">I3. Data Analysis and Retention</span>
+<span class="tc">│       └─── </span><span class="tl">Data retention is influenced by regulations, retraining needs, and storage costs</span>
+<span class="tc">├─── </span><span class="ts">J. Governance Strategy Implementation</span>
+<span class="tc">│   ├─── </span><span class="tb">J1. Policy Areas</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Data Management &mdash; Rules for how data is collected, used, and retained</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Privacy &mdash; Protections for personal and sensitive information</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Bias Mitigation &mdash; Requirements for detecting and correcting unfair outcomes</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Safety &mdash; Guardrails preventing harmful or dangerous AI behavior</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Human Oversight &mdash; Defines where a human must review or approve AI decisions</span>
+<span class="tc">│   │   └─── </span><span class="tl">Intellectual Property &mdash; Addresses ownership and licensing of AI-generated content and training data</span>
+<span class="tc">│   ├─── </span><span class="tb">J2. Review Cadence and Participants</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Technical Teams &mdash; Assess performance, data quality, and robustness</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Legal Teams &mdash; Assess regulatory and contractual exposure</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Compliance Officers &mdash; Assess adherence to named external standards</span>
+<span class="tc">│   │   ├─── </span><span class="tl">End-Users &mdash; Provide practical, ground-level feedback on system behavior</span>
+<span class="tc">│   │   └─── </span><span class="tl">SMEs &mdash; Provide domain expertise the technical team may lack</span>
+<span class="tc">│   └─── </span><span class="tb">J3. Transparency Standards and Team Training</span>
+<span class="tc">│       └─── </span><span class="tl">Responsible AI is both a technical and organizational responsibility &mdash; the module's key insight for this subsection</span>
+<span class="tc">├─── </span><span class="ts">K. Monitoring AI Systems</span>
+<span class="tc">│   ├─── </span><span class="tb">K1. Performance Metrics</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Model Accuracy &mdash; Percentage of correct predictions</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Precision &mdash; True positives &divide; predicted positives</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Recall &mdash; True positives &divide; actual positives</span>
+<span class="tc">│   │   ├─── </span><span class="tl">F1-Score &mdash; Harmonic mean of precision and recall</span>
+<span class="tc">│   │   └─── </span><span class="tl">Latency &mdash; Time required to generate a prediction</span>
+<span class="tc">│   └─── </span><span class="tb">K2. Infrastructure, Fairness, and Compliance Monitoring</span>
+<span class="tc">│       ├─── </span><span class="tl">Infrastructure Monitoring &mdash; Tracks CPU, GPU, memory, storage, and network performance to catch resource-level problems before they cause outages.</span>
+<span class="tc">│       ├─── </span><span class="tl">Bias and Fairness Monitoring &mdash; Detects unfair outcomes and discriminatory patterns emerging after deployment, not just at initial testing.</span>
+<span class="tc">│       └─── </span><span class="tl">Compliance Monitoring &mdash; Ensures ongoing adherence to laws, Responsible AI standards, and governance frameworks &mdash; compliance isn't a one-time check.</span>
+<span class="tc">├─── </span><span class="ts">L. Generative AI Security Scoping Matrix</span>
+<span class="tc">│   ├─── </span><span class="tb">L1. The Five Scopes</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Scope 1 &mdash; Consumer App &mdash; Public AI services with no model ownership</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Scope 1 &mdash; Consumer App &mdash; Example: public chatbot usage</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Scope 2 &mdash; Enterprise App &mdash; Third-party enterprise software with AI features</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Scope 2 &mdash; Enterprise App &mdash; Example: AI scheduling assistant</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Scope 3 &mdash; Pre-Trained Models &mdash; Business builds applications using external FM APIs</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Scope 3 &mdash; Pre-Trained Models &mdash; Example: customer support chatbot using Bedrock</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Scope 4 &mdash; Fine-Tuned Models &mdash; Existing FM customized with business data</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Scope 4 &mdash; Fine-Tuned Models &mdash; Example: brand-specific marketing generator</span>
+<span class="tc">│   │   └─── </span><span class="tl">Scope 5 &mdash; Self-Trained Models &mdash; Organization fully owns data, training, and architecture</span>
+<span class="tc">│   └─── </span><span class="tb">L2. Security Disciplines</span>
+<span class="tc">│       ├─── </span><span class="tl">Governance and Compliance &mdash; Policies, reporting, oversight</span>
+<span class="tc">│       ├─── </span><span class="tl">Legal and Privacy &mdash; Data ownership, regulatory obligations, data sharing concerns</span>
+<span class="tc">│       ├─── </span><span class="tl">Risk Management &mdash; Threat identification, mitigation planning</span>
+<span class="tc">│       └─── </span><span class="tl">Controls and Resilience &mdash; Security controls, availability, SLA reliability</span>
+<span class="tc">├─── </span><span class="ts">M. Security and Privacy Considerations for AI</span>
+<span class="tc">│   ├─── </span><span class="tb">M1. Threat Detection, Vulnerability Management, and Infrastructure Protection</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Threat Detection &mdash; Detects attacks, suspicious behavior, and adversarial activities, including fake content generation, automated attacks, and data manipulation.</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Vulnerability Management &mdash; Includes penetration testing, code review, and patch management to close weaknesses before they're exploited.</span>
+<span class="tc">│   │   └─── </span><span class="tl">Infrastructure Protection &mdash; Protects cloud systems, storage, edge devices, and compute infrastructure the AI workload runs on.</span>
+<span class="tc">│   └─── </span><span class="tb">M2. Prompt Injection and Data Encryption</span>
+<span class="tc">│       └─── </span><span class="tl">Prompt injection is one of the most critical LLM security risks &mdash; the module's key insight for this subsection</span>
+<span class="tc">├─── </span><span class="ts">N. OWASP Top 10 for LLMs</span>
+<span class="tc">│   ├─── </span><span class="tb">N1. The Ten Risks</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Prompt Injection &mdash; Malicious input manipulates model behavior or bypasses safeguards</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Insecure Output Handling &mdash; Model output trusted and used downstream without validation</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Training Data Poisoning &mdash; Malicious data corrupts the model during training</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Model Denial of Service &mdash; Resource-exhaustion attacks against the model itself</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Supply Chain Vulnerabilities &mdash; Risk introduced through third-party models, data, or plugins</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Sensitive Information Disclosure &mdash; Model exposes confidential data in its output</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Insecure Plugin Design &mdash; Poorly secured plugins expand the attack surface</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Excessive Agency &mdash; Giving AI too much autonomy to take consequential action</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Overreliance &mdash; Blind trust in AI outputs without verification</span>
+<span class="tc">│   │   └─── </span><span class="tl">Model Theft &mdash; Unauthorized copying or extraction of the model itself</span>
+<span class="tc">│   └─── </span><span class="tb">N2. Key Concepts to Distinguish</span>
+<span class="tc">│       ├─── </span><span class="tl">Excessive Agency &mdash; Giving an AI system too much autonomy to take real-world action without adequate human checkpoints.</span>
+<span class="tc">│       ├─── </span><span class="tl">Overreliance &mdash; Blind trust in AI outputs &mdash; treating generated content as verified fact without review.</span>
+<span class="tc">│       └─── </span><span class="tl">Model Theft &mdash; Unauthorized copying or extraction of a proprietary model, exposing its weights or architecture.</span>
+<span class="tc">├─── </span><span class="ts">O. AWS Shared Responsibility and Security Services</span>
+<span class="tc">│   ├─── </span><span class="tb">O1. The Shared Responsibility Model</span>
+<span class="tc">│   │   └─── </span><span class="tl">AWS secures the infrastructure, customers secure their workloads &mdash; the module's key insight for this subsection</span>
+<span class="tc">│   └─── </span><span class="tb">O2. Foundational AWS Security Services</span>
+<span class="tc">│       ├─── </span><span class="tl">AWS Security Hub &mdash; Centralized security dashboard</span>
+<span class="tc">│       ├─── </span><span class="tl">AWS KMS &mdash; Encryption key management</span>
+<span class="tc">│       ├─── </span><span class="tl">Amazon GuardDuty &mdash; Threat detection service</span>
+<span class="tc">│       ├─── </span><span class="tl">AWS Shield Advanced &mdash; DDoS protection</span>
+<span class="tc">│       ├─── </span><span class="tl">Amazon Macie &mdash; Detects sensitive data</span>
+<span class="tc">│       ├─── </span><span class="tl">IAM &mdash; Identity and permission management</span>
+<span class="tc">│       ├─── </span><span class="tl">AWS Verified Access &mdash; Zero-trust access control</span>
+<span class="tc">│       ├─── </span><span class="tl">AWS PrivateLink &mdash; Private VPC connectivity</span>
+<span class="tc">│       ├─── </span><span class="tl">Amazon Detective &mdash; Security investigation support</span>
+<span class="tc">│       └─── </span><span class="tl">AWS WAF &mdash; Web application firewall</span>
+<span class="tc">├─── </span><span class="ts">P. Data and Model Lineage</span>
+<span class="tc">│   ├─── </span><span class="tb">P1. Source Citation and Documenting Data Origins</span>
+<span class="tc">│   │   └─── </span><span class="tl">Source citation supports transparency, trustworthiness, and accountability</span>
+<span class="tc">│   └─── </span><span class="tb">P2. Data Lineage, Cataloging, and Model Cards</span>
+<span class="tc">│       ├─── </span><span class="tl">Data Lineage &mdash; Tracks data movement and transformation history across the pipeline.</span>
+<span class="tc">│       ├─── </span><span class="tl">Cataloging &mdash; Organizes models, datasets, metadata, and licenses so they can actually be found and governed.</span>
+<span class="tc">│       └─── </span><span class="tl">Model Cards &mdash; Standardized model documentation covering intended use, risks, metrics, biases, and limitations &mdash; SageMaker Model Cards provide a centralized governance tool for this.</span>
+<span class="tc">└─── </span><span class="ts">Q. Best Practices for Secure Data Engineering</span>
+<span class="tc">    ├─── </span><span class="tb">Q1. Generative AI Data Types and the Engineering Lifecycle</span>
+<span class="tc">    │   ├─── </span><span class="tl">User Data &mdash; User prompts and interactions captured during live use</span>
+<span class="tc">    │   ├─── </span><span class="tl">Fine-Tuning Data &mdash; Specialized domain-adaptation data curated for a specific task</span>
+<span class="tc">    │   └─── </span><span class="tl">Training Data &mdash; Large foundational datasets used for original model training</span>
+<span class="tc">    └─── </span><span class="tb">Q2. Secure Data Engineering Practices</span>
+<span class="tc">        ├─── </span><span class="tl">Assessing Data Quality &mdash; Checks completeness, accuracy, timeliness, and consistency before data is trusted for training or retrieval.</span>
+<span class="tc">        ├─── </span><span class="tl">Privacy-Enhancing Technologies &mdash; Encryption, tokenization, differential privacy, and data masking reduce exposure of sensitive information.</span>
+<span class="tc">        ├─── </span><span class="tl">Data Access Control &mdash; MFA, SSO, RBAC, and least privilege limit who can touch the data at all.</span>
+<span class="tc">        └─── </span><span class="tl">Data Integrity &mdash; Validation checks, backup strategies, audit trails, and atomicity controls confirm the data hasn't been silently corrupted.</span>
+  </div>
+  </div></div>
+
+</div>
+
+<footer class="snx-footer">
+  <div class="snx-footer-meta">
+    <span class="snx-footer-course">AWS-AI Masterclass</span>
+    <span class="snx-footer-divider">&middot;</span>
+    <span class="snx-footer-module">Module 7 &middot; Security, Compliance, and Governance for AI Solutions</span>
+  </div>
+  <nav class="snx-footer-nav" aria-label="Artifact navigation">
+    <a class="snx-nav-prev" href="../trees/06_aws-ai-masterclass-tree.html"><span class="snx-nav-chevron">&lsaquo;</span>Previous</a>
+    <div class="snx-nav-hub">
+      <a class="snx-hub-btn snx-hub-btn-module" href="../modules/07_aws-ai-masterclass-reviewer.html">Module</a>
+      <a class="snx-hub-btn snx-hub-btn-compact" href="../compact/07_aws-ai-masterclass-compact.html">Compact</a>
+      <a class="snx-hub-btn snx-hub-btn-tree" href="../trees/07_aws-ai-masterclass-tree.html" aria-current="page">Tree</a>
+      <a class="snx-hub-btn snx-hub-btn-quiz" href="../quizzes/07_aws-ai-masterclass-quiz.html">Quiz</a>
+      <a class="snx-hub-btn snx-hub-btn-recall" href="../recalls/07_aws-ai-masterclass-recall.html">Recall</a>
+    </div>
+    <a class="snx-nav-next" href="../trees/08_aws-ai-masterclass-tree.html">Next<span class="snx-nav-chevron">&rsaquo;</span></a>
+  </nav>
+</footer>
+</body>
+</html>

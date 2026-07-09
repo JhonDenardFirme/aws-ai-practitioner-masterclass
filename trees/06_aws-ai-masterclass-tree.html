@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en" data-synaptix="3.1">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Optimizing Foundation Models &mdash; AWS-AI Masterclass (Tree)</title>
+<link rel="stylesheet" href="../resources/css/synaptix-reviewer.css?v=3.1"/>
+<script src="../resources/js/synaptix-reviewer.js?v=3.1" defer></script>
+</head>
+<body>
+<div class="doc-wrap">
+<div class="doc-header">
+  <div class="badges">
+    <span class="badge badge-type">Tree &middot; Structure Only</span>
+    <span class="badge badge-mod">Module 6 of 6</span>
+  </div>
+  <div class="doc-title">Optimizing Foundation Models</div>
+  <div class="doc-subtitle">source: L5 &mdash; Developing Generative AI Solutions (pasted notes) &middot; generated 2026-07-08 &middot; Synaptix v3.1</div>
+  <div class="stat-row">
+    <div class="stat-item"><div class="stat-val">9</div><div class="stat-lbl">Sections</div></div>
+    <div class="stat-item"><div class="stat-val">20</div><div class="stat-lbl">Subsections</div></div>
+    <div class="stat-item"><div class="stat-val">0</div><div class="stat-lbl">Code Blocks</div></div>
+    <div class="stat-item"><div class="stat-val">0</div><div class="stat-lbl">Enriched</div></div>
+  </div>
+</div>
+<div class="doc-body">
+  <div class="module-label"><span class="module-num">Module 6</span><div class="module-rule"></div></div>
+  <div class="module-title">Optimizing Foundation Models</div>
+
+  <div class="section-card"><div class="section-body">
+  <div class="tree-block"><span class="tm">Module 6. Optimizing Foundation Models</span>
+
+<span class="tc">├─── </span><span class="ts">A. Foundations of FM Optimization</span>
+<span class="tc">│   ├─── </span><span class="tb">A1. What Optimization Means</span>
+<span class="tc">│   │   ├─── </span><span class="tl">FM Optimization = improving output quality and relevance post-selection</span>
+<span class="tc">│   │   └─── </span><span class="tl">The target is business alignment, not abstract benchmark performance</span>
+<span class="tc">│   └─── </span><span class="tb">A2. Core Objectives</span>
+<span class="tc">│       ├─── </span><span class="tl">Embedding Storage &mdash; Store vector representations of data in a database for fast retrieval</span>
+<span class="tc">│       ├─── </span><span class="tl">Agents &mdash; Automate multi-step workflows that connect the model to backend systems</span>
+<span class="tc">│       ├─── </span><span class="tl">Evaluation &mdash; Measure how effectively the FM performs against business goals</span>
+<span class="tc">│       └─── </span><span class="tl">Fine-Tuning &mdash; Adapt the model's weights to a specific domain or task</span>
+<span class="tc">├─── </span><span class="ts">B. Business Case: AnyCompany Telecom Chatbot</span>
+<span class="tc">│   ├─── </span><span class="tb">B1. Problem &amp; Goals</span>
+<span class="tc">│   │   └─── </span><span class="tl">Goal: reduce tickets by 70%, raise satisfaction to &ge; 4/5</span>
+<span class="tc">│   ├─── </span><span class="tb">B2. ML Challenges</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Generic models lack domain knowledge by default</span>
+<span class="tc">│   │   └─── </span><span class="tl">Two needs: enterprise data integration + task automation capability</span>
+<span class="tc">│   └─── </span><span class="tb">B3. Solution Components</span>
+<span class="tc">│       ├─── </span><span class="tl">Knowledge Base &mdash; Built from chat logs, support tickets, and call recordings &mdash; the raw material a RAG system retrieves from.</span>
+<span class="tc">│       ├─── </span><span class="tl">Data Preparation &mdash; Collection, cleaning, and anonymization of that raw material before it's usable &mdash; anonymization matters here since the source data includes real customer conversations.</span>
+<span class="tc">│       └─── </span><span class="tl">Automation &mdash; Agents that can modify user plans and execute backend actions, turning a conversation into a completed task.</span>
+<span class="tc">├─── </span><span class="ts">C. Retrieval-Augmented Generation (RAG)</span>
+<span class="tc">│   ├─── </span><span class="tb">C1. RAG and Enterprise Data Integration</span>
+<span class="tc">│   │   ├─── </span><span class="tl">RAG's enterprise data sources: documents, reports, manuals</span>
+<span class="tc">│   │   └─── </span><span class="tl">RAG = context injection without retraining &mdash; the module's core definition</span>
+<span class="tc">│   ├─── </span><span class="tb">C2. Vector Embeddings</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Embedding = numerical vector representation capturing semantic meaning</span>
+<span class="tc">│   │   └─── </span><span class="tl">Similar meaning &rarr; similar vectors (Sea &approx; Ocean; Stapler &ne; Ocean)</span>
+<span class="tc">│   ├─── </span><span class="tb">C3. Vector Databases &amp; Similarity Search</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Vector DB purpose: store embeddings, enable fast similarity search, retrieve relevant context</span>
+<span class="tc">│   │   └─── </span><span class="tl">Two search techniques: k-NN (nearest vector search), Cosine Similarity (angle-based)</span>
+<span class="tc">│   └─── </span><span class="tb">C4. AWS Vector Database Options</span>
+<span class="tc">│       ├─── </span><span class="tl">Amazon OpenSearch &mdash; Available in Provisioned and Serverless modes for vector search</span>
+<span class="tc">│       ├─── </span><span class="tl">pgvector &mdash; A PostgreSQL extension available on Amazon RDS and Aurora</span>
+<span class="tc">│       └─── </span><span class="tl">Amazon Kendra &mdash; An enterprise search service usable as a managed retrieval layer</span>
+<span class="tc">├─── </span><span class="ts">D. Agents in Generative AI Systems</span>
+<span class="tc">│   ├─── </span><span class="tb">D1. Key Functions of Agents</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Intermediary Operations &mdash; Connects the model to backend systems, translating a model's decision into a system-level call.</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Action Execution &mdash; Actually performs actions &mdash; modifying accounts, triggering workflows &mdash; rather than just describing what should happen.</span>
+<span class="tc">│   │   └─── </span><span class="tl">Feedback Integration &mdash; Feeds outcomes of those actions back into the system, improving the model's behavior over time.</span>
+<span class="tc">│   └─── </span><span class="tb">D2. AnyCompany Agent Example</span>
+<span class="tc">│       ├─── </span><span class="tl">Agent 1 &mdash; Manages customer plans &mdash; upgrades, downgrades, modifications</span>
+<span class="tc">│       ├─── </span><span class="tl">Agent 2 &mdash; Updates the knowledge base as new information becomes available</span>
+<span class="tc">│       └─── </span><span class="tl">Agent 3 &mdash; Collects feedback from completed interactions</span>
+<span class="tc">├─── </span><span class="ts">E. Evaluating Generative AI Systems</span>
+<span class="tc">│   ├─── </span><span class="tb">E1. Evaluation Methods</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Human Evaluation &mdash; Focuses on user experience, relevance, and creativity &mdash; its strength is capturing nuance no automated metric detects, though it's slow and expensive to scale.</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Benchmark Datasets &mdash; Provide quantitative evaluation across accuracy, speed, and scalability &mdash; built from SME-written questions, identified context, and defined ground-truth answers.</span>
+<span class="tc">│   │   └─── </span><span class="tl">LLM-as-Judge &mdash; Uses another model to compare a generated answer against a reference answer, scoring accuracy, relevance, and completeness automatically.</span>
+<span class="tc">│   └─── </span><span class="tb">E2. Benchmark Creation Steps</span>
+<span class="tc">│       └─── </span><span class="tl">Benchmark creation order: Questions (by SMEs) &rarr; Context &rarr; Answers (ground truth)</span>
+<span class="tc">├─── </span><span class="ts">F. Business Case: AnyCompany Retail Personalization</span>
+<span class="tc">│   ├─── </span><span class="tb">F1. Problem &amp; Business Metrics</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Conversion Rate &mdash; Share of visits that result in a completed purchase</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Average Order Value &mdash; Average revenue per completed order</span>
+<span class="tc">│   │   └─── </span><span class="tl">Customer Retention &mdash; Rate at which customers return for repeat purchases</span>
+<span class="tc">│   └─── </span><span class="tb">F2. AI Solution Components</span>
+<span class="tc">│       ├─── </span><span class="tl">Fine-Tuned Model &mdash; Trained on the company's own transaction data and user behavior, rather than generic retail knowledge.</span>
+<span class="tc">│       ├─── </span><span class="tl">Recommendation Engine &mdash; Uses the fine-tuned model's understanding of behavior to generate personalized product suggestions.</span>
+<span class="tc">│       └─── </span><span class="tl">Feedback Loop &mdash; Feeds purchase outcomes back into the system, enabling continuous improvement of recommendations.</span>
+<span class="tc">├─── </span><span class="ts">G. Fine-Tuning Foundation Models</span>
+<span class="tc">│   ├─── </span><span class="tb">G1. Why Fine-Tune: Benefits</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Increased Specificity &mdash; Outputs speak the domain's actual vocabulary and conventions</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Improved Accuracy &mdash; Fewer errors on domain-specific tasks versus a generic model</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Reduced Bias &mdash; Domain-curated data can correct skew present in general training data</span>
+<span class="tc">│   │   └─── </span><span class="tl">Enhanced Efficiency &mdash; Shorter prompts needed since domain knowledge is baked into the weights</span>
+<span class="tc">│   └─── </span><span class="tb">G2. Fine-Tuning Approaches</span>
+<span class="tc">│       ├─── </span><span class="tl">Instruction Tuning &mdash; Trains the model to follow structured input-output examples</span>
+<span class="tc">│       ├─── </span><span class="tl">RLHF &mdash; Optimizes model behavior using human feedback on output quality</span>
+<span class="tc">│       ├─── </span><span class="tl">Domain Adaptation &mdash; Uses specialized, domain-specific datasets for retraining</span>
+<span class="tc">│       ├─── </span><span class="tl">Transfer Learning &mdash; Reuses knowledge already captured in a pretrained model as a starting point</span>
+<span class="tc">│       └─── </span><span class="tl">Continuous Pretraining &mdash; Updates a model's knowledge with new data over time, without a full retrain</span>
+<span class="tc">├─── </span><span class="ts">H. Data Preparation for Fine-Tuning</span>
+<span class="tc">│   ├─── </span><span class="tb">H1. Initial Training Data vs. Fine-Tuning Data</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Initial training data: large-scale, diverse, general-purpose</span>
+<span class="tc">│   │   └─── </span><span class="tl">Fine-tuning data: specific, relevant, high-quality &mdash; small and curated, not broad</span>
+<span class="tc">│   └─── </span><span class="tb">H2. Key Data Preparation Steps</span>
+<span class="tc">│       ├─── </span><span class="tl">Data Curation &mdash; Selecting and assembling the dataset from raw sources</span>
+<span class="tc">│       ├─── </span><span class="tl">Labeling &mdash; Attaching correct target outputs or annotations to each example</span>
+<span class="tc">│       ├─── </span><span class="tl">Governance &amp; Compliance &mdash; Ensuring data use meets legal and regulatory requirements</span>
+<span class="tc">│       ├─── </span><span class="tl">Bias Checking &mdash; Identifying and correcting skew that would propagate into the fine-tuned model</span>
+<span class="tc">│       └─── </span><span class="tl">Feedback Integration &mdash; Incorporating real usage feedback back into future data preparation cycles</span>
+<span class="tc">└─── </span><span class="ts">I. Model Evaluation Metrics</span>
+<span class="tc">    └─── </span><span class="tb">I1. ROUGE, BLEU, and BERTScore</span>
+<span class="tc">        ├─── </span><span class="tl">ROUGE &mdash; Measures overlap with a reference text</span>
+<span class="tc">        ├─── </span><span class="tl">ROUGE &mdash; Focuses on recall &mdash; completeness of coverage</span>
+<span class="tc">        ├─── </span><span class="tl">BLEU &mdash; Measures precision of N-grams against a reference</span>
+<span class="tc">        ├─── </span><span class="tl">BLEU &mdash; Includes a brevity penalty to discourage overly short output</span>
+<span class="tc">        ├─── </span><span class="tl">BERTScore &mdash; Measures semantic similarity using contextual embeddings</span>
+<span class="tc">        └─── </span><span class="tl">BERTScore &mdash; Captures meaning even when exact wording differs</span>
+  </div>
+  </div></div>
+
+</div>
+
+<footer class="snx-footer">
+  <div class="snx-footer-meta">
+    <span class="snx-footer-course">AWS-AI Masterclass</span>
+    <span class="snx-footer-divider">&middot;</span>
+    <span class="snx-footer-module">Module 6 &middot; Optimizing Foundation Models</span>
+  </div>
+  <nav class="snx-footer-nav" aria-label="Artifact navigation">
+    <a class="snx-nav-prev" href="../trees/05_aws-ai-masterclass-tree.html"><span class="snx-nav-chevron">&lsaquo;</span>Previous</a>
+    <div class="snx-nav-hub">
+      <a class="snx-hub-btn snx-hub-btn-module" href="../modules/06_aws-ai-masterclass-reviewer.html">Module</a>
+      <a class="snx-hub-btn snx-hub-btn-compact" href="../compact/06_aws-ai-masterclass-compact.html">Compact</a>
+      <a class="snx-hub-btn snx-hub-btn-tree" href="../trees/06_aws-ai-masterclass-tree.html" aria-current="page">Tree</a>
+      <a class="snx-hub-btn snx-hub-btn-quiz" href="../quizzes/06_aws-ai-masterclass-quiz.html">Quiz</a>
+      <a class="snx-hub-btn snx-hub-btn-recall" href="../recalls/06_aws-ai-masterclass-recall.html">Recall</a>
+    </div>
+    <a class="snx-nav-next" href="../trees/07_aws-ai-masterclass-tree.html">Next<span class="snx-nav-chevron">&rsaquo;</span></a>
+  </nav>
+</footer>
+</body>
+</html>

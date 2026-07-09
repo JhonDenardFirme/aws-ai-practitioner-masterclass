@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en" data-synaptix="3.1">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Developing Generative AI Solutions &mdash; AWS-AI Masterclass (Compact)</title>
+<link rel="stylesheet" href="../resources/css/synaptix-reviewer.css?v=3.1"/>
+<script src="../resources/js/synaptix-reviewer.js?v=3.1" defer></script>
+</head>
+<body>
+<div class="doc-wrap">
+<div class="doc-header">
+  <div class="badges">
+    <span class="badge badge-type">Compact &middot; Mid</span>
+    <span class="badge badge-mod">Module 5 of 5</span>
+  </div>
+  <div class="doc-title">Developing Generative AI Solutions</div>
+  <div class="doc-subtitle">source: L5 &mdash; Developing Generative AI Solutions (pasted notes) &middot; generated 2026-07-08 &middot; Synaptix v3.1</div>
+  <div class="stat-row">
+    <div class="stat-item"><div class="stat-val">6</div><div class="stat-lbl">Sections</div></div>
+    <div class="stat-item"><div class="stat-val">24</div><div class="stat-lbl">Subsections</div></div>
+    <div class="stat-item"><div class="stat-val">0</div><div class="stat-lbl">Code Blocks</div></div>
+    <div class="stat-item"><div class="stat-val">3</div><div class="stat-lbl">Enriched</div></div>
+  </div>
+</div>
+<div class="doc-body">
+  <div class="module-label"><span class="module-num">Module 5</span><div class="module-rule"></div></div>
+  <div class="module-title">Developing Generative AI Solutions</div>
+
+  <div class="overview">
+    <div class="overview-label">Module Overview</div>
+    <div class="overview-grid">
+      <div class="overview-item"><span class="ov-letter">A</span><div><div class="ov-title">The Generative AI Application Lifecycle</div><div class="ov-desc">The end-to-end process that carries a generative AI application from idea to production.</div></div></div>
+      <div class="overview-item"><span class="ov-letter">B</span><div><div class="ov-title">Defining a Use Case</div><div class="ov-desc">How a generative AI project is scoped, structured, and tied to measurable business value before any model work begins.</div></div></div>
+      <div class="overview-item"><span class="ov-letter">C</span><div><div class="ov-title">Selecting a Foundation Model</div><div class="ov-desc">The criteria used to choose a pre-trained model, and how the Amazon Bedrock ecosystem maps onto those criteria.</div></div></div>
+      <div class="overview-item"><span class="ov-letter">D</span><div><div class="ov-title">Improving Foundation Model Performance</div><div class="ov-desc">The four techniques &mdash; prompting, RAG, fine-tuning, and training from scratch &mdash; used to adapt a Foundation Model to a specific task, plus agents for orchestration.</div></div></div>
+      <div class="overview-item"><span class="ov-letter">E</span><div><div class="ov-title">Evaluating Foundation Models</div><div class="ov-desc">How model quality and business alignment are measured, using human judgment, benchmarks, and automated metrics.</div></div></div>
+      <div class="overview-item"><span class="ov-letter">F</span><div><div class="ov-title">Deployment of Generative AI Applications</div><div class="ov-desc">The operational considerations and goals involved in moving a generative AI application into production.</div></div></div>
+    </div>
+    <div class="overview-divider"></div>
+    <div class="meta-row">
+      <div class="meta-item"><div class="meta-lbl">Prerequisites</div><div class="meta-val">Familiarity with basic ML/AI terminology and AWS core services (S3, IAM)</div></div>
+      <div class="meta-item"><div class="meta-lbl">Leads to</div><div class="meta-val">Prompt engineering deep-dives, Amazon Bedrock hands-on labs, RAG architecture design</div></div>
+    </div>
+  </div>
+
+  <div class="intro">
+    <div class="intro-label">Module Introduction</div>
+    <p>Full lifecycle for shipping a Gen AI application: <b class="b-orange">define</b> the use case, <b class="b-orange">select</b> a Foundation Model, <b class="b-orange">improve</b> it with prompting/RAG/fine-tuning, <b class="b-orange">evaluate</b>, then <b class="b-orange">deploy</b> &mdash; looping back as feedback arrives.</p>
+  </div>
+
+  <div class="section-card">
+    <div class="section-hdr">
+      <span class="section-letter" style="color:var(--sky);background:var(--sky-dim);border:1px solid rgba(93,184,242,0.2)">A</span>
+      <span class="section-title">The Generative AI Application Lifecycle</span>
+      <span class="ghost-glyph">A</span>
+    </div>
+    <div class="section-body">
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">A1</span><span class="sub-title">Lifecycle Phases</span></div>
+        <div class="sub-body">
+          <p>Every generative AI application, regardless of use case, moves through the same six-phase lifecycle. The phases run in order the first time through: <b class="b-orange">Define</b> the business use case, <b class="b-orange">Select</b> a Foundation Model (FM), <b class="b-orange">Improve</b> its performance for the task, <b class="b-orange">Evaluate</b> the results against real criteria, and <b class="b-orange">Deploy</b> into production.</p>
+          <div class="kp-inline"><span class="kp-tag">Key</span>Six phases: Define &rarr; Select FM &rarr; Improve &rarr; Evaluate &rarr; Deploy &rarr; Iterate<span class="kp-sep">&rsaquo;</span>The lifecycle is iterative &mdash; teams cycle back to earlier phases as feedback arrives, not just run it once</div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">A2</span><span class="sub-title">Iteration as a Core Property</span></div>
+        <div class="sub-body">
+          <p><span class="kw-cyan def">Nondeterminism</span> (the tendency of a generative model to produce different outputs for the same input) and evolving user needs mean a generative AI system is never truly &ldquo;finished.&rdquo; Iteration loops feedback from evaluation and real usage back into use-case refinement, prompt design, or model selection. <span class="enrich-plus">[+]</span> In AWS terms, this iteration typically shows up as repeated passes through Amazon Bedrock experimentation, prompt versioning, and re-evaluation &mdash; rather than a one-time model swap.</p>
+          <div class="kp-inline"><span class="kp-tag">Key</span>Gen AI Lifecycle is iterative &mdash; continuously refined, never a single pass<span class="kp-sep">&rsaquo;</span>Iteration is triggered by evaluation results, user feedback, and changing requirements</div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">A3</span><span class="sub-title">Capabilities of Generative AI</span></div>
+        <div class="sub-body">
+          <p>Generative AI's practical value comes from seven core capabilities.</p>
+          <div class="concept-grid"><div class="concept-card cc-orange"><div class="cc-label">Adaptability</div><ul class="cc-list"><li>Works across multiple domains and task types without redesign</li></ul></div><div class="concept-card cc-sky"><div class="cc-label">Responsiveness</div><ul class="cc-list"><li>Generates outputs in real time, supporting interactive use cases</li></ul></div><div class="concept-card cc-cyan"><div class="cc-label">Simplicity</div><ul class="cc-list"><li>Automates workflows that previously required multiple manual steps</li></ul></div><div class="concept-card cc-purple"><div class="cc-label">Creativity</div><ul class="cc-list"><li>Produces novel ideas, phrasing, or content rather than retrieving fixed answers</li></ul></div><div class="concept-card cc-green"><div class="cc-label">Data Efficiency</div><ul class="cc-list"><li>Learns generalizable patterns from large-scale training data</li></ul></div><div class="concept-card cc-amber"><div class="cc-label">Personalization</div><ul class="cc-list"><li>Tailors outputs to an individual user's context or preferences</li></ul></div><div class="concept-card cc-orange"><div class="cc-label">Scalability</div><ul class="cc-list"><li>Generates content at a volume no human team could match</li></ul></div></div>
+          <div class="kp-inline"><span class="kp-tag">Key</span>Seven capabilities: Adaptability, Responsiveness, Simplicity, Creativity, Data Efficiency, Personalization, Scalability</div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">A4</span><span class="sub-title">Challenges of Generative AI</span></div>
+        <div class="sub-body">
+          <p>The same properties that make generative AI powerful also introduce risk.</p>
+          <div class="concept-grid"><div class="concept-card cc-orange"><div class="cc-label">Regulatory Violations</div><ul class="cc-list"><li>Misuse of sensitive, restricted, or regulated data in training or inference</li></ul></div><div class="concept-card cc-sky"><div class="cc-label">Social Risks</div><ul class="cc-list"><li>Outputs that are harmful, misleading, or reinforce bias at scale</li></ul></div><div class="concept-card cc-cyan"><div class="cc-label">Privacy Concerns</div><ul class="cc-list"><li>Exposure of personal or confidential information through generated output</li></ul></div><div class="concept-card cc-purple"><div class="cc-label">Toxicity</div><ul class="cc-list"><li>Offensive, unsafe, or inappropriate generated content</li></ul></div><div class="concept-card cc-green"><div class="cc-label">Hallucinations</div><ul class="cc-list"><li>Plausible-sounding but factually incorrect output presented with confidence</li></ul></div><div class="concept-card cc-amber"><div class="cc-label">Interpretability</div><ul class="cc-list"><li>Difficulty explaining why a model produced a specific output</li></ul></div><div class="concept-card cc-orange"><div class="cc-label">Nondeterminism</div><ul class="cc-list"><li>Inconsistent output for the same input across separate runs</li></ul></div></div>
+          <div class="kp-inline"><span class="kp-tag">Key</span>Hallucinations + nondeterminism are the two most cited risks in production Gen AI systems<span class="kp-sep">&rsaquo;</span>Every challenge listed here maps to a mitigation covered later in this module (RAG for hallucination, evaluation for interpretability, etc.)</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <div class="section-hdr">
+      <span class="section-letter" style="color:var(--cyan);background:var(--cyan-dim);border:1px solid rgba(94,234,212,0.2)">B</span>
+      <span class="section-title">Defining a Use Case</span>
+      <span class="ghost-glyph">B</span>
+    </div>
+    <div class="section-body">
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">B1</span><span class="sub-title">Why Use Case Definition Comes First</span></div>
+        <div class="sub-body">
+          <p>A generative AI project that begins with model selection instead of use-case definition tends to produce technically impressive systems that solve the wrong problem. <span class="enrich-plus">[+]</span> A useful diagnostic: if a team cannot state the use case in one sentence with a measurable outcome, the project is not ready to move to Foundation Model selection.</p>
+          <div class="kp-inline"><span class="kp-tag">Key</span>A bad use case definition produces a failed AI project, regardless of model quality<span class="kp-sep">&rsaquo;</span>Use case definition also determines the success metrics used later in Evaluation</div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">B2</span><span class="sub-title">Business Use Case Structure</span></div>
+        <div class="sub-body">
+          <p>A well-formed use case document follows a standard structure.</p>
+          <div class="concept-grid"><div class="concept-card cc-orange"><div class="cc-label">Use Case Name</div><ul class="cc-list"><li>A short, descriptive identifier for the use case</li></ul></div><div class="concept-card cc-sky"><div class="cc-label">Brief Description</div><ul class="cc-list"><li>A one-paragraph summary of the objective</li></ul></div><div class="concept-card cc-cyan"><div class="cc-label">Actors</div><ul class="cc-list"><li>The users or systems that interact with the solution</li></ul></div><div class="concept-card cc-purple"><div class="cc-label">Preconditions</div><ul class="cc-list"><li>Conditions that must be true before the flow can start</li></ul></div><div class="concept-card cc-green"><div class="cc-label">Basic Flow</div><ul class="cc-list"><li>The main, step-by-step success path</li></ul></div><div class="concept-card cc-amber"><div class="cc-label">Alternative Flows</div><ul class="cc-list"><li>Error handling and edge-case paths</li></ul></div><div class="concept-card cc-orange"><div class="cc-label">Postconditions</div><ul class="cc-list"><li>The system's final state after successful execution</li></ul></div><div class="concept-card cc-sky"><div class="cc-label">Business Rules</div><ul class="cc-list"><li>Policies and constraints the solution must respect</li></ul></div><div class="concept-card cc-cyan"><div class="cc-label">Nonfunctional Requirements</div><ul class="cc-list"><li>Performance, security, and usability requirements</li></ul></div><div class="concept-card cc-purple"><div class="cc-label">Assumptions</div><ul class="cc-list"><li>Conditions expected to hold true in the environment</li></ul></div><div class="concept-card cc-green"><div class="cc-label">Notes</div><ul class="cc-list"><li>Additional clarifications that don't fit elsewhere</li></ul></div></div>
+          <div class="kp-inline"><span class="kp-tag">Key</span>11 standard fields &mdash; Name, Description, Actors, Preconditions, Basic Flow, Alternative Flows, Postconditions, Business Rules, NFRs, Assumptions, Notes<span class="kp-sep">&rsaquo;</span>Alternative Flows are what most teams skip &mdash; and what causes production incidents later</div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">B3</span><span class="sub-title">Key Metrics for Generative AI Use Cases</span></div>
+        <div class="sub-body">
+          <p>The use case document defines not just what the system does, but how success will be measured.</p>
+          <div class="concept-grid"><div class="concept-card cc-orange"><div class="cc-label">Cost Savings</div><ul class="cc-list"><li>Reduction in operational expense versus the current process</li></ul></div><div class="concept-card cc-sky"><div class="cc-label">Time Savings</div><ul class="cc-list"><li>Faster completion of the target task</li></ul></div><div class="concept-card cc-cyan"><div class="cc-label">Quality Improvement</div><ul class="cc-list"><li>Measurably better outputs than the current baseline</li></ul></div><div class="concept-card cc-purple"><div class="cc-label">Customer Satisfaction</div><ul class="cc-list"><li>Improved experience, typically tracked via survey or NPS</li></ul></div><div class="concept-card cc-green"><div class="cc-label">Productivity Gains</div><ul class="cc-list"><li>Increased throughput or efficiency per team member</li></ul></div></div>
+          <div class="kp-inline"><span class="kp-tag">Key</span>The use case defines both metrics and success criteria &mdash; evaluation later in the lifecycle measures against these, not against generic benchmarks alone</div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">B4</span><span class="sub-title">Common Approaches</span></div>
+        <div class="sub-body">
+          <p>Most generative AI use cases fall into one of five common approach patterns.</p>
+          <div class="concept-grid"><div class="concept-card cc-orange"><div class="cc-label">Process Automation</div><ul class="cc-list"><li>Automating repetitive, rules-based tasks</li></ul></div><div class="concept-card cc-sky"><div class="cc-label">Decision Support</div><ul class="cc-list"><li>Assisting &mdash; not replacing &mdash; human decision-making</li></ul></div><div class="concept-card cc-cyan"><div class="cc-label">Personalization</div><ul class="cc-list"><li>Tailoring experiences to individual users</li></ul></div><div class="concept-card cc-purple"><div class="cc-label">Content Generation</div><ul class="cc-list"><li>Creating text, images, or other media</li></ul></div><div class="concept-card cc-green"><div class="cc-label">Innovation Exploration</div><ul class="cc-list"><li>Generating new ideas or design directions</li></ul></div></div>
+          <div class="kp-inline"><span class="kp-tag">Key</span>Five approach patterns: Process Automation, Decision Support, Personalization, Content Generation, Innovation Exploration</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <div class="section-hdr">
+      <span class="section-letter" style="color:var(--purple);background:var(--purple-dim);border:1px solid rgba(167,139,250,0.2)">C</span>
+      <span class="section-title">Selecting a Foundation Model</span>
+      <span class="ghost-glyph">C</span>
+    </div>
+    <div class="section-body">
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">C1</span><span class="sub-title">What a Foundation Model Is</span></div>
+        <div class="sub-body">
+          <p>A <span class="kw-cyan def">Foundation Model (FM)</span> is a pre-trained, large-scale model that serves as the base for a generative AI application. The central insight of FM selection is that there is no universally &ldquo;best&rdquo; model.</p>
+          <div class="kp-inline"><span class="kp-tag">Key</span>An FM is the pre-trained base every Gen AI application builds on<span class="kp-sep">&rsaquo;</span>No single FM is universally best &mdash; selection is a trade-off exercise, not a leaderboard lookup</div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">C2</span><span class="sub-title">Key Selection Criteria</span></div>
+        <div class="sub-body">
+          <p>Choosing an FM means weighing ten criteria against the use case's actual constraints.</p>
+          <div class="concept-grid"><div class="concept-card cc-orange"><div class="cc-label">Cost</div><ul class="cc-list"><li>Compute expense, licensing fees, and customization cost</li></ul></div><div class="concept-card cc-sky"><div class="cc-label">Modality</div><ul class="cc-list"><li>Text, image, audio, or multimodal input/output support</li></ul></div><div class="concept-card cc-cyan"><div class="cc-label">Latency</div><ul class="cc-list"><li>How fast the model must respond for the use case</li></ul></div><div class="concept-card cc-purple"><div class="cc-label">Multilingual Support</div><ul class="cc-list"><li>Which languages the model handles well</li></ul></div><div class="concept-card cc-green"><div class="cc-label">Model Size</div><ul class="cc-list"><li>Trade-off between performance and resource consumption</li></ul></div><div class="concept-card cc-amber"><div class="cc-label">Model Complexity</div><ul class="cc-list"><li>Capability versus difficulty of deployment and operation</li></ul></div><div class="concept-card cc-orange"><div class="cc-label">Customization Ability</div><ul class="cc-list"><li>Whether and how well the model supports fine-tuning</li></ul></div><div class="concept-card cc-sky"><div class="cc-label">Input/Output Length</div><ul class="cc-list"><li>Context window and generation length limitations</li></ul></div><div class="concept-card cc-cyan"><div class="cc-label">Responsibility</div><ul class="cc-list"><li>Bias, safety, and ethical behavior of the model</li></ul></div><div class="concept-card cc-purple"><div class="cc-label">Deployment Compatibility</div><ul class="cc-list"><li>Ease of integration into the target production environment</li></ul></div></div>
+          <div class="kp-inline"><span class="kp-tag">Key</span>10 criteria &mdash; Cost, Modality, Latency, Multilingual Support, Size, Complexity, Customization, I/O Length, Responsibility, Deployment Compatibility<span class="kp-sep">&rsaquo;</span>Model selection = trade-off between cost, performance, and complexity, not a single winning score</div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">C3</span><span class="sub-title">Example Models on Amazon Bedrock</span></div>
+        <div class="sub-body">
+          <p>Amazon Bedrock provides managed access to several Foundation Model families, each with a different strength profile.</p>
+          <div class="concept-stack"><div class="concept-block cb-orange"><div class="cb-label">AI21 Jurassic-2</div><p>Optimized for text generation and summarization tasks where fluent, on-topic prose matters most..</p></div><div class="concept-block cb-sky"><div class="cb-label">Amazon Titan</div><p>AWS's own model family, offering embeddings alongside text and image generation.</p></div><div class="concept-block cb-cyan"><div class="cb-label">Anthropic Claude</div><p>Strong at reasoning, multi-turn chat, and coding tasks, making it a common choice for assistant-style and developer-facing applications..</p></div><div class="concept-block cb-purple"><div class="cb-label">Cohere Command</div><p>Tuned for a broad range of natural language processing (NLP) tasks such as classification and extraction..</p></div><div class="concept-block cb-green"><div class="cb-label">Meta Llama</div><p>A general-purpose large language model (LLM) family suited to a wide range of tasks without heavy specialization..</p></div><div class="concept-block cb-amber"><div class="cb-label">Mistral Large</div><p>Positioned for high reasoning capability, competing with larger models at a smaller footprint..</p></div></div>
+          <div class="kp-inline"><span class="kp-tag">Key</span>Bedrock offers multiple FM families &mdash; AI21 Jurassic-2, Amazon Titan, Anthropic Claude, Cohere Command, Meta Llama, Mistral Large &mdash; each with a distinct strength profile<span class="kp-sep">&rsaquo;</span>Picking a model family starts from the task profile, not brand familiarity</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <div class="section-hdr">
+      <span class="section-letter" style="color:var(--orange);background:var(--orange-dim);border:1px solid rgba(251,146,60,0.2)">D</span>
+      <span class="section-title">Improving Foundation Model Performance</span>
+      <span class="ghost-glyph">D</span>
+    </div>
+    <div class="section-body">
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">D1</span><span class="sub-title">Prompt Engineering: Core Techniques</span></div>
+        <div class="sub-body">
+          <p><span class="kw-cyan def">Prompt Engineering</span> is the design of inputs to control a model's output &mdash; and it is the primary control mechanism available in generative AI, since it requires no retraining and takes effect immediately.</p>
+          <div class="concept-grid"><div class="concept-card cc-orange"><div class="cc-label">Design</div><ul class="cc-list"><li>Writing clear, structured prompts with explicit instructions</li></ul></div><div class="concept-card cc-sky"><div class="cc-label">Augmentation</div><ul class="cc-list"><li>Adding examples or constraints to narrow the model's behavior</li></ul></div><div class="concept-card cc-cyan"><div class="cc-label">Tuning</div><ul class="cc-list"><li>Iteratively refining a prompt based on observed output quality</li></ul></div><div class="concept-card cc-purple"><div class="cc-label">Ensembling</div><ul class="cc-list"><li>Combining multiple prompts or prompt variants for a stronger result</li></ul></div><div class="concept-card cc-green"><div class="cc-label">Mining</div><ul class="cc-list"><li>Systematically discovering prompt phrasings that perform well</li></ul></div></div>
+          <div class="kp-inline"><span class="kp-tag">Key</span>Prompt engineering is the primary control mechanism in Gen AI &mdash; no retraining required<span class="kp-sep">&rsaquo;</span>Five techniques: Design, Augmentation, Tuning, Ensembling, Mining</div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">D2</span><span class="sub-title">Common Prompting Methods</span></div>
+        <div class="sub-body">
+          <p>Beyond general technique, several named prompting patterns recur across production systems.</p>
+          <div class="concept-grid"><div class="concept-card cc-orange"><div class="cc-label">Zero-shot</div><ul class="cc-list"><li>Asking the model to perform a task with no example provided</li></ul></div><div class="concept-card cc-sky"><div class="cc-label">Few-shot</div><ul class="cc-list"><li>Providing a small number of examples inside the prompt to guide format and style</li></ul></div><div class="concept-card cc-cyan"><div class="cc-label">Chain-of-thought (CoT)</div><ul class="cc-list"><li>Prompting the model to reason step-by-step before answering</li></ul></div><div class="concept-card cc-purple"><div class="cc-label">Tree-of-thought (ToT)</div><ul class="cc-list"><li>Exploring multiple reasoning branches before selecting the best path</li></ul></div><div class="concept-card cc-green"><div class="cc-label">Self-consistency</div><ul class="cc-list"><li>Sampling multiple reasoning paths and taking the majority answer</li></ul></div><div class="concept-card cc-amber"><div class="cc-label">ReAct</div><ul class="cc-list"><li>Interleaving reasoning steps with tool-use actions</li></ul></div></div>
+          <div class="kp-inline"><span class="kp-tag">Key</span>Six named methods: Zero-shot, Few-shot, CoT, ToT, Self-consistency, ReAct<span class="kp-sep">&rsaquo;</span>CoT and ToT both improve reasoning quality; ToT explores more paths at higher cost</div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">D3</span><span class="sub-title">Retrieval Augmented Generation (RAG)</span></div>
+        <div class="sub-body">
+          <p><span class="kw-cyan def">RAG</span> combines a retrieval system with a generative model: the retrieval system fetches relevant documents or knowledge, and the generative model synthesizes a response using that retrieved data instead of relying solely on what it memorized during training. <b class="b-green">RAG reduces hallucinations by grounding generation in real, current data</b> &mdash; which is why it is the default technique most production systems reach for before considering fine-tuning.</p>
+          <div class="kp-inline"><span class="kp-tag">Key</span>RAG = Retrieval System + Generative Model<span class="kp-sep">&rsaquo;</span>RAG directly targets the hallucination challenge from Section A by grounding answers in retrieved facts</div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">D4</span><span class="sub-title">RAG Business Applications</span></div>
+        <div class="sub-body">
+          <p>RAG's grounding property makes it especially valuable in three recurring business application patterns.</p>
+          <div class="concept-grid"><div class="concept-card cc-orange"><div class="cc-label">Question-Answering Systems</div><ul class="cc-list"><li>Answering user questions using an organization's own documents</li></ul></div><div class="concept-card cc-sky"><div class="cc-label">Knowledge Base Enhancement</div><ul class="cc-list"><li>Surfacing accurate information from large internal knowledge bases</li></ul></div><div class="concept-card cc-cyan"><div class="cc-label">Content Generation</div><ul class="cc-list"><li>Producing content that must stay factually grounded in source material</li></ul></div></div>
+          <div class="kp-inline"><span class="kp-tag">Key</span>RAG's three core applications: Q&A systems, knowledge base enhancement, grounded content generation</div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">D5</span><span class="sub-title">Fine-Tuning</span></div>
+        <div class="sub-body">
+          <p><span class="kw-cyan def">Fine-tuning</span> retrains a pre-trained model on domain-specific data, improving task-specific performance beyond what prompting alone can achieve. The fine-tuning process follows a fixed sequence: start with a pre-trained model, prepare a domain dataset, add task-specific layers, train on the domain data, then evaluate and iterate.</p>
+          <div class="kp-inline"><span class="kp-tag">Key</span>Fine-tuning methods: Instruction Tuning, RLHF<span class="kp-sep">&rsaquo;</span>Process: pre-trained model &rarr; prepare dataset &rarr; add task-specific layers &rarr; train &rarr; evaluate &amp; iterate</div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">D6</span><span class="sub-title">Model from Scratch &amp; the Trade-Off Summary</span></div>
+        <div class="sub-body">
+          <p>Building a model <b class="b-salmon">from scratch</b> means training entirely new weights on original data &mdash; the highest-cost, highest-customization option. <b class="b-orange">Most real systems combine RAG with a pre-trained model</b> rather than reaching for fine-tuning or from-scratch training, since it delivers the largest accuracy gain for the lowest cost.</p>
+          <div class="concept-grid"><div class="concept-card cc-orange"><div class="cc-label">Pre-trained</div><ul class="cc-list"><li>Lowest cost</li></ul></div><div class="concept-card cc-sky"><div class="cc-label">Fine-tuned</div><ul class="cc-list"><li>Balanced cost and control</li></ul></div><div class="concept-card cc-cyan"><div class="cc-label">From Scratch</div><ul class="cc-list"><li>Highest cost</li></ul></div></div>
+          <div class="kp-inline"><span class="kp-tag">Key</span>Trade-off spectrum: Pre-trained (cheap, low control) &rarr; Fine-tuned (balanced) &rarr; From Scratch (expensive, full control)<span class="kp-sep">&rsaquo;</span>Most production systems land on RAG + pre-trained, not fine-tuning or from-scratch</div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">D7</span><span class="sub-title">Agents for Automation</span></div>
+        <div class="sub-body">
+          <p>An <span class="kw-cyan def">agent</span> is an autonomous task executor that manages multi-step workflows &mdash; chaining reasoning, tool calls, and decisions without a human directing each step.</p>
+          <div class="concept-grid"><div class="concept-card cc-orange"><div class="cc-label">Task Coordination</div><ul class="cc-list"><li>Sequencing and managing multi-step workflows</li></ul></div><div class="concept-card cc-sky"><div class="cc-label">Logging and Reporting</div><ul class="cc-list"><li>Recording actions taken and outcomes produced</li></ul></div><div class="concept-card cc-cyan"><div class="cc-label">Scalability</div><ul class="cc-list"><li>Handling many concurrent workflow instances</li></ul></div><div class="concept-card cc-purple"><div class="cc-label">System Integration</div><ul class="cc-list"><li>Connecting to external tools, APIs, and data sources</li></ul></div></div>
+          <div class="kp-inline"><span class="kp-tag">Key</span>Agents enable complex, multi-step automation beyond a single prompt-response cycle<span class="kp-sep">&rsaquo;</span>Four core functions: Task Coordination, Logging/Reporting, Scalability, System Integration</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <div class="section-hdr">
+      <span class="section-letter" style="color:var(--sky);background:var(--sky-dim);border:1px solid rgba(93,184,242,0.2)">E</span>
+      <span class="section-title">Evaluating Foundation Models</span>
+      <span class="ghost-glyph">E</span>
+    </div>
+    <div class="section-body">
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">E1</span><span class="sub-title">Evaluation Methods</span></div>
+        <div class="sub-body">
+          <p>No single evaluation method captures everything that matters.</p>
+          <div class="concept-stack"><div class="concept-block cb-orange"><div class="cb-label">Human Evaluation</div><p>Qualitative judgment from real reviewers.</p></div><div class="concept-block cb-sky"><div class="cb-label">Benchmark Datasets</div><p>Standardized datasets that allow apples-to-apples comparison between different models or configurations..</p></div><div class="concept-block cb-cyan"><div class="cb-label">Automated Metrics</div><p>Fast, scalable scoring that can run continuously, but is not a substitute for human judgment on nuanced quality..</p></div></div>
+          <div class="kp-inline"><span class="kp-tag">Key</span>Automated metrics &ne; human judgment &mdash; they measure different things and both are needed</div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">E2</span><span class="sub-title">Benchmark Examples</span></div>
+        <div class="sub-body">
+          <p><span class="enrich-plus">[+]</span> Four benchmark datasets recur constantly in FM evaluation literature and AWS documentation.</p>
+          <div class="concept-grid"><div class="concept-card cc-orange"><div class="cc-label">GLUE</div><ul class="cc-list"><li>General Language Understanding Evaluation &mdash; a suite of core NLP understanding tasks</li></ul></div><div class="concept-card cc-sky"><div class="cc-label">SuperGLUE</div><ul class="cc-list"><li>A harder successor to GLUE, designed as earlier models saturated it</li></ul></div><div class="concept-card cc-cyan"><div class="cc-label">SQuAD</div><ul class="cc-list"><li>Stanford Question Answering Dataset &mdash; benchmarks reading-comprehension QA</li></ul></div><div class="concept-card cc-purple"><div class="cc-label">WMT</div><ul class="cc-list"><li>Workshop on Machine Translation &mdash; benchmarks translation quality</li></ul></div></div>
+          <div class="kp-inline"><span class="kp-tag">Key</span>Four common benchmarks: GLUE, SuperGLUE, SQuAD, WMT</div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">E3</span><span class="sub-title">Key Metrics</span></div>
+        <div class="sub-body">
+          <p>Three automated metrics dominate generative AI evaluation, each targeting a different kind of output quality.</p>
+          <div class="concept-grid"><div class="concept-card cc-orange"><div class="cc-label">ROUGE</div><ul class="cc-list"><li>Measures overlap between generated and reference text &mdash; used for summarization quality</li></ul></div><div class="concept-card cc-sky"><div class="cc-label">BLEU</div><ul class="cc-list"><li>Measures translation quality by comparing generated output to reference translations</li></ul></div><div class="concept-card cc-cyan"><div class="cc-label">BERTScore</div><ul class="cc-list"><li>Measures semantic similarity using contextual embeddings, catching paraphrases that ROUGE/BLEU miss</li></ul></div></div>
+          <div class="kp-inline"><span class="kp-tag">Key</span>Core metrics: ROUGE (summarization overlap), BLEU (translation quality), BERTScore (semantic similarity)</div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">E4</span><span class="sub-title">Additional Metrics</span></div>
+        <div class="sub-body">
+          <p>Two supporting metrics round out the evaluation toolkit.</p>
+          <div class="kp-inline"><span class="kp-tag">Key</span>Perplexity: prediction confidence (lower = better)<span class="kp-sep">&rsaquo;</span>F1 Score: balances precision and recall for classification-style outputs</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <div class="section-hdr">
+      <span class="section-letter" style="color:var(--cyan);background:var(--cyan-dim);border:1px solid rgba(94,234,212,0.2)">F</span>
+      <span class="section-title">Deployment of Generative AI Applications</span>
+      <span class="ghost-glyph">F</span>
+    </div>
+    <div class="section-body">
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">F1</span><span class="sub-title">Key Deployment Considerations</span></div>
+        <div class="sub-body">
+          <p>Deployment is where business value is actually realized &mdash; but only if four operational factors are planned for in advance.</p>
+          <div class="concept-grid"><div class="concept-card cc-orange"><div class="cc-label">Cost</div><ul class="cc-list"><li>Pay-per-use resource pricing that scales with actual traffic</li></ul></div><div class="concept-card cc-sky"><div class="cc-label">Regions</div><ul class="cc-list"><li>Service availability differs by AWS region &mdash; latency and compliance both depend on this</li></ul></div><div class="concept-card cc-cyan"><div class="cc-label">Quotas</div><ul class="cc-list"><li>Built-in resource limits that must be checked against expected load</li></ul></div><div class="concept-card cc-purple"><div class="cc-label">Security</div><ul class="cc-list"><li>Shared responsibility between AWS and the user, plus risks specific to external/third-party models</li></ul></div></div>
+          <div class="kp-inline"><span class="kp-tag">Key</span>Four deployment considerations: Cost, Regions, Quotas, Security<span class="kp-sep">&rsaquo;</span>Security is shared responsibility &mdash; AWS secures the infrastructure, the user secures their configuration and data</div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">F2</span><span class="sub-title">Deployment Goals</span></div>
+        <div class="sub-body">
+          <p>A production-ready deployment is judged against four goals simultaneously &mdash; optimizing for only one at the expense of the others produces a fragile system.</p>
+          <div class="concept-grid"><div class="concept-card cc-orange"><div class="cc-label">Scalability</div><ul class="cc-list"><li>Handling growth in traffic and usage without redesign</li></ul></div><div class="concept-card cc-sky"><div class="cc-label">Reliability</div><ul class="cc-list"><li>Consistent availability and correct behavior over time</li></ul></div><div class="concept-card cc-cyan"><div class="cc-label">Security</div><ul class="cc-list"><li>Protecting data, access, and model behavior from misuse</li></ul></div><div class="concept-card cc-purple"><div class="cc-label">User Experience</div><ul class="cc-list"><li>Making the system fast, clear, and usable for its actual audience</li></ul></div></div>
+          <div class="kp-inline"><span class="kp-tag">Key</span>Deployment = where business value is realized<span class="kp-sep">&rsaquo;</span>Four deployment goals: Scalability, Reliability, Security, User Experience</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="summary-block"><div class="summary-label">Module Summary</div><ul class="summary-list"><li>The Generative AI Application Lifecycle is iterative: Define &rarr; Select FM &rarr; Improve &rarr; Evaluate &rarr; Deploy, looping back as feedback arrives.</li><li>A strong use case definition &mdash; complete with actors, flows, and metrics &mdash; is the single biggest predictor of project success, not model choice.</li><li>Foundation Model selection is a trade-off across ten criteria (cost, latency, modality, size, responsibility, and more); model fit beats raw model power.</li><li>RAG, fine-tuning, prompting, and agents are complementary tools, not competing choices &mdash; most production systems combine RAG with a pre-trained model plus strong prompt engineering.</li><li>Evaluation must combine human judgment, benchmarks, and automated metrics (ROUGE, BLEU, BERTScore) before a model reaches deployment, where cost, regions, quotas, and shared-responsibility security determine real-world success.</li></ul></div>
+</div>
+
+<footer class="snx-footer">
+  <div class="snx-footer-meta">
+    <span class="snx-footer-course">AWS-AI Masterclass</span>
+    <span class="snx-footer-divider">&middot;</span>
+    <span class="snx-footer-module">Module 5 &middot; Developing Generative AI Solutions</span>
+  </div>
+  <nav class="snx-footer-nav" aria-label="Artifact navigation">
+    <a class="snx-nav-prev" href="../compact/04_aws-ai-masterclass-compact.html"><span class="snx-nav-chevron">&lsaquo;</span>Previous</a>
+    <div class="snx-nav-hub">
+      <a class="snx-hub-btn snx-hub-btn-module" href="../modules/05_aws-ai-masterclass-reviewer.html">Module</a>
+      <a class="snx-hub-btn snx-hub-btn-compact" href="../compact/05_aws-ai-masterclass-compact.html" aria-current="page">Compact</a>
+      <a class="snx-hub-btn snx-hub-btn-tree" href="../trees/05_aws-ai-masterclass-tree.html">Tree</a>
+      <a class="snx-hub-btn snx-hub-btn-quiz" href="../quizzes/05_aws-ai-masterclass-quiz.html">Quiz</a>
+      <a class="snx-hub-btn snx-hub-btn-recall" href="../recalls/05_aws-ai-masterclass-recall.html">Recall</a>
+    </div>
+    <a class="snx-nav-next" href="../compact/06_aws-ai-masterclass-compact.html">Next<span class="snx-nav-chevron">&rsaquo;</span></a>
+  </nav>
+</footer>
+</body>
+</html>

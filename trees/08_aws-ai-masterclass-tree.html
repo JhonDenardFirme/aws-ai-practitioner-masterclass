@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en" data-synaptix="3.1">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Essentials of Prompt Engineering &mdash; AWS-AI Masterclass (Tree)</title>
+<link rel="stylesheet" href="../resources/css/synaptix-reviewer.css?v=3.1"/>
+<script src="../resources/js/synaptix-reviewer.js?v=3.1" defer></script>
+</head>
+<body>
+<div class="doc-wrap">
+<div class="doc-header">
+  <div class="badges">
+    <span class="badge badge-type">Tree &middot; Structure Only</span>
+    <span class="badge badge-mod">Module 8 of 8</span>
+  </div>
+  <div class="doc-title">Essentials of Prompt Engineering</div>
+  <div class="doc-subtitle">source: L5 &mdash; Developing Generative AI Solutions (pasted notes) &middot; generated 2026-07-08 &middot; Synaptix v3.1</div>
+  <div class="stat-row">
+    <div class="stat-item"><div class="stat-val">12</div><div class="stat-lbl">Sections</div></div>
+    <div class="stat-item"><div class="stat-val">37</div><div class="stat-lbl">Subsections</div></div>
+    <div class="stat-item"><div class="stat-val">0</div><div class="stat-lbl">Code Blocks</div></div>
+    <div class="stat-item"><div class="stat-val">0</div><div class="stat-lbl">Enriched</div></div>
+  </div>
+</div>
+<div class="doc-body">
+  <div class="module-label"><span class="module-num">Module 8</span><div class="module-rule"></div></div>
+  <div class="module-title">Essentials of Prompt Engineering</div>
+
+  <div class="section-card"><div class="section-body">
+  <div class="tree-block"><span class="tm">Module 8. Essentials of Prompt Engineering</span>
+
+<span class="tc">├─── </span><span class="ts">A. Introduction to Prompt Engineering</span>
+<span class="tc">│   ├─── </span><span class="tb">A1. What Prompt Engineering Is</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Prompt quality directly affects output quality &mdash; the module's central premise</span>
+<span class="tc">│   │   └─── </span><span class="tl">Prompting bridges human intent and AI interpretation</span>
+<span class="tc">│   ├─── </span><span class="tb">A2. The AnyCompany Scenario</span>
+<span class="tc">│   │   └─── </span><span class="tl">A vague prompt from a finance company produced an unrelated smart-home analysis &mdash; the module's running example</span>
+<span class="tc">│   └─── </span><span class="tb">A3. Why Weak Prompts Fail</span>
+<span class="tc">│       ├─── </span><span class="tl">Lack of Specificity &mdash; The request doesn't narrow down what's actually wanted</span>
+<span class="tc">│       ├─── </span><span class="tl">Missing Domain Context &mdash; The model has no signal about the industry or audience</span>
+<span class="tc">│       ├─── </span><span class="tl">Unclear Output Structure &mdash; No indication of format, length, or organization</span>
+<span class="tc">│       └─── </span><span class="tl">Generic Responses &mdash; The result: outputs that could apply to almost any topic</span>
+<span class="tc">├─── </span><span class="ts">B. Understanding Prompts</span>
+<span class="tc">│   ├─── </span><span class="tb">B1. What a Prompt Is, and Its Benefits</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Enhances Model Performance &mdash; Better-guided models produce more accurate, on-target output</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Improves Output Safety &mdash; Reduces the chance of harmful or inappropriate content</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Adds Domain-Specific Behavior &mdash; Tailors generic model knowledge to a specific field or task</span>
+<span class="tc">│   │   └─── </span><span class="tl">Produces Higher-Quality Responses &mdash; Clearer instructions consistently yield better-formed answers</span>
+<span class="tc">│   ├─── </span><span class="tb">B2. The Four Core Prompt Components</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Instructions &mdash; Defines the task to perform, e.g. &ldquo;Determine which orders can be fulfilled&rdquo;</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Context &mdash; Background that tailors the output to domain or audience, e.g. &ldquo;ecommerce inventory management task&rdquo;</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Input Data &mdash; The actual content being processed, e.g. &ldquo;orders and inventory quantities&rdquo;</span>
+<span class="tc">│   │   └─── </span><span class="tl">Output Indicator &mdash; Specifies the expected format, e.g. &ldquo;fulfillment status&rdquo;</span>
+<span class="tc">│   └─── </span><span class="tb">B3. Negative Prompting</span>
+<span class="tc">│       └─── </span><span class="tl">Negative prompting increases the safety and appropriateness of responses by restricting specific undesired behaviors</span>
+<span class="tc">├─── </span><span class="ts">C. Modifying Prompts and Inference Parameters</span>
+<span class="tc">│   ├─── </span><span class="tb">C1. Prompt Refinement and Inference Parameters</span>
+<span class="tc">│   │   └─── </span><span class="tl">Inference parameters and prompt wording are two separate levers on the same output</span>
+<span class="tc">│   ├─── </span><span class="tb">C2. Temperature, Top P, and Top K</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Temperature &mdash; Controls randomness/creativity directly</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Temperature &mdash; Low (0.2): conservative, predictable, more coherent</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Temperature &mdash; High (1.0): creative, diverse, potentially less coherent</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Top P &mdash; Probability-based token filtering</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Top P &mdash; Low: smaller probability pool, more focused output</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Top P &mdash; High: wider probability pool, more diverse language</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Top K &mdash; Limits choices to the top K most probable words</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Top K &mdash; Low: more constrained responses</span>
+<span class="tc">│   │   └─── </span><span class="tl">Top K &mdash; High: larger vocabulary selection, greater creativity</span>
+<span class="tc">│   ├─── </span><span class="tb">C3. Length Parameters</span>
+<span class="tc">│   │   └─── </span><span class="tl">Maximum Length caps token count; Stop Sequences end generation at a defined boundary</span>
+<span class="tc">│   └─── </span><span class="tb">C4. AnyCompany's Prompt Improvements</span>
+<span class="tc">│       ├─── </span><span class="tl">Added Finance Industry Context &mdash; Grounded the request in the correct domain</span>
+<span class="tc">│       ├─── </span><span class="tl">Specified SMB Audience &mdash; Narrowed the intended reader</span>
+<span class="tc">│       ├─── </span><span class="tl">Defined Report Structure &mdash; Removed ambiguity about output format</span>
+<span class="tc">│       ├─── </span><span class="tl">Set Professional Tone &mdash; Constrained the register of the writing</span>
+<span class="tc">│       ├─── </span><span class="tl">Increased Maximum Length &mdash; Allowed room for a fuller report</span>
+<span class="tc">│       └─── </span><span class="tl">Increased Temperature and Top P &mdash; Traded some predictability for more creative framing, appropriate once structure was locked down</span>
+<span class="tc">├─── </span><span class="ts">D. Best Practices for Prompt Engineering</span>
+<span class="tc">│   └─── </span><span class="tb">D1. Nine Core Best Practices</span>
+<span class="tc">│       ├─── </span><span class="tl">Be Clear and Concise &mdash; Use natural language and direct instructions, not overly technical wording</span>
+<span class="tc">│       ├─── </span><span class="tl">Be Clear and Concise &mdash; Good: &ldquo;What is the sum of these numbers?&rdquo; vs. bad: &ldquo;Compute the sum total&hellip;&rdquo;</span>
+<span class="tc">│       ├─── </span><span class="tl">Include Context &mdash; Specify industry, audience, and business purpose to improve relevance</span>
+<span class="tc">│       ├─── </span><span class="tl">Use Directives &mdash; State the output type clearly: summary, poem, analysis, table, JSON</span>
+<span class="tc">│       ├─── </span><span class="tl">Specify Desired Output &mdash; Define length, tone, structure, and included/excluded content</span>
+<span class="tc">│       ├─── </span><span class="tl">Start with Interrogatives &mdash; Frame requests with Who, What, Where, When, Why, How</span>
+<span class="tc">│       ├─── </span><span class="tl">Provide Example Outputs &mdash; Demonstrate expected formatting or reasoning directly</span>
+<span class="tc">│       ├─── </span><span class="tl">Break Up Complex Tasks &mdash; Divide into subtasks; ask the model to think step by step</span>
+<span class="tc">│       ├─── </span><span class="tl">Experiment and Iterate &mdash; Compare prompt versions and refine based on output quality</span>
+<span class="tc">│       └─── </span><span class="tl">Use Prompt Templates &mdash; Standardized, reusable structures improve consistency across workflows</span>
+<span class="tc">├─── </span><span class="ts">E. Prompt Engineering Techniques</span>
+<span class="tc">│   ├─── </span><span class="tb">E1. Zero-Shot Prompting</span>
+<span class="tc">│   │   └─── </span><span class="tl">Zero-shot: no examples, relies on pretrained knowledge, fast but less reliable for complex tasks</span>
+<span class="tc">│   ├─── </span><span class="tb">E2. Few-Shot Prompting</span>
+<span class="tc">│   │   └─── </span><span class="tl">Few-shot: examples included, improves consistency and formatting accuracy over zero-shot</span>
+<span class="tc">│   └─── </span><span class="tb">E3. Chain-of-Thought (CoT) Prompting</span>
+<span class="tc">│       ├─── </span><span class="tl">Mathematics &mdash; Multi-step calculations benefit from explicit intermediate steps</span>
+<span class="tc">│       ├─── </span><span class="tl">Financial Analysis &mdash; Sequential reasoning through assumptions and figures</span>
+<span class="tc">│       ├─── </span><span class="tl">Logic Problems &mdash; Step-by-step elimination of possibilities</span>
+<span class="tc">│       └─── </span><span class="tl">Multi-Step Reasoning &mdash; Any task where the answer depends on an ordered chain of sub-conclusions</span>
+<span class="tc">├─── </span><span class="ts">F. Prompt Misuses and Risks</span>
+<span class="tc">│   ├─── </span><span class="tb">F1. Prompt Misuse and Adversarial Prompting</span>
+<span class="tc">│   │   └─── </span><span class="tl">Improperly designed or malicious prompts can compromise security, privacy, fairness, and system integrity</span>
+<span class="tc">│   └─── </span><span class="tb">F2. Main Categories of Prompt Risk</span>
+<span class="tc">│       ├─── </span><span class="tl">Poisoning &mdash; Corrupts training data, not the prompt interface itself</span>
+<span class="tc">│       ├─── </span><span class="tl">Hijacking and Prompt Injection &mdash; Manipulates model behavior at inference time via crafted prompts</span>
+<span class="tc">│       ├─── </span><span class="tl">Exposure &mdash; Unintentional disclosure of sensitive or confidential information</span>
+<span class="tc">│       ├─── </span><span class="tl">Prompt Leaking &mdash; Disclosure of hidden system prompts or internal instructions</span>
+<span class="tc">│       └─── </span><span class="tl">Jailbreaking &mdash; Circumvents safety restrictions to force prohibited output</span>
+<span class="tc">├─── </span><span class="ts">G. Poisoning Attacks</span>
+<span class="tc">│   ├─── </span><span class="tb">G1. What Poisoning Is</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Poisoning's goal: corrupt outputs, introduce bias, cause unsafe responses, reduce trustworthiness</span>
+<span class="tc">│   │   └─── </span><span class="tl">Poisoning happens at training/fine-tuning time, not at inference time</span>
+<span class="tc">│   ├─── </span><span class="tb">G2. Examples and Real-World Implications</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Biased Training Examples &mdash; Injecting racist or biased examples into training data</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Manipulated Financial Data &mdash; Distorting predictions by manipulating financial datasets</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Malicious Code Samples &mdash; Inserting malicious code into coding training datasets</span>
+<span class="tc">│   │   └─── </span><span class="tl">Misinformation in Corpora &mdash; Feeding misinformation into knowledge corpora used for training</span>
+<span class="tc">│   └─── </span><span class="tb">G3. Mitigation Strategies</span>
+<span class="tc">│       ├─── </span><span class="tl">Dataset Validation &mdash; Systematically checking data before it enters training</span>
+<span class="tc">│       ├─── </span><span class="tl">Human Review Processes &mdash; Manual review catches what automated checks miss</span>
+<span class="tc">│       ├─── </span><span class="tl">Bias Detection &mdash; Statistical checks for skew across training examples</span>
+<span class="tc">│       ├─── </span><span class="tl">Data Provenance Tracking &mdash; Knowing exactly where each training example came from</span>
+<span class="tc">│       ├─── </span><span class="tl">Secure Fine-Tuning Pipelines &mdash; Controlling who can introduce new data into a fine-tuning run</span>
+<span class="tc">│       └─── </span><span class="tl">Regular Auditing &mdash; Ongoing checks, not a one-time validation pass</span>
+<span class="tc">├─── </span><span class="ts">H. Hijacking and Prompt Injection</span>
+<span class="tc">│   ├─── </span><span class="tb">H1. What Prompt Injection and Hijacking Are</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Prompt injection targets the runtime prompt, not training data (contrast with Poisoning)</span>
+<span class="tc">│   │   └─── </span><span class="tl">Goals: generate misinformation, bypass restrictions, produce malicious instructions, leak hidden instructions</span>
+<span class="tc">│   ├─── </span><span class="tb">H2. Common Prompt Injection Techniques</span>
+<span class="tc">│   │   ├─── </span><span class="tl">&ldquo;Ignore previous instructions&rdquo; &mdash; Directly attempts to override the system prompt</span>
+<span class="tc">│   │   ├─── </span><span class="tl">&ldquo;Act as an unrestricted AI&rdquo; &mdash; Attempts to reframe the model's own identity and constraints</span>
+<span class="tc">│   │   ├─── </span><span class="tl">&ldquo;Pretend this is fictional&rdquo; &mdash; Uses fictional framing to justify otherwise-restricted content</span>
+<span class="tc">│   │   └─── </span><span class="tl">&ldquo;For educational purposes only&rdquo; &mdash; Uses a stated legitimate purpose to lower the model's guard</span>
+<span class="tc">│   ├─── </span><span class="tb">H3. Poisoning vs. Prompt Injection</span>
+<span class="tc">│   │   └─── </span><span class="tl">Poisoning = training data, long-term. Prompt Injection = runtime prompt, immediate.</span>
+<span class="tc">│   └─── </span><span class="tb">H4. Mitigation Strategies</span>
+<span class="tc">│       ├─── </span><span class="tl">Input Sanitization &mdash; Cleaning user input before it reaches the model</span>
+<span class="tc">│       ├─── </span><span class="tl">Instruction Hierarchy Enforcement &mdash; Ensuring system instructions can't be overridden by user text</span>
+<span class="tc">│       ├─── </span><span class="tl">Output Filtering &mdash; Catching problematic output after generation, before it reaches the user</span>
+<span class="tc">│       ├─── </span><span class="tl">Human Oversight &mdash; Manual review for high-risk interactions</span>
+<span class="tc">│       ├─── </span><span class="tl">Context Isolation &mdash; Preventing user input from bleeding into system-level context</span>
+<span class="tc">│       └─── </span><span class="tl">Retrieval Safeguards &mdash; Protecting RAG pipelines from injected instructions hidden in retrieved documents</span>
+<span class="tc">├─── </span><span class="ts">I. Exposure and Prompt Leaking</span>
+<span class="tc">│   ├─── </span><span class="tb">I1. Exposure</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Personal Information &mdash; Names, addresses, and other direct identifiers</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Financial Records &mdash; Account details, transaction history</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Medical Records &mdash; Protected health information</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Browsing History &mdash; Behavioral data revealing personal habits</span>
+<span class="tc">│   │   └─── </span><span class="tl">Purchase History &mdash; Transaction records tied to individual customers</span>
+<span class="tc">│   ├─── </span><span class="tb">I2. Prompt Leaking</span>
+<span class="tc">│   │   ├─── </span><span class="tl">&ldquo;Tell me your instructions&rdquo; &mdash; Directly asks the model to reveal its system prompt</span>
+<span class="tc">│   │   ├─── </span><span class="tl">&ldquo;Repeat your hidden prompt&rdquo; &mdash; Attempts to extract the exact system-level text</span>
+<span class="tc">│   │   └─── </span><span class="tl">&ldquo;What were you told before this conversation?&rdquo; &mdash; Probes for prior context or configuration</span>
+<span class="tc">│   ├─── </span><span class="tb">I3. Exposure vs. Prompt Leaking</span>
+<span class="tc">│   │   └─── </span><span class="tl">Exposure = sensitive data disclosure. Prompt Leaking = system instruction disclosure.</span>
+<span class="tc">│   └─── </span><span class="tb">I4. Mitigation Strategies</span>
+<span class="tc">│       ├─── </span><span class="tl">Data Anonymization &mdash; Removing identifying details before data is usable by the model</span>
+<span class="tc">│       ├─── </span><span class="tl">Access Control &mdash; Limiting who and what can query sensitive systems</span>
+<span class="tc">│       ├─── </span><span class="tl">Encryption &mdash; Protecting data both at rest and in transit</span>
+<span class="tc">│       ├─── </span><span class="tl">Prompt Isolation &mdash; Keeping system prompts separated from user-accessible context</span>
+<span class="tc">│       ├─── </span><span class="tl">Retrieval Restrictions &mdash; Limiting what a RAG pipeline can surface to a query</span>
+<span class="tc">│       └─── </span><span class="tl">Redaction Systems &mdash; Automatically stripping sensitive content from output before delivery</span>
+<span class="tc">├─── </span><span class="ts">J. Jailbreaking</span>
+<span class="tc">│   ├─── </span><span class="tb">J1. What Jailbreaking Is</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Roleplay &mdash; Asking the model to adopt a persona without the usual constraints</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Hypotheticals &mdash; Framing prohibited content as a fictional or theoretical scenario</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Emotional Manipulation &mdash; Applying social pressure to get the model to comply</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Multi-Step Prompts &mdash; Building toward a prohibited output gradually across several turns</span>
+<span class="tc">│   │   └─── </span><span class="tl">Instruction Overrides &mdash; Directly attempting to cancel prior safety instructions</span>
+<span class="tc">│   ├─── </span><span class="tb">J2. Common Jailbreaking Approaches</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Character Simulation &mdash; &ldquo;Pretend you are a hacker&rdquo; or &ldquo;act as a fictional villain&rdquo;</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Recursive Instruction Attacks &mdash; Repeatedly re-framing the request to work around a refusal</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Prompt Chaining &mdash; Building the prohibited request across multiple linked prompts</span>
+<span class="tc">│   │   └─── </span><span class="tl">Obfuscation Techniques &mdash; Disguising the actual request through encoding or indirection</span>
+<span class="tc">│   ├─── </span><span class="tb">J3. Mitigation Strategies</span>
+<span class="tc">│   │   ├─── </span><span class="tl">RLHF &mdash; Reinforcement Learning from Human Feedback aligns model behavior with safety expectations</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Safety Fine-Tuning &mdash; Additional training specifically targeting refusal behavior</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Output Moderation &mdash; Screening generated content before it reaches the user</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Adversarial Testing &mdash; Deliberately probing for jailbreak vulnerabilities before attackers do</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Behavioral Monitoring &mdash; Watching for patterns of repeated jailbreak attempts</span>
+<span class="tc">│   │   └─── </span><span class="tl">Human Review Systems &mdash; Escalating suspicious interactions for manual review</span>
+<span class="tc">│   └─── </span><span class="tb">J4. Prompt Injection vs. Jailbreaking</span>
+<span class="tc">│       └─── </span><span class="tl">Prompt Injection = manipulate a specific output. Jailbreaking = remove safety restrictions broadly.</span>
+<span class="tc">├─── </span><span class="ts">K. Defending Against Prompt Risks</span>
+<span class="tc">│   ├─── </span><span class="tb">K1. Four Categories of Defense</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Organizational Best Practices &mdash; Establish AI governance policies, audit prompts/outputs regularly, restrict access, monitor abnormal behavior, train employees</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Technical Defenses &mdash; Prompt filtering, output moderation, context segmentation, access control, retrieval isolation, secure logging</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Model-Level Defenses &mdash; RLHF alignment, adversarial training, safety fine-tuning, content moderation layers</span>
+<span class="tc">│   │   └─── </span><span class="tl">Human-Centered Defenses &mdash; Human-in-the-loop review, ethical oversight boards, escalation mechanisms, incident response plans</span>
+<span class="tc">│   ├─── </span><span class="tb">K2. Industry-Specific Defense Examples</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Healthcare &mdash; Mask patient identifiers</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Finance &mdash; Restrict transaction prompt access</span>
+<span class="tc">│   │   ├─── </span><span class="tl">HR &mdash; Audit recruitment AI for bias</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Government &mdash; Enforce classified data filtering</span>
+<span class="tc">│   │   └─── </span><span class="tl">Ecommerce &mdash; Prevent prompt-based fraud generation</span>
+<span class="tc">│   └─── </span><span class="tb">K3. Common Indicators of Prompt Abuse</span>
+<span class="tc">│       ├─── </span><span class="tl">Repeated Override Attempts &mdash; Multiple tries to cancel or bypass system instructions</span>
+<span class="tc">│       ├─── </span><span class="tl">Requests for Hidden Prompts &mdash; Directly asking to see system-level instructions</span>
+<span class="tc">│       ├─── </span><span class="tl">Suspicious Roleplay Scenarios &mdash; Framing that exists mainly to lower safety guardrails</span>
+<span class="tc">│       ├─── </span><span class="tl">Malware or Illegal Action Requests &mdash; Direct or indirect requests for clearly prohibited content</span>
+<span class="tc">│       └─── </span><span class="tl">Attempts to Reveal Confidential Data &mdash; Probing for information the user shouldn't have access to</span>
+<span class="tc">└─── </span><span class="ts">L. Practical Applications and Exam-Level Insights</span>
+<span class="tc">    ├─── </span><span class="tb">L1. Why These Risks Matter in Real Organizations</span>
+<span class="tc">    │   └─── </span><span class="tl">A single prompt exploit can cascade into data leaks, manipulated outputs, customer harm, and compliance violations</span>
+<span class="tc">    ├─── </span><span class="tb">L2. The Mental Model: Attack Type to Target</span>
+<span class="tc">    │   ├─── </span><span class="tl">Poisoning &mdash; Targets Training Data</span>
+<span class="tc">    │   ├─── </span><span class="tl">Prompt Injection &mdash; Targets Prompt Instructions</span>
+<span class="tc">    │   ├─── </span><span class="tl">Exposure &mdash; Targets Sensitive Information</span>
+<span class="tc">    │   ├─── </span><span class="tl">Prompt Leaking &mdash; Targets System Prompts</span>
+<span class="tc">    │   └─── </span><span class="tl">Jailbreaking &mdash; Targets Safety Constraints</span>
+<span class="tc">    └─── </span><span class="tb">L3. Common Exam Traps</span>
+<span class="tc">        └─── </span><span class="tl">Three recurring exam traps: Leaking vs. Exposure, Injection vs. Jailbreaking, Poisoning vs. inference-time attacks</span>
+  </div>
+  </div></div>
+
+</div>
+
+<footer class="snx-footer">
+  <div class="snx-footer-meta">
+    <span class="snx-footer-course">AWS-AI Masterclass</span>
+    <span class="snx-footer-divider">&middot;</span>
+    <span class="snx-footer-module">Module 8 &middot; Essentials of Prompt Engineering</span>
+  </div>
+  <nav class="snx-footer-nav" aria-label="Artifact navigation">
+    <a class="snx-nav-prev" href="../trees/07_aws-ai-masterclass-tree.html"><span class="snx-nav-chevron">&lsaquo;</span>Previous</a>
+    <div class="snx-nav-hub">
+      <a class="snx-hub-btn snx-hub-btn-module" href="../modules/08_aws-ai-masterclass-reviewer.html">Module</a>
+      <a class="snx-hub-btn snx-hub-btn-compact" href="../compact/08_aws-ai-masterclass-compact.html">Compact</a>
+      <a class="snx-hub-btn snx-hub-btn-tree" href="../trees/08_aws-ai-masterclass-tree.html" aria-current="page">Tree</a>
+      <a class="snx-hub-btn snx-hub-btn-quiz" href="../quizzes/08_aws-ai-masterclass-quiz.html">Quiz</a>
+      <a class="snx-hub-btn snx-hub-btn-recall" href="../recalls/08_aws-ai-masterclass-recall.html">Recall</a>
+    </div>
+    <a class="snx-nav-next" href="../trees/09_aws-ai-masterclass-tree.html">Next<span class="snx-nav-chevron">&rsaquo;</span></a>
+  </nav>
+</footer>
+</body>
+</html>

@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en" data-synaptix="3.1">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Exploring Artificial Intelligence Use Cases and Applications &mdash; AWS-AI Masterclass (Tree)</title>
+<link rel="stylesheet" href="../resources/css/synaptix-reviewer.css?v=3.1"/>
+<script src="../resources/js/synaptix-reviewer.js?v=3.1" defer></script>
+</head>
+<body>
+<div class="doc-wrap">
+<div class="doc-header">
+  <div class="badges">
+    <span class="badge badge-type">Tree &middot; Structure Only</span>
+    <span class="badge badge-mod">Module 2 of 9</span>
+  </div>
+  <div class="doc-title">Exploring Artificial Intelligence Use Cases and Applications</div>
+  <div class="doc-subtitle">source: L5 &mdash; Developing Generative AI Solutions (pasted notes) &middot; generated 2026-07-08 &middot; Synaptix v3.1</div>
+  <div class="stat-row">
+    <div class="stat-item"><div class="stat-val">10</div><div class="stat-lbl">Sections</div></div>
+    <div class="stat-item"><div class="stat-val">26</div><div class="stat-lbl">Subsections</div></div>
+    <div class="stat-item"><div class="stat-val">0</div><div class="stat-lbl">Code Blocks</div></div>
+    <div class="stat-item"><div class="stat-val">0</div><div class="stat-lbl">Enriched</div></div>
+  </div>
+</div>
+<div class="doc-body">
+  <div class="module-label"><span class="module-num">Module 2</span><div class="module-rule"></div></div>
+  <div class="module-title">Exploring Artificial Intelligence Use Cases and Applications</div>
+
+  <div class="section-card"><div class="section-body">
+  <div class="tree-block"><span class="tm">Module 2. Exploring Artificial Intelligence Use Cases and Applications</span>
+
+<span class="tc">├─── </span><span class="ts">A. AI Overview and Definitions</span>
+<span class="tc">│   ├─── </span><span class="tb">A1. AI, ML, DL, and Generative AI Recap</span>
+<span class="tc">│   │   └─── </span><span class="tl">Generative AI creates; ML predicts/analyzes &mdash; the same core distinction from Module 1, applied here to real use cases</span>
+<span class="tc">│   └─── </span><span class="tb">A2. Capabilities of Generative AI by Content Type</span>
+<span class="tc">│       ├─── </span><span class="tl">Text &mdash; Conversations, summaries</span>
+<span class="tc">│       ├─── </span><span class="tl">Visual &mdash; Images, videos</span>
+<span class="tc">│       ├─── </span><span class="tl">Audio &mdash; Music, speech</span>
+<span class="tc">│       └─── </span><span class="tl">Code &mdash; Programming outputs</span>
+<span class="tc">├─── </span><span class="ts">B. Real-World AI Use Cases Across Industries</span>
+<span class="tc">│   ├─── </span><span class="tb">B1. Media and Entertainment</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Content Generation &mdash; Automating scripts and stories</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Virtual Reality &mdash; Building immersive environments</span>
+<span class="tc">│   │   └─── </span><span class="tl">News Generation &mdash; Automatically summarizing articles</span>
+<span class="tc">│   ├─── </span><span class="tb">B2. Retail</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Review Summaries &mdash; Condensing product insights from many reviews</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Pricing Optimization &mdash; Maximizing profit through dynamic pricing</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Virtual Try-Ons &mdash; Simulating customer fitting before purchase</span>
+<span class="tc">│   │   └─── </span><span class="tl">Store Layout Optimization &mdash; Improving physical or digital shopping flow</span>
+<span class="tc">│   ├─── </span><span class="tb">B3. Healthcare</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Clinical Documentation (HealthScribe) &mdash; Automatic clinical note generation</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Personalized Medicine &mdash; Tailoring treatments to the individual patient</span>
+<span class="tc">│   │   └─── </span><span class="tl">Medical Imaging Enhancement &mdash; Improving diagnostic accuracy from scans</span>
+<span class="tc">│   ├─── </span><span class="tb">B4. Life Sciences</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Drug Discovery &mdash; Generating candidate molecular structures</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Protein Folding Prediction &mdash; 3D structure analysis for proteins</span>
+<span class="tc">│   │   └─── </span><span class="tl">Synthetic Biology &mdash; Designing engineered biological systems</span>
+<span class="tc">│   ├─── </span><span class="tb">B5. Financial Services</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Fraud Detection &mdash; Detecting anomalies in transaction patterns</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Portfolio Management &mdash; Simulating market scenarios for decision support</span>
+<span class="tc">│   │   └─── </span><span class="tl">Debt Collection Optimization &mdash; Improving collection strategy and outcomes</span>
+<span class="tc">│   └─── </span><span class="tb">B6. Manufacturing</span>
+<span class="tc">│       ├─── </span><span class="tl">Predictive Maintenance &mdash; Reducing unplanned downtime</span>
+<span class="tc">│       ├─── </span><span class="tl">Process Optimization &mdash; Improving manufacturing efficiency</span>
+<span class="tc">│       ├─── </span><span class="tl">Product Design Generation &mdash; Optimizing designs against constraints</span>
+<span class="tc">│       └─── </span><span class="tl">Material Science &mdash; Discovering new materials</span>
+<span class="tc">├─── </span><span class="ts">C. Core AI Applications</span>
+<span class="tc">│   ├─── </span><span class="tb">C1. Computer Vision</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Image Classification &mdash; Labels an image with its overall category</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Object Detection &mdash; Identifies and locates specific objects within an image</span>
+<span class="tc">│   │   └─── </span><span class="tl">Segmentation &mdash; Performs pixel-level analysis, isolating exact shapes</span>
+<span class="tc">│   ├─── </span><span class="tb">C2. Natural Language Processing (NLP)</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Text Classification &mdash; Assigns a category label to a piece of text</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Sentiment Analysis &mdash; Determines the emotional tone of text</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Translation &mdash; Converts text between languages</span>
+<span class="tc">│   │   └─── </span><span class="tl">Text Generation &mdash; Produces new, coherent text</span>
+<span class="tc">│   ├─── </span><span class="tb">C3. Intelligent Document Processing (IDP)</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Data Extraction &mdash; Pulling structured values out of unstructured documents</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Classification &mdash; Sorting documents into the correct category</span>
+<span class="tc">│   │   └─── </span><span class="tl">Summarization &mdash; Condensing long documents into key points</span>
+<span class="tc">│   └─── </span><span class="tb">C4. Fraud Detection</span>
+<span class="tc">│       ├─── </span><span class="tl">Application = implementation of an AI capability &mdash; the module's key insight tying capabilities to applications</span>
+<span class="tc">│       └─── </span><span class="tl">Fraud Detection industries: Finance (AML), Retail (account protection), Telecom (fraud monitoring)</span>
+<span class="tc">├─── </span><span class="ts">D. Machine Learning Fundamentals in Practice</span>
+<span class="tc">│   ├─── </span><span class="tb">D1. When ML Is Appropriate</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Complex Rules &mdash; The correct logic is too difficult to define manually</span>
+<span class="tc">│   │   ├─── </span><span class="tl">High Variability &mdash; Many influencing factors make a fixed rule set brittle</span>
+<span class="tc">│   │   └─── </span><span class="tl">Large Scale &mdash; The problem involves massive datasets no manual process could handle</span>
+<span class="tc">│   └─── </span><span class="tb">D2. When ML Is NOT Appropriate</span>
+<span class="tc">│       └─── </span><span class="tl">Do not use ML if a rule-based solution already works &mdash; the module's core caution</span>
+<span class="tc">├─── </span><span class="ts">E. Machine Learning Techniques and Use Cases</span>
+<span class="tc">│   ├─── </span><span class="tb">E1. Supervised Learning: Classification vs. Regression</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Classification = categorical prediction (fraud detection, image classification, customer retention, diagnostics)</span>
+<span class="tc">│   │   └─── </span><span class="tl">Regression = continuous prediction (weather forecasting, market trends, life expectancy, population growth)</span>
+<span class="tc">│   ├─── </span><span class="tb">E2. Unsupervised Learning: Clustering vs. Dimensionality Reduction</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Clustering: customer segmentation, targeted marketing, recommendation systems</span>
+<span class="tc">│   │   └─── </span><span class="tl">Dimensionality Reduction: data visualization, compression, feature extraction</span>
+<span class="tc">│   └─── </span><span class="tb">E3. Reinforcement Learning</span>
+<span class="tc">│       ├─── </span><span class="tl">Agent &mdash; The decision-maker taking actions</span>
+<span class="tc">│       ├─── </span><span class="tl">Environment &mdash; The space the agent interacts with</span>
+<span class="tc">│       └─── </span><span class="tl">Feedback &mdash; Rewards and penalties that shape future decisions</span>
+<span class="tc">├─── </span><span class="ts">F. Generative AI Overview</span>
+<span class="tc">│   └─── </span><span class="tb">F1. What Generative AI Is, and Its Content Types</span>
+<span class="tc">│       ├─── </span><span class="tl">Text &mdash; Conversations, summaries</span>
+<span class="tc">│       ├─── </span><span class="tl">Image &mdash; Visual content</span>
+<span class="tc">│       ├─── </span><span class="tl">Video &mdash; Generated scenes</span>
+<span class="tc">│       ├─── </span><span class="tl">Audio &mdash; Music, speech</span>
+<span class="tc">│       └─── </span><span class="tl">Code &mdash; Program generation</span>
+<span class="tc">├─── </span><span class="ts">G. Capabilities of Generative AI</span>
+<span class="tc">│   └─── </span><span class="tb">G1. Seven Capabilities</span>
+<span class="tc">│       ├─── </span><span class="tl">Adaptability &mdash; Flexible across tasks and domains</span>
+<span class="tc">│       ├─── </span><span class="tl">Responsiveness &mdash; Generates output in real time</span>
+<span class="tc">│       ├─── </span><span class="tl">Simplicity &mdash; Automates otherwise complex processes</span>
+<span class="tc">│       ├─── </span><span class="tl">Creativity &mdash; Generates novel ideas and designs</span>
+<span class="tc">│       ├─── </span><span class="tl">Data Efficiency &mdash; Learns effectively from limited data</span>
+<span class="tc">│       ├─── </span><span class="tl">Personalization &mdash; Tailors outputs to individual users</span>
+<span class="tc">│       └─── </span><span class="tl">Scalability &mdash; Produces content at scale</span>
+<span class="tc">├─── </span><span class="ts">H. Challenges of Generative AI</span>
+<span class="tc">│   ├─── </span><span class="tb">H1. Seven Risks</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Regulatory Violations &mdash; Exposure of sensitive or restricted data</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Social Risks &mdash; Harmful or reputationally damaging content</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Privacy Concerns &mdash; Misuse of personal data</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Toxicity &mdash; Offensive or inappropriate outputs</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Hallucinations &mdash; Plausible but false generated information</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Interpretability &mdash; Difficulty understanding why an output was produced</span>
+<span class="tc">│   │   └─── </span><span class="tl">Nondeterminism &mdash; Inconsistent outputs across runs</span>
+<span class="tc">│   └─── </span><span class="tb">H2. Mitigation Strategies</span>
+<span class="tc">│       ├─── </span><span class="tl">Data Anonymization &mdash; Protects sensitive data from exposure</span>
+<span class="tc">│       ├─── </span><span class="tl">Model Testing &mdash; Evaluates behavior before deployment</span>
+<span class="tc">│       ├─── </span><span class="tl">Security Measures &mdash; Encryption and firewalls protecting the system</span>
+<span class="tc">│       ├─── </span><span class="tl">Data Curation &mdash; Removes harmful content from training data</span>
+<span class="tc">│       ├─── </span><span class="tl">Guardrails &mdash; Filters outputs before they reach the user</span>
+<span class="tc">│       ├─── </span><span class="tl">Verification &mdash; Cross-checks outputs against trusted sources</span>
+<span class="tc">│       └─── </span><span class="tl">Monitoring &mdash; Detects inconsistencies in ongoing production use</span>
+<span class="tc">├─── </span><span class="ts">I. Model Selection Factors</span>
+<span class="tc">│   ├─── </span><span class="tb">I1. Core Selection Factors</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Model Type &mdash; Task-specific capability match</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Performance &mdash; Accuracy and reliability under real conditions</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Capabilities &mdash; The range of tasks the model actually supports</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Constraints &mdash; Resource and deployment limitations</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Compliance &mdash; Ethical and regulatory requirements</span>
+<span class="tc">│   │   └─── </span><span class="tl">Cost &mdash; The trade-off between model size and speed</span>
+<span class="tc">│   ├─── </span><span class="tb">I2. Model Examples</span>
+<span class="tc">│   │   ├─── </span><span class="tl">AI21 Jurassic-2 &mdash; Text generation, summarization</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Amazon Titan &mdash; Embeddings, search, Q&amp;A</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Anthropic Claude &mdash; Chat, reasoning, coding</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Stable Diffusion &mdash; Image generation</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Cohere Command &mdash; NLP tasks</span>
+<span class="tc">│   │   └─── </span><span class="tl">Meta Llama &mdash; General text processing</span>
+<span class="tc">│   └─── </span><span class="tb">I3. Constraints and Cost Trade-offs</span>
+<span class="tc">│       ├─── </span><span class="tl">Compute Resources &mdash; GPU, CPU, and memory availability</span>
+<span class="tc">│       ├─── </span><span class="tl">Data Availability &mdash; Quality and size of usable data</span>
+<span class="tc">│       └─── </span><span class="tl">Deployment Needs &mdash; Cloud versus on-premises requirements</span>
+<span class="tc">└─── </span><span class="ts">J. Business Metrics for Generative AI</span>
+<span class="tc">    ├─── </span><span class="tb">J1. Five Business Metrics</span>
+<span class="tc">    │   ├─── </span><span class="tl">User Satisfaction &mdash; Direct feedback on the experience</span>
+<span class="tc">    │   ├─── </span><span class="tl">Average Revenue Per User (ARPU) &mdash; Revenue generated per user</span>
+<span class="tc">    │   ├─── </span><span class="tl">Cross-Domain Performance &mdash; Effectiveness across multiple use cases at once</span>
+<span class="tc">    │   ├─── </span><span class="tl">Conversion Rate &mdash; Rate of desired action completion</span>
+<span class="tc">    │   └─── </span><span class="tl">Efficiency &mdash; Resource and time optimization achieved</span>
+<span class="tc">    └─── </span><span class="tb">J2. Key Insights on Metrics</span>
+<span class="tc">        ├─── </span><span class="tl">Metrics are use-case-dependent, not universal</span>
+<span class="tc">        └─── </span><span class="tl">Success = technical performance + business value &mdash; the module's closing insight</span>
+  </div>
+  </div></div>
+
+</div>
+
+<footer class="snx-footer">
+  <div class="snx-footer-meta">
+    <span class="snx-footer-course">AWS-AI Masterclass</span>
+    <span class="snx-footer-divider">&middot;</span>
+    <span class="snx-footer-module">Module 2 &middot; Exploring Artificial Intelligence Use Cases and Applications</span>
+  </div>
+  <nav class="snx-footer-nav" aria-label="Artifact navigation">
+    <a class="snx-nav-prev" href="../trees/01_aws-ai-masterclass-tree.html"><span class="snx-nav-chevron">&lsaquo;</span>Previous</a>
+    <div class="snx-nav-hub">
+      <a class="snx-hub-btn snx-hub-btn-module" href="../modules/02_aws-ai-masterclass-reviewer.html">Module</a>
+      <a class="snx-hub-btn snx-hub-btn-compact" href="../compact/02_aws-ai-masterclass-compact.html">Compact</a>
+      <a class="snx-hub-btn snx-hub-btn-tree" href="../trees/02_aws-ai-masterclass-tree.html" aria-current="page">Tree</a>
+      <a class="snx-hub-btn snx-hub-btn-quiz" href="../quizzes/02_aws-ai-masterclass-quiz.html">Quiz</a>
+      <a class="snx-hub-btn snx-hub-btn-recall" href="../recalls/02_aws-ai-masterclass-recall.html">Recall</a>
+    </div>
+    <a class="snx-nav-next" href="../trees/03_aws-ai-masterclass-tree.html">Next<span class="snx-nav-chevron">&rsaquo;</span></a>
+  </nav>
+</footer>
+</body>
+</html>

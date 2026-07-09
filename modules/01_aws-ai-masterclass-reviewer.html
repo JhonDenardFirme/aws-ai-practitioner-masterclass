@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en" data-synaptix="3.1">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Fundamentals of Machine Learning and Artificial Intelligence &mdash; AWS-AI Masterclass</title>
+<link rel="stylesheet" href="../resources/css/synaptix-reviewer.css?v=3.1"/>
+<script src="../resources/js/synaptix-reviewer.js?v=3.1" defer></script>
+</head>
+<body>
+<div class="doc-wrap">
+<div class="doc-header">
+  <div class="badges">
+    <span class="badge badge-type">Comprehensive &middot; High</span>
+    <span class="badge badge-mod">Module 1 of 9</span>
+  </div>
+  <div class="doc-title">Fundamentals of Machine Learning and Artificial Intelligence</div>
+  <div class="doc-subtitle">source: L5 &mdash; Developing Generative AI Solutions (pasted notes) &middot; generated 2026-07-08 &middot; Synaptix v3.1</div>
+  <div class="stat-row">
+    <div class="stat-item"><div class="stat-val">9</div><div class="stat-lbl">Sections</div></div>
+    <div class="stat-item"><div class="stat-val">25</div><div class="stat-lbl">Subsections</div></div>
+    <div class="stat-item"><div class="stat-val">0</div><div class="stat-lbl">Code Blocks</div></div>
+    <div class="stat-item"><div class="stat-val">1</div><div class="stat-lbl">Enriched</div></div>
+  </div>
+</div>
+<div class="doc-body">
+  <div class="module-label"><span class="module-num">Module 1</span><div class="module-rule"></div></div>
+  <div class="module-title">Fundamentals of Machine Learning and Artificial Intelligence</div>
+
+  <div class="overview">
+    <div class="overview-label">Module Overview</div>
+    <div class="overview-grid">
+      <div class="overview-item"><span class="ov-letter">A</span><div><div class="ov-title">The Artificial Intelligence Ecosystem</div><div class="ov-desc">How AI, Machine Learning, Deep Learning, and Generative AI nest inside one another as a strict hierarchy.</div></div></div>
+      <div class="overview-item"><span class="ov-letter">B</span><div><div class="ov-title">Machine Learning Fundamentals</div><div class="ov-desc">The five-stage ML pipeline, the data types that feed it, and the three core learning paradigms.</div></div></div>
+      <div class="overview-item"><span class="ov-letter">C</span><div><div class="ov-title">Deep Learning Fundamentals</div><div class="ov-desc">How artificial neural networks are structured, how they learn, and the two dominant application domains they power.</div></div></div>
+      <div class="overview-item"><span class="ov-letter">D</span><div><div class="ov-title">Generative AI Fundamentals</div><div class="ov-desc">How Foundation Models are built through a six-stage lifecycle, and why they don't require labeled data.</div></div></div>
+      <div class="overview-item"><span class="ov-letter">E</span><div><div class="ov-title">Generative Model Architectures</div><div class="ov-desc">Four distinct architectural families &mdash; LLMs, diffusion models, multimodal models, GANs, and VAEs &mdash; each solving generation differently.</div></div></div>
+      <div class="overview-item"><span class="ov-letter">F</span><div><div class="ov-title">Model Optimization Techniques</div><div class="ov-desc">Three complementary ways to improve a Foundation Model's output without necessarily retraining it from scratch.</div></div></div>
+      <div class="overview-item"><span class="ov-letter">G</span><div><div class="ov-title">AWS AI/ML Infrastructure</div><div class="ov-desc">The three-layer AWS AI stack, from the ML framework layer up through pre-built AI services to the generative AI layer.</div></div></div>
+      <div class="overview-item"><span class="ov-letter">H</span><div><div class="ov-title">Advantages of AWS AI Solutions</div><div class="ov-desc">Six reasons organizations build on AWS's AI stack rather than assembling infrastructure independently.</div></div></div>
+      <div class="overview-item"><span class="ov-letter">I</span><div><div class="ov-title">Cost Considerations in AWS AI</div><div class="ov-desc">The trade-offs organizations must balance between responsiveness, availability, and price when deploying AI on AWS.</div></div></div>
+    </div>
+    <div class="overview-divider"></div>
+    <div class="meta-row">
+      <div class="meta-item"><div class="meta-lbl">Prerequisites</div><div class="meta-val">None &mdash; this is the foundational module for the AWS-AI Masterclass</div></div>
+      <div class="meta-item"><div class="meta-lbl">Leads to</div><div class="meta-val">Module 5 (FM selection and the Gen AI lifecycle), Module 6 (RAG and fine-tuning in depth), and every subsequent module in this course</div></div>
+    </div>
+  </div>
+
+  <div class="intro">
+    <div class="intro-label">Module Introduction</div>
+    <p>Every module in this masterclass &mdash; Foundation Model selection, optimization with RAG and fine-tuning, security and governance, prompt engineering, and hands-on building with PartyRock &mdash; rests on a shared foundation of terminology and concepts. This module establishes that foundation: what AI, ML, DL, and Generative AI actually mean relative to each other, how models are trained and architected, and which AWS services make up the AI stack everything else in this course builds on.</p>
+    <p>The module moves from the AI/ML/DL/Generative AI hierarchy, through the ML pipeline and neural network fundamentals, into Foundation Models and the specific architectures &mdash; LLMs, diffusion models, GANs, VAEs &mdash; that generative systems use, before closing with the AWS AI stack itself and the cost trade-offs involved in deploying it.</p>
+  </div>
+
+  <div class="section-card">
+    <div class="section-hdr">
+      <span class="section-letter" style="color:var(--sky);background:var(--sky-dim);border:1px solid rgba(93,184,242,0.2)">A</span>
+      <span class="section-title">The Artificial Intelligence Ecosystem</span>
+      <span class="ghost-glyph">A</span>
+    </div>
+    <div class="section-body">
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">A1</span><span class="sub-title">AI, ML, DL, and Generative AI Defined</span></div>
+        <div class="sub-body">
+          <p>Four terms get used almost interchangeably in casual conversation, but each names a progressively narrower field.</p>
+          <div class="concept-grid"><div class="concept-card cc-orange"><div class="cc-label">Artificial Intelligence (AI)</div><ul class="cc-list"><li>Machines simulating human intelligence &mdash; the broadest umbrella term</li></ul></div><div class="concept-card cc-sky"><div class="cc-label">Machine Learning (ML)</div><ul class="cc-list"><li>Systems that learn patterns from data rather than following fixed rules</li></ul></div><div class="concept-card cc-cyan"><div class="cc-label">Deep Learning (DL)</div><ul class="cc-list"><li>Neural networks with a layered structure, a specific approach within ML</li></ul></div><div class="concept-card cc-purple"><div class="cc-label">Generative AI</div><ul class="cc-list"><li>Produces new data or content, rather than only analyzing existing data</li></ul></div></div>
+          <div class="keypoints"><div class="kp-label">Key Points</div><ul class="kp-list"><li>Generative AI creates &mdash; traditional ML analyzes. The module's core distinction.</li></ul></div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">A2</span><span class="sub-title">The Hierarchy</span></div>
+        <div class="sub-body">
+          <p>These four fields nest strictly inside one another: <b class="b-orange">AI</b> is the umbrella field, <b class="b-orange">ML</b> is a subset of AI, <b class="b-orange">DL</b> is a subset of ML, and <b class="b-orange">Generative AI</b> is a subset of DL. Every generative AI system is a deep learning system, every deep learning system is a machine learning system, and every machine learning system is an AI system &mdash; but the reverse isn't true.</p>
+          <div class="keypoints"><div class="kp-label">Key Points</div><ul class="kp-list"><li>Hierarchy: AI &rarr; ML &rarr; DL &rarr; Generative AI, each one nested inside the last</li></ul></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <div class="section-hdr">
+      <span class="section-letter" style="color:var(--cyan);background:var(--cyan-dim);border:1px solid rgba(94,234,212,0.2)">B</span>
+      <span class="section-title">Machine Learning Fundamentals</span>
+      <span class="ghost-glyph">B</span>
+    </div>
+    <div class="section-body">
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">B1</span><span class="sub-title">The ML Pipeline</span></div>
+        <div class="sub-body">
+          <p>Every ML system moves through five stages: <b class="b-orange">Data Collection</b> (gather raw data), <b class="b-orange">Data Preparation</b> (clean and preprocess), <b class="b-orange">Training</b> (learn patterns from data), <b class="b-orange">Evaluation</b> (measure performance), and <b class="b-orange">Iteration</b> (improve the model based on what evaluation reveals).</p>
+          <p><b class="b-salmon">Model quality equals data quality</b> &mdash; the classic &ldquo;garbage in, garbage out&rdquo; principle. A model is only ever as good as the data used to train it, regardless of how sophisticated the algorithm is.</p>
+          <div class="keypoints"><div class="kp-label">Key Points</div><ul class="kp-list"><li>ML Pipeline: Data Collection &rarr; Data Preparation &rarr; Training &rarr; Evaluation &rarr; Iteration</li><li>Model quality = data quality &mdash; bad data guarantees a bad model</li></ul></div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">B2</span><span class="sub-title">Types of Data</span></div>
+        <div class="sub-body">
+          <p>Data feeding an ML pipeline splits along two independent axes: whether it's labeled, and whether it's structured.</p>
+          <div class="concept-grid"><div class="concept-card cc-orange"><div class="cc-label">Labeled Data</div><ul class="cc-list"><li>Data paired with correct descriptions or answers</li></ul></div><div class="concept-card cc-sky"><div class="cc-label">Unlabeled Data</div><ul class="cc-list"><li>Data with no attached labels or answers</li></ul></div><div class="concept-card cc-cyan"><div class="cc-label">Structured Data</div><ul class="cc-list"><li>Organized into tables/databases &mdash; tabular (rows/columns) or time-series (sequential)</li></ul></div><div class="concept-card cc-purple"><div class="cc-label">Unstructured Data</div><ul class="cc-list"><li>No predefined format &mdash; text (documents, posts) or image (photos, video)</li></ul></div></div>
+          <div class="keypoints"><div class="kp-label">Key Points</div><ul class="kp-list"><li>Four data types: Labeled, Unlabeled, Structured (tabular/time-series), Unstructured (text/image)</li></ul></div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">B3</span><span class="sub-title">Learning Types</span></div>
+        <div class="sub-body">
+          <p>How a model learns from data falls into four paradigms, distinguished mainly by how much labeled data is available and whether a reward signal exists.</p>
+          <div class="concept-grid"><div class="concept-card cc-orange"><div class="cc-label">Supervised Learning</div><ul class="cc-list"><li>Learns from labeled data to predict outcomes for unseen data</li></ul></div><div class="concept-card cc-sky"><div class="cc-label">Unsupervised Learning</div><ul class="cc-list"><li>Finds hidden patterns in unlabeled data with no target answer</li></ul></div><div class="concept-card cc-cyan"><div class="cc-label">Reinforcement Learning</div><ul class="cc-list"><li>Learns through a reward-based feedback signal, not fixed labels</li></ul></div><div class="concept-card cc-purple"><div class="cc-label">Semi-Supervised Learning</div><ul class="cc-list"><li>Uses a mix of partial labeled data alongside unlabeled data</li></ul></div></div>
+          <div class="keypoints"><div class="kp-label">Key Points</div><ul class="kp-list"><li>Four learning types: Supervised, Unsupervised, Reinforcement, Semi-supervised</li></ul></div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">B4</span><span class="sub-title">Inferencing</span></div>
+        <div class="sub-body">
+          <p><span class="kw-cyan def">Inference</span> is making predictions using an already-trained model. It comes in two forms: <b class="b-orange">Batch Inference</b> processes large datasets all at once and takes time, while <b class="b-orange">Real-Time Inference</b> returns instant predictions for a single request.</p>
+          <div class="keypoints"><div class="kp-label">Key Points</div><ul class="kp-list"><li>Batch Inference = large datasets, takes time. Real-Time Inference = instant, single request.</li></ul></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <div class="section-hdr">
+      <span class="section-letter" style="color:var(--purple);background:var(--purple-dim);border:1px solid rgba(167,139,250,0.2)">C</span>
+      <span class="section-title">Deep Learning Fundamentals</span>
+      <span class="ghost-glyph">C</span>
+    </div>
+    <div class="section-body">
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">C1</span><span class="sub-title">Neural Network Structure</span></div>
+        <div class="sub-body">
+          <p><span class="kw-cyan def">Deep Learning</span> uses brain-inspired artificial neural networks. Every network is built from nodes connected by weighted relationships, organized into three layer types.</p>
+          <div class="concept-grid"><div class="concept-card cc-orange"><div class="cc-label">Input Layer</div><ul class="cc-list"><li>Receives the raw data entering the network</li></ul></div><div class="concept-card cc-sky"><div class="cc-label">Hidden Layer</div><ul class="cc-list"><li>Processes patterns between input and output &mdash; a network can have many of these</li></ul></div><div class="concept-card cc-cyan"><div class="cc-label">Output Layer</div><ul class="cc-list"><li>Produces the network's final result</li></ul></div></div>
+          <div class="keypoints"><div class="kp-label">Key Points</div><ul class="kp-list"><li>Neural networks are built from nodes (neurons), weighted connections, and three layer types: Input, Hidden, Output</li></ul></div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">C2</span><span class="sub-title">The Learning Process</span></div>
+        <div class="sub-body">
+          <p>A neural network learns by adjusting the weights on its connections, detecting patterns in the training data, and generalizing what it learns to new, unseen data. Nodes effectively &ldquo;talk to each other&rdquo; through these weighted connections, incrementally improving predictions as weights are tuned.</p>
+          <div class="keypoints"><div class="kp-label">Key Points</div><ul class="kp-list"><li>Learning process: adjust weights &rarr; detect patterns &rarr; generalize to new data</li></ul></div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">C3</span><span class="sub-title">Applications of Neural Networks</span></div>
+        <div class="sub-body">
+          <p>Two domains dominate practical neural network applications. <b class="b-orange">Computer Vision</b> handles image and video understanding &mdash; image classification, object detection, segmentation. <b class="b-orange">Natural Language Processing (NLP)</b> handles language understanding &mdash; text classification, sentiment analysis, machine translation, text generation.</p>
+          <div class="keypoints"><div class="kp-label">Key Points</div><ul class="kp-list"><li>Computer Vision: image classification, object detection, segmentation</li><li>NLP: text classification, sentiment analysis, machine translation, text generation</li></ul></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <div class="section-hdr">
+      <span class="section-letter" style="color:var(--orange);background:var(--orange-dim);border:1px solid rgba(251,146,60,0.2)">D</span>
+      <span class="section-title">Generative AI Fundamentals</span>
+      <span class="ghost-glyph">D</span>
+    </div>
+    <div class="section-body">
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">D1</span><span class="sub-title">What Generative AI Is</span></div>
+        <div class="sub-body">
+          <p><span class="kw-cyan def">Generative AI</span> creates text, images, audio, and code &mdash; its key driver is the combination of massive compute power and large-scale datasets that became available in the last several years.</p>
+          <div class="keypoints"><div class="kp-label">Key Points</div><ul class="kp-list"><li>Generative AI's key driver: compute power + large datasets, working together</li></ul></div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">D2</span><span class="sub-title">Foundation Models (FMs)</span></div>
+        <div class="sub-body">
+          <p><span class="kw-cyan def">Foundation Models</span> are pretrained on massive data, with multi-task capability &mdash; one model can perform many different tasks &mdash; and general-purpose adaptability across domains. <span class="enrich-plus">[+]</span> Because they're pretrained at internet scale, FMs make an excellent starting point for a new project: development is faster since the hardest, most expensive part &mdash; initial training &mdash; is already done.</p>
+          <div class="keypoints"><div class="kp-label">Key Points</div><ul class="kp-list"><li>FMs are pretrained, multi-task, and general-purpose &mdash; adaptable across domains</li></ul></div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">D3</span><span class="sub-title">The FM Lifecycle</span></div>
+        <div class="sub-body">
+          <p>Every Foundation Model moves through six stages from raw data to a continuously improving production system.</p>
+          <div class="concept-grid"><div class="concept-card cc-orange"><div class="cc-label">Data Selection</div><ul class="cc-list"><li>Gathering large unlabeled datasets</li></ul></div><div class="concept-card cc-sky"><div class="cc-label">Pre-Training</div><ul class="cc-list"><li>Self-supervised learning; the model's own structure auto-generates training labels. Continuous Pre-Training later expands the model's knowledge across domains</li></ul></div><div class="concept-card cc-cyan"><div class="cc-label">Optimization</div><ul class="cc-list"><li>Improving performance beyond the raw pre-trained state</li></ul></div><div class="concept-card cc-purple"><div class="cc-label">Evaluation</div><ul class="cc-list"><li>Measuring effectiveness using metrics and benchmarks</li></ul></div><div class="concept-card cc-green"><div class="cc-label">Deployment</div><ul class="cc-list"><li>Integrating the model into production systems</li></ul></div><div class="concept-card cc-amber"><div class="cc-label">Feedback Loop</div><ul class="cc-list"><li>Continuous improvement based on real-world usage</li></ul></div></div>
+          <div class="keypoints"><div class="kp-label">Key Points</div><ul class="kp-list"><li>FMs use self-supervised learning &mdash; no labels required, the module's key insight</li><li><span class="enrich-plus">[+]</span> Amazon Bedrock provides FMs from leading companies including Anthropic, Meta, Mistral AI, and Amazon itself</li></ul></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <div class="section-hdr">
+      <span class="section-letter" style="color:var(--sky);background:var(--sky-dim);border:1px solid rgba(93,184,242,0.2)">E</span>
+      <span class="section-title">Generative Model Architectures</span>
+      <span class="ghost-glyph">E</span>
+    </div>
+    <div class="section-body">
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">E1</span><span class="sub-title">Large Language Models (LLMs)</span></div>
+        <div class="sub-body">
+          <p><span class="kw-cyan def">LLMs</span> generate human-like text, built on the <b class="b-orange">Transformer architecture</b> &mdash; the core design behind essentially every state-of-the-art text model, trained on vast data spanning the internet, books, and open sources. Three concepts explain how an LLM actually processes text.</p>
+          <div class="concept-grid"><div class="concept-card cc-orange"><div class="cc-label">Tokens</div><ul class="cc-list"><li>The smallest units of text &mdash; words, phrases, spaces, or characters &mdash; providing standardized input</li></ul></div><div class="concept-card cc-sky"><div class="cc-label">Embeddings</div><ul class="cc-list"><li>Numerical representations of words, positioned so related concepts sit closer together</li></ul></div><div class="concept-card cc-cyan"><div class="cc-label">Vectors</div><ul class="cc-list"><li>The underlying numerical form that captures semantic relationships between tokens</li></ul></div></div>
+          <div class="keypoints"><div class="kp-label">Key Points</div><ul class="kp-list"><li>LLMs use tokens, embeddings, and vectors together to understand and generate text</li><li>Related words (cat, feline, kitten) end up as vectors positioned close together</li></ul></div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">E2</span><span class="sub-title">Diffusion Models</span></div>
+        <div class="sub-body">
+          <p><span class="kw-cyan def">Diffusion</span> is a deep learning architecture that starts with pure noise or random data, then adds meaningful information to clear that noise and build understanding. It has two directions: <b class="b-orange">Forward Diffusion</b> adds noise to clear data, used during training; <b class="b-orange">Reverse Diffusion</b> removes noise until data is generated, used during inference.</p>
+          <div class="keypoints"><div class="kp-label">Key Points</div><ul class="kp-list"><li>Forward Diffusion: adds noise, used for training. Reverse Diffusion: removes noise, used for inference.</li></ul></div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">E3</span><span class="sub-title">Multimodal Models</span></div>
+        <div class="sub-body">
+          <p><span class="kw-cyan def">Multimodal Models</span> process multiple data types together &mdash; text plus image (captioned images), or image plus audio. They're used for advanced tasks: answering complex questions, automating video captioning, and creating graphics directly from text instructions.</p>
+          <div class="keypoints"><div class="kp-label">Key Points</div><ul class="kp-list"><li>Multimodal examples: Text + Image, Image + Audio</li><li>Advanced use cases: complex Q&amp;A, video captioning, text-to-graphics generation</li></ul></div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">E4</span><span class="sub-title">Generative Adversarial Networks (GANs)</span></div>
+        <div class="sub-body">
+          <p>A <span class="kw-cyan def">GAN</span> pits two neural networks against each other: a <b class="b-orange">Generator</b> creates synthetic/fake data, and a <b class="b-orange">Discriminator</b> tries to tell real data from the generator's fake data. The Generator's goal is to fool the Discriminator; the Discriminator's goal is to correctly identify real versus generated data &mdash; training continues until the generated data becomes indistinguishable from real data.</p>
+          <div class="keypoints"><div class="kp-label">Key Points</div><ul class="kp-list"><li>GAN = Generator (creates fakes) vs Discriminator (detects fakes), trained adversarially until fakes are indistinguishable from real data</li></ul></div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">E5</span><span class="sub-title">Variational Autoencoders (VAEs)</span></div>
+        <div class="sub-body">
+          <p>A <span class="kw-cyan def">VAE</span> combines ideas from autoencoders and variational inference (a Bayesian statistics technique). An <b class="b-orange">Encoder</b> compresses input data into a lower-dimensional space; a <b class="b-orange">Decoder</b> takes that low-dimensional representation and reconstructs it back into data. That lower-dimensional space is constrained to follow a specific probability distribution &mdash; usually Gaussian &mdash; which is what makes the generated results predictable rather than arbitrary.</p>
+          <div class="keypoints"><div class="kp-label">Key Points</div><ul class="kp-list"><li>VAE = Encoder (compresses) + Decoder (reconstructs), with a Gaussian-distributed latent space producing predictable results</li></ul></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <div class="section-hdr">
+      <span class="section-letter" style="color:var(--cyan);background:var(--cyan-dim);border:1px solid rgba(94,234,212,0.2)">F</span>
+      <span class="section-title">Model Optimization Techniques</span>
+      <span class="ghost-glyph">F</span>
+    </div>
+    <div class="section-body">
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">F1</span><span class="sub-title">Prompt Engineering</span></div>
+        <div class="sub-body">
+          <p><span class="kw-cyan def">Prompt Engineering</span> designs better inputs to a Foundation Model, combining four components into a complete prompt.</p>
+          <div class="concept-grid"><div class="concept-card cc-orange"><div class="cc-label">Instruction</div><ul class="cc-list"><li>Defines the task the model should perform</li></ul></div><div class="concept-card cc-sky"><div class="cc-label">Context</div><ul class="cc-list"><li>Supporting information that guides the model's response</li></ul></div><div class="concept-card cc-cyan"><div class="cc-label">Input Data</div><ul class="cc-list"><li>The raw content being processed</li></ul></div><div class="concept-card cc-purple"><div class="cc-label">Output Indicator</div><ul class="cc-list"><li>Specifies the desired output format</li></ul></div></div>
+          <div class="keypoints"><div class="kp-label">Key Points</div><ul class="kp-list"><li>Prompt components: Instruction, Context, Input Data, Output Indicator &mdash; the same four-part structure covered in depth in Module 8</li></ul></div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">F2</span><span class="sub-title">Fine-Tuning</span></div>
+        <div class="sub-body">
+          <p><span class="kw-cyan def">Fine-Tuning</span> retrains a Foundation Model with a smaller, narrower, more specific dataset using supervised learning, improving performance for a targeted use case. Two named approaches: <b class="b-orange">Instruction Tuning</b> uses examples of how the model should respond (a form of prompt tuning), and <b class="b-orange">RLHF</b> (Reinforcement Learning from Human Feedback) uses human ratings and comments to shape behavior.</p>
+          <div class="keypoints"><div class="kp-label">Key Points</div><ul class="kp-list"><li>Fine-tuning uses supervised learning on a narrower dataset</li><li>Two approaches: Instruction Tuning (response examples), RLHF (human feedback)</li></ul></div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">F3</span><span class="sub-title">Retrieval-Augmented Generation (RAG)</span></div>
+        <div class="sub-body">
+          <p><span class="kw-cyan def">RAG</span> supplies relevant domain data &mdash; retrieved from documents and files &mdash; to produce better, more grounded responses. <b class="b-salmon">RAG does NOT change the model's weights</b>, unlike fine-tuning &mdash; it changes what the model sees at inference time, not what the model has learned.</p>
+          <div class="keypoints"><div class="kp-label">Key Points</div><ul class="kp-list"><li>RAG &ne; Fine-Tuning: RAG never changes model weights &mdash; the module's key insight</li></ul></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <div class="section-hdr">
+      <span class="section-letter" style="color:var(--purple);background:var(--purple-dim);border:1px solid rgba(167,139,250,0.2)">G</span>
+      <span class="section-title">AWS AI/ML Infrastructure</span>
+      <span class="ghost-glyph">G</span>
+    </div>
+    <div class="section-body">
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">G1</span><span class="sub-title">The ML Framework Layer: Amazon SageMaker</span></div>
+        <div class="sub-body">
+          <p><span class="kw-cyan def">Amazon SageMaker</span> is the foundation-layer service for building, training, and deploying custom ML models &mdash; the layer developers use when they need full control over the model lifecycle rather than a pre-built API.</p>
+          <div class="keypoints"><div class="kp-label">Key Points</div><ul class="kp-list"><li>SageMaker covers the full custom model lifecycle: build, train, deploy</li></ul></div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">G2</span><span class="sub-title">The AI/ML Services Layer</span></div>
+        <div class="sub-body">
+          <p>Ten pre-built AWS services sit above SageMaker, each solving one specific AI task without requiring custom model development.</p>
+          <div class="concept-grid"><div class="concept-card cc-orange"><div class="cc-label">Amazon Comprehend</div><ul class="cc-list"><li>NLP insights extraction</li></ul></div><div class="concept-card cc-sky"><div class="cc-label">Amazon Translate</div><ul class="cc-list"><li>Neural machine translation</li></ul></div><div class="concept-card cc-cyan"><div class="cc-label">Amazon Textract</div><ul class="cc-list"><li>Document data extraction, OCR</li></ul></div><div class="concept-card cc-purple"><div class="cc-label">Amazon Lex</div><ul class="cc-list"><li>Chatbot/voice interfaces &mdash; ASR + NLU, built for AI agents</li></ul></div><div class="concept-card cc-green"><div class="cc-label">Amazon Polly</div><ul class="cc-list"><li>Text-to-speech, voiceover generation</li></ul></div><div class="concept-card cc-amber"><div class="cc-label">Amazon Transcribe</div><ul class="cc-list"><li>Speech-to-text (Automatic Speech Recognition)</li></ul></div><div class="concept-card cc-orange"><div class="cc-label">Amazon Rekognition</div><ul class="cc-list"><li>Image and video analysis</li></ul></div><div class="concept-card cc-sky"><div class="cc-label">Amazon Kendra</div><ul class="cc-list"><li>Intelligent enterprise search</li></ul></div><div class="concept-card cc-cyan"><div class="cc-label">Amazon Personalize</div><ul class="cc-list"><li>Recommendation generation</li></ul></div><div class="concept-card cc-purple"><div class="cc-label">AWS DeepRacer</div><ul class="cc-list"><li>Reinforcement learning platform</li></ul></div></div>
+          <div class="keypoints"><div class="kp-label">Key Points</div><ul class="kp-list"><li>Ten AI/ML services, each targeting one specific task: NLP, translation, OCR, voice, speech, vision, search, recommendations, RL</li></ul></div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">G3</span><span class="sub-title">The Generative AI Layer</span></div>
+        <div class="sub-body">
+          <p>Four services form the top, generative-AI-specific layer of the AWS AI stack.</p>
+          <div class="concept-grid"><div class="concept-card cc-orange"><div class="cc-label">SageMaker JumpStart</div><ul class="cc-list"><li>Prebuilt ML solutions ready to deploy</li></ul></div><div class="concept-card cc-sky"><div class="cc-label">Amazon Bedrock</div><ul class="cc-list"><li>Managed access to multiple Foundation Models</li></ul></div><div class="concept-card cc-cyan"><div class="cc-label">Amazon Q</div><ul class="cc-list"><li>AI assistant for business use</li></ul></div><div class="concept-card cc-purple"><div class="cc-label">Amazon Q Developer</div><ul class="cc-list"><li>AI code generation assistant</li></ul></div></div>
+          <div class="keypoints"><div class="kp-label">Key Points</div><ul class="kp-list"><li>Generative AI layer: SageMaker JumpStart, Amazon Bedrock, Amazon Q, Amazon Q Developer</li></ul></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <div class="section-hdr">
+      <span class="section-letter" style="color:var(--orange);background:var(--orange-dim);border:1px solid rgba(251,146,60,0.2)">H</span>
+      <span class="section-title">Advantages of AWS AI Solutions</span>
+      <span class="ghost-glyph">H</span>
+    </div>
+    <div class="section-body">
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">H1</span><span class="sub-title">Six Core Advantages</span></div>
+        <div class="sub-body">
+          <p>AWS's AI advantage rests on six pillars, together enabling rapid AI deployment without heavy infrastructure investment.</p>
+          <div class="concept-grid"><div class="concept-card cc-orange"><div class="cc-label">Faster Development</div><ul class="cc-list"><li>Prebuilt tools and APIs shortcut months of infrastructure work</li></ul></div><div class="concept-card cc-sky"><div class="cc-label">Scalability</div><ul class="cc-list"><li>Global infrastructure scales with demand automatically</li></ul></div><div class="concept-card cc-cyan"><div class="cc-label">Cost Efficiency</div><ul class="cc-list"><li>Pay-as-you-go pricing avoids large upfront investment</li></ul></div><div class="concept-card cc-purple"><div class="cc-label">Flexibility</div><ul class="cc-list"><li>Wide access to multiple model families and providers</li></ul></div><div class="concept-card cc-green"><div class="cc-label">Integration</div><ul class="cc-list"><li>Seamless connection across the broader AWS ecosystem</li></ul></div><div class="concept-card cc-amber"><div class="cc-label">Security</div><ul class="cc-list"><li>Enterprise-grade protection built into the platform</li></ul></div></div>
+          <div class="keypoints"><div class="kp-label">Key Points</div><ul class="kp-list"><li>AWS enables rapid AI deployment without heavy infrastructure &mdash; the module's key insight for this section</li></ul></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <div class="section-hdr">
+      <span class="section-letter" style="color:var(--sky);background:var(--sky-dim);border:1px solid rgba(93,184,242,0.2)">I</span>
+      <span class="section-title">Cost Considerations in AWS AI</span>
+      <span class="ghost-glyph">I</span>
+    </div>
+    <div class="section-body">
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">I1</span><span class="sub-title">Cost Trade-off Factors</span></div>
+        <div class="sub-body">
+          <p>Seven factors determine an AWS AI deployment's actual cost, and most of them trade directly against performance or reliability.</p>
+          <div class="concept-grid"><div class="concept-card cc-orange"><div class="cc-label">Responsiveness</div><ul class="cc-list"><li>Latency versus cost &mdash; faster response generally costs more</li></ul></div><div class="concept-card cc-sky"><div class="cc-label">Availability</div><ul class="cc-list"><li>Uptime versus resource cost &mdash; higher availability requires more redundant capacity</li></ul></div><div class="concept-card cc-cyan"><div class="cc-label">Redundancy</div><ul class="cc-list"><li>Backup systems increase cost directly</li></ul></div><div class="concept-card cc-purple"><div class="cc-label">Performance</div><ul class="cc-list"><li>Compute power versus pricing &mdash; more capable instances cost more</li></ul></div><div class="concept-card cc-green"><div class="cc-label">Token-Based Pricing</div><ul class="cc-list"><li>Cost scales directly with usage volume</li></ul></div><div class="concept-card cc-amber"><div class="cc-label">Provisioned Throughput</div><ul class="cc-list"><li>Reserved capacity costs more but guarantees availability</li></ul></div><div class="concept-card cc-orange"><div class="cc-label">Custom Models</div><ul class="cc-list"><li>Training a custom model costs more than using a pre-trained one</li></ul></div></div>
+          <div class="keypoints"><div class="kp-label">Key Points</div><ul class="kp-list"><li>Balance cost, performance, and scalability &mdash; the module's key insight for this section</li></ul></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="summary-block"><div class="summary-label">Module Summary</div><ul class="summary-list"><li>AI, ML, DL, and Generative AI form a strict hierarchy &mdash; each one nested inside the last &mdash; and Generative AI creates content while traditional ML only analyzes it.</li><li>The ML pipeline (Data Collection &rarr; Preparation &rarr; Training &rarr; Evaluation &rarr; Iteration) depends entirely on data quality; Foundation Models specifically use self-supervised learning, requiring no labels.</li><li>Generative architectures solve the same problem differently: LLMs use tokens/embeddings/vectors, Diffusion Models use forward/reverse noise, GANs pit a Generator against a Discriminator, and VAEs compress and reconstruct through a Gaussian-distributed latent space.</li><li>Prompt Engineering, Fine-Tuning, and RAG are the three model optimization techniques &mdash; critically, RAG never changes model weights, unlike Fine-Tuning.</li><li>AWS's AI stack layers Amazon SageMaker (custom models), ten AI/ML services (Comprehend, Translate, Textract, and more), and a Generative AI layer (Bedrock, Amazon Q) &mdash; delivering faster development and scalability, balanced against real cost trade-offs in responsiveness, availability, and throughput.</li></ul></div>
+</div>
+
+<footer class="snx-footer">
+  <div class="snx-footer-meta">
+    <span class="snx-footer-course">AWS-AI Masterclass</span>
+    <span class="snx-footer-divider">&middot;</span>
+    <span class="snx-footer-module">Module 1 &middot; Fundamentals of Machine Learning and Artificial Intelligence</span>
+  </div>
+  <nav class="snx-footer-nav" aria-label="Artifact navigation">
+    <div class="snx-nav-hub">
+      <a class="snx-hub-btn snx-hub-btn-module" href="../modules/01_aws-ai-masterclass-reviewer.html" aria-current="page">Module</a>
+      <a class="snx-hub-btn snx-hub-btn-compact" href="../compact/01_aws-ai-masterclass-compact.html">Compact</a>
+      <a class="snx-hub-btn snx-hub-btn-tree" href="../trees/01_aws-ai-masterclass-tree.html">Tree</a>
+      <a class="snx-hub-btn snx-hub-btn-quiz" href="../quizzes/01_aws-ai-masterclass-quiz.html">Quiz</a>
+      <a class="snx-hub-btn snx-hub-btn-recall" href="../recalls/01_aws-ai-masterclass-recall.html">Recall</a>
+    </div>
+    <a class="snx-nav-next" href="../modules/02_aws-ai-masterclass-reviewer.html">Next<span class="snx-nav-chevron">&rsaquo;</span></a>
+  </nav>
+</footer>
+</body>
+</html>

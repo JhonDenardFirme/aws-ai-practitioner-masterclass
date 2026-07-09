@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en" data-synaptix="3.1">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>From Theory to Practice with PartyRock &mdash; AWS-AI Masterclass (Tree)</title>
+<link rel="stylesheet" href="../resources/css/synaptix-reviewer.css?v=3.1"/>
+<script src="../resources/js/synaptix-reviewer.js?v=3.1" defer></script>
+</head>
+<body>
+<div class="doc-wrap">
+<div class="doc-header">
+  <div class="badges">
+    <span class="badge badge-type">Tree &middot; Structure Only</span>
+    <span class="badge badge-mod">Module 9 of 9</span>
+  </div>
+  <div class="doc-title">From Theory to Practice with PartyRock</div>
+  <div class="doc-subtitle">source: L5 &mdash; Developing Generative AI Solutions (pasted notes) &middot; generated 2026-07-08 &middot; Synaptix v3.1</div>
+  <div class="stat-row">
+    <div class="stat-item"><div class="stat-val">8</div><div class="stat-lbl">Sections</div></div>
+    <div class="stat-item"><div class="stat-val">29</div><div class="stat-lbl">Subsections</div></div>
+    <div class="stat-item"><div class="stat-val">0</div><div class="stat-lbl">Code Blocks</div></div>
+    <div class="stat-item"><div class="stat-val">0</div><div class="stat-lbl">Enriched</div></div>
+  </div>
+</div>
+<div class="doc-body">
+  <div class="module-label"><span class="module-num">Module 9</span><div class="module-rule"></div></div>
+  <div class="module-title">From Theory to Practice with PartyRock</div>
+
+  <div class="section-card"><div class="section-body">
+  <div class="tree-block"><span class="tm">Module 9. From Theory to Practice with PartyRock</span>
+
+<span class="tc">├─── </span><span class="ts">A. Introduction to PartyRock</span>
+<span class="tc">│   ├─── </span><span class="tb">A1. What PartyRock Is</span>
+<span class="tc">│   │   ├─── </span><span class="tl">PartyRock = free, no-code AI app-building playground on Amazon Bedrock</span>
+<span class="tc">│   │   └─── </span><span class="tl">PartyRock apps are structured, controlled interfaces &mdash; not simple chatbots</span>
+<span class="tc">│   ├─── </span><span class="tb">A2. Key Benefits</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Rapid AI Experimentation &mdash; Test ideas in minutes without setup overhead</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Beginner-Friendly Development &mdash; No coding background required to build a working app</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Reusable AI Applications &mdash; Build once, run repeatedly with different inputs</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Shareable Workflows &mdash; Publish an app for others to use directly</span>
+<span class="tc">│   │   └─── </span><span class="tl">Faster Understanding of AI Capabilities and Limitations &mdash; Hands-on experimentation builds intuition faster than reading alone</span>
+<span class="tc">│   ├─── </span><span class="tb">A3. Stateless vs. Stateful Applications</span>
+<span class="tc">│   │   └─── </span><span class="tl">Stateless = resets every run, no memory. Stateful = retains context across interactions.</span>
+<span class="tc">│   └─── </span><span class="tb">A4. Zero-Shot Capability</span>
+<span class="tc">│       ├─── </span><span class="tl">Trip Planning &mdash; Generates itineraries from general travel knowledge</span>
+<span class="tc">│       ├─── </span><span class="tl">Code Generation &mdash; Produces working code without task-specific training</span>
+<span class="tc">│       ├─── </span><span class="tl">Report Writing &mdash; Structures written output from general writing competence</span>
+<span class="tc">│       └─── </span><span class="tl">Brainstorming &mdash; Generates ideas without needing prior examples</span>
+<span class="tc">├─── </span><span class="ts">B. Understanding PartyRock Architecture</span>
+<span class="tc">│   ├─── </span><span class="tb">B1. The Application Layer</span>
+<span class="tc">│   │   └─── </span><span class="tl">Application Layer components: API Orchestration, Infrastructure Scaling, Foundation Model Access</span>
+<span class="tc">│   ├─── </span><span class="tb">B2. Traditional FM Development Problems, Solved</span>
+<span class="tc">│   │   ├─── </span><span class="tl">API Key Management &mdash; No credentials to provision, rotate, or secure manually</span>
+<span class="tc">│   │   ├─── </span><span class="tl">SDK Integration &mdash; No client libraries to install or configure</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Environment Configuration &mdash; No local or cloud environment setup required</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Cloud Scaling Complexity &mdash; No capacity planning or autoscaling configuration</span>
+<span class="tc">│   │   └─── </span><span class="tl">Infrastructure Maintenance &mdash; No servers or services to patch or monitor</span>
+<span class="tc">│   └─── </span><span class="tb">B3. AI Modalities in PartyRock</span>
+<span class="tc">│       ├─── </span><span class="tl">Text Generation &mdash; Summaries, reports, recommendations</span>
+<span class="tc">│       ├─── </span><span class="tl">Image Creation &mdash; Illustrations, wallpapers, concept art</span>
+<span class="tc">│       └─── </span><span class="tl">Data Analysis &mdash; CSV insights, trends, query generation</span>
+<span class="tc">├─── </span><span class="ts">C. Creating Apps with Whiskers</span>
+<span class="tc">│   ├─── </span><span class="tb">C1. From Prompting to App Building</span>
+<span class="tc">│   │   └─── </span><span class="tl">Whiskers automatically generates app structures, widgets, prompts, and workflows from a description</span>
+<span class="tc">│   ├─── </span><span class="tb">C2. Example: Workout Planner App</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Workout Planner inputs: fitness level, workout frequency, focus area, physical limitations</span>
+<span class="tc">│   │   └─── </span><span class="tl">Workout Planner outputs: personalized routines, recovery guidance, weekly schedules</span>
+<span class="tc">│   ├─── </span><span class="tb">C3. Automated Prompt Engineering and Variable Injection</span>
+<span class="tc">│   │   └─── </span><span class="tl">Variable Injection: user inputs are dynamically inserted into a fixed prompt template</span>
+<span class="tc">│   └─── </span><span class="tb">C4. Benefits of Variable Injection</span>
+<span class="tc">│       ├─── </span><span class="tl">Repeatability &mdash; The same template produces consistent structure across runs</span>
+<span class="tc">│       ├─── </span><span class="tl">Consistency &mdash; Output format and quality don't drift between uses</span>
+<span class="tc">│       ├─── </span><span class="tl">Scalability &mdash; One template serves any number of users or inputs</span>
+<span class="tc">│       └─── </span><span class="tl">Faster User Interaction &mdash; Users fill fields instead of writing full prompts</span>
+<span class="tc">├─── </span><span class="ts">D. Editing and Remixing Apps</span>
+<span class="tc">│   ├─── </span><span class="tb">D1. Remixing and Prompt Architecting</span>
+<span class="tc">│   │   └─── </span><span class="tl">Remixing = editable copy of an existing app. Prompt Architecting = manual information-flow design.</span>
+<span class="tc">│   ├─── </span><span class="tb">D2. Widget Categories</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Input Widgets &mdash; Text inputs, file uploads, sliders, dropdown menus</span>
+<span class="tc">│   │   ├─── </span><span class="tl">AI Output Widgets &mdash; Text generation, image generation, chat outputs</span>
+<span class="tc">│   │   └─── </span><span class="tl">Static Widgets &mdash; Labels, instructions, fixed information</span>
+<span class="tc">│   ├─── </span><span class="tb">D3. Prompt Chaining</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Reduced Hallucination &mdash; Later steps build on already-generated, grounded content</span>
+<span class="tc">│   │   ├─── </span><span class="tl">More Grounded Outputs &mdash; Each stage has real prior output to work from, not just the raw prompt</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Better Workflow Structure &mdash; Complex tasks decompose into manageable stages</span>
+<span class="tc">│   │   └─── </span><span class="tl">Improved Reliability &mdash; Errors are easier to isolate to a specific stage</span>
+<span class="tc">│   ├─── </span><span class="tb">D4. Strategic Model Orchestration and Temperature Tuning</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Model orchestration: fast models for simple tasks, advanced models for reasoning/creativity</span>
+<span class="tc">│   │   └─── </span><span class="tl">Temperature: low = deterministic/focused, high = creative/diverse</span>
+<span class="tc">│   └─── </span><span class="tb">D5. Variables Tab</span>
+<span class="tc">│       └─── </span><span class="tl">Variables Tab: hidden reusable values, reduces clutter, improves prompt management</span>
+<span class="tc">├─── </span><span class="ts">E. Generating Images with PartyRock</span>
+<span class="tc">│   ├─── </span><span class="tb">E1. Diffusion Models and Latent Space</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Diffusion models generate images from random noise, guided by text</span>
+<span class="tc">│   │   └─── </span><span class="tl">Latent Space: a mathematical, multi-dimensional map where concepts exist as vectors</span>
+<span class="tc">│   ├─── </span><span class="tb">E2. The Denoising Process</span>
+<span class="tc">│   │   └─── </span><span class="tl">Denoising: random noise &rarr; progressive noise removal, prompt-guided &rarr; coherent final image</span>
+<span class="tc">│   ├─── </span><span class="tb">E3. Prompt Weights and Image Configuration</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Aspect Ratios &mdash; Controls the image's width-to-height proportions</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Color Guidance &mdash; Steers the palette used in generation</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Style Changes &mdash; Applies an artistic style across the whole image</span>
+<span class="tc">│   │   └─── </span><span class="tl">Composition Adjustments &mdash; Controls framing and subject placement</span>
+<span class="tc">│   └─── </span><span class="tb">E4. Why Prompt Precision Matters</span>
+<span class="tc">│       └─── </span><span class="tl">Generic prompts = ambiguous output. Detailed prompts = better control, consistency, and direction.</span>
+<span class="tc">├─── </span><span class="ts">F. Data Analysis with PartyRock</span>
+<span class="tc">│   ├─── </span><span class="tb">F1. The Structured Data Paradox</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Confused Column Relationships &mdash; Linear token processing loses a table's row/column structure</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Context Window Exhaustion &mdash; Large tables can exceed the model's usable context length</span>
+<span class="tc">│   │   └─── </span><span class="tl">Poor Mathematical Reliability &mdash; LLMs are not reliable calculators for exact arithmetic</span>
+<span class="tc">│   ├─── </span><span class="tb">F2. PartyRock's Solution: OLAP Engine Integration</span>
+<span class="tc">│   │   ├─── </span><span class="tl">OLAP Engine Integration ensures accurate, deterministic data analysis; example engine: DuckDB</span>
+<span class="tc">│   │   └─── </span><span class="tl">The LLM translates natural language to SQL; the OLAP engine does the actual math</span>
+<span class="tc">│   ├─── </span><span class="tb">F3. The Tool Execution Loop</span>
+<span class="tc">│   │   └─── </span><span class="tl">Tool Execution Loop: question &rarr; inspect schema &rarr; generate SQL &rarr; execute &rarr; summarize in English</span>
+<span class="tc">│   └─── </span><span class="tb">F4. Transparency Features and Benefits</span>
+<span class="tc">│       ├─── </span><span class="tl">Accurate Calculations &mdash; Deterministic engine execution instead of LLM approximation</span>
+<span class="tc">│       ├─── </span><span class="tl">Large Dataset Support &mdash; Database engines scale past what fits in an LLM's context window</span>
+<span class="tc">│       ├─── </span><span class="tl">Natural Language Analytics &mdash; No SQL knowledge required from the end user</span>
+<span class="tc">│       └─── </span><span class="tl">Non-Technical Accessibility &mdash; Opens data analysis to users without a data background</span>
+<span class="tc">├─── </span><span class="ts">G. Building AI Productivity Apps</span>
+<span class="tc">│   ├─── </span><span class="tb">G1. Project Workflow</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Project workflow: Identify problem &rarr; Describe to Whiskers &rarr; Generate app &rarr; Add widgets &rarr; Test outputs &rarr; Publish and share</span>
+<span class="tc">│   │   └─── </span><span class="tl">Minimum requirements: 2 input widgets, 2 output widgets</span>
+<span class="tc">│   └─── </span><span class="tb">G2. Why Apps Beat One-Time Chats</span>
+<span class="tc">│       ├─── </span><span class="tl">Repetitive Prompting vs. Reusable Workflow &mdash; A chatbot forces re-typing context every time; an app stores it once</span>
+<span class="tc">│       ├─── </span><span class="tl">Inconsistent Outputs vs. Structured Outputs &mdash; A chatbot's format can drift; an app's output shape stays fixed</span>
+<span class="tc">│       ├─── </span><span class="tl">Hard to Scale vs. Shareable System &mdash; A chat thread is personal; a published app serves any number of users</span>
+<span class="tc">│       └─── </span><span class="tl">Manual Context Input vs. Automated Variable Injection &mdash; A chatbot needs re-explaining; an app's fields do the work automatically</span>
+<span class="tc">└─── </span><span class="ts">H. Advanced Concepts and Practical Insights</span>
+<span class="tc">    ├─── </span><span class="tb">H1. PartyRock as an AI Orchestration Layer</span>
+<span class="tc">    │   ├─── </span><span class="tl">Prompt Templates &mdash; The reusable structures behind every app's consistent output</span>
+<span class="tc">    │   ├─── </span><span class="tl">Few-Shot Structures &mdash; Example-driven guidance embedded in generated prompts</span>
+<span class="tc">    │   ├─── </span><span class="tl">Chained Prompting &mdash; Multi-step reasoning pipelines via prompt chaining</span>
+<span class="tc">    │   ├─── </span><span class="tl">Context Injection &mdash; Variable injection delivering dynamic, relevant context</span>
+<span class="tc">    │   └─── </span><span class="tl">Parameter Tuning &mdash; Temperature and model selection per widget</span>
+<span class="tc">    ├─── </span><span class="tb">H2. Enterprise Relevance</span>
+<span class="tc">    │   ├─── </span><span class="tl">SaaS AI Assistants &mdash; Customer-facing AI features embedded in software products</span>
+<span class="tc">    │   ├─── </span><span class="tl">Internal Productivity Systems &mdash; Employee-facing tools built on the same orchestration principles</span>
+<span class="tc">    │   ├─── </span><span class="tl">AI-Powered Dashboards &mdash; Data analysis workflows scaled to enterprise reporting</span>
+<span class="tc">    │   ├─── </span><span class="tl">Customer Service Automation &mdash; Structured, chained response workflows instead of raw chat</span>
+<span class="tc">    │   └─── </span><span class="tl">Enterprise Workflow Agents &mdash; Multi-step automation echoing Module 6's agent concepts</span>
+<span class="tc">    └─── </span><span class="tb">H3. Common Limitations and Best Practices</span>
+<span class="tc">        ├─── </span><span class="tl">Hallucinations Still Possible &mdash; Structure reduces but never eliminates hallucination risk</span>
+<span class="tc">        ├─── </span><span class="tl">Incorrect Prompts Reduce Quality &mdash; Garbage in, garbage out still applies inside an app</span>
+<span class="tc">        ├─── </span><span class="tl">Poor Variable Design Causes Ambiguity &mdash; Vague variable names or scope confuse the underlying prompt</span>
+<span class="tc">        └─── </span><span class="tl">Weak Chaining May Propagate Errors &mdash; A bad early-stage output corrupts every stage downstream</span>
+  </div>
+  </div></div>
+
+</div>
+
+<footer class="snx-footer">
+  <div class="snx-footer-meta">
+    <span class="snx-footer-course">AWS-AI Masterclass</span>
+    <span class="snx-footer-divider">&middot;</span>
+    <span class="snx-footer-module">Module 9 &middot; From Theory to Practice with PartyRock</span>
+  </div>
+  <nav class="snx-footer-nav" aria-label="Artifact navigation">
+    <a class="snx-nav-prev" href="../trees/08_aws-ai-masterclass-tree.html"><span class="snx-nav-chevron">&lsaquo;</span>Previous</a>
+    <div class="snx-nav-hub">
+      <a class="snx-hub-btn snx-hub-btn-module" href="../modules/09_aws-ai-masterclass-reviewer.html">Module</a>
+      <a class="snx-hub-btn snx-hub-btn-compact" href="../compact/09_aws-ai-masterclass-compact.html">Compact</a>
+      <a class="snx-hub-btn snx-hub-btn-tree" href="../trees/09_aws-ai-masterclass-tree.html" aria-current="page">Tree</a>
+      <a class="snx-hub-btn snx-hub-btn-quiz" href="../quizzes/09_aws-ai-masterclass-quiz.html">Quiz</a>
+      <a class="snx-hub-btn snx-hub-btn-recall" href="../recalls/09_aws-ai-masterclass-recall.html">Recall</a>
+    </div>
+  </nav>
+</footer>
+</body>
+</html>

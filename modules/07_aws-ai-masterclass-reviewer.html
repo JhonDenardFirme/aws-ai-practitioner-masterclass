@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en" data-synaptix="3.1">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Security, Compliance, and Governance for AI Solutions &mdash; AWS-AI Masterclass</title>
+<link rel="stylesheet" href="../resources/css/synaptix-reviewer.css?v=3.1"/>
+<script src="../resources/js/synaptix-reviewer.js?v=3.1" defer></script>
+</head>
+<body>
+<div class="doc-wrap">
+<div class="doc-header">
+  <div class="badges">
+    <span class="badge badge-type">Comprehensive &middot; High</span>
+    <span class="badge badge-mod">Module 7 of 7</span>
+  </div>
+  <div class="doc-title">Security, Compliance, and Governance for AI Solutions</div>
+  <div class="doc-subtitle">source: L5 &mdash; Developing Generative AI Solutions (pasted notes) &middot; generated 2026-07-08 &middot; Synaptix v3.1</div>
+  <div class="stat-row">
+    <div class="stat-item"><div class="stat-val">17</div><div class="stat-lbl">Sections</div></div>
+    <div class="stat-item"><div class="stat-val">39</div><div class="stat-lbl">Subsections</div></div>
+    <div class="stat-item"><div class="stat-val">0</div><div class="stat-lbl">Code Blocks</div></div>
+    <div class="stat-item"><div class="stat-val">1</div><div class="stat-lbl">Enriched</div></div>
+  </div>
+</div>
+<div class="doc-body">
+  <div class="module-label"><span class="module-num">Module 7</span><div class="module-rule"></div></div>
+  <div class="module-title">Security, Compliance, and Governance for AI Solutions</div>
+
+  <div class="overview">
+    <div class="overview-label">Module Overview</div>
+    <div class="overview-grid">
+      <div class="overview-item"><span class="ov-letter">A</span><div><div class="ov-title">Foundations of Security, Governance, and Compliance</div><div class="ov-desc">The three pillars that make AI trustworthy, and why organizations treat them as non-negotiable.</div></div></div>
+      <div class="overview-item"><span class="ov-letter">B</span><div><div class="ov-title">Defense in Depth Strategy for AI Systems</div><div class="ov-desc">A multi-layered security architecture spanning seven layers, from data protection to policy enforcement.</div></div></div>
+      <div class="overview-item"><span class="ov-letter">C</span><div><div class="ov-title">Governance and Compliance Strategy</div><div class="ov-desc">How organizations structure oversight through a governance board, defined responsibilities, and measurable benefits.</div></div></div>
+      <div class="overview-item"><span class="ov-letter">D</span><div><div class="ov-title">Compliance Standards and Frameworks</div><div class="ov-desc">The major global compliance frameworks AWS supports, and which ones apply to which data types.</div></div></div>
+      <div class="overview-item"><span class="ov-letter">E</span><div><div class="ov-title">AI-Specific Governance Challenges</div><div class="ov-desc">Why AI systems create governance problems traditional software doesn't &mdash; opacity, drift, emergent behavior, and the risks that follow.</div></div></div>
+      <div class="overview-item"><span class="ov-letter">F</span><div><div class="ov-title">Regulated Workloads</div><div class="ov-desc">How to recognize when an AI workload carries legal, financial, or safety consequences serious enough to require special compliance handling.</div></div></div>
+      <div class="overview-item"><span class="ov-letter">G</span><div><div class="ov-title">AWS Services for Governance and Compliance</div><div class="ov-desc">Six AWS services that automate large parts of governance, auditing, and compliance work.</div></div></div>
+      <div class="overview-item"><span class="ov-letter">H</span><div><div class="ov-title">Data Governance Strategies for AI</div><div class="ov-desc">The framework covering data quality, protection, lifecycle, and responsible AI practices that make an AI system's data trustworthy.</div></div></div>
+      <div class="overview-item"><span class="ov-letter">I</span><div><div class="ov-title">Data Management Concepts</div><div class="ov-desc">Operational concepts &mdash; logging, residency, drift, and retention &mdash; that keep a data pipeline observable and compliant.</div></div></div>
+      <div class="overview-item"><span class="ov-letter">J</span><div><div class="ov-title">Governance Strategy Implementation</div><div class="ov-desc">How governance policies get written, reviewed, and kept current as technology and regulation evolve.</div></div></div>
+      <div class="overview-item"><span class="ov-letter">K</span><div><div class="ov-title">Monitoring AI Systems</div><div class="ov-desc">The metrics and monitoring categories used to confirm an AI system remains reliable, accurate, fair, and compliant after deployment.</div></div></div>
+      <div class="overview-item"><span class="ov-letter">L</span><div><div class="ov-title">Generative AI Security Scoping Matrix</div><div class="ov-desc">A five-scope framework that classifies an AI system by how much of it the organization actually owns and controls.</div></div></div>
+      <div class="overview-item"><span class="ov-letter">M</span><div><div class="ov-title">Security and Privacy Considerations for AI</div><div class="ov-desc">How threats are detected and mitigated for AI-specific attack surfaces, including the module's most critical risk: prompt injection.</div></div></div>
+      <div class="overview-item"><span class="ov-letter">N</span><div><div class="ov-title">OWASP Top 10 for LLMs</div><div class="ov-desc">The industry-standard list of the ten most critical security risks specific to large language model applications.</div></div></div>
+      <div class="overview-item"><span class="ov-letter">O</span><div><div class="ov-title">AWS Shared Responsibility and Security Services</div><div class="ov-desc">Where AWS's security obligations end and the customer's begin, plus the ten foundational AWS services that should exist in every AI workload.</div></div></div>
+      <div class="overview-item"><span class="ov-letter">P</span><div><div class="ov-title">Data and Model Lineage</div><div class="ov-desc">How proper attribution, tracking, and documentation of data and models improve transparency, trust, and auditability.</div></div></div>
+      <div class="overview-item"><span class="ov-letter">Q</span><div><div class="ov-title">Best Practices for Secure Data Engineering</div><div class="ov-desc">How the data engineering pipeline itself &mdash; from collection through monitoring &mdash; is secured to prevent failures from cascading into the model.</div></div></div>
+    </div>
+    <div class="overview-divider"></div>
+    <div class="meta-row">
+      <div class="meta-item"><div class="meta-lbl">Prerequisites</div><div class="meta-val">Module 5 (FM fundamentals), Module 6 (RAG, fine-tuning, agents) &mdash; core AWS services familiarity (IAM, VPC, KMS)</div></div>
+      <div class="meta-item"><div class="meta-lbl">Leads to</div><div class="meta-val">Hands-on AWS Config/Audit Manager labs, Responsible AI policy design, LLM red-teaming against the OWASP Top 10</div></div>
+    </div>
+  </div>
+
+  <div class="intro">
+    <div class="intro-label">Module Introduction</div>
+    <p>Every technique covered so far in this masterclass &mdash; selecting a Foundation Model, optimizing it with RAG and fine-tuning &mdash; produces a system that still has to be trusted with real data, real decisions, and real consequences. This module covers the three pillars that earn that trust: Security (protecting the system), Governance (directing it responsibly), and Compliance (proving it meets external requirements).</p>
+    <p>The module moves from foundational definitions and AWS's seven-layer Defense in Depth model, through the governance structures and compliance frameworks that keep AI programs accountable, into AI-specific risks like prompt injection and the OWASP Top 10 for LLMs, and finally into the data engineering and lineage practices that make an AI system's decisions auditable after the fact.</p>
+  </div>
+
+  <div class="section-card">
+    <div class="section-hdr">
+      <span class="section-letter" style="color:var(--sky);background:var(--sky-dim);border:1px solid rgba(93,184,242,0.2)">A</span>
+      <span class="section-title">Foundations of Security, Governance, and Compliance</span>
+      <span class="ghost-glyph">A</span>
+    </div>
+    <div class="section-body">
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">A1</span><span class="sub-title">Security, Governance, and Compliance Defined</span></div>
+        <div class="sub-body">
+          <p>Three distinct but complementary functions protect an AI system. Confusing them is common &mdash; each answers a different question.</p>
+          <div class="concept-grid"><div class="concept-card cc-orange"><div class="cc-label">Security</div><ul class="cc-list"><li>Protects Confidentiality, Integrity, and Availability (the CIA Triad)</li><li>Focus: cybersecurity, infrastructure protection, threat prevention</li></ul></div><div class="concept-card cc-sky"><div class="cc-label">Governance</div><ul class="cc-list"><li>Ensures organizational oversight, risk management, business value alignment</li><li>Focus: policies, accountability, strategic decision-making</li></ul></div><div class="concept-card cc-cyan"><div class="cc-label">Compliance</div><ul class="cc-list"><li>Ensures adherence to laws, regulatory conformity, industry standards</li><li>Validates that security and governance actually meet external requirements</li></ul></div></div>
+          <div class="keypoints"><div class="kp-label">Key Points</div><ul class="kp-list"><li>Security protects, Governance directs, Compliance validates &mdash; the module's core distinction</li><li>CIA Triad = Confidentiality, Integrity, Availability</li></ul></div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">A2</span><span class="sub-title">Why These Functions Matter</span></div>
+        <div class="sub-body">
+          <p>These three functions are described as non-negotiable organizational requirements, not optional extras.</p>
+          <div class="concept-grid"><div class="concept-card cc-orange"><div class="cc-label">Protect Operations</div><ul class="cc-list"><li>Keeps organizational operations running without disruption</li></ul></div><div class="concept-card cc-sky"><div class="cc-label">Prevent Legal Liabilities</div><ul class="cc-list"><li>Reduces exposure to lawsuits and regulatory penalties</li></ul></div><div class="concept-card cc-cyan"><div class="cc-label">Build Customer Trust</div><ul class="cc-list"><li>Demonstrates the organization handles data and decisions responsibly</li></ul></div><div class="concept-card cc-purple"><div class="cc-label">Support Responsible AI</div><ul class="cc-list"><li>Provides the operational foundation responsible AI deployment depends on</li></ul></div></div>
+          <div class="keypoints"><div class="kp-label">Key Points</div><ul class="kp-list"><li>Security, Governance, and Compliance are core operational safeguards, not optional add-ons</li></ul></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <div class="section-hdr">
+      <span class="section-letter" style="color:var(--cyan);background:var(--cyan-dim);border:1px solid rgba(94,234,212,0.2)">B</span>
+      <span class="section-title">Defense in Depth Strategy for AI Systems</span>
+      <span class="ghost-glyph">B</span>
+    </div>
+    <div class="section-body">
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">B1</span><span class="sub-title">What Defense in Depth Is</span></div>
+        <div class="sub-body">
+          <p><span class="kw-cyan def">Defense in Depth</span> is a multi-layered security architecture that uses redundant controls to minimize single points of failure &mdash; if one layer is breached, others still stand between the attacker and the system.</p>
+          <p>Generative AI systems process sensitive data, require layered governance, and introduce novel attack surfaces (prompts, embeddings, model APIs) that traditional application security didn't need to account for.</p>
+          <div class="keypoints"><div class="kp-label">Key Points</div><ul class="kp-list"><li>Defense in Depth = multiple security layers working together</li><li>Purpose: prevent attacks, detect threats, respond to incidents, recover from failures</li></ul></div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">B2</span><span class="sub-title">The Seven Defense Layers</span></div>
+        <div class="sub-body">
+          <p>Seven layers, applied together, cover an AI workload end to end &mdash; from the data itself up through organizational policy.</p>
+          <div class="concept-grid"><div class="concept-card cc-orange"><div class="cc-label">1. Data Protection</div><ul class="cc-list"><li>Data at rest: AWS KMS encryption, customer-managed keys, S3 Versioning</li><li>Data in transit: AWS Certificate Manager, AWS Private CA, AWS PrivateLink</li></ul></div><div class="concept-card cc-sky"><div class="cc-label">2. Identity &amp; Access Management</div><ul class="cc-list"><li>Ensures only authorized entities gain access via AWS IAM</li><li>Controls roles, policies, permissions, authentication</li></ul></div><div class="concept-card cc-cyan"><div class="cc-label">3. Application Protection</div><ul class="cc-list"><li>Protects against unauthorized access, DoS attacks, data breaches</li><li>AWS Shield, Amazon Cognito</li></ul></div><div class="concept-card cc-purple"><div class="cc-label">4. Network &amp; Edge Protection</div><ul class="cc-list"><li>Secures network boundaries, traffic flow, cloud perimeter</li><li>Amazon VPC, AWS WAF</li></ul></div><div class="concept-card cc-green"><div class="cc-label">5. Infrastructure Protection</div><ul class="cc-list"><li>Protects compute resources, cloud infrastructure, availability, and integrity</li><li>IAM, Network ACLs</li></ul></div><div class="concept-card cc-amber"><div class="cc-label">6. Threat Detection &amp; Incident Response</div><ul class="cc-list"><li>Detection: AWS Security Hub, Amazon GuardDuty</li><li>Response: AWS Lambda, Amazon EventBridge</li></ul></div><div class="concept-card cc-orange"><div class="cc-label">7. Policies, Procedures &amp; Awareness</div><ul class="cc-list"><li>Enforces least privilege access and governance awareness</li><li>IAM Access Analyzer, short-term credentials</li></ul></div></div>
+          <div class="keypoints"><div class="kp-label">Key Points</div><ul class="kp-list"><li>Seven layers: Data, IAM, Application, Network/Edge, Infrastructure, Threat Detection/Response, Policies</li><li>Least privilege reduces security risk exposure &mdash; the module's most repeated principle</li></ul></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <div class="section-hdr">
+      <span class="section-letter" style="color:var(--purple);background:var(--purple-dim);border:1px solid rgba(167,139,250,0.2)">C</span>
+      <span class="section-title">Governance and Compliance Strategy</span>
+      <span class="ghost-glyph">C</span>
+    </div>
+    <div class="section-body">
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">C1</span><span class="sub-title">The AI Governance Board</span></div>
+        <div class="sub-body">
+          <p>Organizations establish AI governance structures, policies, and accountability mechanisms through a cross-functional governance board.</p>
+          <div class="concept-grid"><div class="concept-card cc-orange"><div class="cc-label">Legal</div><ul class="cc-list"><li>Represents regulatory and contractual risk</li></ul></div><div class="concept-card cc-sky"><div class="cc-label">Compliance</div><ul class="cc-list"><li>Ensures alignment with industry and legal standards</li></ul></div><div class="concept-card cc-cyan"><div class="cc-label">Data Privacy</div><ul class="cc-list"><li>Represents personal and regulated data concerns</li></ul></div><div class="concept-card cc-purple"><div class="cc-label">AI Experts</div><ul class="cc-list"><li>Bring technical understanding of model behavior and limitations</li></ul></div><div class="concept-card cc-green"><div class="cc-label">Business Stakeholders</div><ul class="cc-list"><li>Represent organizational value and risk tolerance</li></ul></div></div>
+          <div class="keypoints"><div class="kp-label">Key Points</div><ul class="kp-list"><li>The AI Governance Board is cross-functional by design &mdash; no single department owns AI governance alone</li></ul></div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">C2</span><span class="sub-title">Governance Responsibilities</span></div>
+        <div class="sub-body">
+          <p>The board's responsibilities span the full lifecycle of an AI system, not just its initial launch.</p>
+          <div class="concept-grid"><div class="concept-card cc-orange"><div class="cc-label">Risk Oversight</div><ul class="cc-list"><li>Ongoing identification and management of AI-related risk</li></ul></div><div class="concept-card cc-sky"><div class="cc-label">Policy Creation</div><ul class="cc-list"><li>Writing the rules that govern data, model, and deployment lifecycle</li></ul></div><div class="concept-card cc-cyan"><div class="cc-label">Ethical Review</div><ul class="cc-list"><li>Evaluating AI decisions and use cases against ethical standards</li></ul></div><div class="concept-card cc-purple"><div class="cc-label">Compliance Management</div><ul class="cc-list"><li>Ensuring policies actually satisfy external regulatory requirements</li></ul></div><div class="concept-card cc-green"><div class="cc-label">Decision-Making Processes</div><ul class="cc-list"><li>Defining who approves what, and under what criteria</li></ul></div></div>
+          <div class="keypoints"><div class="kp-label">Key Points</div><ul class="kp-list"><li>Policies must address the data lifecycle, model lifecycle, monitoring, and incident management</li></ul></div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">C3</span><span class="sub-title">Benefits of Governance</span></div>
+        <div class="sub-body">
+          <p>Strong governance pays off in two directions at once: it enables growth and prevents damage.</p>
+          <div class="concept-grid"><div class="concept-card cc-orange"><div class="cc-label">Enables Scalable Deployment</div><ul class="cc-list"><li>Clear policy lets AI expand across the organization without re-litigating risk each time</li></ul></div><div class="concept-card cc-sky"><div class="cc-label">Enables Business Transformation</div><ul class="cc-list"><li>Confidence in AI systems supports bigger, riskier initiatives</li></ul></div><div class="concept-card cc-cyan"><div class="cc-label">Prevents Ethical Violations</div><ul class="cc-list"><li>Structured review catches problems before they reach production</li></ul></div><div class="concept-card cc-purple"><div class="cc-label">Prevents Legal Penalties</div><ul class="cc-list"><li>Compliance alignment reduces regulatory exposure</li></ul></div><div class="concept-card cc-green"><div class="cc-label">Prevents Reputational Damage</div><ul class="cc-list"><li>Public trust survives incidents better when governance was visibly in place</li></ul></div></div>
+          <div class="keypoints"><div class="kp-label">Key Points</div><ul class="kp-list"><li>AI governance builds trust and responsible deployment &mdash; the module's key insight for this section</li></ul></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <div class="section-hdr">
+      <span class="section-letter" style="color:var(--orange);background:var(--orange-dim);border:1px solid rgba(251,146,60,0.2)">D</span>
+      <span class="section-title">Compliance Standards and Frameworks</span>
+      <span class="ghost-glyph">D</span>
+    </div>
+    <div class="section-body">
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">D1</span><span class="sub-title">AWS Compliance Coverage</span></div>
+        <div class="sub-body">
+          <p>AWS supports <b class="b-orange">143+ compliance certifications</b> spanning global security standards &mdash; a scale most individual organizations could never replicate independently, which is part of the practical case for building on managed cloud infrastructure.</p>
+          <div class="keypoints"><div class="kp-label">Key Points</div><ul class="kp-list"><li>AWS supports 143+ compliance certifications across global standards</li></ul></div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">D2</span><span class="sub-title">Common Compliance Standards</span></div>
+        <div class="sub-body">
+          <p>Seven standards recur constantly across AI compliance work. Which ones apply depends on industry and data type &mdash; not every workload needs all seven.</p>
+          <div class="concept-grid"><div class="concept-card cc-orange"><div class="cc-label">NIST</div><ul class="cc-list"><li>U.S. federal security framework</li><li>Focus: Confidentiality, Integrity, Availability</li></ul></div><div class="concept-card cc-sky"><div class="cc-label">ENISA</div><ul class="cc-list"><li>EU cybersecurity guidance</li><li>Focus: digital trust, cybersecurity certification</li></ul></div><div class="concept-card cc-cyan"><div class="cc-label">ISO</div><ul class="cc-list"><li>International security management standards, e.g. ISO/IEC 27002</li></ul></div><div class="concept-card cc-purple"><div class="cc-label">SOC Reports</div><ul class="cc-list"><li>Third-party audits of AWS controls, validating operational compliance</li></ul></div><div class="concept-card cc-green"><div class="cc-label">HIPAA</div><ul class="cc-list"><li>Protects healthcare information &mdash; applies to Protected Health Information (PHI)</li></ul></div><div class="concept-card cc-amber"><div class="cc-label">GDPR</div><ul class="cc-list"><li>EU privacy regulation protecting personal data and privacy rights</li></ul></div><div class="concept-card cc-orange"><div class="cc-label">PCI DSS</div><ul class="cc-list"><li>Payment card security standard protecting financial transaction data</li></ul></div></div>
+          <div class="keypoints"><div class="kp-label">Key Points</div><ul class="kp-list"><li>Compliance requirements depend on industry + data type &mdash; healthcare needs HIPAA, payments need PCI DSS, EU personal data needs GDPR</li></ul></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <div class="section-hdr">
+      <span class="section-letter" style="color:var(--sky);background:var(--sky-dim);border:1px solid rgba(93,184,242,0.2)">E</span>
+      <span class="section-title">AI-Specific Governance Challenges</span>
+      <span class="ghost-glyph">E</span>
+    </div>
+    <div class="section-body">
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">E1</span><span class="sub-title">Complexity, Dynamism, and Emergence</span></div>
+        <div class="sub-body">
+          <p>Three properties make AI systems structurally harder to govern than traditional software.</p>
+          <div class="concept-stack"><div class="concept-block cb-orange"><div class="cb-label">Complexity and Opacity</div><p>AI systems are difficult to interpret and often behave as black boxes &mdash; even their own developers can't always explain a specific output.</p></div><div class="concept-block cb-sky"><div class="cb-label">Dynamism and Adaptability</div><p>AI models can evolve after deployment, changing behavior over time in ways a governance policy written at launch may not anticipate.</p></div><div class="concept-block cb-cyan"><div class="cb-label">Emergent Capabilities</div><p>Unexpected behaviors can emerge that were never explicitly programmed &mdash; a governance risk unique to large-scale learned systems.</p></div></div>
+          <div class="keypoints"><div class="kp-label">Key Points</div><ul class="kp-list"><li>AI systems can develop unexpected capabilities &mdash; the module's key insight for this subsection</li></ul></div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">E2</span><span class="sub-title">Unique AI Risks</span></div>
+        <div class="sub-body">
+          <p>Three risk categories recur across AI governance discussions, each with a distinct root cause.</p>
+          <div class="concept-stack"><div class="concept-block cb-orange"><div class="cb-label">Algorithmic Bias</div><p>Systematic unfairness in outputs, caused by biased training data, embedded human assumptions, or historical discrimination patterns baked into the data.</p></div><div class="concept-block cb-sky"><div class="cb-label">Privacy Violations</div><p>AI may expose sensitive data; improper handling creates direct compliance failure risk, not just reputational risk.</p></div><div class="concept-block cb-cyan"><div class="cb-label">Misinformation</div><p>AI can generate inaccurate content; hallucinations specifically create trust issues that compound over repeated use.</p></div></div>
+          <div class="keypoints"><div class="kp-label">Key Points</div><ul class="kp-list"><li>Three unique AI risks: Algorithmic Bias, Privacy Violations, Misinformation</li></ul></div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">E3</span><span class="sub-title">Algorithm Accountability</span></div>
+        <div class="sub-body">
+          <p><span class="kw-cyan def">Algorithm Accountability</span> requires transparency, explainability, and human oversight &mdash; the goal is ensuring AI decisions are fair and ethical, and that someone can actually answer for them.</p>
+          <p><span class="enrich-plus">[+]</span> Two real regulatory examples anchor this requirement: the <b class="b-orange">EU Artificial Intelligence Act</b> and the <b class="b-orange">NYC Automated Decision Systems Law</b>, both of which impose explainability and audit obligations on qualifying AI systems.</p>
+          <div class="keypoints"><div class="kp-label">Key Points</div><ul class="kp-list"><li>Accountable AI must be explainable and auditable</li><li>Example laws: EU Artificial Intelligence Act, NYC Automated Decision Systems Law</li></ul></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <div class="section-hdr">
+      <span class="section-letter" style="color:var(--cyan);background:var(--cyan-dim);border:1px solid rgba(94,234,212,0.2)">F</span>
+      <span class="section-title">Regulated Workloads</span>
+      <span class="ghost-glyph">F</span>
+    </div>
+    <div class="section-body">
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">F1</span><span class="sub-title">What Makes a Workload Regulated</span></div>
+        <div class="sub-body">
+          <p>A <span class="kw-cyan def">regulated workload</span> is one requiring special compliance handling. Four indicators signal that a workload has crossed into regulated territory.</p>
+          <div class="concept-grid"><div class="concept-card cc-orange"><div class="cc-label">Auditing</div><ul class="cc-list"><li>Records and decisions must be independently reviewable</li></ul></div><div class="concept-card cc-sky"><div class="cc-label">Data Retention</div><ul class="cc-list"><li>Data must be archived for a defined legal period</li></ul></div><div class="concept-card cc-cyan"><div class="cc-label">Compliance Certifications</div><ul class="cc-list"><li>The workload must meet a named external standard</li></ul></div><div class="concept-card cc-purple"><div class="cc-label">Legal Oversight</div><ul class="cc-list"><li>Legal counsel is involved in workload design or review</li></ul></div></div>
+          <div class="keypoints"><div class="kp-label">Key Points</div><ul class="kp-list"><li>If failure has legal, financial, or safety consequences, the workload is likely regulated &mdash; the module's core diagnostic rule</li></ul></div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">F2</span><span class="sub-title">Examples and Diagnostic Questions</span></div>
+        <div class="sub-body">
+          <p>Common regulated industries include <b class="b-orange">financial services, healthcare, and aerospace</b>. Concrete examples include mortgage approvals, FDA reporting systems, safety-critical AI systems, and HR decision systems.</p>
+          <p>Four diagnostic questions help identify a regulated workload: Do records need auditing? Must data be archived? Are predictions considered legal records? Does the workload use restricted data?</p>
+          <div class="keypoints"><div class="kp-label">Key Points</div><ul class="kp-list"><li>Common regulated industries: financial services, healthcare, aerospace</li><li>Four diagnostic questions determine regulated status</li></ul></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <div class="section-hdr">
+      <span class="section-letter" style="color:var(--purple);background:var(--purple-dim);border:1px solid rgba(167,139,250,0.2)">G</span>
+      <span class="section-title">AWS Services for Governance and Compliance</span>
+      <span class="ghost-glyph">G</span>
+    </div>
+    <div class="section-body">
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">G1</span><span class="sub-title">Governance and Compliance Services</span></div>
+        <div class="sub-body">
+          <p>AWS provides six services covering the full governance-and-audit workflow, from tracking configuration to producing audit-ready documentation.</p>
+          <div class="concept-grid"><div class="concept-card cc-orange"><div class="cc-label">AWS Config</div><ul class="cc-list"><li>Tracks resource configurations, historical changes, and relationships between resources</li><li>Use cases: governance, compliance auditing, troubleshooting configuration changes</li></ul></div><div class="concept-card cc-sky"><div class="cc-label">Amazon Inspector</div><ul class="cc-list"><li>Vulnerability management: detects CVEs, weak cryptography, network exposure, code vulnerabilities</li><li>Continuous scanning with risk scoring</li></ul></div><div class="concept-card cc-cyan"><div class="cc-label">AWS Audit Manager</div><ul class="cc-list"><li>Automates evidence collection, compliance assessments, and audit preparation</li></ul></div><div class="concept-card cc-purple"><div class="cc-label">AWS Artifact</div><ul class="cc-list"><li>Provides compliance reports, security certifications, and audit documentation</li></ul></div><div class="concept-card cc-green"><div class="cc-label">AWS CloudTrail</div><ul class="cc-list"><li>Logs user actions, API activity, and AWS service events for operational auditing</li></ul></div><div class="concept-card cc-amber"><div class="cc-label">AWS Trusted Advisor</div><ul class="cc-list"><li>Provides best-practice recommendations for security, cost, and performance</li></ul></div></div>
+          <div class="keypoints"><div class="kp-label">Key Points</div><ul class="kp-list"><li>AWS services automate large parts of governance, auditing, and security operations &mdash; the module's key insight for this section</li></ul></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <div class="section-hdr">
+      <span class="section-letter" style="color:var(--orange);background:var(--orange-dim);border:1px solid rgba(251,146,60,0.2)">H</span>
+      <span class="section-title">Data Governance Strategies for AI</span>
+      <span class="ghost-glyph">H</span>
+    </div>
+    <div class="section-body">
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">H1</span><span class="sub-title">What Data Governance Covers</span></div>
+        <div class="sub-body">
+          <p><span class="kw-cyan def">Data Governance</span> is the framework for managing data quality, security, usage, lifecycle, and compliance, covering collection, storage, processing, usage, and deletion end to end.</p>
+          <div class="keypoints"><div class="kp-label">Key Points</div><ul class="kp-list"><li>AI systems are only as trustworthy as their data &mdash; the module's key insight for this section</li></ul></div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">H2</span><span class="sub-title">Data Quality, Lineage, and Provenance</span></div>
+        <div class="sub-body">
+          <p>Three practices establish whether a dataset can actually be trusted, and whether its history can be reconstructed if something goes wrong.</p>
+          <div class="concept-stack"><div class="concept-block cb-orange"><div class="cb-label">Data Quality and Integrity</div><p>Ensures accuracy, completeness, and consistency through data validation, cleansing, lineage tracking, and provenance documentation.</p></div><div class="concept-block cb-sky"><div class="cb-label">Data Lineage</div><p>Tracks the origin, transformation, and movement of data as it moves through a pipeline.</p></div><div class="concept-block cb-cyan"><div class="cb-label">Data Provenance</div><p>Identifies a dataset's historical source, usage history, and how it has evolved over time.</p></div></div>
+          <div class="keypoints"><div class="kp-label">Key Points</div><ul class="kp-list"><li>Lineage explains where data came from and how it changed &mdash; the module's key insight for this subsection</li></ul></div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">H3</span><span class="sub-title">Data Protection, Lifecycle, and Responsible AI</span></div>
+        <div class="sub-body">
+          <p>Three additional practices round out data governance: keeping data safe, controlling its lifecycle, and actively monitoring for fairness.</p>
+          <div class="concept-stack"><div class="concept-block cb-orange"><div class="cb-label">Data Protection and Privacy</div><p>Protects sensitive, personal, and regulated information through encryption, access controls, incident response, and breach mitigation.</p></div><div class="concept-block cb-sky"><div class="cb-label">Data Lifecycle Management</div><p>Governs storage, archiving, retention, and deletion across five stages: collection, processing, storage, consumption, disposal/archiving.</p></div><div class="concept-block cb-cyan"><div class="cb-label">Responsible AI</div><p>Promotes fairness, transparency, accountability, and bias mitigation through active bias monitoring, fairness auditing, team education, and consequence analysis.</p></div></div>
+          <div class="keypoints"><div class="kp-label">Key Points</div><ul class="kp-list"><li>Responsible AI requires active monitoring, not just initial design &mdash; the module's key insight for this subsection</li></ul></div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">H4</span><span class="sub-title">Governance Structures, Roles, and Data Sharing</span></div>
+        <div class="sub-body">
+          <p>A governance council oversees AI governance strategy, with three roles carrying distinct responsibilities for the data itself. Controlled sharing is enabled through data federation and data virtualization techniques.</p>
+          <div class="concept-grid"><div class="concept-card cc-orange"><div class="cc-label">Data Stewards</div><ul class="cc-list"><li>Manage day-to-day data quality and usage rules</li></ul></div><div class="concept-card cc-sky"><div class="cc-label">Data Owners</div><ul class="cc-list"><li>Hold accountability for a given dataset's governance</li></ul></div><div class="concept-card cc-cyan"><div class="cc-label">Data Custodians</div><ul class="cc-list"><li>Handle the technical storage and protection of data</li></ul></div></div>
+          <div class="keypoints"><div class="kp-label">Key Points</div><ul class="kp-list"><li>Three governance roles: Data Stewards, Data Owners, Data Custodians</li><li>Controlled sharing techniques: data federation, data virtualization</li></ul></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <div class="section-hdr">
+      <span class="section-letter" style="color:var(--sky);background:var(--sky-dim);border:1px solid rgba(93,184,242,0.2)">I</span>
+      <span class="section-title">Data Management Concepts</span>
+      <span class="ghost-glyph">I</span>
+    </div>
+    <div class="section-body">
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">I1</span><span class="sub-title">Data Lifecycles and Logging</span></div>
+        <div class="sub-body">
+          <p>Data lifecycles manage data from creation through usage, storage, and disposal. <span class="kw-cyan def">Data Logging</span> records inputs, outputs, system events, and model performance &mdash; used for monitoring, debugging, and auditing.</p>
+          <div class="keypoints"><div class="kp-label">Key Points</div><ul class="kp-list"><li>Data logging supports monitoring, debugging, and auditing simultaneously</li></ul></div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">I2</span><span class="sub-title">Data Residency, Monitoring, and Drift</span></div>
+        <div class="sub-body">
+          <p>Three concepts govern where data lives and whether it's still behaving the way it did when the model was trained.</p>
+          <div class="concept-stack"><div class="concept-block cb-orange"><div class="cb-label">Data Residency</div><p>The physical location where data is stored &mdash; a key concern for GDPR compliance, data sovereignty, and regional restrictions.</p></div><div class="concept-block cb-sky"><div class="cb-label">Data Monitoring</div><p>Continuously tracks data quality, data drift, and anomalies as new data flows through the system.</p></div><div class="concept-block cb-cyan"><div class="cb-label">Data Drift</div><p>Occurs when the input data distribution changes over time, gradually invalidating assumptions the model was trained on.</p></div></div>
+          <div class="keypoints"><div class="kp-label">Key Points</div><ul class="kp-list"><li>Data drift can degrade model performance after deployment &mdash; the module's key insight for this subsection</li></ul></div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">I3</span><span class="sub-title">Data Analysis and Retention</span></div>
+        <div class="sub-body">
+          <p>Data analysis methods include statistical analysis, data visualization, and Exploratory Data Analysis (EDA). <span class="kw-cyan def">Data Retention</span> defines how long data is stored, shaped by regulations, retraining needs, and storage costs.</p>
+          <div class="keypoints"><div class="kp-label">Key Points</div><ul class="kp-list"><li>Data retention is influenced by regulations, retraining needs, and storage costs</li></ul></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <div class="section-hdr">
+      <span class="section-letter" style="color:var(--cyan);background:var(--cyan-dim);border:1px solid rgba(94,234,212,0.2)">J</span>
+      <span class="section-title">Governance Strategy Implementation</span>
+      <span class="ghost-glyph">J</span>
+    </div>
+    <div class="section-body">
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">J1</span><span class="sub-title">Policy Areas</span></div>
+        <div class="sub-body">
+          <p>AI policies define principles, usage boundaries, and oversight requirements across six recurring areas.</p>
+          <div class="concept-grid"><div class="concept-card cc-orange"><div class="cc-label">Data Management</div><ul class="cc-list"><li>Rules for how data is collected, used, and retained</li></ul></div><div class="concept-card cc-sky"><div class="cc-label">Privacy</div><ul class="cc-list"><li>Protections for personal and sensitive information</li></ul></div><div class="concept-card cc-cyan"><div class="cc-label">Bias Mitigation</div><ul class="cc-list"><li>Requirements for detecting and correcting unfair outcomes</li></ul></div><div class="concept-card cc-purple"><div class="cc-label">Safety</div><ul class="cc-list"><li>Guardrails preventing harmful or dangerous AI behavior</li></ul></div><div class="concept-card cc-green"><div class="cc-label">Human Oversight</div><ul class="cc-list"><li>Defines where a human must review or approve AI decisions</li></ul></div><div class="concept-card cc-amber"><div class="cc-label">Intellectual Property</div><ul class="cc-list"><li>Addresses ownership and licensing of AI-generated content and training data</li></ul></div></div>
+          <div class="keypoints"><div class="kp-label">Key Points</div><ul class="kp-list"><li>AI policies must evolve as technology and regulations change &mdash; the module's key insight for this section</li></ul></div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">J2</span><span class="sub-title">Review Cadence and Participants</span></div>
+        <div class="sub-body">
+          <p>Governance reviews recur on a fixed cadence &mdash; monthly, quarterly, or bi-annually &mdash; and draw participants from across the organization, not just the technical team.</p>
+          <div class="concept-grid"><div class="concept-card cc-orange"><div class="cc-label">Technical Teams</div><ul class="cc-list"><li>Assess performance, data quality, and robustness</li></ul></div><div class="concept-card cc-sky"><div class="cc-label">Legal Teams</div><ul class="cc-list"><li>Assess regulatory and contractual exposure</li></ul></div><div class="concept-card cc-cyan"><div class="cc-label">Compliance Officers</div><ul class="cc-list"><li>Assess adherence to named external standards</li></ul></div><div class="concept-card cc-purple"><div class="cc-label">End-Users</div><ul class="cc-list"><li>Provide practical, ground-level feedback on system behavior</li></ul></div><div class="concept-card cc-green"><div class="cc-label">SMEs</div><ul class="cc-list"><li>Provide domain expertise the technical team may lack</li></ul></div></div>
+          <div class="keypoints"><div class="kp-label">Key Points</div><ul class="kp-list"><li>Reviews split into Technical Reviews (performance, data quality, robustness) and Non-Technical Reviews (ethics, compliance, Responsible AI alignment)</li></ul></div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">J3</span><span class="sub-title">Transparency Standards and Team Training</span></div>
+        <div class="sub-body">
+          <p>Organizations should disclose model capabilities, limitations, intended use, and training information as a matter of standard transparency practice, not just when compelled by regulation.</p>
+          <p>Teams require ongoing training in Responsible AI, bias mitigation, governance policies, and regulatory updates &mdash; governance is treated as a continuously maintained skill, not a one-time onboarding item.</p>
+          <div class="keypoints"><div class="kp-label">Key Points</div><ul class="kp-list"><li>Responsible AI is both a technical and organizational responsibility &mdash; the module's key insight for this subsection</li></ul></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <div class="section-hdr">
+      <span class="section-letter" style="color:var(--purple);background:var(--purple-dim);border:1px solid rgba(167,139,250,0.2)">K</span>
+      <span class="section-title">Monitoring AI Systems</span>
+      <span class="ghost-glyph">K</span>
+    </div>
+    <div class="section-body">
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">K1</span><span class="sub-title">Performance Metrics</span></div>
+        <div class="sub-body">
+          <p>Five metrics quantify how well a model is actually performing, and they don't all move together &mdash; a model can score well on one while failing another.</p>
+          <div class="concept-grid"><div class="concept-card cc-orange"><div class="cc-label">Model Accuracy</div><ul class="cc-list"><li>Percentage of correct predictions</li></ul></div><div class="concept-card cc-sky"><div class="cc-label">Precision</div><ul class="cc-list"><li>True positives &divide; predicted positives</li></ul></div><div class="concept-card cc-cyan"><div class="cc-label">Recall</div><ul class="cc-list"><li>True positives &divide; actual positives</li></ul></div><div class="concept-card cc-purple"><div class="cc-label">F1-Score</div><ul class="cc-list"><li>Harmonic mean of precision and recall</li></ul></div><div class="concept-card cc-green"><div class="cc-label">Latency</div><ul class="cc-list"><li>Time required to generate a prediction</li></ul></div></div>
+          <div class="keypoints"><div class="kp-label">Key Points</div><ul class="kp-list"><li>High accuracy does not always mean high fairness or low latency &mdash; the module's key insight for this section</li></ul></div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">K2</span><span class="sub-title">Infrastructure, Fairness, and Compliance Monitoring</span></div>
+        <div class="sub-body">
+          <p>Beyond model performance, three additional monitoring categories confirm the system is healthy and fair in production.</p>
+          <div class="concept-stack"><div class="concept-block cb-orange"><div class="cb-label">Infrastructure Monitoring</div><p>Tracks CPU, GPU, memory, storage, and network performance to catch resource-level problems before they cause outages.</p></div><div class="concept-block cb-sky"><div class="cb-label">Bias and Fairness Monitoring</div><p>Detects unfair outcomes and discriminatory patterns emerging after deployment, not just at initial testing.</p></div><div class="concept-block cb-cyan"><div class="cb-label">Compliance Monitoring</div><p>Ensures ongoing adherence to laws, Responsible AI standards, and governance frameworks &mdash; compliance isn't a one-time check.</p></div></div>
+          <div class="keypoints"><div class="kp-label">Key Points</div><ul class="kp-list"><li>Monitoring purpose: reliability, accuracy, compliance, fairness &mdash; all four, continuously</li></ul></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <div class="section-hdr">
+      <span class="section-letter" style="color:var(--orange);background:var(--orange-dim);border:1px solid rgba(251,146,60,0.2)">L</span>
+      <span class="section-title">Generative AI Security Scoping Matrix</span>
+      <span class="ghost-glyph">L</span>
+    </div>
+    <div class="section-body">
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">L1</span><span class="sub-title">The Five Scopes</span></div>
+        <div class="sub-body">
+          <p>The Scoping Matrix helps classify ownership, control, and security responsibilities. As ownership increases from Scope 1 to Scope 5, so does the organization's security and governance burden.</p>
+          <div class="concept-grid"><div class="concept-card cc-orange"><div class="cc-label">Scope 1 &mdash; Consumer App</div><ul class="cc-list"><li>Public AI services with no model ownership</li><li>Example: public chatbot usage</li></ul></div><div class="concept-card cc-sky"><div class="cc-label">Scope 2 &mdash; Enterprise App</div><ul class="cc-list"><li>Third-party enterprise software with AI features</li><li>Example: AI scheduling assistant</li></ul></div><div class="concept-card cc-cyan"><div class="cc-label">Scope 3 &mdash; Pre-Trained Models</div><ul class="cc-list"><li>Business builds applications using external FM APIs</li><li>Example: customer support chatbot using Bedrock</li></ul></div><div class="concept-card cc-purple"><div class="cc-label">Scope 4 &mdash; Fine-Tuned Models</div><ul class="cc-list"><li>Existing FM customized with business data</li><li>Example: brand-specific marketing generator</li></ul></div><div class="concept-card cc-green"><div class="cc-label">Scope 5 &mdash; Self-Trained Models</div><ul class="cc-list"><li>Organization fully owns data, training, and architecture</li></ul></div></div>
+          <div class="keypoints"><div class="kp-label">Key Points</div><ul class="kp-list"><li>More model ownership = more security and governance responsibility &mdash; the module's core rule for this section</li></ul></div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">L2</span><span class="sub-title">Security Disciplines</span></div>
+        <div class="sub-body">
+          <p>Four security disciplines apply across every scope, though their weight shifts as ownership increases.</p>
+          <div class="concept-grid"><div class="concept-card cc-orange"><div class="cc-label">Governance and Compliance</div><ul class="cc-list"><li>Policies, reporting, oversight</li></ul></div><div class="concept-card cc-sky"><div class="cc-label">Legal and Privacy</div><ul class="cc-list"><li>Data ownership, regulatory obligations, data sharing concerns</li></ul></div><div class="concept-card cc-cyan"><div class="cc-label">Risk Management</div><ul class="cc-list"><li>Threat identification, mitigation planning</li></ul></div><div class="concept-card cc-purple"><div class="cc-label">Controls and Resilience</div><ul class="cc-list"><li>Security controls, availability, SLA reliability</li></ul></div></div>
+          <div class="keypoints"><div class="kp-label">Key Points</div><ul class="kp-list"><li>Four security disciplines apply across all five scopes: Governance &amp; Compliance, Legal &amp; Privacy, Risk Management, Controls &amp; Resilience</li></ul></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <div class="section-hdr">
+      <span class="section-letter" style="color:var(--sky);background:var(--sky-dim);border:1px solid rgba(93,184,242,0.2)">M</span>
+      <span class="section-title">Security and Privacy Considerations for AI</span>
+      <span class="ghost-glyph">M</span>
+    </div>
+    <div class="section-body">
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">M1</span><span class="sub-title">Threat Detection, Vulnerability Management, and Infrastructure Protection</span></div>
+        <div class="sub-body">
+          <p>Three practices work together to keep an AI system's attack surface covered, from detecting active attacks to hardening the infrastructure underneath.</p>
+          <div class="concept-stack"><div class="concept-block cb-orange"><div class="cb-label">Threat Detection</div><p>Detects attacks, suspicious behavior, and adversarial activities, including fake content generation, automated attacks, and data manipulation.</p></div><div class="concept-block cb-sky"><div class="cb-label">Vulnerability Management</div><p>Includes penetration testing, code review, and patch management to close weaknesses before they're exploited.</p></div><div class="concept-block cb-cyan"><div class="cb-label">Infrastructure Protection</div><p>Protects cloud systems, storage, edge devices, and compute infrastructure the AI workload runs on.</p></div></div>
+          <div class="keypoints"><div class="kp-label">Key Points</div><ul class="kp-list"><li>Three practices: Threat Detection, Vulnerability Management, Infrastructure Protection</li></ul></div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">M2</span><span class="sub-title">Prompt Injection and Data Encryption</span></div>
+        <div class="sub-body">
+          <p><span class="kw-cyan def">Prompt Injection</span> occurs when malicious prompts manipulate model behavior. Mitigation relies on prompt filtering, sanitization, and validation &mdash; treating user input to an LLM the way a web application treats untrusted input to a database.</p>
+          <p>Data encryption protects data at rest and in transit; the key requirement underneath any encryption scheme is strong encryption key management &mdash; encryption is only as good as how well the keys are protected.</p>
+          <div class="keypoints"><div class="kp-label">Key Points</div><ul class="kp-list"><li>Prompt injection is one of the most critical LLM security risks &mdash; the module's key insight for this subsection</li></ul></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <div class="section-hdr">
+      <span class="section-letter" style="color:var(--cyan);background:var(--cyan-dim);border:1px solid rgba(94,234,212,0.2)">N</span>
+      <span class="section-title">OWASP Top 10 for LLMs</span>
+      <span class="ghost-glyph">N</span>
+    </div>
+    <div class="section-body">
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">N1</span><span class="sub-title">The Ten Risks</span></div>
+        <div class="sub-body">
+          <p>OWASP's Top 10 for LLMs is a major industry security framework, naming the ten risk categories that recur across LLM-powered applications.</p>
+          <div class="concept-grid"><div class="concept-card cc-orange"><div class="cc-label">Prompt Injection</div><ul class="cc-list"><li>Malicious input manipulates model behavior or bypasses safeguards</li></ul></div><div class="concept-card cc-sky"><div class="cc-label">Insecure Output Handling</div><ul class="cc-list"><li>Model output trusted and used downstream without validation</li></ul></div><div class="concept-card cc-cyan"><div class="cc-label">Training Data Poisoning</div><ul class="cc-list"><li>Malicious data corrupts the model during training</li></ul></div><div class="concept-card cc-purple"><div class="cc-label">Model Denial of Service</div><ul class="cc-list"><li>Resource-exhaustion attacks against the model itself</li></ul></div><div class="concept-card cc-green"><div class="cc-label">Supply Chain Vulnerabilities</div><ul class="cc-list"><li>Risk introduced through third-party models, data, or plugins</li></ul></div><div class="concept-card cc-amber"><div class="cc-label">Sensitive Information Disclosure</div><ul class="cc-list"><li>Model exposes confidential data in its output</li></ul></div><div class="concept-card cc-orange"><div class="cc-label">Insecure Plugin Design</div><ul class="cc-list"><li>Poorly secured plugins expand the attack surface</li></ul></div><div class="concept-card cc-sky"><div class="cc-label">Excessive Agency</div><ul class="cc-list"><li>Giving AI too much autonomy to take consequential action</li></ul></div><div class="concept-card cc-cyan"><div class="cc-label">Overreliance</div><ul class="cc-list"><li>Blind trust in AI outputs without verification</li></ul></div><div class="concept-card cc-purple"><div class="cc-label">Model Theft</div><ul class="cc-list"><li>Unauthorized copying or extraction of the model itself</li></ul></div></div>
+          <div class="keypoints"><div class="kp-label">Key Points</div><ul class="kp-list"><li>OWASP Top 10 for LLMs is a major industry security framework</li></ul></div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">N2</span><span class="sub-title">Key Concepts to Distinguish</span></div>
+        <div class="sub-body">
+          <p>Three OWASP risks are frequently confused with each other, so it's worth defining them side by side.</p>
+          <div class="concept-stack"><div class="concept-block cb-orange"><div class="cb-label">Excessive Agency</div><p>Giving an AI system too much autonomy to take real-world action without adequate human checkpoints.</p></div><div class="concept-block cb-sky"><div class="cb-label">Overreliance</div><p>Blind trust in AI outputs &mdash; treating generated content as verified fact without review.</p></div><div class="concept-block cb-cyan"><div class="cb-label">Model Theft</div><p>Unauthorized copying or extraction of a proprietary model, exposing its weights or architecture.</p></div></div>
+          <div class="keypoints"><div class="kp-label">Key Points</div><ul class="kp-list"><li>Excessive Agency = too much autonomy; Overreliance = too much blind trust; Model Theft = unauthorized model extraction</li></ul></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <div class="section-hdr">
+      <span class="section-letter" style="color:var(--purple);background:var(--purple-dim);border:1px solid rgba(167,139,250,0.2)">O</span>
+      <span class="section-title">AWS Shared Responsibility and Security Services</span>
+      <span class="ghost-glyph">O</span>
+    </div>
+    <div class="section-body">
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">O1</span><span class="sub-title">The Shared Responsibility Model</span></div>
+        <div class="sub-body">
+          <p>AWS is responsible for <b class="b-orange">Security OF the cloud</b> &mdash; hardware, networking, facilities, and AWS's own infrastructure. The customer is responsible for <b class="b-orange">Security IN the cloud</b> &mdash; IAM configuration, data protection, OS patching, and application security.</p>
+          <div class="keypoints"><div class="kp-label">Key Points</div><ul class="kp-list"><li>AWS secures the infrastructure, customers secure their workloads &mdash; the module's key insight for this subsection</li></ul></div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">O2</span><span class="sub-title">Foundational AWS Security Services</span></div>
+        <div class="sub-body">
+          <p>Ten services form the foundational security layer AWS recommends should exist in every AI workload, regardless of scope.</p>
+          <div class="concept-grid"><div class="concept-card cc-orange"><div class="cc-label">AWS Security Hub</div><ul class="cc-list"><li>Centralized security dashboard</li></ul></div><div class="concept-card cc-sky"><div class="cc-label">AWS KMS</div><ul class="cc-list"><li>Encryption key management</li></ul></div><div class="concept-card cc-cyan"><div class="cc-label">Amazon GuardDuty</div><ul class="cc-list"><li>Threat detection service</li></ul></div><div class="concept-card cc-purple"><div class="cc-label">AWS Shield Advanced</div><ul class="cc-list"><li>DDoS protection</li></ul></div><div class="concept-card cc-green"><div class="cc-label">Amazon Macie</div><ul class="cc-list"><li>Detects sensitive data</li></ul></div><div class="concept-card cc-amber"><div class="cc-label">IAM</div><ul class="cc-list"><li>Identity and permission management</li></ul></div><div class="concept-card cc-orange"><div class="cc-label">AWS Verified Access</div><ul class="cc-list"><li>Zero-trust access control</li></ul></div><div class="concept-card cc-sky"><div class="cc-label">AWS PrivateLink</div><ul class="cc-list"><li>Private VPC connectivity</li></ul></div><div class="concept-card cc-cyan"><div class="cc-label">Amazon Detective</div><ul class="cc-list"><li>Security investigation support</li></ul></div><div class="concept-card cc-purple"><div class="cc-label">AWS WAF</div><ul class="cc-list"><li>Web application firewall</li></ul></div></div>
+          <div class="keypoints"><div class="kp-label">Key Points</div><ul class="kp-list"><li>Foundational security services should exist in all AI workloads, regardless of Scoping Matrix level</li></ul></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <div class="section-hdr">
+      <span class="section-letter" style="color:var(--orange);background:var(--orange-dim);border:1px solid rgba(251,146,60,0.2)">P</span>
+      <span class="section-title">Data and Model Lineage</span>
+      <span class="ghost-glyph">P</span>
+    </div>
+    <div class="section-body">
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">P1</span><span class="sub-title">Source Citation and Documenting Data Origins</span></div>
+        <div class="sub-body">
+          <p><span class="kw-cyan def">Source citation</span> properly attributes datasets, databases, and training sources &mdash; supporting transparency, trustworthiness, and accountability. Documenting data origins means recording collection methods, cleaning steps, transformations, and known limitations.</p>
+          <div class="keypoints"><div class="kp-label">Key Points</div><ul class="kp-list"><li>Source citation supports transparency, trustworthiness, and accountability</li></ul></div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">P2</span><span class="sub-title">Data Lineage, Cataloging, and Model Cards</span></div>
+        <div class="sub-body">
+          <p>Three practices make an AI system's data and model history reconstructable after the fact &mdash; essential when an audit or incident requires answering &ldquo;how did we get here?&rdquo;</p>
+          <div class="concept-stack"><div class="concept-block cb-orange"><div class="cb-label">Data Lineage</div><p>Tracks data movement and transformation history across the pipeline.</p></div><div class="concept-block cb-sky"><div class="cb-label">Cataloging</div><p>Organizes models, datasets, metadata, and licenses so they can actually be found and governed.</p></div><div class="concept-block cb-cyan"><div class="cb-label">Model Cards</div><p>Standardized model documentation covering intended use, risks, metrics, biases, and limitations &mdash; SageMaker Model Cards provide a centralized governance tool for this.</p></div></div>
+          <div class="keypoints"><div class="kp-label">Key Points</div><ul class="kp-list"><li>Model cards improve explainability, auditing, and Responsible AI reporting &mdash; the module's key insight for this subsection</li></ul></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <div class="section-hdr">
+      <span class="section-letter" style="color:var(--sky);background:var(--sky-dim);border:1px solid rgba(93,184,242,0.2)">Q</span>
+      <span class="section-title">Best Practices for Secure Data Engineering</span>
+      <span class="ghost-glyph">Q</span>
+    </div>
+    <div class="section-body">
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">Q1</span><span class="sub-title">Generative AI Data Types and the Engineering Lifecycle</span></div>
+        <div class="sub-body">
+          <p>Three distinct data types flow through a Gen AI system, and each moves through the same six-stage engineering lifecycle: collection, preparation, quality checks, analysis, deployment, monitoring.</p>
+          <div class="concept-grid"><div class="concept-card cc-orange"><div class="cc-label">User Data</div><ul class="cc-list"><li>User prompts and interactions captured during live use</li></ul></div><div class="concept-card cc-sky"><div class="cc-label">Fine-Tuning Data</div><ul class="cc-list"><li>Specialized domain-adaptation data curated for a specific task</li></ul></div><div class="concept-card cc-cyan"><div class="cc-label">Training Data</div><ul class="cc-list"><li>Large foundational datasets used for original model training</li></ul></div></div>
+          <div class="keypoints"><div class="kp-label">Key Points</div><ul class="kp-list"><li>Data engineering lifecycle: Collection &rarr; Preparation &rarr; Quality Checks &rarr; Analysis &rarr; Deployment &rarr; Monitoring</li><li><span class="enrich-plus">[+]</span> AWS services spanning this lifecycle: AWS Glue, Amazon Kinesis, EMR, CloudWatch, QuickSight, CloudFormation</li></ul></div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">Q2</span><span class="sub-title">Secure Data Engineering Practices</span></div>
+        <div class="sub-body">
+          <p>Four practices keep the data pipeline itself secure &mdash; because a failure here cascades directly into model failure.</p>
+          <div class="concept-stack"><div class="concept-block cb-orange"><div class="cb-label">Assessing Data Quality</div><p>Checks completeness, accuracy, timeliness, and consistency before data is trusted for training or retrieval.</p></div><div class="concept-block cb-sky"><div class="cb-label">Privacy-Enhancing Technologies</div><p>Encryption, tokenization, differential privacy, and data masking reduce exposure of sensitive information.</p></div><div class="concept-block cb-cyan"><div class="cb-label">Data Access Control</div><p>MFA, SSO, RBAC, and least privilege limit who can touch the data at all.</p></div><div class="concept-block cb-purple"><div class="cb-label">Data Integrity</div><p>Validation checks, backup strategies, audit trails, and atomicity controls confirm the data hasn't been silently corrupted.</p></div></div>
+          <div class="keypoints"><div class="kp-label">Key Points</div><ul class="kp-list"><li>Data engineering failures can cascade into model failures &mdash; the module's key insight for this section</li></ul></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="summary-block"><div class="summary-label">Module Summary</div><ul class="summary-list"><li>Security protects, Governance directs, and Compliance validates &mdash; three distinct functions that together make AI trustworthy, built on AWS's seven-layer Defense in Depth model.</li><li>AI governance requires a cross-functional board (Legal, Compliance, Data Privacy, AI Experts, Business Stakeholders) and delivers measurable benefits: scalable deployment, risk reduction, and public trust.</li><li>AI systems create unique governance challenges &mdash; opacity, dynamism, emergent capabilities &mdash; and unique risks: algorithmic bias, privacy violations, and misinformation, all requiring algorithm accountability.</li><li>The Generative AI Security Scoping Matrix (Scopes 1&ndash;5) shows that security and governance responsibility scale directly with how much of the model an organization owns.</li><li>Prompt injection and the OWASP Top 10 for LLMs define AI-specific security risk, while the Shared Responsibility Model splits obligations between AWS (security OF the cloud) and the customer (security IN the cloud); secure data engineering and model cards make the whole system auditable.</li></ul></div>
+</div>
+
+<footer class="snx-footer">
+  <div class="snx-footer-meta">
+    <span class="snx-footer-course">AWS-AI Masterclass</span>
+    <span class="snx-footer-divider">&middot;</span>
+    <span class="snx-footer-module">Module 7 &middot; Security, Compliance, and Governance for AI Solutions</span>
+  </div>
+  <nav class="snx-footer-nav" aria-label="Artifact navigation">
+    <a class="snx-nav-prev" href="../modules/06_aws-ai-masterclass-reviewer.html"><span class="snx-nav-chevron">&lsaquo;</span>Previous</a>
+    <div class="snx-nav-hub">
+      <a class="snx-hub-btn snx-hub-btn-module" href="../modules/07_aws-ai-masterclass-reviewer.html" aria-current="page">Module</a>
+      <a class="snx-hub-btn snx-hub-btn-compact" href="../compact/07_aws-ai-masterclass-compact.html">Compact</a>
+      <a class="snx-hub-btn snx-hub-btn-tree" href="../trees/07_aws-ai-masterclass-tree.html">Tree</a>
+      <a class="snx-hub-btn snx-hub-btn-quiz" href="../quizzes/07_aws-ai-masterclass-quiz.html">Quiz</a>
+      <a class="snx-hub-btn snx-hub-btn-recall" href="../recalls/07_aws-ai-masterclass-recall.html">Recall</a>
+    </div>
+    <a class="snx-nav-next" href="../modules/08_aws-ai-masterclass-reviewer.html">Next<span class="snx-nav-chevron">&rsaquo;</span></a>
+  </nav>
+</footer>
+</body>
+</html>

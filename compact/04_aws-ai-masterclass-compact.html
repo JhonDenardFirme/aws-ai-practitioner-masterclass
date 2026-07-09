@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en" data-synaptix="3.1">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Developing Machine Learning Solutions &mdash; AWS-AI Masterclass (Compact)</title>
+<link rel="stylesheet" href="../resources/css/synaptix-reviewer.css?v=3.1"/>
+<script src="../resources/js/synaptix-reviewer.js?v=3.1" defer></script>
+</head>
+<body>
+<div class="doc-wrap">
+<div class="doc-header">
+  <div class="badges">
+    <span class="badge badge-type">Compact &middot; Mid</span>
+    <span class="badge badge-mod">Module 4 of 9</span>
+  </div>
+  <div class="doc-title">Developing Machine Learning Solutions</div>
+  <div class="doc-subtitle">source: L5 &mdash; Developing Generative AI Solutions (pasted notes) &middot; generated 2026-07-08 &middot; Synaptix v3.1</div>
+  <div class="stat-row">
+    <div class="stat-item"><div class="stat-val">21</div><div class="stat-lbl">Sections</div></div>
+    <div class="stat-item"><div class="stat-val">39</div><div class="stat-lbl">Subsections</div></div>
+    <div class="stat-item"><div class="stat-val">0</div><div class="stat-lbl">Code Blocks</div></div>
+    <div class="stat-item"><div class="stat-val">3</div><div class="stat-lbl">Enriched</div></div>
+  </div>
+</div>
+<div class="doc-body">
+  <div class="module-label"><span class="module-num">Module 4</span><div class="module-rule"></div></div>
+  <div class="module-title">Developing Machine Learning Solutions</div>
+
+  <div class="overview">
+    <div class="overview-label">Module Overview</div>
+    <div class="overview-grid">
+      <div class="overview-item"><span class="ov-letter">A</span><div><div class="ov-title">The Machine Learning Development Lifecycle</div><div class="ov-desc">The seven-phase end-to-end process that carries an ML system from business goal to continuous retraining.</div></div></div>
+      <div class="overview-item"><span class="ov-letter">B</span><div><div class="ov-title">Real-World ML Example: Amazon Call Center</div><div class="ov-desc">A worked example converting inefficient call routing into a supervised multiclass classification problem, end to end.</div></div></div>
+      <div class="overview-item"><span class="ov-letter">C</span><div><div class="ov-title">Amazon SageMaker AI (ML Platform)</div><div class="ov-desc">SageMaker's role as the full end-to-end ML lifecycle platform, spanning four core capability areas.</div></div></div>
+      <div class="overview-item"><span class="ov-letter">D</span><div><div class="ov-title">SageMaker ML Workflow Components</div><div class="ov-desc">The specific tools SageMaker provides for each lifecycle stage, from data preparation through monitoring.</div></div></div>
+      <div class="overview-item"><span class="ov-letter">E</span><div><div class="ov-title">SageMaker Development Environment</div><div class="ov-desc">SageMaker Studio's web-based IDE and the automation tools that accelerate ML development within it.</div></div></div>
+      <div class="overview-item"><span class="ov-letter">F</span><div><div class="ov-title">Sources of Machine Learning Models</div><div class="ov-desc">Four ways to source a model, trading off effort against flexibility and control.</div></div></div>
+      <div class="overview-item"><span class="ov-letter">G</span><div><div class="ov-title">SageMaker Built-in Algorithm Categories</div><div class="ov-desc">Four algorithm categories covering the full range of ML task types SageMaker supports out of the box.</div></div></div>
+      <div class="overview-item"><span class="ov-letter">H</span><div><div class="ov-title">SageMaker JumpStart</div><div class="ov-desc">How JumpStart's pretrained model hub accelerates development from idea to deployed model.</div></div></div>
+      <div class="overview-item"><span class="ov-letter">I</span><div><div class="ov-title">Machine Learning Model Performance Evaluation</div><div class="ov-desc">Why evaluation exists to test generalization, never memorization.</div></div></div>
+      <div class="overview-item"><span class="ov-letter">J</span><div><div class="ov-title">Evaluation Datasets</div><div class="ov-desc">The distinct roles that training, validation, and test sets play, and why the test set must stay untouched until the end.</div></div></div>
+      <div class="overview-item"><span class="ov-letter">K</span><div><div class="ov-title">Model Fit: Underfitting vs. Overfitting</div><div class="ov-desc">The three possible relationships between a model's predictions and the true values, and which one is the goal.</div></div></div>
+      <div class="overview-item"><span class="ov-letter">L</span><div><div class="ov-title">The Bias-Variance Trade-Off</div><div class="ov-desc">The two sources of prediction error, and the bullseye analogy that makes the distinction concrete.</div></div></div>
+      <div class="overview-item"><span class="ov-letter">M</span><div><div class="ov-title">Classification Metrics</div><div class="ov-desc">How the confusion matrix underlies every classification metric, and how Accuracy, Precision, Recall, F1, and AUC-ROC each answer a different question.</div></div></div>
+      <div class="overview-item"><span class="ov-letter">N</span><div><div class="ov-title">Regression Metrics</div><div class="ov-desc">How MSE and R² measure different aspects of a regression model's prediction quality.</div></div></div>
+      <div class="overview-item"><span class="ov-letter">O</span><div><div class="ov-title">Business Metrics and Model Evaluation</div><div class="ov-desc">How ML metrics must be translated into business terms, using custom cost functions and controlled experimentation to validate real impact.</div></div></div>
+      <div class="overview-item"><span class="ov-letter">P</span><div><div class="ov-title">Model Deployment</div><div class="ov-desc">Self-hosted versus managed deployment, SageMaker's specific deployment capabilities, and the four inference types matched to different workloads.</div></div></div>
+      <div class="overview-item"><span class="ov-letter">Q</span><div><div class="ov-title">Fundamental Concepts of MLOps</div><div class="ov-desc">What MLOps is, why ML systems specifically need it, and the four measurable benefits it delivers.</div></div></div>
+      <div class="overview-item"><span class="ov-letter">R</span><div><div class="ov-title">Key Principles of MLOps</div><div class="ov-desc">Version control, automation, CI/CD extended for ML, and model governance as the four pillars of MLOps practice.</div></div></div>
+      <div class="overview-item"><span class="ov-letter">S</span><div><div class="ov-title">ML Lifecycle with MLOps Integration</div><div class="ov-desc">The three asset types MLOps manages together, and how each lifecycle phase touches a different combination of them.</div></div></div>
+      <div class="overview-item"><span class="ov-letter">T</span><div><div class="ov-title">MLOps Implementation Pipeline</div><div class="ov-desc">The training pipeline through registration and approval, and the deployment pipeline through production monitoring.</div></div></div>
+      <div class="overview-item"><span class="ov-letter">U</span><div><div class="ov-title">AWS Services for MLOps</div><div class="ov-desc">The complete AWS toolchain spanning data preparation through pipeline automation, providing end-to-end MLOps infrastructure.</div></div></div>
+    </div>
+    <div class="overview-divider"></div>
+    <div class="meta-row">
+      <div class="meta-item"><div class="meta-lbl">Prerequisites</div><div class="meta-val">Module 1 (ML fundamentals), Module 2 (AI use cases), Module 3 (bias-variance, Responsible AI, SageMaker Clarify)</div></div>
+      <div class="meta-item"><div class="meta-lbl">Leads to</div><div class="meta-val">Module 5 (the Generative AI application lifecycle, which parallels this module's traditional ML lifecycle), hands-on SageMaker Studio and Pipelines labs</div></div>
+    </div>
+  </div>
+
+  <div class="intro">
+    <div class="intro-label">Module Introduction</div>
+    <p>Full lifecycle for shipping a Gen AI application: <b class="b-orange">define</b> the use case, <b class="b-orange">select</b> a Foundation Model, <b class="b-orange">improve</b> it with prompting/RAG/fine-tuning, <b class="b-orange">evaluate</b>, then <b class="b-orange">deploy</b> &mdash; looping back as feedback arrives.</p>
+  </div>
+
+  <div class="section-card">
+    <div class="section-hdr">
+      <span class="section-letter" style="color:var(--sky);background:var(--sky-dim);border:1px solid rgba(93,184,242,0.2)">A</span>
+      <span class="section-title">The Machine Learning Development Lifecycle</span>
+      <span class="ghost-glyph">A</span>
+    </div>
+    <div class="section-body">
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">A1</span><span class="sub-title">The Seven Lifecycle Phases</span></div>
+        <div class="sub-body">
+          <p>The ML lifecycle spans development, deployment, and maintenance.</p>
+          <div class="concept-grid"><div class="concept-card cc-orange"><div class="cc-label">Business Goal Identification</div><ul class="cc-list"><li>Define the business objective before any modeling begins</li></ul></div><div class="concept-card cc-sky"><div class="cc-label">ML Problem Framing</div><ul class="cc-list"><li>Translate the business goal into a specific ML task</li></ul></div><div class="concept-card cc-cyan"><div class="cc-label">Data Processing</div><ul class="cc-list"><li>Collect, clean, and engineer features from raw data</li></ul></div><div class="concept-card cc-purple"><div class="cc-label">Model Development</div><ul class="cc-list"><li>Train, tune, and evaluate a predictive model</li></ul></div><div class="concept-card cc-green"><div class="cc-label">Model Deployment</div><ul class="cc-list"><li>Put the model into real-world prediction use</li></ul></div><div class="concept-card cc-amber"><div class="cc-label">Model Monitoring</div><ul class="cc-list"><li>Track performance over time in production</li></ul></div><div class="concept-card cc-orange"><div class="cc-label">Model Retraining</div><ul class="cc-list"><li>Update the model as new data trends emerge</li></ul></div></div>
+          <div class="kp-inline"><span class="kp-tag">Key</span>Seven phases: Business Goal &rarr; Problem Framing &rarr; Data Processing &rarr; Model Development &rarr; Deployment &rarr; Monitoring &rarr; Retraining<span class="kp-sep">&rsaquo;</span>ML is an iterative loop, not a linear process &mdash; the module's core framing</div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">A2</span><span class="sub-title">Inside Data Processing</span></div>
+        <div class="sub-body">
+          <p>The Data Processing phase itself breaks into three sub-steps, each building on the last.</p>
+          <div class="concept-grid"><div class="concept-card cc-orange"><div class="cc-label">Data Collection</div><ul class="cc-list"><li>Gathering raw data from source systems</li></ul></div><div class="concept-card cc-sky"><div class="cc-label">Data Preprocessing</div><ul class="cc-list"><li>Cleaning and transforming that raw data</li></ul></div><div class="concept-card cc-cyan"><div class="cc-label">Feature Engineering</div><ul class="cc-list"><li>Extracting the variables actually useful for prediction</li></ul></div></div>
+          <div class="kp-inline"><span class="kp-tag">Key</span>Data Processing sub-steps: Data Collection, Data Preprocessing, Feature Engineering</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <div class="section-hdr">
+      <span class="section-letter" style="color:var(--cyan);background:var(--cyan-dim);border:1px solid rgba(94,234,212,0.2)">B</span>
+      <span class="section-title">Real-World ML Example: Amazon Call Center</span>
+      <span class="ghost-glyph">B</span>
+    </div>
+    <div class="section-body">
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">B1</span><span class="sub-title">Problem Context and ML Conversion</span></div>
+        <div class="sub-body">
+          <p>The business problem was inefficient call routing, causing delays, added cost, and poor customer experience.</p>
+          <div class="kp-inline"><span class="kp-tag">Key</span>ML problem type: Multiclass Classification &mdash; predict the correct agent skill</div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">B2</span><span class="sub-title">The Data Phase</span></div>
+        <div class="sub-body">
+          <p>Historical customer call data fed the model, using supervised learning with three key features.</p>
+          <div class="concept-grid"><div class="concept-card cc-orange"><div class="cc-label">Recent Orders</div><ul class="cc-list"><li>What the customer has recently purchased</li></ul></div><div class="concept-card cc-sky"><div class="cc-label">Device Ownership</div><ul class="cc-list"><li>Whether the customer owns a Kindle, for example</li></ul></div><div class="concept-card cc-cyan"><div class="cc-label">Membership Status</div><ul class="cc-list"><li>The customer's account/membership tier</li></ul></div></div>
+          <div class="kp-inline"><span class="kp-tag">Key</span>Learning type: Supervised Learning, using historical customer call data</div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">B3</span><span class="sub-title">Data Preparation and the Train/Validation/Test Split</span></div>
+        <div class="sub-body">
+          <p>Preprocessing included data cleaning (removing errors) and label refinement &mdash; combining similar labels, such as merging multiple distinct &ldquo;Kindle issue&rdquo; labels into one. Data was split into three sets: <b class="b-orange">Train (70&ndash;80%)</b>, <b class="b-orange">Validation (10&ndash;15%)</b>, and <b class="b-orange">Test (10&ndash;15%)</b>.</p>
+          <div class="kp-inline"><span class="kp-tag">Key</span>Data split: Train 70&ndash;80%, Validation 10&ndash;15%, Test 10&ndash;15%<span class="kp-sep">&rsaquo;</span>Never evaluate using training data &mdash; the module's core caution</div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">B4</span><span class="sub-title">Optimization and Deployment Outcome</span></div>
+        <div class="sub-body">
+          <p>Model optimization combined hyperparameter tuning (adjusting learning behavior) with further feature engineering (improving input representation).</p>
+          <div class="kp-inline"><span class="kp-tag">Key</span>Success metric = business improvement &mdash; the module's core framing, echoed later in Section O</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <div class="section-hdr">
+      <span class="section-letter" style="color:var(--purple);background:var(--purple-dim);border:1px solid rgba(167,139,250,0.2)">C</span>
+      <span class="section-title">Amazon SageMaker AI (ML Platform)</span>
+      <span class="ghost-glyph">C</span>
+    </div>
+    <div class="section-body">
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">C1</span><span class="sub-title">What SageMaker Is</span></div>
+        <div class="sub-body">
+          <p><span class="kw-cyan def">Amazon SageMaker AI</span> is a fully managed ML platform supporting the end-to-end workflow.</p>
+          <div class="concept-grid"><div class="concept-card cc-orange"><div class="cc-label">Data Preparation</div><ul class="cc-list"><li>Collect and transform data for modeling</li></ul></div><div class="concept-card cc-sky"><div class="cc-label">Model Training</div><ul class="cc-list"><li>Build models from prepared data</li></ul></div><div class="concept-card cc-cyan"><div class="cc-label">Deployment</div><ul class="cc-list"><li>Serve predictions in production</li></ul></div><div class="concept-card cc-purple"><div class="cc-label">Monitoring</div><ul class="cc-list"><li>Track performance after deployment</li></ul></div></div>
+          <div class="kp-inline"><span class="kp-tag">Key</span>SageMaker = full ML lifecycle platform &mdash; the module's core definition</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <div class="section-hdr">
+      <span class="section-letter" style="color:var(--orange);background:var(--orange-dim);border:1px solid rgba(251,146,60,0.2)">D</span>
+      <span class="section-title">SageMaker ML Workflow Components</span>
+      <span class="ghost-glyph">D</span>
+    </div>
+    <div class="section-body">
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">D1</span><span class="sub-title">Data Preparation Tools</span></div>
+        <div class="sub-body">
+          <p>Three tools cover data preparation, ranging from no-code to fully scripted.</p>
+          <div class="concept-grid"><div class="concept-card cc-orange"><div class="cc-label">Data Wrangler</div><ul class="cc-list"><li>Low-code/no-code data preparation with built-in feature engineering and transformation</li></ul></div><div class="concept-card cc-sky"><div class="cc-label">SageMaker Studio Classic</div><ul class="cc-list"><li>Large-scale data workflows, integrated with EMR and Glue</li></ul></div><div class="concept-card cc-cyan"><div class="cc-label">Processing API</div><ul class="cc-list"><li>Runs scripts and ML frameworks for scalable preprocessing</li></ul></div></div>
+          <div class="kp-inline"><span class="kp-tag">Key</span>Three data preparation tools: Data Wrangler, SageMaker Studio Classic, Processing API</div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">D2</span><span class="sub-title">Feature Management: Feature Store</span></div>
+        <div class="sub-body">
+          <p><span class="kw-cyan def">Feature Store</span> is a centralized feature repository that stores, retrieves, and serves features into models.</p>
+          <div class="kp-inline"><span class="kp-tag">Key</span>Feature Store enables consistency across models &mdash; the module's key insight for this subsection</div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">D3</span><span class="sub-title">Model Training Tools</span></div>
+        <div class="sub-body">
+          <p>Four components cover model training, from fully custom training jobs to no-code prediction.</p>
+          <div class="concept-grid"><div class="concept-card cc-orange"><div class="cc-label">Training Jobs</div><ul class="cc-list"><li>Support built-in algorithms or fully custom algorithms</li></ul></div><div class="concept-card cc-sky"><div class="cc-label">Model Artifacts</div><ul class="cc-list"><li>Stored in Amazon S3 after training completes</li></ul></div><div class="concept-card cc-cyan"><div class="cc-label">SageMaker Canvas</div><ul class="cc-list"><li>No-code ML predictions for non-technical users</li></ul></div><div class="concept-card cc-purple"><div class="cc-label">SageMaker JumpStart</div><ul class="cc-list"><li>Access to pretrained models, covered in depth in Section H</li></ul></div></div>
+          <div class="kp-inline"><span class="kp-tag">Key</span>Four training components: Training Jobs, Model Artifacts (in S3), SageMaker Canvas, SageMaker JumpStart</div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">D4</span><span class="sub-title">Model Evaluation Tools</span></div>
+        <div class="sub-body">
+          <p><b class="b-orange">SageMaker Experiments</b> tracks model variations across training runs.</p>
+          <div class="kp-inline"><span class="kp-tag">Key</span>Evaluation tools: SageMaker Experiments (track variations), Hyperparameter Tuning (optimize performance)</div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">D5</span><span class="sub-title">Deployment and Monitoring</span></div>
+        <div class="sub-body">
+          <p>Deployment covers <b class="b-orange">Inference</b> (generating predictions) on <b class="b-orange">Flexible Infrastructure</b> (scalable deployment).</p>
+          <div class="kp-inline"><span class="kp-tag">Key</span>Deployment: Inference + Flexible Infrastructure. Monitoring: Model Monitor (drift, quality, alerts).</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <div class="section-hdr">
+      <span class="section-letter" style="color:var(--sky);background:var(--sky-dim);border:1px solid rgba(93,184,242,0.2)">E</span>
+      <span class="section-title">SageMaker Development Environment</span>
+      <span class="ghost-glyph">E</span>
+    </div>
+    <div class="section-body">
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">E1</span><span class="sub-title">SageMaker Studio Applications</span></div>
+        <div class="sub-body">
+          <p><span class="kw-cyan def">SageMaker Studio</span> is a web-based ML IDE hosting four distinct application environments.</p>
+          <div class="concept-grid"><div class="concept-card cc-orange"><div class="cc-label">JupyterLab</div><ul class="cc-list"><li>Notebooks and code-based development</li></ul></div><div class="concept-card cc-sky"><div class="cc-label">Canvas</div><ul class="cc-list"><li>No-code ML for non-technical users</li></ul></div><div class="concept-card cc-cyan"><div class="cc-label">RStudio</div><ul class="cc-list"><li>R-based statistical workflows</li></ul></div><div class="concept-card cc-purple"><div class="cc-label">Code Editor (VS Code)</div><ul class="cc-list"><li>Full development tooling for engineers</li></ul></div></div>
+          <div class="kp-inline"><span class="kp-tag">Key</span>Four Studio applications: JupyterLab, Canvas, RStudio, Code Editor (VS Code)</div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">E2</span><span class="sub-title">Automation Tools</span></div>
+        <div class="sub-body">
+          <p><b class="b-orange">JumpStart</b> provides pretrained models ready to deploy or fine-tune.</p>
+          <div class="kp-inline"><span class="kp-tag">Key</span>Automation tools: JumpStart (pretrained models), AutoML/Canvas (automated model building)</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <div class="section-hdr">
+      <span class="section-letter" style="color:var(--cyan);background:var(--cyan-dim);border:1px solid rgba(94,234,212,0.2)">F</span>
+      <span class="section-title">Sources of Machine Learning Models</span>
+      <span class="ghost-glyph">F</span>
+    </div>
+    <div class="section-body">
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">F1</span><span class="sub-title">Four Model Source Options</span></div>
+        <div class="sub-body">
+          <p><b class="b-salmon">Model source = trade-off between effort and flexibility</b> &mdash; the four options below are ordered from least effort/least flexibility to most effort/most flexibility.</p>
+          <div class="concept-grid"><div class="concept-card cc-orange"><div class="cc-label">Pretrained Models</div><ul class="cc-list"><li>Ready to deploy or fine-tune &mdash; least effort</li></ul></div><div class="concept-card cc-sky"><div class="cc-label">Built-in Algorithms</div><ul class="cc-list"><li>Provided directly by SageMaker &mdash; moderate effort</li></ul></div><div class="concept-card cc-cyan"><div class="cc-label">Custom Framework Models</div><ul class="cc-list"><li>Uses libraries like TensorFlow or PyTorch &mdash; high flexibility</li></ul></div><div class="concept-card cc-purple"><div class="cc-label">Custom Docker Models</div><ul class="cc-list"><li>Fully customized environments &mdash; maximum control</li></ul></div></div>
+          <div class="kp-inline"><span class="kp-tag">Key</span>Model source = trade-off between effort and flexibility &mdash; the module's core insight</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <div class="section-hdr">
+      <span class="section-letter" style="color:var(--purple);background:var(--purple-dim);border:1px solid rgba(167,139,250,0.2)">G</span>
+      <span class="section-title">SageMaker Built-in Algorithm Categories</span>
+      <span class="ghost-glyph">G</span>
+    </div>
+    <div class="section-body">
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">G1</span><span class="sub-title">Four Algorithm Categories</span></div>
+        <div class="sub-body">
+          <p><b class="b-salmon">Algorithm selection depends on data + task type</b> &mdash; these four categories cover essentially every built-in algorithm SageMaker offers.</p>
+          <div class="concept-grid"><div class="concept-card cc-orange"><div class="cc-label">Supervised Learning</div><ul class="cc-list"><li>Classification, Regression</li></ul></div><div class="concept-card cc-sky"><div class="cc-label">Unsupervised Learning</div><ul class="cc-list"><li>Clustering, Dimensionality Reduction, Anomaly Detection</li></ul></div><div class="concept-card cc-cyan"><div class="cc-label">Image Processing</div><ul class="cc-list"><li>Image Classification, Object Detection, Computer Vision</li></ul></div><div class="concept-card cc-purple"><div class="cc-label">Text Analysis</div><ul class="cc-list"><li>NLP, Document Classification, Translation</li></ul></div></div>
+          <div class="kp-inline"><span class="kp-tag">Key</span>Algorithm selection depends on data + task type &mdash; the module's core selection rule</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <div class="section-hdr">
+      <span class="section-letter" style="color:var(--orange);background:var(--orange-dim);border:1px solid rgba(251,146,60,0.2)">H</span>
+      <span class="section-title">SageMaker JumpStart</span>
+      <span class="ghost-glyph">H</span>
+    </div>
+    <div class="section-body">
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">H1</span><span class="sub-title">Capabilities and Benefits</span></div>
+        <div class="sub-body">
+          <p><span class="kw-cyan def">JumpStart</span> is a pretrained model hub with four core capabilities.</p>
+          <div class="concept-grid"><div class="concept-card cc-orange"><div class="cc-label">Deploy Pretrained Models</div><ul class="cc-list"><li>Get a working model live with minimal setup</li></ul></div><div class="concept-card cc-sky"><div class="cc-label">Fine-Tune Models</div><ul class="cc-list"><li>Adapt a pretrained model to a specific task</li></ul></div><div class="concept-card cc-cyan"><div class="cc-label">Evaluate Performance</div><ul class="cc-list"><li>Assess a model before committing to full deployment</li></ul></div><div class="concept-card cc-purple"><div class="cc-label">Access Solution Templates</div><ul class="cc-list"><li>Start from a template rather than a blank slate</li></ul></div></div>
+          <div class="kp-inline"><span class="kp-tag">Key</span>JumpStart accelerates ML development &mdash; the module's key insight for this section</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <div class="section-hdr">
+      <span class="section-letter" style="color:var(--sky);background:var(--sky-dim);border:1px solid rgba(93,184,242,0.2)">I</span>
+      <span class="section-title">Machine Learning Model Performance Evaluation</span>
+      <span class="ghost-glyph">I</span>
+    </div>
+    <div class="section-body">
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">I1</span><span class="sub-title">What Evaluation Measures</span></div>
+        <div class="sub-body">
+          <p><span class="kw-cyan def">Model Evaluation</span> assesses predictive performance, with the goal of ensuring the model generalizes to unseen data.</p>
+          <div class="kp-inline"><span class="kp-tag">Key</span>Evaluation = generalization, not memorization &mdash; the module's central thesis for Sections I&ndash;O</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <div class="section-hdr">
+      <span class="section-letter" style="color:var(--cyan);background:var(--cyan-dim);border:1px solid rgba(94,234,212,0.2)">J</span>
+      <span class="section-title">Evaluation Datasets</span>
+      <span class="ghost-glyph">J</span>
+    </div>
+    <div class="section-body">
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">J1</span><span class="sub-title">Training, Validation, and Test Sets</span></div>
+        <div class="sub-body">
+          <p>Three datasets serve three distinct purposes across the evaluation process &mdash; using one for another's purpose invalidates the result.</p>
+          <div class="concept-grid"><div class="concept-card cc-orange"><div class="cc-label">Training Set</div><ul class="cc-list"><li>Used to actually train the model</li></ul></div><div class="concept-card cc-sky"><div class="cc-label">Validation Set</div><ul class="cc-list"><li>Used for hyperparameter tuning and iterative model improvement</li></ul></div><div class="concept-card cc-cyan"><div class="cc-label">Test Set</div><ul class="cc-list"><li>Final, unbiased evaluation before deployment</li></ul></div></div>
+          <div class="kp-inline"><span class="kp-tag">Key</span>Test set must remain untouched until final evaluation &mdash; the module's core rule</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <div class="section-hdr">
+      <span class="section-letter" style="color:var(--purple);background:var(--purple-dim);border:1px solid rgba(167,139,250,0.2)">K</span>
+      <span class="section-title">Model Fit: Underfitting vs. Overfitting</span>
+      <span class="ghost-glyph">K</span>
+    </div>
+    <div class="section-body">
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">K1</span><span class="sub-title">Three Fit States</span></div>
+        <div class="sub-body">
+          <p><span class="kw-cyan def">Model Fit</span> describes the relationship between prediction and actual values.</p>
+          <div class="concept-grid"><div class="concept-card cc-orange"><div class="cc-label">Overfitting</div><ul class="cc-list"><li>Performs well on training data, poorly on unseen data &mdash; caused by memorizing noise</li></ul></div><div class="concept-card cc-sky"><div class="cc-label">Underfitting</div><ul class="cc-list"><li>Performs poorly even on training data &mdash; caused by a model that's too simple</li></ul></div><div class="concept-card cc-cyan"><div class="cc-label">Balanced Model</div><ul class="cc-list"><li>Performs well on both training and unseen data &mdash; the goal: optimal generalization</li></ul></div></div>
+          <div class="kp-inline"><span class="kp-tag">Key</span>Balance = generalization performance &mdash; the module's core insight for this section</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <div class="section-hdr">
+      <span class="section-letter" style="color:var(--orange);background:var(--orange-dim);border:1px solid rgba(251,146,60,0.2)">L</span>
+      <span class="section-title">The Bias-Variance Trade-Off</span>
+      <span class="ghost-glyph">L</span>
+    </div>
+    <div class="section-body">
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">L1</span><span class="sub-title">Bias vs. Variance</span></div>
+        <div class="sub-body">
+          <p><span class="kw-cyan def">Bias</span> is error from wrong assumptions; <span class="kw-cyan def">Variance</span> is sensitivity to data fluctuations. The module's bullseye analogy: the bullseye center represents the true value, spread represents variance, and distance from center represents bias.</p>
+          <div class="kp-inline"><span class="kp-tag">Key</span>High Bias &rarr; underfitting. High Variance &rarr; overfitting.<span class="kp-sep">&rsaquo;</span>Bullseye analogy: center = true value, spread = variance, distance from center = bias</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <div class="section-hdr">
+      <span class="section-letter" style="color:var(--sky);background:var(--sky-dim);border:1px solid rgba(93,184,242,0.2)">M</span>
+      <span class="section-title">Classification Metrics</span>
+      <span class="ghost-glyph">M</span>
+    </div>
+    <div class="section-body">
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">M1</span><span class="sub-title">The Confusion Matrix</span></div>
+        <div class="sub-body">
+          <p><b class="b-salmon">The confusion matrix is the foundation of classification metrics</b> &mdash; every metric in this section is computed from these four values.</p>
+          <div class="concept-grid"><div class="concept-card cc-orange"><div class="cc-label">True Positive (TP)</div><ul class="cc-list"><li>A correct positive prediction</li></ul></div><div class="concept-card cc-sky"><div class="cc-label">True Negative (TN)</div><ul class="cc-list"><li>A correct negative prediction</li></ul></div><div class="concept-card cc-cyan"><div class="cc-label">False Positive (FP)</div><ul class="cc-list"><li>An incorrect positive prediction</li></ul></div><div class="concept-card cc-purple"><div class="cc-label">False Negative (FN)</div><ul class="cc-list"><li>A missed positive case</li></ul></div></div>
+          <div class="kp-inline"><span class="kp-tag">Key</span>Confusion matrix = foundation of classification metrics &mdash; the module's core framing</div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">M2</span><span class="sub-title">Accuracy, Precision, and Recall</span></div>
+        <div class="sub-body">
+          <p>Three metrics answer three different questions about classifier quality, and matter most in different situations.</p>
+          <div class="concept-grid"><div class="concept-card cc-orange"><div class="cc-label">Accuracy</div><ul class="cc-list"><li>(TP+TN)/(TP+TN+FP+FN) &mdash; misleading with imbalanced data</li></ul></div><div class="concept-card cc-sky"><div class="cc-label">Precision</div><ul class="cc-list"><li>TP/(TP+FP) &mdash; use when false positives are costly, e.g. spam filtering</li></ul></div><div class="concept-card cc-cyan"><div class="cc-label">Recall (Sensitivity)</div><ul class="cc-list"><li>TP/(TP+FN) &mdash; use when false negatives are critical, e.g. disease detection</li></ul></div></div>
+          <div class="kp-inline"><span class="kp-tag">Key</span>Precision vs Recall = an error-cost trade-off &mdash; the module's core insight for this subsection</div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">M3</span><span class="sub-title">F1 Score and AUC-ROC</span></div>
+        <div class="sub-body">
+          <p><b class="b-orange">F1 Score</b> balances precision and recall, used when both false positives and false negatives matter.</p>
+          <div class="kp-inline"><span class="kp-tag">Key</span>AUC-ROC is threshold-independent &mdash; it shows performance across thresholds, not at one fixed cutoff</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <div class="section-hdr">
+      <span class="section-letter" style="color:var(--cyan);background:var(--cyan-dim);border:1px solid rgba(94,234,212,0.2)">N</span>
+      <span class="section-title">Regression Metrics</span>
+      <span class="ghost-glyph">N</span>
+    </div>
+    <div class="section-body">
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">N1</span><span class="sub-title">MSE and R²</span></div>
+        <div class="sub-body">
+          <p><b class="b-orange">Mean Squared Error (MSE)</b> averages the squared difference between prediction and actual value &mdash; lower MSE means a better model.</p>
+          <div class="kp-inline"><span class="kp-tag">Key</span>MSE = error magnitude (lower is better). R&sup2; = goodness of fit (closer to 1 is better). They complement each other.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <div class="section-hdr">
+      <span class="section-letter" style="color:var(--purple);background:var(--purple-dim);border:1px solid rgba(167,139,250,0.2)">O</span>
+      <span class="section-title">Business Metrics and Model Evaluation</span>
+      <span class="ghost-glyph">O</span>
+    </div>
+    <div class="section-body">
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">O1</span><span class="sub-title">Business Metrics and Alignment</span></div>
+        <div class="sub-body">
+          <p>Business metrics measure real-world impact &mdash; increasing sales, reducing cost, improving retention.</p>
+          <div class="kp-inline"><span class="kp-tag">Key</span>Business metric examples: increase sales, reduce cost, improve retention</div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">O2</span><span class="sub-title">Custom Metrics and Experimentation</span></div>
+        <div class="sub-body">
+          <p>Two experimentation techniques and a custom-metric approach let a team validate that a model actually improves the business, not just its technical score.</p>
+          <div class="concept-grid"><div class="concept-card cc-orange"><div class="cc-label">Cost Function</div><ul class="cc-list"><li>Assigns explicit value to predictions and errors, optimizing directly for business impact</li></ul></div><div class="concept-card cc-sky"><div class="cc-label">A/B Testing</div><ul class="cc-list"><li>Compares model versions head-to-head with real traffic</li></ul></div><div class="concept-card cc-cyan"><div class="cc-label">Canary Deployment</div><ul class="cc-list"><li>Gradually rolls out a new model to limit blast radius if something goes wrong</li></ul></div></div>
+          <div class="kp-inline"><span class="kp-tag">Key</span>Best model = one that optimizes business KPIs &mdash; the module's closing insight for this section</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <div class="section-hdr">
+      <span class="section-letter" style="color:var(--orange);background:var(--orange-dim);border:1px solid rgba(251,146,60,0.2)">P</span>
+      <span class="section-title">Model Deployment</span>
+      <span class="ghost-glyph">P</span>
+    </div>
+    <div class="section-body">
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">P1</span><span class="sub-title">Self-Hosted vs. Managed API</span></div>
+        <div class="sub-body">
+          <p><b class="b-orange">Self-Hosted API</b> deploys on your own infrastructure (on-premise or cloud VMs/containers) &mdash; full control and customization, but high operational overhead.</p>
+          <div class="kp-inline"><span class="kp-tag">Key</span>Deployment choice = control vs. convenience trade-off &mdash; the module's core framing</div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">P2</span><span class="sub-title">SageMaker Deployment Capabilities</span></div>
+        <div class="sub-body">
+          <p>SageMaker's managed deployment offers four specific capabilities that remove common operational burden.</p>
+          <div class="concept-grid"><div class="concept-card cc-orange"><div class="cc-label">One-Click or API Deployment</div><ul class="cc-list"><li>Deploy without manual infrastructure setup</li></ul></div><div class="concept-card cc-sky"><div class="cc-label">Automatic Scaling</div><ul class="cc-list"><li>Capacity adjusts to traffic automatically</li></ul></div><div class="concept-card cc-cyan"><div class="cc-label">Secure HTTPS Endpoints</div><ul class="cc-list"><li>Production-grade, encrypted access by default</li></ul></div><div class="concept-card cc-purple"><div class="cc-label">Multi-Model Hosting</div><ul class="cc-list"><li>Serve multiple models from shared infrastructure</li></ul></div></div>
+          <div class="kp-inline"><span class="kp-tag">Key</span>Four SageMaker deployment capabilities: One-Click/API Deployment, Automatic Scaling, Secure HTTPS Endpoints, Multi-Model Hosting</div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">P3</span><span class="sub-title">Four Inference Types</span></div>
+        <div class="sub-body">
+          <p><b class="b-salmon">Inference type depends on latency + workload</b> &mdash; choosing the wrong one wastes cost or fails the use case's latency requirement.</p>
+          <div class="concept-grid"><div class="concept-card cc-orange"><div class="cc-label">Real-Time Inference</div><ul class="cc-list"><li>Low latency, for interactive applications</li></ul></div><div class="concept-card cc-sky"><div class="cc-label">Batch Transform</div><ul class="cc-list"><li>Large dataset processing, no persistent endpoint</li></ul></div><div class="concept-card cc-cyan"><div class="cc-label">Asynchronous Inference</div><ul class="cc-list"><li>Handles large payloads and long processing time via queued requests</li></ul></div><div class="concept-card cc-purple"><div class="cc-label">Serverless Inference</div><ul class="cc-list"><li>No infrastructure management, scales automatically, best for intermittent traffic</li></ul></div></div>
+          <div class="kp-inline"><span class="kp-tag">Key</span>Inference type depends on latency + workload &mdash; the module's core selection rule for this section</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <div class="section-hdr">
+      <span class="section-letter" style="color:var(--sky);background:var(--sky-dim);border:1px solid rgba(93,184,242,0.2)">Q</span>
+      <span class="section-title">Fundamental Concepts of MLOps</span>
+      <span class="ghost-glyph">Q</span>
+    </div>
+    <div class="section-body">
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">Q1</span><span class="sub-title">What MLOps Is</span></div>
+        <div class="sub-body">
+          <p><span class="kw-cyan def">MLOps</span> operationalizes the ML lifecycle, combining people, processes, and technology, spanning development through monitoring.</p>
+          <div class="kp-inline"><span class="kp-tag">Key</span>MLOps = DevOps for Machine Learning &mdash; but with ML-specific degradation and monitoring needs</div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">Q2</span><span class="sub-title">Benefits of MLOps</span></div>
+        <div class="sub-body">
+          <p><b class="b-salmon">MLOps ensures models stay useful over time</b> &mdash; delivered through four measurable benefits.</p>
+          <div class="concept-grid"><div class="concept-card cc-orange"><div class="cc-label">Productivity</div><ul class="cc-list"><li>Faster experimentation, access to curated datasets</li></ul></div><div class="concept-card cc-sky"><div class="cc-label">Reliability</div><ul class="cc-list"><li>CI/CD improves consistency across releases</li></ul></div><div class="concept-card cc-cyan"><div class="cc-label">Repeatability</div><ul class="cc-list"><li>Automated, reproducible pipelines</li></ul></div><div class="concept-card cc-purple"><div class="cc-label">Auditability</div><ul class="cc-list"><li>Tracking data, models, and experiments; monitoring bias and drift</li></ul></div></div>
+          <div class="kp-inline"><span class="kp-tag">Key</span>MLOps ensures models stay useful over time &mdash; the module's key insight for this section<span class="kp-sep">&rsaquo;</span>MLOps goals: faster ML lifecycle, improved model quality, strong collaboration, transparency and governance</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <div class="section-hdr">
+      <span class="section-letter" style="color:var(--cyan);background:var(--cyan-dim);border:1px solid rgba(94,234,212,0.2)">R</span>
+      <span class="section-title">Key Principles of MLOps</span>
+      <span class="ghost-glyph">R</span>
+    </div>
+    <div class="section-body">
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">R1</span><span class="sub-title">Version Control and Automation</span></div>
+        <div class="sub-body">
+          <p><b class="b-orange">Version Control</b> tracks code, data, and models together, enabling rollback and reproducibility.</p>
+          <div class="kp-inline"><span class="kp-tag">Key</span>Version Control tracks code + data + models. Automation covers ingestion, training, testing, deployment.</div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">R2</span><span class="sub-title">CI/CD for ML</span></div>
+        <div class="sub-body">
+          <p><b class="b-salmon">CI/CD in ML includes training and monitoring</b> &mdash; two stages beyond what traditional software CI/CD covers.</p>
+          <div class="concept-grid"><div class="concept-card cc-orange"><div class="cc-label">Continuous Integration</div><ul class="cc-list"><li>Tests code, data, and models together</li></ul></div><div class="concept-card cc-sky"><div class="cc-label">Continuous Delivery</div><ul class="cc-list"><li>Deploys models automatically</li></ul></div><div class="concept-card cc-cyan"><div class="cc-label">Continuous Training</div><ul class="cc-list"><li>Retrains models as new data arrives</li></ul></div><div class="concept-card cc-purple"><div class="cc-label">Continuous Monitoring</div><ul class="cc-list"><li>Tracks both model and business metrics after deployment</li></ul></div></div>
+          <div class="kp-inline"><span class="kp-tag">Key</span>CI/CD in ML includes training + monitoring &mdash; the module's key insight for this subsection</div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">R3</span><span class="sub-title">Model Governance</span></div>
+        <div class="sub-body">
+          <p><span class="kw-cyan def">Model Governance</span> ensures fairness, compliance, and security through documentation, validation processes, and stakeholder collaboration.</p>
+          <div class="kp-inline"><span class="kp-tag">Key</span>Governance = trust + compliance in ML systems &mdash; the module's key insight for this subsection</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <div class="section-hdr">
+      <span class="section-letter" style="color:var(--purple);background:var(--purple-dim);border:1px solid rgba(167,139,250,0.2)">S</span>
+      <span class="section-title">ML Lifecycle with MLOps Integration</span>
+      <span class="ghost-glyph">S</span>
+    </div>
+    <div class="section-body">
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">S1</span><span class="sub-title">Managed Assets and Lifecycle Touchpoints</span></div>
+        <div class="sub-body">
+          <p><b class="b-salmon">MLOps manages code, data, and models together</b> &mdash; treating them as three separately versioned but jointly tracked asset types across every lifecycle phase.</p>
+          <div class="concept-grid"><div class="concept-card cc-orange"><div class="cc-label">Code</div><ul class="cc-list"><li>Data processing and training scripts</li></ul></div><div class="concept-card cc-sky"><div class="cc-label">Data</div><ul class="cc-list"><li>Training and evaluation datasets</li></ul></div><div class="concept-card cc-cyan"><div class="cc-label">Models</div><ul class="cc-list"><li>Versions and trained artifacts</li></ul></div></div>
+          <div class="kp-inline"><span class="kp-tag">Key</span>MLOps manages code + data + models together &mdash; the module's key insight for this section<span class="kp-sep">&rsaquo;</span>Lifecycle touchpoints: Data Preparation (processing code), Training (data/code), Evaluation (test/validation data), Selection (metadata), Deployment (inference code), Monitoring (production data)</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <div class="section-hdr">
+      <span class="section-letter" style="color:var(--orange);background:var(--orange-dim);border:1px solid rgba(251,146,60,0.2)">T</span>
+      <span class="section-title">MLOps Implementation Pipeline</span>
+      <span class="ghost-glyph">T</span>
+    </div>
+    <div class="section-body">
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">T1</span><span class="sub-title">Training Pipeline, Registration, and Approval</span></div>
+        <div class="sub-body">
+          <p>The <b class="b-orange">Training Pipeline</b> covers data preparation, model building, and model evaluation.</p>
+          <div class="kp-inline"><span class="kp-tag">Key</span>Training pipeline: Data Preparation &rarr; Model Building &rarr; Model Evaluation, then Registration (if criteria met) and Approval</div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">T2</span><span class="sub-title">Deployment Pipeline and Production Monitoring</span></div>
+        <div class="sub-body">
+          <p>The <b class="b-orange">Deployment Pipeline</b> follows a fixed sequence: Source &rarr; Build &rarr; Deploy &rarr; Test &rarr; Promote.</p>
+          <div class="kp-inline"><span class="kp-tag">Key</span>Deployment pipeline sequence: Source &rarr; Build &rarr; Deploy &rarr; Test &rarr; Promote<span class="kp-sep">&rsaquo;</span>Pipelines enable automated ML systems &mdash; the module's key insight for this section</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <div class="section-hdr">
+      <span class="section-letter" style="color:var(--sky);background:var(--sky-dim);border:1px solid rgba(93,184,242,0.2)">U</span>
+      <span class="section-title">AWS Services for MLOps</span>
+      <span class="ghost-glyph">U</span>
+    </div>
+    <div class="section-body">
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">U1</span><span class="sub-title">The AWS MLOps Toolchain</span></div>
+        <div class="sub-body">
+          <p><b class="b-salmon">AWS provides end-to-end MLOps infrastructure</b> &mdash; a distinct service maps to nearly every stage of the training and deployment pipelines covered in Section T.</p>
+          <div class="concept-grid"><div class="concept-card cc-orange"><div class="cc-label">SageMaker Data Wrangler</div><ul class="cc-list"><li>Low-code/no-code data preparation</li></ul></div><div class="concept-card cc-sky"><div class="cc-label">Processing API</div><ul class="cc-list"><li>Scalable data processing</li></ul></div><div class="concept-card cc-cyan"><div class="cc-label">SageMaker Feature Store</div><ul class="cc-list"><li>Centralized feature storage</li></ul></div><div class="concept-card cc-purple"><div class="cc-label">SageMaker Training Jobs</div><ul class="cc-list"><li>Model training execution</li></ul></div><div class="concept-card cc-green"><div class="cc-label">SageMaker Experiments</div><ul class="cc-list"><li>Tracks performance across training runs</li></ul></div><div class="concept-card cc-amber"><div class="cc-label">Processing Jobs</div><ul class="cc-list"><li>Data preprocessing and evaluation</li></ul></div><div class="concept-card cc-orange"><div class="cc-label">Model Registry</div><ul class="cc-list"><li>Versions and manages models</li></ul></div><div class="concept-card cc-sky"><div class="cc-label">SageMaker Endpoints</div><ul class="cc-list"><li>Serves deployed models</li></ul></div><div class="concept-card cc-cyan"><div class="cc-label">SageMaker Model Monitor</div><ul class="cc-list"><li>Tracks drift in production</li></ul></div><div class="concept-card cc-purple"><div class="cc-label">SageMaker Pipelines</div><ul class="cc-list"><li>Automates the full workflow end to end</li></ul></div></div>
+          <div class="kp-inline"><span class="kp-tag">Key</span>AWS provides end-to-end MLOps infrastructure &mdash; the module's closing insight, tying every AWS tool in this module to a specific pipeline stage</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="summary-block"><div class="summary-label">Module Summary</div><ul class="summary-list"><li>The ML lifecycle is a seven-phase iterative loop &mdash; Business Goal, Problem Framing, Data Processing, Model Development, Deployment, Monitoring, Retraining &mdash; not a one-time linear process.</li><li>Amazon SageMaker AI is the full end-to-end ML lifecycle platform, with dedicated tools for data preparation (Data Wrangler), feature management (Feature Store), training (Training Jobs, Canvas, JumpStart), evaluation (Experiments), deployment, and monitoring (Model Monitor).</li><li>Evaluation exists to measure generalization, not memorization: the train/validation/test split, the underfitting/overfitting/balanced fit spectrum, and the bias-variance trade-off all serve that one goal.</li><li>Classification metrics (Accuracy, Precision, Recall, F1, AUC-ROC) and regression metrics (MSE, R&sup2;) each answer a different question about model quality &mdash; and the best model is ultimately the one that optimizes business KPIs, not just technical scores.</li><li>Deployment splits into self-hosted vs. managed, with four inference types (real-time, batch, async, serverless) matched to workload; MLOps &mdash; versioning, automation, CI/CD extended with continuous training and monitoring, and governance &mdash; is what keeps a deployed model reliable over time.</li></ul></div>
+</div>
+
+<footer class="snx-footer">
+  <div class="snx-footer-meta">
+    <span class="snx-footer-course">AWS-AI Masterclass</span>
+    <span class="snx-footer-divider">&middot;</span>
+    <span class="snx-footer-module">Module 4 &middot; Developing Machine Learning Solutions</span>
+  </div>
+  <nav class="snx-footer-nav" aria-label="Artifact navigation">
+    <a class="snx-nav-prev" href="../compact/03_aws-ai-masterclass-compact.html"><span class="snx-nav-chevron">&lsaquo;</span>Previous</a>
+    <div class="snx-nav-hub">
+      <a class="snx-hub-btn snx-hub-btn-module" href="../modules/04_aws-ai-masterclass-reviewer.html">Module</a>
+      <a class="snx-hub-btn snx-hub-btn-compact" href="../compact/04_aws-ai-masterclass-compact.html" aria-current="page">Compact</a>
+      <a class="snx-hub-btn snx-hub-btn-tree" href="../trees/04_aws-ai-masterclass-tree.html">Tree</a>
+      <a class="snx-hub-btn snx-hub-btn-quiz" href="../quizzes/04_aws-ai-masterclass-quiz.html">Quiz</a>
+      <a class="snx-hub-btn snx-hub-btn-recall" href="../recalls/04_aws-ai-masterclass-recall.html">Recall</a>
+    </div>
+    <a class="snx-nav-next" href="../compact/05_aws-ai-masterclass-compact.html">Next<span class="snx-nav-chevron">&rsaquo;</span></a>
+  </nav>
+</footer>
+</body>
+</html>

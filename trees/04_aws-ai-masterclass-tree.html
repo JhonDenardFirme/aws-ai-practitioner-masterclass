@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en" data-synaptix="3.1">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Developing Machine Learning Solutions &mdash; AWS-AI Masterclass (Tree)</title>
+<link rel="stylesheet" href="../resources/css/synaptix-reviewer.css?v=3.1"/>
+<script src="../resources/js/synaptix-reviewer.js?v=3.1" defer></script>
+</head>
+<body>
+<div class="doc-wrap">
+<div class="doc-header">
+  <div class="badges">
+    <span class="badge badge-type">Tree &middot; Structure Only</span>
+    <span class="badge badge-mod">Module 4 of 9</span>
+  </div>
+  <div class="doc-title">Developing Machine Learning Solutions</div>
+  <div class="doc-subtitle">source: L5 &mdash; Developing Generative AI Solutions (pasted notes) &middot; generated 2026-07-08 &middot; Synaptix v3.1</div>
+  <div class="stat-row">
+    <div class="stat-item"><div class="stat-val">21</div><div class="stat-lbl">Sections</div></div>
+    <div class="stat-item"><div class="stat-val">39</div><div class="stat-lbl">Subsections</div></div>
+    <div class="stat-item"><div class="stat-val">0</div><div class="stat-lbl">Code Blocks</div></div>
+    <div class="stat-item"><div class="stat-val">0</div><div class="stat-lbl">Enriched</div></div>
+  </div>
+</div>
+<div class="doc-body">
+  <div class="module-label"><span class="module-num">Module 4</span><div class="module-rule"></div></div>
+  <div class="module-title">Developing Machine Learning Solutions</div>
+
+  <div class="section-card"><div class="section-body">
+  <div class="tree-block"><span class="tm">Module 4. Developing Machine Learning Solutions</span>
+
+<span class="tc">├─── </span><span class="ts">A. The Machine Learning Development Lifecycle</span>
+<span class="tc">│   ├─── </span><span class="tb">A1. The Seven Lifecycle Phases</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Business Goal Identification &mdash; Define the business objective before any modeling begins</span>
+<span class="tc">│   │   ├─── </span><span class="tl">ML Problem Framing &mdash; Translate the business goal into a specific ML task</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Data Processing &mdash; Collect, clean, and engineer features from raw data</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Model Development &mdash; Train, tune, and evaluate a predictive model</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Model Deployment &mdash; Put the model into real-world prediction use</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Model Monitoring &mdash; Track performance over time in production</span>
+<span class="tc">│   │   └─── </span><span class="tl">Model Retraining &mdash; Update the model as new data trends emerge</span>
+<span class="tc">│   └─── </span><span class="tb">A2. Inside Data Processing</span>
+<span class="tc">│       ├─── </span><span class="tl">Data Collection &mdash; Gathering raw data from source systems</span>
+<span class="tc">│       ├─── </span><span class="tl">Data Preprocessing &mdash; Cleaning and transforming that raw data</span>
+<span class="tc">│       └─── </span><span class="tl">Feature Engineering &mdash; Extracting the variables actually useful for prediction</span>
+<span class="tc">├─── </span><span class="ts">B. Real-World ML Example: Amazon Call Center</span>
+<span class="tc">│   ├─── </span><span class="tb">B1. Problem Context and ML Conversion</span>
+<span class="tc">│   │   └─── </span><span class="tl">ML problem type: Multiclass Classification &mdash; predict the correct agent skill</span>
+<span class="tc">│   ├─── </span><span class="tb">B2. The Data Phase</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Recent Orders &mdash; What the customer has recently purchased</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Device Ownership &mdash; Whether the customer owns a Kindle, for example</span>
+<span class="tc">│   │   └─── </span><span class="tl">Membership Status &mdash; The customer's account/membership tier</span>
+<span class="tc">│   ├─── </span><span class="tb">B3. Data Preparation and the Train/Validation/Test Split</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Data split: Train 70&ndash;80%, Validation 10&ndash;15%, Test 10&ndash;15%</span>
+<span class="tc">│   │   └─── </span><span class="tl">Never evaluate using training data &mdash; the module's core caution</span>
+<span class="tc">│   └─── </span><span class="tb">B4. Optimization and Deployment Outcome</span>
+<span class="tc">│       └─── </span><span class="tl">Success metric = business improvement &mdash; the module's core framing, echoed later in Section O</span>
+<span class="tc">├─── </span><span class="ts">C. Amazon SageMaker AI (ML Platform)</span>
+<span class="tc">│   └─── </span><span class="tb">C1. What SageMaker Is</span>
+<span class="tc">│       ├─── </span><span class="tl">Data Preparation &mdash; Collect and transform data for modeling</span>
+<span class="tc">│       ├─── </span><span class="tl">Model Training &mdash; Build models from prepared data</span>
+<span class="tc">│       ├─── </span><span class="tl">Deployment &mdash; Serve predictions in production</span>
+<span class="tc">│       └─── </span><span class="tl">Monitoring &mdash; Track performance after deployment</span>
+<span class="tc">├─── </span><span class="ts">D. SageMaker ML Workflow Components</span>
+<span class="tc">│   ├─── </span><span class="tb">D1. Data Preparation Tools</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Data Wrangler &mdash; Low-code/no-code data preparation with built-in feature engineering and transformation</span>
+<span class="tc">│   │   ├─── </span><span class="tl">SageMaker Studio Classic &mdash; Large-scale data workflows, integrated with EMR and Glue</span>
+<span class="tc">│   │   └─── </span><span class="tl">Processing API &mdash; Runs scripts and ML frameworks for scalable preprocessing</span>
+<span class="tc">│   ├─── </span><span class="tb">D2. Feature Management: Feature Store</span>
+<span class="tc">│   │   └─── </span><span class="tl">Feature Store enables consistency across models &mdash; the module's key insight for this subsection</span>
+<span class="tc">│   ├─── </span><span class="tb">D3. Model Training Tools</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Training Jobs &mdash; Support built-in algorithms or fully custom algorithms</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Model Artifacts &mdash; Stored in Amazon S3 after training completes</span>
+<span class="tc">│   │   ├─── </span><span class="tl">SageMaker Canvas &mdash; No-code ML predictions for non-technical users</span>
+<span class="tc">│   │   └─── </span><span class="tl">SageMaker JumpStart &mdash; Access to pretrained models, covered in depth in Section H</span>
+<span class="tc">│   ├─── </span><span class="tb">D4. Model Evaluation Tools</span>
+<span class="tc">│   │   └─── </span><span class="tl">Evaluation tools: SageMaker Experiments (track variations), Hyperparameter Tuning (optimize performance)</span>
+<span class="tc">│   └─── </span><span class="tb">D5. Deployment and Monitoring</span>
+<span class="tc">│       └─── </span><span class="tl">Deployment: Inference + Flexible Infrastructure. Monitoring: Model Monitor (drift, quality, alerts).</span>
+<span class="tc">├─── </span><span class="ts">E. SageMaker Development Environment</span>
+<span class="tc">│   ├─── </span><span class="tb">E1. SageMaker Studio Applications</span>
+<span class="tc">│   │   ├─── </span><span class="tl">JupyterLab &mdash; Notebooks and code-based development</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Canvas &mdash; No-code ML for non-technical users</span>
+<span class="tc">│   │   ├─── </span><span class="tl">RStudio &mdash; R-based statistical workflows</span>
+<span class="tc">│   │   └─── </span><span class="tl">Code Editor (VS Code) &mdash; Full development tooling for engineers</span>
+<span class="tc">│   └─── </span><span class="tb">E2. Automation Tools</span>
+<span class="tc">│       └─── </span><span class="tl">Automation tools: JumpStart (pretrained models), AutoML/Canvas (automated model building)</span>
+<span class="tc">├─── </span><span class="ts">F. Sources of Machine Learning Models</span>
+<span class="tc">│   └─── </span><span class="tb">F1. Four Model Source Options</span>
+<span class="tc">│       ├─── </span><span class="tl">Pretrained Models &mdash; Ready to deploy or fine-tune &mdash; least effort</span>
+<span class="tc">│       ├─── </span><span class="tl">Built-in Algorithms &mdash; Provided directly by SageMaker &mdash; moderate effort</span>
+<span class="tc">│       ├─── </span><span class="tl">Custom Framework Models &mdash; Uses libraries like TensorFlow or PyTorch &mdash; high flexibility</span>
+<span class="tc">│       └─── </span><span class="tl">Custom Docker Models &mdash; Fully customized environments &mdash; maximum control</span>
+<span class="tc">├─── </span><span class="ts">G. SageMaker Built-in Algorithm Categories</span>
+<span class="tc">│   └─── </span><span class="tb">G1. Four Algorithm Categories</span>
+<span class="tc">│       ├─── </span><span class="tl">Supervised Learning &mdash; Classification, Regression</span>
+<span class="tc">│       ├─── </span><span class="tl">Unsupervised Learning &mdash; Clustering, Dimensionality Reduction, Anomaly Detection</span>
+<span class="tc">│       ├─── </span><span class="tl">Image Processing &mdash; Image Classification, Object Detection, Computer Vision</span>
+<span class="tc">│       └─── </span><span class="tl">Text Analysis &mdash; NLP, Document Classification, Translation</span>
+<span class="tc">├─── </span><span class="ts">H. SageMaker JumpStart</span>
+<span class="tc">│   └─── </span><span class="tb">H1. Capabilities and Benefits</span>
+<span class="tc">│       ├─── </span><span class="tl">Deploy Pretrained Models &mdash; Get a working model live with minimal setup</span>
+<span class="tc">│       ├─── </span><span class="tl">Fine-Tune Models &mdash; Adapt a pretrained model to a specific task</span>
+<span class="tc">│       ├─── </span><span class="tl">Evaluate Performance &mdash; Assess a model before committing to full deployment</span>
+<span class="tc">│       └─── </span><span class="tl">Access Solution Templates &mdash; Start from a template rather than a blank slate</span>
+<span class="tc">├─── </span><span class="ts">I. Machine Learning Model Performance Evaluation</span>
+<span class="tc">│   └─── </span><span class="tb">I1. What Evaluation Measures</span>
+<span class="tc">│       └─── </span><span class="tl">Evaluation = generalization, not memorization &mdash; the module's central thesis for Sections I&ndash;O</span>
+<span class="tc">├─── </span><span class="ts">J. Evaluation Datasets</span>
+<span class="tc">│   └─── </span><span class="tb">J1. Training, Validation, and Test Sets</span>
+<span class="tc">│       ├─── </span><span class="tl">Training Set &mdash; Used to actually train the model</span>
+<span class="tc">│       ├─── </span><span class="tl">Validation Set &mdash; Used for hyperparameter tuning and iterative model improvement</span>
+<span class="tc">│       └─── </span><span class="tl">Test Set &mdash; Final, unbiased evaluation before deployment</span>
+<span class="tc">├─── </span><span class="ts">K. Model Fit: Underfitting vs. Overfitting</span>
+<span class="tc">│   └─── </span><span class="tb">K1. Three Fit States</span>
+<span class="tc">│       ├─── </span><span class="tl">Overfitting &mdash; Performs well on training data, poorly on unseen data &mdash; caused by memorizing noise</span>
+<span class="tc">│       ├─── </span><span class="tl">Underfitting &mdash; Performs poorly even on training data &mdash; caused by a model that's too simple</span>
+<span class="tc">│       └─── </span><span class="tl">Balanced Model &mdash; Performs well on both training and unseen data &mdash; the goal: optimal generalization</span>
+<span class="tc">├─── </span><span class="ts">L. The Bias-Variance Trade-Off</span>
+<span class="tc">│   └─── </span><span class="tb">L1. Bias vs. Variance</span>
+<span class="tc">│       ├─── </span><span class="tl">High Bias &rarr; underfitting. High Variance &rarr; overfitting.</span>
+<span class="tc">│       └─── </span><span class="tl">Bullseye analogy: center = true value, spread = variance, distance from center = bias</span>
+<span class="tc">├─── </span><span class="ts">M. Classification Metrics</span>
+<span class="tc">│   ├─── </span><span class="tb">M1. The Confusion Matrix</span>
+<span class="tc">│   │   ├─── </span><span class="tl">True Positive (TP) &mdash; A correct positive prediction</span>
+<span class="tc">│   │   ├─── </span><span class="tl">True Negative (TN) &mdash; A correct negative prediction</span>
+<span class="tc">│   │   ├─── </span><span class="tl">False Positive (FP) &mdash; An incorrect positive prediction</span>
+<span class="tc">│   │   └─── </span><span class="tl">False Negative (FN) &mdash; A missed positive case</span>
+<span class="tc">│   ├─── </span><span class="tb">M2. Accuracy, Precision, and Recall</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Accuracy &mdash; (TP+TN)/(TP+TN+FP+FN) &mdash; misleading with imbalanced data</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Precision &mdash; TP/(TP+FP) &mdash; use when false positives are costly, e.g. spam filtering</span>
+<span class="tc">│   │   └─── </span><span class="tl">Recall (Sensitivity) &mdash; TP/(TP+FN) &mdash; use when false negatives are critical, e.g. disease detection</span>
+<span class="tc">│   └─── </span><span class="tb">M3. F1 Score and AUC-ROC</span>
+<span class="tc">│       └─── </span><span class="tl">AUC-ROC is threshold-independent &mdash; it shows performance across thresholds, not at one fixed cutoff</span>
+<span class="tc">├─── </span><span class="ts">N. Regression Metrics</span>
+<span class="tc">│   └─── </span><span class="tb">N1. MSE and R²</span>
+<span class="tc">│       └─── </span><span class="tl">MSE = error magnitude (lower is better). R&sup2; = goodness of fit (closer to 1 is better). They complement each other.</span>
+<span class="tc">├─── </span><span class="ts">O. Business Metrics and Model Evaluation</span>
+<span class="tc">│   ├─── </span><span class="tb">O1. Business Metrics and Alignment</span>
+<span class="tc">│   │   └─── </span><span class="tl">Business metric examples: increase sales, reduce cost, improve retention</span>
+<span class="tc">│   └─── </span><span class="tb">O2. Custom Metrics and Experimentation</span>
+<span class="tc">│       ├─── </span><span class="tl">Cost Function &mdash; Assigns explicit value to predictions and errors, optimizing directly for business impact</span>
+<span class="tc">│       ├─── </span><span class="tl">A/B Testing &mdash; Compares model versions head-to-head with real traffic</span>
+<span class="tc">│       └─── </span><span class="tl">Canary Deployment &mdash; Gradually rolls out a new model to limit blast radius if something goes wrong</span>
+<span class="tc">├─── </span><span class="ts">P. Model Deployment</span>
+<span class="tc">│   ├─── </span><span class="tb">P1. Self-Hosted vs. Managed API</span>
+<span class="tc">│   │   └─── </span><span class="tl">Deployment choice = control vs. convenience trade-off &mdash; the module's core framing</span>
+<span class="tc">│   ├─── </span><span class="tb">P2. SageMaker Deployment Capabilities</span>
+<span class="tc">│   │   ├─── </span><span class="tl">One-Click or API Deployment &mdash; Deploy without manual infrastructure setup</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Automatic Scaling &mdash; Capacity adjusts to traffic automatically</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Secure HTTPS Endpoints &mdash; Production-grade, encrypted access by default</span>
+<span class="tc">│   │   └─── </span><span class="tl">Multi-Model Hosting &mdash; Serve multiple models from shared infrastructure</span>
+<span class="tc">│   └─── </span><span class="tb">P3. Four Inference Types</span>
+<span class="tc">│       ├─── </span><span class="tl">Real-Time Inference &mdash; Low latency, for interactive applications</span>
+<span class="tc">│       ├─── </span><span class="tl">Batch Transform &mdash; Large dataset processing, no persistent endpoint</span>
+<span class="tc">│       ├─── </span><span class="tl">Asynchronous Inference &mdash; Handles large payloads and long processing time via queued requests</span>
+<span class="tc">│       └─── </span><span class="tl">Serverless Inference &mdash; No infrastructure management, scales automatically, best for intermittent traffic</span>
+<span class="tc">├─── </span><span class="ts">Q. Fundamental Concepts of MLOps</span>
+<span class="tc">│   ├─── </span><span class="tb">Q1. What MLOps Is</span>
+<span class="tc">│   │   └─── </span><span class="tl">MLOps = DevOps for Machine Learning &mdash; but with ML-specific degradation and monitoring needs</span>
+<span class="tc">│   └─── </span><span class="tb">Q2. Benefits of MLOps</span>
+<span class="tc">│       ├─── </span><span class="tl">Productivity &mdash; Faster experimentation, access to curated datasets</span>
+<span class="tc">│       ├─── </span><span class="tl">Reliability &mdash; CI/CD improves consistency across releases</span>
+<span class="tc">│       ├─── </span><span class="tl">Repeatability &mdash; Automated, reproducible pipelines</span>
+<span class="tc">│       └─── </span><span class="tl">Auditability &mdash; Tracking data, models, and experiments; monitoring bias and drift</span>
+<span class="tc">├─── </span><span class="ts">R. Key Principles of MLOps</span>
+<span class="tc">│   ├─── </span><span class="tb">R1. Version Control and Automation</span>
+<span class="tc">│   │   └─── </span><span class="tl">Version Control tracks code + data + models. Automation covers ingestion, training, testing, deployment.</span>
+<span class="tc">│   ├─── </span><span class="tb">R2. CI/CD for ML</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Continuous Integration &mdash; Tests code, data, and models together</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Continuous Delivery &mdash; Deploys models automatically</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Continuous Training &mdash; Retrains models as new data arrives</span>
+<span class="tc">│   │   └─── </span><span class="tl">Continuous Monitoring &mdash; Tracks both model and business metrics after deployment</span>
+<span class="tc">│   └─── </span><span class="tb">R3. Model Governance</span>
+<span class="tc">│       └─── </span><span class="tl">Governance = trust + compliance in ML systems &mdash; the module's key insight for this subsection</span>
+<span class="tc">├─── </span><span class="ts">S. ML Lifecycle with MLOps Integration</span>
+<span class="tc">│   └─── </span><span class="tb">S1. Managed Assets and Lifecycle Touchpoints</span>
+<span class="tc">│       ├─── </span><span class="tl">Code &mdash; Data processing and training scripts</span>
+<span class="tc">│       ├─── </span><span class="tl">Data &mdash; Training and evaluation datasets</span>
+<span class="tc">│       └─── </span><span class="tl">Models &mdash; Versions and trained artifacts</span>
+<span class="tc">├─── </span><span class="ts">T. MLOps Implementation Pipeline</span>
+<span class="tc">│   ├─── </span><span class="tb">T1. Training Pipeline, Registration, and Approval</span>
+<span class="tc">│   │   └─── </span><span class="tl">Training pipeline: Data Preparation &rarr; Model Building &rarr; Model Evaluation, then Registration (if criteria met) and Approval</span>
+<span class="tc">│   └─── </span><span class="tb">T2. Deployment Pipeline and Production Monitoring</span>
+<span class="tc">│       ├─── </span><span class="tl">Deployment pipeline sequence: Source &rarr; Build &rarr; Deploy &rarr; Test &rarr; Promote</span>
+<span class="tc">│       └─── </span><span class="tl">Pipelines enable automated ML systems &mdash; the module's key insight for this section</span>
+<span class="tc">└─── </span><span class="ts">U. AWS Services for MLOps</span>
+<span class="tc">    └─── </span><span class="tb">U1. The AWS MLOps Toolchain</span>
+<span class="tc">        ├─── </span><span class="tl">SageMaker Data Wrangler &mdash; Low-code/no-code data preparation</span>
+<span class="tc">        ├─── </span><span class="tl">Processing API &mdash; Scalable data processing</span>
+<span class="tc">        ├─── </span><span class="tl">SageMaker Feature Store &mdash; Centralized feature storage</span>
+<span class="tc">        ├─── </span><span class="tl">SageMaker Training Jobs &mdash; Model training execution</span>
+<span class="tc">        ├─── </span><span class="tl">SageMaker Experiments &mdash; Tracks performance across training runs</span>
+<span class="tc">        ├─── </span><span class="tl">Processing Jobs &mdash; Data preprocessing and evaluation</span>
+<span class="tc">        ├─── </span><span class="tl">Model Registry &mdash; Versions and manages models</span>
+<span class="tc">        ├─── </span><span class="tl">SageMaker Endpoints &mdash; Serves deployed models</span>
+<span class="tc">        ├─── </span><span class="tl">SageMaker Model Monitor &mdash; Tracks drift in production</span>
+<span class="tc">        └─── </span><span class="tl">SageMaker Pipelines &mdash; Automates the full workflow end to end</span>
+  </div>
+  </div></div>
+
+</div>
+
+<footer class="snx-footer">
+  <div class="snx-footer-meta">
+    <span class="snx-footer-course">AWS-AI Masterclass</span>
+    <span class="snx-footer-divider">&middot;</span>
+    <span class="snx-footer-module">Module 4 &middot; Developing Machine Learning Solutions</span>
+  </div>
+  <nav class="snx-footer-nav" aria-label="Artifact navigation">
+    <a class="snx-nav-prev" href="../trees/03_aws-ai-masterclass-tree.html"><span class="snx-nav-chevron">&lsaquo;</span>Previous</a>
+    <div class="snx-nav-hub">
+      <a class="snx-hub-btn snx-hub-btn-module" href="../modules/04_aws-ai-masterclass-reviewer.html">Module</a>
+      <a class="snx-hub-btn snx-hub-btn-compact" href="../compact/04_aws-ai-masterclass-compact.html">Compact</a>
+      <a class="snx-hub-btn snx-hub-btn-tree" href="../trees/04_aws-ai-masterclass-tree.html" aria-current="page">Tree</a>
+      <a class="snx-hub-btn snx-hub-btn-quiz" href="../quizzes/04_aws-ai-masterclass-quiz.html">Quiz</a>
+      <a class="snx-hub-btn snx-hub-btn-recall" href="../recalls/04_aws-ai-masterclass-recall.html">Recall</a>
+    </div>
+    <a class="snx-nav-next" href="../trees/05_aws-ai-masterclass-tree.html">Next<span class="snx-nav-chevron">&rsaquo;</span></a>
+  </nav>
+</footer>
+</body>
+</html>

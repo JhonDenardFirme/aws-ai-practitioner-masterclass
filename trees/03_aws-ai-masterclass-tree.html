@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en" data-synaptix="3.1">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Responsible Artificial Intelligence Practices &mdash; AWS-AI Masterclass (Tree)</title>
+<link rel="stylesheet" href="../resources/css/synaptix-reviewer.css?v=3.1"/>
+<script src="../resources/js/synaptix-reviewer.js?v=3.1" defer></script>
+</head>
+<body>
+<div class="doc-wrap">
+<div class="doc-header">
+  <div class="badges">
+    <span class="badge badge-type">Tree &middot; Structure Only</span>
+    <span class="badge badge-mod">Module 3 of 9</span>
+  </div>
+  <div class="doc-title">Responsible Artificial Intelligence Practices</div>
+  <div class="doc-subtitle">source: L5 &mdash; Developing Generative AI Solutions (pasted notes) &middot; generated 2026-07-08 &middot; Synaptix v3.1</div>
+  <div class="stat-row">
+    <div class="stat-item"><div class="stat-val">9</div><div class="stat-lbl">Sections</div></div>
+    <div class="stat-item"><div class="stat-val">34</div><div class="stat-lbl">Subsections</div></div>
+    <div class="stat-item"><div class="stat-val">0</div><div class="stat-lbl">Code Blocks</div></div>
+    <div class="stat-item"><div class="stat-val">0</div><div class="stat-lbl">Enriched</div></div>
+  </div>
+</div>
+<div class="doc-body">
+  <div class="module-label"><span class="module-num">Module 3</span><div class="module-rule"></div></div>
+  <div class="module-title">Responsible Artificial Intelligence Practices</div>
+
+  <div class="section-card"><div class="section-body">
+  <div class="tree-block"><span class="tm">Module 3. Responsible Artificial Intelligence Practices</span>
+
+<span class="tc">├─── </span><span class="ts">A. Responsible AI Fundamentals</span>
+<span class="tc">│   ├─── </span><span class="tb">A1. What Responsible AI Is</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Design &mdash; Ethical planning before any code is written</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Development &mdash; Active bias mitigation during building</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Deployment &mdash; Safe release into production</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Monitoring &mdash; Continuous oversight after launch</span>
+<span class="tc">│   │   └─── </span><span class="tl">Evaluation &mdash; Ongoing performance and ethics checks</span>
+<span class="tc">│   ├─── </span><span class="tb">A2. Organizational Requirements</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Transparency + Accountability &mdash; Monitoring mechanisms that make behavior visible</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Leadership Oversight &mdash; Responsible AI governance owned at the top, not delegated away</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Expert Teams &mdash; Staff specifically trained in ethical AI practice</span>
+<span class="tc">│   │   └─── </span><span class="tl">Guideline Compliance &mdash; Following established standards, not improvising</span>
+<span class="tc">│   ├─── </span><span class="tb">A3. Traditional AI vs. Generative AI</span>
+<span class="tc">│   │   └─── </span><span class="tl">Traditional AI predicts (classification, ranking, labeled data). Generative AI creates (text/images/code, FM-based, prompt-driven).</span>
+<span class="tc">│   └─── </span><span class="tb">A4. Generative AI Business Value</span>
+<span class="tc">│       ├─── </span><span class="tl">Creativity &mdash; Generating genuinely new content</span>
+<span class="tc">│       ├─── </span><span class="tl">Productivity &mdash; Automating existing workflows</span>
+<span class="tc">│       └─── </span><span class="tl">Connectivity &mdash; Improving user engagement</span>
+<span class="tc">├─── </span><span class="ts">B. Responsible AI Challenges</span>
+<span class="tc">│   ├─── </span><span class="tb">B1. The Accuracy Problem: Bias and Variance</span>
+<span class="tc">│   │   └─── </span><span class="tl">Bias = missing key features, causes underfitting. Variance = sensitivity to noise, causes overfitting.</span>
+<span class="tc">│   ├─── </span><span class="tb">B2. The Bias-Variance Trade-off</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Underfitted &mdash; High Bias, Low Variance &mdash; the model is too simple to capture real patterns</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Overfitted &mdash; Low Bias, High Variance &mdash; the model has memorized noise instead of learning patterns</span>
+<span class="tc">│   │   └─── </span><span class="tl">Balanced &mdash; Low Bias, Low Variance &mdash; the ideal state, generalizes well to new data</span>
+<span class="tc">│   ├─── </span><span class="tb">B3. Mitigation Techniques</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Cross-Validation &mdash; Detects overfitting before deployment</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Increase Data &mdash; Improves learning by giving the model more to generalize from</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Regularization &mdash; Penalizes model complexity directly</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Simpler Models &mdash; Reduces overfitting by lowering capacity to memorize</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Dimensionality Reduction &mdash; Reduces the number of features the model must handle</span>
+<span class="tc">│   │   └─── </span><span class="tl">Early Stopping &mdash; Halts training before the model starts memorizing noise</span>
+<span class="tc">│   └─── </span><span class="tb">B4. Generative AI Challenges</span>
+<span class="tc">│       ├─── </span><span class="tl">Toxicity &mdash; Generation of harmful content</span>
+<span class="tc">│       ├─── </span><span class="tl">Hallucinations &mdash; False but plausible outputs</span>
+<span class="tc">│       ├─── </span><span class="tl">Intellectual Property &mdash; Risk of duplicating protected content</span>
+<span class="tc">│       ├─── </span><span class="tl">Plagiarism/Cheating &mdash; Misuse in academic or professional work</span>
+<span class="tc">│       └─── </span><span class="tl">Work Disruption &mdash; Job displacement concerns</span>
+<span class="tc">├─── </span><span class="ts">C. Core Dimensions of Responsible AI</span>
+<span class="tc">│   ├─── </span><span class="tb">C1. The Eight Dimensions</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Fairness &mdash; Avoiding discrimination in outcomes</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Explainability &mdash; Making WHY a decision was made understandable</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Transparency &mdash; Making HOW a decision was made visible</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Privacy &amp; Security &mdash; Protecting the data a system touches</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Veracity &amp; Robustness &mdash; Staying reliable under uncertainty</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Governance &mdash; Enforcing policy consistently</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Safety &mdash; Preventing harm to users or third parties</span>
+<span class="tc">│   │   └─── </span><span class="tl">Controllability &mdash; Allowing behavior to be guided or corrected</span>
+<span class="tc">│   └─── </span><span class="tb">C2. Business Benefits</span>
+<span class="tc">│       ├─── </span><span class="tl">Trust &amp; Reputation &mdash; User confidence in the system</span>
+<span class="tc">│       ├─── </span><span class="tl">Regulatory Compliance &mdash; Meeting external legal requirements</span>
+<span class="tc">│       ├─── </span><span class="tl">Risk Reduction &mdash; Fewer costly failures</span>
+<span class="tc">│       ├─── </span><span class="tl">Competitive Advantage &mdash; Ethical practice as a market differentiator</span>
+<span class="tc">│       ├─── </span><span class="tl">Better Decisions &mdash; More reliable outputs to act on</span>
+<span class="tc">│       └─── </span><span class="tl">Improved Products &amp; Business &mdash; Driving creative and innovative solutions</span>
+<span class="tc">├─── </span><span class="ts">D. AWS Tools for Responsible AI</span>
+<span class="tc">│   ├─── </span><span class="tb">D1. SageMaker AI vs. Amazon Bedrock</span>
+<span class="tc">│   │   └─── </span><span class="tl">Bedrock = generative AI platform. SageMaker = full ML lifecycle platform. The module's core distinction.</span>
+<span class="tc">│   ├─── </span><span class="tb">D2. Foundation Model Evaluation</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Automatic Evaluation &mdash; Metrics: accuracy, robustness, toxicity</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Human Evaluation &mdash; Metrics: style, friendliness, brand alignment &mdash; via internal team or AWS reviewers</span>
+<span class="tc">│   │   └─── </span><span class="tl">SageMaker AI Clarify &mdash; Supports automated FM evaluation, focused on responsible AI metrics and bias awareness</span>
+<span class="tc">│   ├─── </span><span class="tb">D3. Guardrails for Amazon Bedrock</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Block Undesirable Topics &mdash; Restricts content outside an approved domain</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Filter Harmful Content &mdash; Blocks hate, violence, and abuse</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Redact PII &mdash; Protects personal data from exposure</span>
+<span class="tc">│   │   └─── </span><span class="tl">Policy Enforcement &mdash; Applies custom rules per use case</span>
+<span class="tc">│   ├─── </span><span class="tb">D4. Bias Detection and Data Balancing</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Random Undersampling &mdash; Reduces the majority class to match the minority</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Random Oversampling &mdash; Duplicates minority-class examples to match the majority</span>
+<span class="tc">│   │   └─── </span><span class="tl">SMOTE &mdash; Synthetic data generation for underrepresented classes</span>
+<span class="tc">│   ├─── </span><span class="tb">D5. Model Prediction Explanation</span>
+<span class="tc">│   │   └─── </span><span class="tl">Explainability identifies key drivers of predictions &mdash; the module's key insight for this subsection</span>
+<span class="tc">│   ├─── </span><span class="tb">D6. Monitoring and Human Review</span>
+<span class="tc">│   │   └─── </span><span class="tl">Monitoring + human review = continuous Responsible AI &mdash; the module's key insight for this subsection</span>
+<span class="tc">│   ├─── </span><span class="tb">D7. Governance Improvement Tools</span>
+<span class="tc">│   │   ├─── </span><span class="tl">SageMaker Role Manager &mdash; Defines permissions across the ML lifecycle</span>
+<span class="tc">│   │   ├─── </span><span class="tl">SageMaker Model Cards &mdash; Documents model details for governance review</span>
+<span class="tc">│   │   └─── </span><span class="tl">SageMaker Model Dashboard &mdash; Monitors model behavior centrally</span>
+<span class="tc">│   └─── </span><span class="tb">D8. Transparency Tools</span>
+<span class="tc">│       └─── </span><span class="tl">Transparency = documentation + visibility &mdash; the module's key insight for this subsection</span>
+<span class="tc">├─── </span><span class="ts">E. Responsible Model Selection</span>
+<span class="tc">│   ├─── </span><span class="tb">E1. Define the Use Case Narrowly</span>
+<span class="tc">│   │   └─── </span><span class="tl">Use Case &ne; Technology &mdash; a use case must specify audience, output, and constraints</span>
+<span class="tc">│   ├─── </span><span class="tb">E2. Performance Factors</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Customization &mdash; How well the model supports tuning</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Model Size &mdash; Parameter count, trading off capability and cost</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Latency &mdash; Response time under real load</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Context Window &mdash; Maximum usable input size</span>
+<span class="tc">│   │   └─── </span><span class="tl">Licensing &mdash; Usage restrictions on the model</span>
+<span class="tc">│   ├─── </span><span class="tb">E3. Dataset Consideration and Sustainability</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Energy Consumption &mdash; Direct carbon impact of running the model</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Resource Usage &mdash; Hardware demand required for operation</span>
+<span class="tc">│   │   └─── </span><span class="tl">Environmental Impact &mdash; Long-term effects of sustained deployment</span>
+<span class="tc">│   ├─── </span><span class="tb">E4. Responsible Agency</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Value Alignment &mdash; Consistency with human ethics</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Reasoning Skills &mdash; Capacity for moral decision-making</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Autonomy Level &mdash; Degree of human oversight retained</span>
+<span class="tc">│   │   └─── </span><span class="tl">Accountability &mdash; Whether decisions remain transparent and traceable</span>
+<span class="tc">│   └─── </span><span class="tb">E5. Economic Considerations</span>
+<span class="tc">│       ├─── </span><span class="tl">Benefits &mdash; Efficiency gains from adoption</span>
+<span class="tc">│       ├─── </span><span class="tl">Risks &mdash; Job displacement concerns</span>
+<span class="tc">│       └─── </span><span class="tl">Market Impact &mdash; Broader inequality concerns from AI adoption at scale</span>
+<span class="tc">├─── </span><span class="ts">F. Responsible Dataset Preparation</span>
+<span class="tc">│   ├─── </span><span class="tb">F1. Balanced Datasets and Inclusive Collection</span>
+<span class="tc">│   │   └─── </span><span class="tl">Data bias = model bias &mdash; the module's core warning for this section</span>
+<span class="tc">│   ├─── </span><span class="tb">F2. Data Curation</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Preprocessing &mdash; Cleaning data before it's usable</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Augmentation &mdash; Adding samples to strengthen underrepresented cases</span>
+<span class="tc">│   │   └─── </span><span class="tl">Auditing &mdash; Continuous checks, not a one-time pass</span>
+<span class="tc">│   └─── </span><span class="tb">F3. Use Case Alignment</span>
+<span class="tc">│       └─── </span><span class="tl">Dataset must match the problem context &mdash; balance alone doesn't guarantee fit</span>
+<span class="tc">├─── </span><span class="ts">G. Transparent and Explainable AI</span>
+<span class="tc">│   ├─── </span><span class="tb">G1. Transparency vs. Explainability</span>
+<span class="tc">│   │   └─── </span><span class="tl">Transparency = HOW. Explainability = WHY. The module's core distinction.</span>
+<span class="tc">│   ├─── </span><span class="tb">G2. Black Box Models</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Trust &mdash; User confidence increases when behavior can be inspected</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Debugging &mdash; Fixes become easier with internal visibility</span>
+<span class="tc">│   │   └─── </span><span class="tl">Insight &mdash; Understanding behavior enables better decisions about the model</span>
+<span class="tc">│   ├─── </span><span class="tb">G3. Explainability Techniques</span>
+<span class="tc">│   │   ├─── </span><span class="tl">SHAP &mdash; Feature contribution scoring for individual predictions</span>
+<span class="tc">│   │   ├─── </span><span class="tl">LIME &mdash; Local explanations around a specific prediction</span>
+<span class="tc">│   │   └─── </span><span class="tl">Counterfactuals &mdash; Shows alternative outcomes under changed inputs</span>
+<span class="tc">│   └─── </span><span class="tb">G4. Risks of Explainability, and AWS Tools</span>
+<span class="tc">│       └─── </span><span class="tl">Explainability risks: Higher Cost, Security Risks, Privacy Exposure, False Transparency Expectations</span>
+<span class="tc">├─── </span><span class="ts">H. Model Trade-Offs</span>
+<span class="tc">│   ├─── </span><span class="tb">H1. Core Trade-offs</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Trade-offs are inevitable in AI system design &mdash; the module's central thesis</span>
+<span class="tc">│   │   └─── </span><span class="tl">Five trade-off pairs: Interpretability/Performance, Safety/Transparency, Privacy/Visibility, Security/Auditability, Filtering/Openness</span>
+<span class="tc">│   └─── </span><span class="tb">H2. Controllability</span>
+<span class="tc">│       └─── </span><span class="tl">Higher controllability supports better fairness, but the achievable level depends on model architecture</span>
+<span class="tc">└─── </span><span class="ts">I. Human-Centered AI Design</span>
+<span class="tc">    ├─── </span><span class="tb">I1. Human-Centered Design Principles</span>
+<span class="tc">    │   ├─── </span><span class="tl">Amplified Decision-Making &mdash; Clarity, Simplicity, Usability, Reflexivity, Accountability</span>
+<span class="tc">    │   ├─── </span><span class="tl">Unbiased Decision-Making &mdash; Identify bias, ensure fair processes, train users</span>
+<span class="tc">    │   └─── </span><span class="tl">Human + AI Learning &mdash; Cognitive apprenticeship, personalization, user-centered design</span>
+<span class="tc">    └─── </span><span class="tb">I2. Reinforcement Learning from Human Feedback (RLHF)</span>
+<span class="tc">        ├─── </span><span class="tl">RLHF aligns AI with human intent &mdash; the module's key insight for this section</span>
+<span class="tc">        └─── </span><span class="tl">AWS tool: SageMaker Ground Truth, for human feedback integration</span>
+  </div>
+  </div></div>
+
+</div>
+
+<footer class="snx-footer">
+  <div class="snx-footer-meta">
+    <span class="snx-footer-course">AWS-AI Masterclass</span>
+    <span class="snx-footer-divider">&middot;</span>
+    <span class="snx-footer-module">Module 3 &middot; Responsible Artificial Intelligence Practices</span>
+  </div>
+  <nav class="snx-footer-nav" aria-label="Artifact navigation">
+    <a class="snx-nav-prev" href="../trees/02_aws-ai-masterclass-tree.html"><span class="snx-nav-chevron">&lsaquo;</span>Previous</a>
+    <div class="snx-nav-hub">
+      <a class="snx-hub-btn snx-hub-btn-module" href="../modules/03_aws-ai-masterclass-reviewer.html">Module</a>
+      <a class="snx-hub-btn snx-hub-btn-compact" href="../compact/03_aws-ai-masterclass-compact.html">Compact</a>
+      <a class="snx-hub-btn snx-hub-btn-tree" href="../trees/03_aws-ai-masterclass-tree.html" aria-current="page">Tree</a>
+      <a class="snx-hub-btn snx-hub-btn-quiz" href="../quizzes/03_aws-ai-masterclass-quiz.html">Quiz</a>
+      <a class="snx-hub-btn snx-hub-btn-recall" href="../recalls/03_aws-ai-masterclass-recall.html">Recall</a>
+    </div>
+    <a class="snx-nav-next" href="../trees/04_aws-ai-masterclass-tree.html">Next<span class="snx-nav-chevron">&rsaquo;</span></a>
+  </nav>
+</footer>
+</body>
+</html>

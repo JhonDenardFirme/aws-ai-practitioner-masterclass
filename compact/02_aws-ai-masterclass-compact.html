@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en" data-synaptix="3.1">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Exploring Artificial Intelligence Use Cases and Applications &mdash; AWS-AI Masterclass (Compact)</title>
+<link rel="stylesheet" href="../resources/css/synaptix-reviewer.css?v=3.1"/>
+<script src="../resources/js/synaptix-reviewer.js?v=3.1" defer></script>
+</head>
+<body>
+<div class="doc-wrap">
+<div class="doc-header">
+  <div class="badges">
+    <span class="badge badge-type">Compact &middot; Mid</span>
+    <span class="badge badge-mod">Module 2 of 9</span>
+  </div>
+  <div class="doc-title">Exploring Artificial Intelligence Use Cases and Applications</div>
+  <div class="doc-subtitle">source: L5 &mdash; Developing Generative AI Solutions (pasted notes) &middot; generated 2026-07-08 &middot; Synaptix v3.1</div>
+  <div class="stat-row">
+    <div class="stat-item"><div class="stat-val">10</div><div class="stat-lbl">Sections</div></div>
+    <div class="stat-item"><div class="stat-val">26</div><div class="stat-lbl">Subsections</div></div>
+    <div class="stat-item"><div class="stat-val">0</div><div class="stat-lbl">Code Blocks</div></div>
+    <div class="stat-item"><div class="stat-val">3</div><div class="stat-lbl">Enriched</div></div>
+  </div>
+</div>
+<div class="doc-body">
+  <div class="module-label"><span class="module-num">Module 2</span><div class="module-rule"></div></div>
+  <div class="module-title">Exploring Artificial Intelligence Use Cases and Applications</div>
+
+  <div class="overview">
+    <div class="overview-label">Module Overview</div>
+    <div class="overview-grid">
+      <div class="overview-item"><span class="ov-letter">A</span><div><div class="ov-title">AI Overview and Definitions</div><div class="ov-desc">A quick recap of the AI/ML/DL/Generative AI hierarchy, framed around what each content type Generative AI can produce.</div></div></div>
+      <div class="overview-item"><span class="ov-letter">B</span><div><div class="ov-title">Real-World AI Use Cases Across Industries</div><div class="ov-desc">Concrete AI applications in six industries, showing how the same underlying capabilities solve very different business problems.</div></div></div>
+      <div class="overview-item"><span class="ov-letter">C</span><div><div class="ov-title">Core AI Applications</div><div class="ov-desc">Four application domains &mdash; Computer Vision, NLP, IDP, and Fraud Detection &mdash; that implement AI capability into working systems.</div></div></div>
+      <div class="overview-item"><span class="ov-letter">D</span><div><div class="ov-title">Machine Learning Fundamentals in Practice</div><div class="ov-desc">A practical decision rule for when ML is worth using at all, versus when a simple deterministic solution is better.</div></div></div>
+      <div class="overview-item"><span class="ov-letter">E</span><div><div class="ov-title">Machine Learning Techniques and Use Cases</div><div class="ov-desc">How Supervised, Unsupervised, and Reinforcement Learning differ, and the concrete problem types each one solves.</div></div></div>
+      <div class="overview-item"><span class="ov-letter">F</span><div><div class="ov-title">Generative AI Overview</div><div class="ov-desc">Generative AI as a subset of Deep Learning, and the five content types its pattern-based generation can produce.</div></div></div>
+      <div class="overview-item"><span class="ov-letter">G</span><div><div class="ov-title">Capabilities of Generative AI</div><div class="ov-desc">Seven properties that define what generative AI is actually good at, independent of any specific industry use case.</div></div></div>
+      <div class="overview-item"><span class="ov-letter">H</span><div><div class="ov-title">Challenges of Generative AI</div><div class="ov-desc">Seven risk categories generative AI introduces, paired with seven concrete mitigation strategies.</div></div></div>
+      <div class="overview-item"><span class="ov-letter">I</span><div><div class="ov-title">Model Selection Factors</div><div class="ov-desc">The core factors, concrete model examples, and cost trade-offs involved in choosing a Foundation Model for a given task.</div></div></div>
+      <div class="overview-item"><span class="ov-letter">J</span><div><div class="ov-title">Business Metrics for Generative AI</div><div class="ov-desc">Five metrics that translate a model's technical performance into measurable business value.</div></div></div>
+    </div>
+    <div class="overview-divider"></div>
+    <div class="meta-row">
+      <div class="meta-item"><div class="meta-lbl">Prerequisites</div><div class="meta-val">Module 1 (AI/ML/DL/Generative AI hierarchy, Foundation Models, AWS AI stack)</div></div>
+      <div class="meta-item"><div class="meta-lbl">Leads to</div><div class="meta-val">Module 5 (the Gen AI application lifecycle), Module 6 (optimization techniques), and every industry-specific use case explored later in this course</div></div>
+    </div>
+  </div>
+
+  <div class="intro">
+    <div class="intro-label">Module Introduction</div>
+    <p>Full lifecycle for shipping a Gen AI application: <b class="b-orange">define</b> the use case, <b class="b-orange">select</b> a Foundation Model, <b class="b-orange">improve</b> it with prompting/RAG/fine-tuning, <b class="b-orange">evaluate</b>, then <b class="b-orange">deploy</b> &mdash; looping back as feedback arrives.</p>
+  </div>
+
+  <div class="section-card">
+    <div class="section-hdr">
+      <span class="section-letter" style="color:var(--sky);background:var(--sky-dim);border:1px solid rgba(93,184,242,0.2)">A</span>
+      <span class="section-title">AI Overview and Definitions</span>
+      <span class="ghost-glyph">A</span>
+    </div>
+    <div class="section-body">
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">A1</span><span class="sub-title">AI, ML, DL, and Generative AI Recap</span></div>
+        <div class="sub-body">
+          <p>As covered in Module 1, four nested fields describe increasingly specific AI capability: <b class="b-orange">Artificial Intelligence</b> (systems mimicking human intelligence), <b class="b-orange">Machine Learning</b> (learning patterns from data), <b class="b-orange">Deep Learning</b> (neural network-based learning), and <b class="b-orange">Generative AI</b> (creating new data or content). <b class="b-salmon">Generative AI creates &mdash; ML predicts and analyzes.</b> This module builds on that distinction by walking through concrete, real-world use cases across industries.</p>
+          <div class="kp-inline"><span class="kp-tag">Key</span>Generative AI creates; ML predicts/analyzes &mdash; the same core distinction from Module 1, applied here to real use cases</div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">A2</span><span class="sub-title">Capabilities of Generative AI by Content Type</span></div>
+        <div class="sub-body">
+          <p>Generative AI's output spans four content types, each unlocking a different category of business use case explored throughout this module.</p>
+          <div class="concept-grid"><div class="concept-card cc-orange"><div class="cc-label">Text</div><ul class="cc-list"><li>Conversations, summaries</li></ul></div><div class="concept-card cc-sky"><div class="cc-label">Visual</div><ul class="cc-list"><li>Images, videos</li></ul></div><div class="concept-card cc-cyan"><div class="cc-label">Audio</div><ul class="cc-list"><li>Music, speech</li></ul></div><div class="concept-card cc-purple"><div class="cc-label">Code</div><ul class="cc-list"><li>Programming outputs</li></ul></div></div>
+          <div class="kp-inline"><span class="kp-tag">Key</span>Four content types: Text, Visual, Audio, Code</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <div class="section-hdr">
+      <span class="section-letter" style="color:var(--cyan);background:var(--cyan-dim);border:1px solid rgba(94,234,212,0.2)">B</span>
+      <span class="section-title">Real-World AI Use Cases Across Industries</span>
+      <span class="ghost-glyph">B</span>
+    </div>
+    <div class="section-body">
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">B1</span><span class="sub-title">Media and Entertainment</span></div>
+        <div class="sub-body">
+          <p>Three applications recur across media and entertainment companies adopting generative AI.</p>
+          <div class="concept-grid"><div class="concept-card cc-orange"><div class="cc-label">Content Generation</div><ul class="cc-list"><li>Automating scripts and stories</li></ul></div><div class="concept-card cc-sky"><div class="cc-label">Virtual Reality</div><ul class="cc-list"><li>Building immersive environments</li></ul></div><div class="concept-card cc-cyan"><div class="cc-label">News Generation</div><ul class="cc-list"><li>Automatically summarizing articles</li></ul></div></div>
+          <div class="kp-inline"><span class="kp-tag">Key</span>Media &amp; Entertainment: Content Generation, Virtual Reality, News Generation</div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">B2</span><span class="sub-title">Retail</span></div>
+        <div class="sub-body">
+          <p>Retail applications concentrate on the customer-facing shopping experience and the pricing decisions behind it.</p>
+          <div class="concept-grid"><div class="concept-card cc-orange"><div class="cc-label">Review Summaries</div><ul class="cc-list"><li>Condensing product insights from many reviews</li></ul></div><div class="concept-card cc-sky"><div class="cc-label">Pricing Optimization</div><ul class="cc-list"><li>Maximizing profit through dynamic pricing</li></ul></div><div class="concept-card cc-cyan"><div class="cc-label">Virtual Try-Ons</div><ul class="cc-list"><li>Simulating customer fitting before purchase</li></ul></div><div class="concept-card cc-purple"><div class="cc-label">Store Layout Optimization</div><ul class="cc-list"><li>Improving physical or digital shopping flow</li></ul></div></div>
+          <div class="kp-inline"><span class="kp-tag">Key</span>Retail: Review Summaries, Pricing Optimization, Virtual Try-Ons, Store Layout Optimization</div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">B3</span><span class="sub-title">Healthcare</span></div>
+        <div class="sub-body">
+          <p>Healthcare applications focus on reducing administrative burden and improving diagnostic accuracy.</p>
+          <div class="concept-grid"><div class="concept-card cc-orange"><div class="cc-label">Clinical Documentation (HealthScribe)</div><ul class="cc-list"><li>Automatic clinical note generation</li></ul></div><div class="concept-card cc-sky"><div class="cc-label">Personalized Medicine</div><ul class="cc-list"><li>Tailoring treatments to the individual patient</li></ul></div><div class="concept-card cc-cyan"><div class="cc-label">Medical Imaging Enhancement</div><ul class="cc-list"><li>Improving diagnostic accuracy from scans</li></ul></div></div>
+          <div class="kp-inline"><span class="kp-tag">Key</span>Healthcare: Clinical Documentation (HealthScribe), Personalized Medicine, Medical Imaging Enhancement</div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">B4</span><span class="sub-title">Life Sciences</span></div>
+        <div class="sub-body">
+          <p>Life sciences applications push generative AI into scientific discovery itself, not just business operations.</p>
+          <div class="concept-grid"><div class="concept-card cc-orange"><div class="cc-label">Drug Discovery</div><ul class="cc-list"><li>Generating candidate molecular structures</li></ul></div><div class="concept-card cc-sky"><div class="cc-label">Protein Folding Prediction</div><ul class="cc-list"><li>3D structure analysis for proteins</li></ul></div><div class="concept-card cc-cyan"><div class="cc-label">Synthetic Biology</div><ul class="cc-list"><li>Designing engineered biological systems</li></ul></div></div>
+          <div class="kp-inline"><span class="kp-tag">Key</span>Life Sciences: Drug Discovery, Protein Folding Prediction, Synthetic Biology</div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">B5</span><span class="sub-title">Financial Services</span></div>
+        <div class="sub-body">
+          <p>Financial services applications center on detecting anomalies and optimizing decisions under risk.</p>
+          <div class="concept-grid"><div class="concept-card cc-orange"><div class="cc-label">Fraud Detection</div><ul class="cc-list"><li>Detecting anomalies in transaction patterns</li></ul></div><div class="concept-card cc-sky"><div class="cc-label">Portfolio Management</div><ul class="cc-list"><li>Simulating market scenarios for decision support</li></ul></div><div class="concept-card cc-cyan"><div class="cc-label">Debt Collection Optimization</div><ul class="cc-list"><li>Improving collection strategy and outcomes</li></ul></div></div>
+          <div class="kp-inline"><span class="kp-tag">Key</span>Financial Services: Fraud Detection, Portfolio Management, Debt Collection Optimization</div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">B6</span><span class="sub-title">Manufacturing</span></div>
+        <div class="sub-body">
+          <p>Manufacturing applications aim at reducing downtime and discovering better materials and designs.</p>
+          <div class="concept-grid"><div class="concept-card cc-orange"><div class="cc-label">Predictive Maintenance</div><ul class="cc-list"><li>Reducing unplanned downtime</li></ul></div><div class="concept-card cc-sky"><div class="cc-label">Process Optimization</div><ul class="cc-list"><li>Improving manufacturing efficiency</li></ul></div><div class="concept-card cc-cyan"><div class="cc-label">Product Design Generation</div><ul class="cc-list"><li>Optimizing designs against constraints</li></ul></div><div class="concept-card cc-purple"><div class="cc-label">Material Science</div><ul class="cc-list"><li>Discovering new materials</li></ul></div></div>
+          <div class="kp-inline"><span class="kp-tag">Key</span>AI creates business value through automation + optimization &mdash; the module's key insight across all six industries<span class="kp-sep">&rsaquo;</span>Manufacturing: Predictive Maintenance, Process Optimization, Product Design Generation, Material Science</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <div class="section-hdr">
+      <span class="section-letter" style="color:var(--purple);background:var(--purple-dim);border:1px solid rgba(167,139,250,0.2)">C</span>
+      <span class="section-title">Core AI Applications</span>
+      <span class="ghost-glyph">C</span>
+    </div>
+    <div class="section-body">
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">C1</span><span class="sub-title">Computer Vision</span></div>
+        <div class="sub-body">
+          <p><span class="kw-cyan def">Computer Vision</span> understands images and videos through three core tasks, applied in autonomous driving, healthcare imaging, and public safety (facial recognition).</p>
+          <div class="concept-grid"><div class="concept-card cc-orange"><div class="cc-label">Image Classification</div><ul class="cc-list"><li>Labels an image with its overall category</li></ul></div><div class="concept-card cc-sky"><div class="cc-label">Object Detection</div><ul class="cc-list"><li>Identifies and locates specific objects within an image</li></ul></div><div class="concept-card cc-cyan"><div class="cc-label">Segmentation</div><ul class="cc-list"><li>Performs pixel-level analysis, isolating exact shapes</li></ul></div></div>
+          <div class="kp-inline"><span class="kp-tag">Key</span>Computer Vision use cases: autonomous driving, healthcare imaging, public safety</div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">C2</span><span class="sub-title">Natural Language Processing (NLP)</span></div>
+        <div class="sub-body">
+          <p><span class="kw-cyan def">NLP</span> understands human language through four core tasks, applied in insurance (policy data extraction), telecom (customer recommendations), and education (chatbot Q&amp;A).</p>
+          <div class="concept-grid"><div class="concept-card cc-orange"><div class="cc-label">Text Classification</div><ul class="cc-list"><li>Assigns a category label to a piece of text</li></ul></div><div class="concept-card cc-sky"><div class="cc-label">Sentiment Analysis</div><ul class="cc-list"><li>Determines the emotional tone of text</li></ul></div><div class="concept-card cc-cyan"><div class="cc-label">Translation</div><ul class="cc-list"><li>Converts text between languages</li></ul></div><div class="concept-card cc-purple"><div class="cc-label">Text Generation</div><ul class="cc-list"><li>Produces new, coherent text</li></ul></div></div>
+          <div class="kp-inline"><span class="kp-tag">Key</span>NLP use cases: insurance policy data extraction, telecom recommendations, education chatbot Q&amp;A</div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">C3</span><span class="sub-title">Intelligent Document Processing (IDP)</span></div>
+        <div class="sub-body">
+          <p><span class="kw-cyan def">IDP</span> extracts insights from documents through three functions, applied in finance (loan processing), legal (document automation), and healthcare (claims processing).</p>
+          <div class="concept-grid"><div class="concept-card cc-orange"><div class="cc-label">Data Extraction</div><ul class="cc-list"><li>Pulling structured values out of unstructured documents</li></ul></div><div class="concept-card cc-sky"><div class="cc-label">Classification</div><ul class="cc-list"><li>Sorting documents into the correct category</li></ul></div><div class="concept-card cc-cyan"><div class="cc-label">Summarization</div><ul class="cc-list"><li>Condensing long documents into key points</li></ul></div></div>
+          <div class="kp-inline"><span class="kp-tag">Key</span>IDP use cases: finance loan processing, legal document automation, healthcare claims processing</div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">C4</span><span class="sub-title">Fraud Detection</span></div>
+        <div class="sub-body">
+          <p><span class="kw-cyan def">Fraud Detection</span> identifies fraudulent activity across three industries: finance (AML and transaction monitoring), retail (account protection), and telecom (fraud monitoring).</p>
+          <div class="kp-inline"><span class="kp-tag">Key</span>Application = implementation of an AI capability &mdash; the module's key insight tying capabilities to applications<span class="kp-sep">&rsaquo;</span>Fraud Detection industries: Finance (AML), Retail (account protection), Telecom (fraud monitoring)</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <div class="section-hdr">
+      <span class="section-letter" style="color:var(--orange);background:var(--orange-dim);border:1px solid rgba(251,146,60,0.2)">D</span>
+      <span class="section-title">Machine Learning Fundamentals in Practice</span>
+      <span class="ghost-glyph">D</span>
+    </div>
+    <div class="section-body">
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">D1</span><span class="sub-title">When ML Is Appropriate</span></div>
+        <div class="sub-body">
+          <p>ML earns its complexity cost under three conditions &mdash; spam filtering is the module's example of a problem that satisfies all three at once.</p>
+          <div class="concept-grid"><div class="concept-card cc-orange"><div class="cc-label">Complex Rules</div><ul class="cc-list"><li>The correct logic is too difficult to define manually</li></ul></div><div class="concept-card cc-sky"><div class="cc-label">High Variability</div><ul class="cc-list"><li>Many influencing factors make a fixed rule set brittle</li></ul></div><div class="concept-card cc-cyan"><div class="cc-label">Large Scale</div><ul class="cc-list"><li>The problem involves massive datasets no manual process could handle</li></ul></div></div>
+          <div class="kp-inline"><span class="kp-tag">Key</span>Use ML when rules are too complex or scale is too high &mdash; the module's core decision rule<span class="kp-sep">&rsaquo;</span>Spam filtering satisfies all three conditions: complex, high-variability, large-scale</div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">D2</span><span class="sub-title">When ML Is NOT Appropriate</span></div>
+        <div class="sub-body">
+          <p>ML is the wrong tool when <b class="b-orange">Simple Logic</b> already provides clear, deterministic rules, or when a <b class="b-orange">Low-Complexity Task</b> is already solvable with predefined steps &mdash; basic calculations being the module's example.</p>
+          <div class="kp-inline"><span class="kp-tag">Key</span>Do not use ML if a rule-based solution already works &mdash; the module's core caution</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <div class="section-hdr">
+      <span class="section-letter" style="color:var(--sky);background:var(--sky-dim);border:1px solid rgba(93,184,242,0.2)">E</span>
+      <span class="section-title">Machine Learning Techniques and Use Cases</span>
+      <span class="ghost-glyph">E</span>
+    </div>
+    <div class="section-body">
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">E1</span><span class="sub-title">Supervised Learning: Classification vs. Regression</span></div>
+        <div class="sub-body">
+          <p><span class="kw-cyan def">Supervised Learning</span> learns from labeled data to predict outputs, and splits into two types.</p>
+          <div class="kp-inline"><span class="kp-tag">Key</span>Classification = categorical prediction (fraud detection, image classification, customer retention, diagnostics)<span class="kp-sep">&rsaquo;</span>Regression = continuous prediction (weather forecasting, market trends, life expectancy, population growth)</div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">E2</span><span class="sub-title">Unsupervised Learning: Clustering vs. Dimensionality Reduction</span></div>
+        <div class="sub-body">
+          <p><span class="kw-cyan def">Unsupervised Learning</span> learns from unlabeled data to discover hidden patterns. <b class="b-salmon">Unsupervised learning has no labels &mdash; the model creates its own structure</b> from the data, rather than being told what the correct groupings or reduced representations should be.</p>
+          <div class="kp-inline"><span class="kp-tag">Key</span>Clustering: customer segmentation, targeted marketing, recommendation systems<span class="kp-sep">&rsaquo;</span>Dimensionality Reduction: data visualization, compression, feature extraction</div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">E3</span><span class="sub-title">Reinforcement Learning</span></div>
+        <div class="sub-body">
+          <p><span class="kw-cyan def">Reinforcement Learning</span> learns optimal actions through trial-and-error, using three core components.</p>
+          <div class="concept-grid"><div class="concept-card cc-orange"><div class="cc-label">Agent</div><ul class="cc-list"><li>The decision-maker taking actions</li></ul></div><div class="concept-card cc-sky"><div class="cc-label">Environment</div><ul class="cc-list"><li>The space the agent interacts with</li></ul></div><div class="concept-card cc-cyan"><div class="cc-label">Feedback</div><ul class="cc-list"><li>Rewards and penalties that shape future decisions</li></ul></div></div>
+          <div class="kp-inline"><span class="kp-tag">Key</span>RL learns optimal actions through trial-and-error &mdash; the module's key insight<span class="kp-sep">&rsaquo;</span>RL components: Agent, Environment, Feedback (rewards/penalties)</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <div class="section-hdr">
+      <span class="section-letter" style="color:var(--cyan);background:var(--cyan-dim);border:1px solid rgba(94,234,212,0.2)">F</span>
+      <span class="section-title">Generative AI Overview</span>
+      <span class="ghost-glyph">F</span>
+    </div>
+    <div class="section-body">
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">F1</span><span class="sub-title">What Generative AI Is, and Its Content Types</span></div>
+        <div class="sub-body">
+          <p><span class="kw-cyan def">Generative AI</span> is a subset of Deep Learning, built on neural networks, whose key function is pattern-based generation across five content types.</p>
+          <div class="concept-grid"><div class="concept-card cc-orange"><div class="cc-label">Text</div><ul class="cc-list"><li>Conversations, summaries</li></ul></div><div class="concept-card cc-sky"><div class="cc-label">Image</div><ul class="cc-list"><li>Visual content</li></ul></div><div class="concept-card cc-cyan"><div class="cc-label">Video</div><ul class="cc-list"><li>Generated scenes</li></ul></div><div class="concept-card cc-purple"><div class="cc-label">Audio</div><ul class="cc-list"><li>Music, speech</li></ul></div><div class="concept-card cc-green"><div class="cc-label">Code</div><ul class="cc-list"><li>Program generation</li></ul></div></div>
+          <div class="kp-inline"><span class="kp-tag">Key</span>Five content types: Text, Image, Video, Audio, Code</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <div class="section-hdr">
+      <span class="section-letter" style="color:var(--purple);background:var(--purple-dim);border:1px solid rgba(167,139,250,0.2)">G</span>
+      <span class="section-title">Capabilities of Generative AI</span>
+      <span class="ghost-glyph">G</span>
+    </div>
+    <div class="section-body">
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">G1</span><span class="sub-title">Seven Capabilities</span></div>
+        <div class="sub-body">
+          <p>These seven capabilities recur across every industry use case covered in Section B &mdash; they're the underlying properties that make each specific application possible.</p>
+          <div class="concept-grid"><div class="concept-card cc-orange"><div class="cc-label">Adaptability</div><ul class="cc-list"><li>Flexible across tasks and domains</li></ul></div><div class="concept-card cc-sky"><div class="cc-label">Responsiveness</div><ul class="cc-list"><li>Generates output in real time</li></ul></div><div class="concept-card cc-cyan"><div class="cc-label">Simplicity</div><ul class="cc-list"><li>Automates otherwise complex processes</li></ul></div><div class="concept-card cc-purple"><div class="cc-label">Creativity</div><ul class="cc-list"><li>Generates novel ideas and designs</li></ul></div><div class="concept-card cc-green"><div class="cc-label">Data Efficiency</div><ul class="cc-list"><li>Learns effectively from limited data</li></ul></div><div class="concept-card cc-amber"><div class="cc-label">Personalization</div><ul class="cc-list"><li>Tailors outputs to individual users</li></ul></div><div class="concept-card cc-orange"><div class="cc-label">Scalability</div><ul class="cc-list"><li>Produces content at scale</li></ul></div></div>
+          <div class="kp-inline"><span class="kp-tag">Key</span>Generative AI enables automation + creativity at scale &mdash; the module's key insight</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <div class="section-hdr">
+      <span class="section-letter" style="color:var(--orange);background:var(--orange-dim);border:1px solid rgba(251,146,60,0.2)">H</span>
+      <span class="section-title">Challenges of Generative AI</span>
+      <span class="ghost-glyph">H</span>
+    </div>
+    <div class="section-body">
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">H1</span><span class="sub-title">Seven Risks</span></div>
+        <div class="sub-body">
+          <p>The same generative capability that creates business value also introduces seven distinct risk categories that must be managed before deployment.</p>
+          <div class="concept-grid"><div class="concept-card cc-orange"><div class="cc-label">Regulatory Violations</div><ul class="cc-list"><li>Exposure of sensitive or restricted data</li></ul></div><div class="concept-card cc-sky"><div class="cc-label">Social Risks</div><ul class="cc-list"><li>Harmful or reputationally damaging content</li></ul></div><div class="concept-card cc-cyan"><div class="cc-label">Privacy Concerns</div><ul class="cc-list"><li>Misuse of personal data</li></ul></div><div class="concept-card cc-purple"><div class="cc-label">Toxicity</div><ul class="cc-list"><li>Offensive or inappropriate outputs</li></ul></div><div class="concept-card cc-green"><div class="cc-label">Hallucinations</div><ul class="cc-list"><li>Plausible but false generated information</li></ul></div><div class="concept-card cc-amber"><div class="cc-label">Interpretability</div><ul class="cc-list"><li>Difficulty understanding why an output was produced</li></ul></div><div class="concept-card cc-orange"><div class="cc-label">Nondeterminism</div><ul class="cc-list"><li>Inconsistent outputs across runs</li></ul></div></div>
+          <div class="kp-inline"><span class="kp-tag">Key</span>Hallucinations = plausible but false outputs &mdash; the module's key definition<span class="kp-sep">&rsaquo;</span>AI outputs must always be verified &mdash; the module's core caution</div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">H2</span><span class="sub-title">Mitigation Strategies</span></div>
+        <div class="sub-body">
+          <p>Seven mitigation strategies map roughly one-to-one against the seven risks above, though several address multiple risks at once.</p>
+          <div class="concept-grid"><div class="concept-card cc-orange"><div class="cc-label">Data Anonymization</div><ul class="cc-list"><li>Protects sensitive data from exposure</li></ul></div><div class="concept-card cc-sky"><div class="cc-label">Model Testing</div><ul class="cc-list"><li>Evaluates behavior before deployment</li></ul></div><div class="concept-card cc-cyan"><div class="cc-label">Security Measures</div><ul class="cc-list"><li>Encryption and firewalls protecting the system</li></ul></div><div class="concept-card cc-purple"><div class="cc-label">Data Curation</div><ul class="cc-list"><li>Removes harmful content from training data</li></ul></div><div class="concept-card cc-green"><div class="cc-label">Guardrails</div><ul class="cc-list"><li>Filters outputs before they reach the user</li></ul></div><div class="concept-card cc-amber"><div class="cc-label">Verification</div><ul class="cc-list"><li>Cross-checks outputs against trusted sources</li></ul></div><div class="concept-card cc-orange"><div class="cc-label">Monitoring</div><ul class="cc-list"><li>Detects inconsistencies in ongoing production use</li></ul></div></div>
+          <div class="kp-inline"><span class="kp-tag">Key</span>Seven mitigations: Data Anonymization, Model Testing, Security Measures, Data Curation, Guardrails, Verification, Monitoring</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <div class="section-hdr">
+      <span class="section-letter" style="color:var(--sky);background:var(--sky-dim);border:1px solid rgba(93,184,242,0.2)">I</span>
+      <span class="section-title">Model Selection Factors</span>
+      <span class="ghost-glyph">I</span>
+    </div>
+    <div class="section-body">
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">I1</span><span class="sub-title">Core Selection Factors</span></div>
+        <div class="sub-body">
+          <p>Six factors together determine whether a specific Foundation Model fits a specific business problem.</p>
+          <div class="concept-grid"><div class="concept-card cc-orange"><div class="cc-label">Model Type</div><ul class="cc-list"><li>Task-specific capability match</li></ul></div><div class="concept-card cc-sky"><div class="cc-label">Performance</div><ul class="cc-list"><li>Accuracy and reliability under real conditions</li></ul></div><div class="concept-card cc-cyan"><div class="cc-label">Capabilities</div><ul class="cc-list"><li>The range of tasks the model actually supports</li></ul></div><div class="concept-card cc-purple"><div class="cc-label">Constraints</div><ul class="cc-list"><li>Resource and deployment limitations</li></ul></div><div class="concept-card cc-green"><div class="cc-label">Compliance</div><ul class="cc-list"><li>Ethical and regulatory requirements</li></ul></div><div class="concept-card cc-amber"><div class="cc-label">Cost</div><ul class="cc-list"><li>The trade-off between model size and speed</li></ul></div></div>
+          <div class="kp-inline"><span class="kp-tag">Key</span>Model selection = task + cost + performance balance &mdash; the module's key insight</div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">I2</span><span class="sub-title">Model Examples</span></div>
+        <div class="sub-body">
+          <p>Six named models illustrate how different vendors specialize in different strengths &mdash; the same &ldquo;model fit over model power&rdquo; principle from Module 5 applies here.</p>
+          <div class="concept-grid"><div class="concept-card cc-orange"><div class="cc-label">AI21 Jurassic-2</div><ul class="cc-list"><li>Text generation, summarization</li></ul></div><div class="concept-card cc-sky"><div class="cc-label">Amazon Titan</div><ul class="cc-list"><li>Embeddings, search, Q&amp;A</li></ul></div><div class="concept-card cc-cyan"><div class="cc-label">Anthropic Claude</div><ul class="cc-list"><li>Chat, reasoning, coding</li></ul></div><div class="concept-card cc-purple"><div class="cc-label">Stable Diffusion</div><ul class="cc-list"><li>Image generation</li></ul></div><div class="concept-card cc-green"><div class="cc-label">Cohere Command</div><ul class="cc-list"><li>NLP tasks</li></ul></div><div class="concept-card cc-amber"><div class="cc-label">Meta Llama</div><ul class="cc-list"><li>General text processing</li></ul></div></div>
+          <div class="kp-inline"><span class="kp-tag">Key</span>Six model examples spanning text, embeddings, chat, image generation, and general NLP</div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">I3</span><span class="sub-title">Constraints and Cost Trade-offs</span></div>
+        <div class="sub-body">
+          <p>Three practical constraints determine deployability, while cost trades directly against model size.</p>
+          <div class="concept-grid"><div class="concept-card cc-orange"><div class="cc-label">Compute Resources</div><ul class="cc-list"><li>GPU, CPU, and memory availability</li></ul></div><div class="concept-card cc-sky"><div class="cc-label">Data Availability</div><ul class="cc-list"><li>Quality and size of usable data</li></ul></div><div class="concept-card cc-cyan"><div class="cc-label">Deployment Needs</div><ul class="cc-list"><li>Cloud versus on-premises requirements</li></ul></div></div>
+          <div class="kp-inline"><span class="kp-tag">Key</span>Large models: high accuracy, high cost. Small models: lower cost, faster.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <div class="section-hdr">
+      <span class="section-letter" style="color:var(--cyan);background:var(--cyan-dim);border:1px solid rgba(94,234,212,0.2)">J</span>
+      <span class="section-title">Business Metrics for Generative AI</span>
+      <span class="ghost-glyph">J</span>
+    </div>
+    <div class="section-body">
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">J1</span><span class="sub-title">Five Business Metrics</span></div>
+        <div class="sub-body">
+          <p>These five metrics are how a business actually knows whether a deployed generative AI system is working, beyond raw model accuracy.</p>
+          <div class="concept-grid"><div class="concept-card cc-orange"><div class="cc-label">User Satisfaction</div><ul class="cc-list"><li>Direct feedback on the experience</li></ul></div><div class="concept-card cc-sky"><div class="cc-label">Average Revenue Per User (ARPU)</div><ul class="cc-list"><li>Revenue generated per user</li></ul></div><div class="concept-card cc-cyan"><div class="cc-label">Cross-Domain Performance</div><ul class="cc-list"><li>Effectiveness across multiple use cases at once</li></ul></div><div class="concept-card cc-purple"><div class="cc-label">Conversion Rate</div><ul class="cc-list"><li>Rate of desired action completion</li></ul></div><div class="concept-card cc-green"><div class="cc-label">Efficiency</div><ul class="cc-list"><li>Resource and time optimization achieved</li></ul></div></div>
+          <div class="kp-inline"><span class="kp-tag">Key</span>Five business metrics: User Satisfaction, ARPU, Cross-Domain Performance, Conversion Rate, Efficiency</div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">J2</span><span class="sub-title">Key Insights on Metrics</span></div>
+        <div class="sub-body">
+          <p>Metrics depend on the use case &mdash; there is no universal metric set that applies to every deployment. <b class="b-orange">Success = technical performance + business value</b> &mdash; a model can be technically excellent and still fail the organization if its outputs don't move a metric the business actually cares about.</p>
+          <div class="kp-inline"><span class="kp-tag">Key</span>Metrics are use-case-dependent, not universal<span class="kp-sep">&rsaquo;</span>Success = technical performance + business value &mdash; the module's closing insight</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="summary-block"><div class="summary-label">Module Summary</div><ul class="summary-list"><li>AI use cases span at least six industries &mdash; Media, Retail, Healthcare, Life Sciences, Financial Services, Manufacturing &mdash; and AI creates business value specifically through automation and optimization.</li><li>Four core application domains implement AI capability into working systems: Computer Vision, NLP, Intelligent Document Processing, and Fraud Detection.</li><li>Use ML when rules are too complex or scale is too high; don't use ML when a simple, deterministic, rule-based solution already works.</li><li>Supervised Learning (Classification, Regression), Unsupervised Learning (Clustering, Dimensionality Reduction), and Reinforcement Learning (Agent, Environment, Feedback) each solve a distinct category of problem.</li><li>Generative AI's seven capabilities create value, but its seven risks (bias, hallucination, privacy, toxicity, and more) require matched mitigation strategies; model selection balances task fit, cost, and performance, and ultimate success depends on both technical performance and business value.</li></ul></div>
+</div>
+
+<footer class="snx-footer">
+  <div class="snx-footer-meta">
+    <span class="snx-footer-course">AWS-AI Masterclass</span>
+    <span class="snx-footer-divider">&middot;</span>
+    <span class="snx-footer-module">Module 2 &middot; Exploring Artificial Intelligence Use Cases and Applications</span>
+  </div>
+  <nav class="snx-footer-nav" aria-label="Artifact navigation">
+    <a class="snx-nav-prev" href="../compact/01_aws-ai-masterclass-compact.html"><span class="snx-nav-chevron">&lsaquo;</span>Previous</a>
+    <div class="snx-nav-hub">
+      <a class="snx-hub-btn snx-hub-btn-module" href="../modules/02_aws-ai-masterclass-reviewer.html">Module</a>
+      <a class="snx-hub-btn snx-hub-btn-compact" href="../compact/02_aws-ai-masterclass-compact.html" aria-current="page">Compact</a>
+      <a class="snx-hub-btn snx-hub-btn-tree" href="../trees/02_aws-ai-masterclass-tree.html">Tree</a>
+      <a class="snx-hub-btn snx-hub-btn-quiz" href="../quizzes/02_aws-ai-masterclass-quiz.html">Quiz</a>
+      <a class="snx-hub-btn snx-hub-btn-recall" href="../recalls/02_aws-ai-masterclass-recall.html">Recall</a>
+    </div>
+    <a class="snx-nav-next" href="../compact/03_aws-ai-masterclass-compact.html">Next<span class="snx-nav-chevron">&rsaquo;</span></a>
+  </nav>
+</footer>
+</body>
+</html>

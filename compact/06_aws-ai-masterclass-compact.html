@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en" data-synaptix="3.1">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Optimizing Foundation Models &mdash; AWS-AI Masterclass (Compact)</title>
+<link rel="stylesheet" href="../resources/css/synaptix-reviewer.css?v=3.1"/>
+<script src="../resources/js/synaptix-reviewer.js?v=3.1" defer></script>
+</head>
+<body>
+<div class="doc-wrap">
+<div class="doc-header">
+  <div class="badges">
+    <span class="badge badge-type">Compact &middot; Mid</span>
+    <span class="badge badge-mod">Module 6 of 6</span>
+  </div>
+  <div class="doc-title">Optimizing Foundation Models</div>
+  <div class="doc-subtitle">source: L5 &mdash; Developing Generative AI Solutions (pasted notes) &middot; generated 2026-07-08 &middot; Synaptix v3.1</div>
+  <div class="stat-row">
+    <div class="stat-item"><div class="stat-val">9</div><div class="stat-lbl">Sections</div></div>
+    <div class="stat-item"><div class="stat-val">20</div><div class="stat-lbl">Subsections</div></div>
+    <div class="stat-item"><div class="stat-val">0</div><div class="stat-lbl">Code Blocks</div></div>
+    <div class="stat-item"><div class="stat-val">3</div><div class="stat-lbl">Enriched</div></div>
+  </div>
+</div>
+<div class="doc-body">
+  <div class="module-label"><span class="module-num">Module 6</span><div class="module-rule"></div></div>
+  <div class="module-title">Optimizing Foundation Models</div>
+
+  <div class="overview">
+    <div class="overview-label">Module Overview</div>
+    <div class="overview-grid">
+      <div class="overview-item"><span class="ov-letter">A</span><div><div class="ov-title">Foundations of FM Optimization</div><div class="ov-desc">What optimizing a Foundation Model means, and the four core objectives that make up the discipline.</div></div></div>
+      <div class="overview-item"><span class="ov-letter">B</span><div><div class="ov-title">Business Case: AnyCompany Telecom Chatbot</div><div class="ov-desc">A worked example showing why a generic Foundation Model needs enterprise context before it becomes useful.</div></div></div>
+      <div class="overview-item"><span class="ov-letter">C</span><div><div class="ov-title">Retrieval-Augmented Generation (RAG)</div><div class="ov-desc">How RAG injects enterprise context into model outputs using embeddings and vector databases, without retraining.</div></div></div>
+      <div class="overview-item"><span class="ov-letter">D</span><div><div class="ov-title">Agents in Generative AI Systems</div><div class="ov-desc">How agents connect a model's reasoning to real backend systems, turning generated text into completed actions.</div></div></div>
+      <div class="overview-item"><span class="ov-letter">E</span><div><div class="ov-title">Evaluating Generative AI Systems</div><div class="ov-desc">Three complementary evaluation methods &mdash; human review, benchmark datasets, and LLM-as-judge &mdash; and how they combine.</div></div></div>
+      <div class="overview-item"><span class="ov-letter">F</span><div><div class="ov-title">Business Case: AnyCompany Retail Personalization</div><div class="ov-desc">A second worked example, applying fine-tuning and recommendation systems to a retail cart-abandonment problem.</div></div></div>
+      <div class="overview-item"><span class="ov-letter">G</span><div><div class="ov-title">Fine-Tuning Foundation Models</div><div class="ov-desc">Why and how a model's weights are adapted to a specific domain, and the five approaches available for doing it.</div></div></div>
+      <div class="overview-item"><span class="ov-letter">H</span><div><div class="ov-title">Data Preparation for Fine-Tuning</div><div class="ov-desc">What separates a model's original training data from the data used to fine-tune it, and the steps required to prepare that data well.</div></div></div>
+      <div class="overview-item"><span class="ov-letter">I</span><div><div class="ov-title">Model Evaluation Metrics</div><div class="ov-desc">The three automated metrics used to score generated text, and what specifically each one captures.</div></div></div>
+    </div>
+    <div class="overview-divider"></div>
+    <div class="meta-row">
+      <div class="meta-item"><div class="meta-lbl">Prerequisites</div><div class="meta-val">Module 5 (Developing Generative AI Solutions) &mdash; FM selection, RAG basics, evaluation metrics</div></div>
+      <div class="meta-item"><div class="meta-lbl">Leads to</div><div class="meta-val">Vector database hands-on labs, agent orchestration design, production fine-tuning pipelines</div></div>
+    </div>
+  </div>
+
+  <div class="intro">
+    <div class="intro-label">Module Introduction</div>
+    <p>Full lifecycle for shipping a Gen AI application: <b class="b-orange">define</b> the use case, <b class="b-orange">select</b> a Foundation Model, <b class="b-orange">improve</b> it with prompting/RAG/fine-tuning, <b class="b-orange">evaluate</b>, then <b class="b-orange">deploy</b> &mdash; looping back as feedback arrives.</p>
+  </div>
+
+  <div class="section-card">
+    <div class="section-hdr">
+      <span class="section-letter" style="color:var(--sky);background:var(--sky-dim);border:1px solid rgba(93,184,242,0.2)">A</span>
+      <span class="section-title">Foundations of FM Optimization</span>
+      <span class="ghost-glyph">A</span>
+    </div>
+    <div class="section-body">
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">A1</span><span class="sub-title">What Optimization Means</span></div>
+        <div class="sub-body">
+          <p><span class="kw-cyan def">Foundation Model Optimization</span> is the practice of improving a deployed model's output quality and relevance after it has already been selected. The goal is not abstract quality &mdash; it is <b class="b-orange">aligning model outputs with business objectives</b>.</p>
+          <div class="kp-inline"><span class="kp-tag">Key</span>FM Optimization = improving output quality and relevance post-selection<span class="kp-sep">&rsaquo;</span>The target is business alignment, not abstract benchmark performance</div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">A2</span><span class="sub-title">Core Objectives</span></div>
+        <div class="sub-body">
+          <p>Optimization work in this module organizes around four core objectives, each covered in its own section below.</p>
+          <div class="concept-grid"><div class="concept-card cc-orange"><div class="cc-label">Embedding Storage</div><ul class="cc-list"><li>Store vector representations of data in a database for fast retrieval</li></ul></div><div class="concept-card cc-sky"><div class="cc-label">Agents</div><ul class="cc-list"><li>Automate multi-step workflows that connect the model to backend systems</li></ul></div><div class="concept-card cc-cyan"><div class="cc-label">Evaluation</div><ul class="cc-list"><li>Measure how effectively the FM performs against business goals</li></ul></div><div class="concept-card cc-purple"><div class="cc-label">Fine-Tuning</div><ul class="cc-list"><li>Adapt the model's weights to a specific domain or task</li></ul></div></div>
+          <div class="kp-inline"><span class="kp-tag">Key</span>Four core objectives: Embedding Storage, Agents, Evaluation, Fine-Tuning<span class="kp-sep">&rsaquo;</span>Best performance = Data + Context + Iteration &mdash; the module's key insight</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <div class="section-hdr">
+      <span class="section-letter" style="color:var(--cyan);background:var(--cyan-dim);border:1px solid rgba(94,234,212,0.2)">B</span>
+      <span class="section-title">Business Case: AnyCompany Telecom Chatbot</span>
+      <span class="ghost-glyph">B</span>
+    </div>
+    <div class="section-body">
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">B1</span><span class="sub-title">Problem &amp; Goals</span></div>
+        <div class="sub-body">
+          <p>AnyCompany, a telecom provider, faces high support cost and operational inefficiency from its customer service line. <span class="enrich-plus">[+]</span> Notice these are exactly the kind of concrete, measurable success criteria that Module 5's Use Case Structure calls for &mdash; a percentage reduction and a satisfaction floor, not a vague &ldquo;improve support.&rdquo;.</p>
+          <div class="kp-inline"><span class="kp-tag">Key</span>Goal: reduce tickets by 70%, raise satisfaction to &ge; 4/5</div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">B2</span><span class="sub-title">ML Challenges</span></div>
+        <div class="sub-body">
+          <p>Off-the-shelf LLMs lack domain-specific knowledge &mdash; they don't know AnyCompany's plans, policies, or account systems.</p>
+          <div class="kp-inline"><span class="kp-tag">Key</span>Generic models lack domain knowledge by default<span class="kp-sep">&rsaquo;</span>Two needs: enterprise data integration + task automation capability</div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">B3</span><span class="sub-title">Solution Components</span></div>
+        <div class="sub-body">
+          <p>AnyCompany's solution combines three components, each covered in depth later in this module.</p>
+          <div class="concept-stack"><div class="concept-block cb-orange"><div class="cb-label">Knowledge Base</div><p>Built from chat logs, support tickets, and call recordings.</p></div><div class="concept-block cb-sky"><div class="cb-label">Data Preparation</div><p>Collection, cleaning, and anonymization of that raw material before it's usable.</p></div><div class="concept-block cb-cyan"><div class="cb-label">Automation</div><p>Agents that can modify user plans and execute backend actions, turning a conversation into a completed task..</p></div></div>
+          <div class="kp-inline"><span class="kp-tag">Key</span>Generic models need context to be useful &mdash; this is the module's core diagnostic<span class="kp-sep">&rsaquo;</span>Solution = Knowledge Base + Data Preparation + Automation</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <div class="section-hdr">
+      <span class="section-letter" style="color:var(--purple);background:var(--purple-dim);border:1px solid rgba(167,139,250,0.2)">C</span>
+      <span class="section-title">Retrieval-Augmented Generation (RAG)</span>
+      <span class="ghost-glyph">C</span>
+    </div>
+    <div class="section-body">
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">C1</span><span class="sub-title">RAG and Enterprise Data Integration</span></div>
+        <div class="sub-body">
+          <p><span class="kw-cyan def">RAG</span> combines retrieval with generation to improve accuracy using external data. <b class="b-green">RAG = context injection without retraining</b>: the model's weights never change, only what it's given to read before answering.</p>
+          <div class="kp-inline"><span class="kp-tag">Key</span>RAG's enterprise data sources: documents, reports, manuals<span class="kp-sep">&rsaquo;</span>RAG = context injection without retraining &mdash; the module's core definition</div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">C2</span><span class="sub-title">Vector Embeddings</span></div>
+        <div class="sub-body">
+          <p>An <span class="kw-cyan def">embedding</span> is a numerical representation of data &mdash; text, in this case &mdash; that captures its semantic meaning as a vector, enabling mathematical comparison between pieces of text. The key insight: <b class="b-orange">similar words produce similar vectors</b>.</p>
+          <div class="kp-inline"><span class="kp-tag">Key</span>Embedding = numerical vector representation capturing semantic meaning<span class="kp-sep">&rsaquo;</span>Similar meaning &rarr; similar vectors (Sea &approx; Ocean; Stapler &ne; Ocean)</div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">C3</span><span class="sub-title">Vector Databases &amp; Similarity Search</span></div>
+        <div class="sub-body">
+          <p>A <span class="kw-cyan def">vector database</span> stores embeddings and enables fast similarity search, retrieving the most relevant context for a given query.</p>
+          <div class="kp-inline"><span class="kp-tag">Key</span>Vector DB purpose: store embeddings, enable fast similarity search, retrieve relevant context<span class="kp-sep">&rsaquo;</span>Two search techniques: k-NN (nearest vector search), Cosine Similarity (angle-based)</div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">C4</span><span class="sub-title">AWS Vector Database Options</span></div>
+        <div class="sub-body">
+          <p>AWS offers several managed options for storing and querying vector embeddings, each fitting a different existing infrastructure.</p>
+          <div class="concept-grid"><div class="concept-card cc-orange"><div class="cc-label">Amazon OpenSearch</div><ul class="cc-list"><li>Available in Provisioned and Serverless modes for vector search</li></ul></div><div class="concept-card cc-sky"><div class="cc-label">pgvector</div><ul class="cc-list"><li>A PostgreSQL extension available on Amazon RDS and Aurora</li></ul></div><div class="concept-card cc-cyan"><div class="cc-label">Amazon Kendra</div><ul class="cc-list"><li>An enterprise search service usable as a managed retrieval layer</li></ul></div></div>
+          <div class="kp-inline"><span class="kp-tag">Key</span>Three AWS vector DB options: Amazon OpenSearch, pgvector (RDS/Aurora), Amazon Kendra</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <div class="section-hdr">
+      <span class="section-letter" style="color:var(--orange);background:var(--orange-dim);border:1px solid rgba(251,146,60,0.2)">D</span>
+      <span class="section-title">Agents in Generative AI Systems</span>
+      <span class="ghost-glyph">D</span>
+    </div>
+    <div class="section-body">
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">D1</span><span class="sub-title">Key Functions of Agents</span></div>
+        <div class="sub-body">
+          <p>An agent's role is to act as an intermediary between the model and the outside world.</p>
+          <div class="concept-stack"><div class="concept-block cb-orange"><div class="cb-label">Intermediary Operations</div><p>Connects the model to backend systems, translating a model's decision into a system-level call..</p></div><div class="concept-block cb-sky"><div class="cb-label">Action Execution</div><p>Actually performs actions.</p></div><div class="concept-block cb-cyan"><div class="cb-label">Feedback Integration</div><p>Feeds outcomes of those actions back into the system, improving the model's behavior over time..</p></div></div>
+          <div class="kp-inline"><span class="kp-tag">Key</span>Agents enable real-world actions from AI outputs &mdash; not just text generation<span class="kp-sep">&rsaquo;</span>Three functions: Intermediary Operations, Action Execution, Feedback Integration</div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">D2</span><span class="sub-title">AnyCompany Agent Example</span></div>
+        <div class="sub-body">
+          <p>AnyCompany's telecom chatbot deploys three distinct agents, each with a narrow, well-defined responsibility &mdash; a pattern worth copying rather than building one do-everything agent.</p>
+          <div class="concept-grid"><div class="concept-card cc-orange"><div class="cc-label">Agent 1</div><ul class="cc-list"><li>Manages customer plans &mdash; upgrades, downgrades, modifications</li></ul></div><div class="concept-card cc-sky"><div class="cc-label">Agent 2</div><ul class="cc-list"><li>Updates the knowledge base as new information becomes available</li></ul></div><div class="concept-card cc-cyan"><div class="cc-label">Agent 3</div><ul class="cc-list"><li>Collects feedback from completed interactions</li></ul></div></div>
+          <div class="kp-inline"><span class="kp-tag">Key</span>AnyCompany's three agents: plan management, knowledge base updates, feedback collection</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <div class="section-hdr">
+      <span class="section-letter" style="color:var(--sky);background:var(--sky-dim);border:1px solid rgba(93,184,242,0.2)">E</span>
+      <span class="section-title">Evaluating Generative AI Systems</span>
+      <span class="ghost-glyph">E</span>
+    </div>
+    <div class="section-body">
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">E1</span><span class="sub-title">Evaluation Methods</span></div>
+        <div class="sub-body">
+          <p>Evaluating a Gen AI system means asking whether it's actually effective for the business, not just whether it runs.</p>
+          <div class="concept-stack"><div class="concept-block cb-orange"><div class="cb-label">Human Evaluation</div><p>Focuses on user experience, relevance, and creativity.</p></div><div class="concept-block cb-sky"><div class="cb-label">Benchmark Datasets</div><p>Provide quantitative evaluation across accuracy, speed, and scalability.</p></div><div class="concept-block cb-cyan"><div class="cb-label">LLM-as-Judge</div><p>Uses another model to compare a generated answer against a reference answer, scoring accuracy, relevance, and completeness automatically..</p></div></div>
+          <div class="kp-inline"><span class="kp-tag">Key</span>Best evaluation = Human + Metrics, combined rather than either alone<span class="kp-sep">&rsaquo;</span>LLM-as-Judge automates evaluation using another model as the grader</div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">E2</span><span class="sub-title">Benchmark Creation Steps</span></div>
+        <div class="sub-body">
+          <p>Building a benchmark dataset follows a fixed three-step sequence: first, <b class="b-orange">Questions</b> are created by subject-matter experts (SMEs); second, <b class="b-orange">Context</b> &mdash; the relevant supporting information &mdash; is identified for each question; third, <b class="b-orange">Answers</b> are defined as the ground truth the model's output will be compared against.</p>
+          <div class="kp-inline"><span class="kp-tag">Key</span>Benchmark creation order: Questions (by SMEs) &rarr; Context &rarr; Answers (ground truth)</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <div class="section-hdr">
+      <span class="section-letter" style="color:var(--cyan);background:var(--cyan-dim);border:1px solid rgba(94,234,212,0.2)">F</span>
+      <span class="section-title">Business Case: AnyCompany Retail Personalization</span>
+      <span class="ghost-glyph">F</span>
+    </div>
+    <div class="section-body">
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">F1</span><span class="sub-title">Problem &amp; Business Metrics</span></div>
+        <div class="sub-body">
+          <p>AnyCompany's retail arm faces high cart abandonment and low customer retention.</p>
+          <div class="concept-grid"><div class="concept-card cc-orange"><div class="cc-label">Conversion Rate</div><ul class="cc-list"><li>Share of visits that result in a completed purchase</li></ul></div><div class="concept-card cc-sky"><div class="cc-label">Average Order Value</div><ul class="cc-list"><li>Average revenue per completed order</li></ul></div><div class="concept-card cc-cyan"><div class="cc-label">Customer Retention</div><ul class="cc-list"><li>Rate at which customers return for repeat purchases</li></ul></div></div>
+          <div class="kp-inline"><span class="kp-tag">Key</span>Problem: high cart abandonment, low retention<span class="kp-sep">&rsaquo;</span>Three business metrics: Conversion Rate, Average Order Value, Customer Retention</div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">F2</span><span class="sub-title">AI Solution Components</span></div>
+        <div class="sub-body">
+          <p>The retail solution combines three components &mdash; note the direct parallel to the telecom case's Knowledge Base + Automation + Feedback pattern, just applied to personalization instead of support.</p>
+          <div class="concept-stack"><div class="concept-block cb-orange"><div class="cb-label">Fine-Tuned Model</div><p>Trained on the company's own transaction data and user behavior, rather than generic retail knowledge..</p></div><div class="concept-block cb-sky"><div class="cb-label">Recommendation Engine</div><p>Uses the fine-tuned model's understanding of behavior to generate personalized product suggestions..</p></div><div class="concept-block cb-cyan"><div class="cb-label">Feedback Loop</div><p>Feeds purchase outcomes back into the system, enabling continuous improvement of recommendations..</p></div></div>
+          <div class="kp-inline"><span class="kp-tag">Key</span>Success = Personalization + Continuous Learning &mdash; the section's key insight<span class="kp-sep">&rsaquo;</span>Solution: Fine-Tuned Model + Recommendation Engine + Feedback Loop</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <div class="section-hdr">
+      <span class="section-letter" style="color:var(--purple);background:var(--purple-dim);border:1px solid rgba(167,139,250,0.2)">G</span>
+      <span class="section-title">Fine-Tuning Foundation Models</span>
+      <span class="ghost-glyph">G</span>
+    </div>
+    <div class="section-body">
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">G1</span><span class="sub-title">Why Fine-Tune: Benefits</span></div>
+        <div class="sub-body">
+          <p><span class="kw-cyan def">Fine-tuning</span> adapts a model to a specific domain by continuing training on domain data.</p>
+          <div class="concept-grid"><div class="concept-card cc-orange"><div class="cc-label">Increased Specificity</div><ul class="cc-list"><li>Outputs speak the domain's actual vocabulary and conventions</li></ul></div><div class="concept-card cc-sky"><div class="cc-label">Improved Accuracy</div><ul class="cc-list"><li>Fewer errors on domain-specific tasks versus a generic model</li></ul></div><div class="concept-card cc-cyan"><div class="cc-label">Reduced Bias</div><ul class="cc-list"><li>Domain-curated data can correct skew present in general training data</li></ul></div><div class="concept-card cc-purple"><div class="cc-label">Enhanced Efficiency</div><ul class="cc-list"><li>Shorter prompts needed since domain knowledge is baked into the weights</li></ul></div></div>
+          <div class="kp-inline"><span class="kp-tag">Key</span>Fine-tuning = specialization of general models<span class="kp-sep">&rsaquo;</span>Four benefits: Increased Specificity, Improved Accuracy, Reduced Bias, Enhanced Efficiency</div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">G2</span><span class="sub-title">Fine-Tuning Approaches</span></div>
+        <div class="sub-body">
+          <p>Five distinct approaches fall under the fine-tuning umbrella, differing in what data they use and how they change the model.</p>
+          <div class="concept-grid"><div class="concept-card cc-orange"><div class="cc-label">Instruction Tuning</div><ul class="cc-list"><li>Trains the model to follow structured input-output examples</li></ul></div><div class="concept-card cc-sky"><div class="cc-label">RLHF</div><ul class="cc-list"><li>Optimizes model behavior using human feedback on output quality</li></ul></div><div class="concept-card cc-cyan"><div class="cc-label">Domain Adaptation</div><ul class="cc-list"><li>Uses specialized, domain-specific datasets for retraining</li></ul></div><div class="concept-card cc-purple"><div class="cc-label">Transfer Learning</div><ul class="cc-list"><li>Reuses knowledge already captured in a pretrained model as a starting point</li></ul></div><div class="concept-card cc-green"><div class="cc-label">Continuous Pretraining</div><ul class="cc-list"><li>Updates a model's knowledge with new data over time, without a full retrain</li></ul></div></div>
+          <div class="kp-inline"><span class="kp-tag">Key</span>Five approaches: Instruction Tuning, RLHF, Domain Adaptation, Transfer Learning, Continuous Pretraining</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <div class="section-hdr">
+      <span class="section-letter" style="color:var(--orange);background:var(--orange-dim);border:1px solid rgba(251,146,60,0.2)">H</span>
+      <span class="section-title">Data Preparation for Fine-Tuning</span>
+      <span class="ghost-glyph">H</span>
+    </div>
+    <div class="section-body">
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">H1</span><span class="sub-title">Initial Training Data vs. Fine-Tuning Data</span></div>
+        <div class="sub-body">
+          <p>A Foundation Model's <b class="b-orange">initial training data</b> is large-scale, diverse, and general-purpose &mdash; built to give the model broad competence. <span class="enrich-plus">[+]</span> This is why fine-tuning datasets are usually orders of magnitude smaller than pretraining datasets &mdash; the goal shifts from breadth to precision.</p>
+          <div class="kp-inline"><span class="kp-tag">Key</span>Initial training data: large-scale, diverse, general-purpose<span class="kp-sep">&rsaquo;</span>Fine-tuning data: specific, relevant, high-quality &mdash; small and curated, not broad</div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">H2</span><span class="sub-title">Key Data Preparation Steps</span></div>
+        <div class="sub-body">
+          <p>Five steps determine whether fine-tuning data is actually usable, and the module is explicit that <b class="b-orange">quality outweighs quantity</b> throughout this process.</p>
+          <div class="concept-grid"><div class="concept-card cc-orange"><div class="cc-label">Data Curation</div><ul class="cc-list"><li>Selecting and assembling the dataset from raw sources</li></ul></div><div class="concept-card cc-sky"><div class="cc-label">Labeling</div><ul class="cc-list"><li>Attaching correct target outputs or annotations to each example</li></ul></div><div class="concept-card cc-cyan"><div class="cc-label">Governance &amp; Compliance</div><ul class="cc-list"><li>Ensuring data use meets legal and regulatory requirements</li></ul></div><div class="concept-card cc-purple"><div class="cc-label">Bias Checking</div><ul class="cc-list"><li>Identifying and correcting skew that would propagate into the fine-tuned model</li></ul></div><div class="concept-card cc-green"><div class="cc-label">Feedback Integration</div><ul class="cc-list"><li>Incorporating real usage feedback back into future data preparation cycles</li></ul></div></div>
+          <div class="kp-inline"><span class="kp-tag">Key</span>Quality &gt; Quantity in fine-tuning data &mdash; the section's key insight<span class="kp-sep">&rsaquo;</span>Five steps: Data Curation, Labeling, Governance &amp; Compliance, Bias Checking, Feedback Integration</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <div class="section-hdr">
+      <span class="section-letter" style="color:var(--sky);background:var(--sky-dim);border:1px solid rgba(93,184,242,0.2)">I</span>
+      <span class="section-title">Model Evaluation Metrics</span>
+      <span class="ghost-glyph">I</span>
+    </div>
+    <div class="section-body">
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">I1</span><span class="sub-title">ROUGE, BLEU, and BERTScore</span></div>
+        <div class="sub-body">
+          <p>The same three metrics from Module 5 reappear here with sharper definitions of what each one actually measures &mdash; the differences matter when choosing which to report.</p>
+          <div class="concept-grid"><div class="concept-card cc-orange"><div class="cc-label">ROUGE</div><ul class="cc-list"><li>Measures overlap with a reference text</li></ul></div><div class="concept-card cc-sky"><div class="cc-label">BLEU</div><ul class="cc-list"><li>Measures precision of N-grams against a reference</li></ul></div><div class="concept-card cc-cyan"><div class="cc-label">BERTScore</div><ul class="cc-list"><li>Measures semantic similarity using contextual embeddings</li></ul></div></div>
+          <div class="kp-inline"><span class="kp-tag">Key</span>ROUGE = completeness (recall) &middot; BLEU = accuracy of phrasing (precision + brevity penalty) &middot; BERTScore = meaning (semantic similarity)<span class="kp-sep">&rsaquo;</span>Combine metrics for full evaluation &mdash; no single one tells the whole story</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="summary-block"><div class="summary-label">Module Summary</div><ul class="summary-list"><li>FM Optimization means aligning a selected model's outputs with real business objectives, organized around four objectives: Embedding Storage, Agents, Evaluation, and Fine-Tuning.</li><li>RAG injects enterprise context without retraining &mdash; vector embeddings capture semantic meaning, and vector databases (Amazon OpenSearch, pgvector, Amazon Kendra) make similarity search fast via k-NN or Cosine Similarity.</li><li>Agents turn model output into real-world action, serving as the intermediary, executor, and feedback channel between the model and backend systems.</li><li>Strong evaluation combines Human Evaluation, Benchmark Datasets, and LLM-as-Judge &mdash; no single method is sufficient alone.</li><li>Fine-tuning specializes a general model through five approaches (Instruction Tuning, RLHF, Domain Adaptation, Transfer Learning, Continuous Pretraining), but only pays off when the fine-tuning data is curated for quality over quantity.</li></ul></div>
+</div>
+
+<footer class="snx-footer">
+  <div class="snx-footer-meta">
+    <span class="snx-footer-course">AWS-AI Masterclass</span>
+    <span class="snx-footer-divider">&middot;</span>
+    <span class="snx-footer-module">Module 6 &middot; Optimizing Foundation Models</span>
+  </div>
+  <nav class="snx-footer-nav" aria-label="Artifact navigation">
+    <a class="snx-nav-prev" href="../compact/05_aws-ai-masterclass-compact.html"><span class="snx-nav-chevron">&lsaquo;</span>Previous</a>
+    <div class="snx-nav-hub">
+      <a class="snx-hub-btn snx-hub-btn-module" href="../modules/06_aws-ai-masterclass-reviewer.html">Module</a>
+      <a class="snx-hub-btn snx-hub-btn-compact" href="../compact/06_aws-ai-masterclass-compact.html" aria-current="page">Compact</a>
+      <a class="snx-hub-btn snx-hub-btn-tree" href="../trees/06_aws-ai-masterclass-tree.html">Tree</a>
+      <a class="snx-hub-btn snx-hub-btn-quiz" href="../quizzes/06_aws-ai-masterclass-quiz.html">Quiz</a>
+      <a class="snx-hub-btn snx-hub-btn-recall" href="../recalls/06_aws-ai-masterclass-recall.html">Recall</a>
+    </div>
+    <a class="snx-nav-next" href="../compact/07_aws-ai-masterclass-compact.html">Next<span class="snx-nav-chevron">&rsaquo;</span></a>
+  </nav>
+</footer>
+</body>
+</html>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en" data-synaptix="3.1">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Fundamentals of Machine Learning and Artificial Intelligence &mdash; AWS-AI Masterclass (Tree)</title>
+<link rel="stylesheet" href="../resources/css/synaptix-reviewer.css?v=3.1"/>
+<script src="../resources/js/synaptix-reviewer.js?v=3.1" defer></script>
+</head>
+<body>
+<div class="doc-wrap">
+<div class="doc-header">
+  <div class="badges">
+    <span class="badge badge-type">Tree &middot; Structure Only</span>
+    <span class="badge badge-mod">Module 1 of 9</span>
+  </div>
+  <div class="doc-title">Fundamentals of Machine Learning and Artificial Intelligence</div>
+  <div class="doc-subtitle">source: L5 &mdash; Developing Generative AI Solutions (pasted notes) &middot; generated 2026-07-08 &middot; Synaptix v3.1</div>
+  <div class="stat-row">
+    <div class="stat-item"><div class="stat-val">9</div><div class="stat-lbl">Sections</div></div>
+    <div class="stat-item"><div class="stat-val">25</div><div class="stat-lbl">Subsections</div></div>
+    <div class="stat-item"><div class="stat-val">0</div><div class="stat-lbl">Code Blocks</div></div>
+    <div class="stat-item"><div class="stat-val">0</div><div class="stat-lbl">Enriched</div></div>
+  </div>
+</div>
+<div class="doc-body">
+  <div class="module-label"><span class="module-num">Module 1</span><div class="module-rule"></div></div>
+  <div class="module-title">Fundamentals of Machine Learning and Artificial Intelligence</div>
+
+  <div class="section-card"><div class="section-body">
+  <div class="tree-block"><span class="tm">Module 1. Fundamentals of Machine Learning and Artificial Intelligence</span>
+
+<span class="tc">├─── </span><span class="ts">A. The Artificial Intelligence Ecosystem</span>
+<span class="tc">│   ├─── </span><span class="tb">A1. AI, ML, DL, and Generative AI Defined</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Artificial Intelligence (AI) &mdash; Machines simulating human intelligence &mdash; the broadest umbrella term</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Machine Learning (ML) &mdash; Systems that learn patterns from data rather than following fixed rules</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Deep Learning (DL) &mdash; Neural networks with a layered structure, a specific approach within ML</span>
+<span class="tc">│   │   └─── </span><span class="tl">Generative AI &mdash; Produces new data or content, rather than only analyzing existing data</span>
+<span class="tc">│   └─── </span><span class="tb">A2. The Hierarchy</span>
+<span class="tc">│       └─── </span><span class="tl">Hierarchy: AI &rarr; ML &rarr; DL &rarr; Generative AI, each one nested inside the last</span>
+<span class="tc">├─── </span><span class="ts">B. Machine Learning Fundamentals</span>
+<span class="tc">│   ├─── </span><span class="tb">B1. The ML Pipeline</span>
+<span class="tc">│   │   ├─── </span><span class="tl">ML Pipeline: Data Collection &rarr; Data Preparation &rarr; Training &rarr; Evaluation &rarr; Iteration</span>
+<span class="tc">│   │   └─── </span><span class="tl">Model quality = data quality &mdash; bad data guarantees a bad model</span>
+<span class="tc">│   ├─── </span><span class="tb">B2. Types of Data</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Labeled Data &mdash; Data paired with correct descriptions or answers</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Unlabeled Data &mdash; Data with no attached labels or answers</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Structured Data &mdash; Organized into tables/databases &mdash; tabular (rows/columns) or time-series (sequential)</span>
+<span class="tc">│   │   └─── </span><span class="tl">Unstructured Data &mdash; No predefined format &mdash; text (documents, posts) or image (photos, video)</span>
+<span class="tc">│   ├─── </span><span class="tb">B3. Learning Types</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Supervised Learning &mdash; Learns from labeled data to predict outcomes for unseen data</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Unsupervised Learning &mdash; Finds hidden patterns in unlabeled data with no target answer</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Reinforcement Learning &mdash; Learns through a reward-based feedback signal, not fixed labels</span>
+<span class="tc">│   │   └─── </span><span class="tl">Semi-Supervised Learning &mdash; Uses a mix of partial labeled data alongside unlabeled data</span>
+<span class="tc">│   └─── </span><span class="tb">B4. Inferencing</span>
+<span class="tc">│       └─── </span><span class="tl">Batch Inference = large datasets, takes time. Real-Time Inference = instant, single request.</span>
+<span class="tc">├─── </span><span class="ts">C. Deep Learning Fundamentals</span>
+<span class="tc">│   ├─── </span><span class="tb">C1. Neural Network Structure</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Input Layer &mdash; Receives the raw data entering the network</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Hidden Layer &mdash; Processes patterns between input and output &mdash; a network can have many of these</span>
+<span class="tc">│   │   └─── </span><span class="tl">Output Layer &mdash; Produces the network's final result</span>
+<span class="tc">│   ├─── </span><span class="tb">C2. The Learning Process</span>
+<span class="tc">│   │   └─── </span><span class="tl">Learning process: adjust weights &rarr; detect patterns &rarr; generalize to new data</span>
+<span class="tc">│   └─── </span><span class="tb">C3. Applications of Neural Networks</span>
+<span class="tc">│       ├─── </span><span class="tl">Computer Vision: image classification, object detection, segmentation</span>
+<span class="tc">│       └─── </span><span class="tl">NLP: text classification, sentiment analysis, machine translation, text generation</span>
+<span class="tc">├─── </span><span class="ts">D. Generative AI Fundamentals</span>
+<span class="tc">│   ├─── </span><span class="tb">D1. What Generative AI Is</span>
+<span class="tc">│   │   └─── </span><span class="tl">Generative AI's key driver: compute power + large datasets, working together</span>
+<span class="tc">│   ├─── </span><span class="tb">D2. Foundation Models (FMs)</span>
+<span class="tc">│   │   └─── </span><span class="tl">FMs are pretrained, multi-task, and general-purpose &mdash; adaptable across domains</span>
+<span class="tc">│   └─── </span><span class="tb">D3. The FM Lifecycle</span>
+<span class="tc">│       ├─── </span><span class="tl">Data Selection &mdash; Gathering large unlabeled datasets</span>
+<span class="tc">│       ├─── </span><span class="tl">Pre-Training &mdash; Self-supervised learning; the model's own structure auto-generates training labels. Continuous Pre-Training later expands the model's knowledge across domains</span>
+<span class="tc">│       ├─── </span><span class="tl">Optimization &mdash; Improving performance beyond the raw pre-trained state</span>
+<span class="tc">│       ├─── </span><span class="tl">Evaluation &mdash; Measuring effectiveness using metrics and benchmarks</span>
+<span class="tc">│       ├─── </span><span class="tl">Deployment &mdash; Integrating the model into production systems</span>
+<span class="tc">│       └─── </span><span class="tl">Feedback Loop &mdash; Continuous improvement based on real-world usage</span>
+<span class="tc">├─── </span><span class="ts">E. Generative Model Architectures</span>
+<span class="tc">│   ├─── </span><span class="tb">E1. Large Language Models (LLMs)</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Tokens &mdash; The smallest units of text &mdash; words, phrases, spaces, or characters &mdash; providing standardized input</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Embeddings &mdash; Numerical representations of words, positioned so related concepts sit closer together</span>
+<span class="tc">│   │   └─── </span><span class="tl">Vectors &mdash; The underlying numerical form that captures semantic relationships between tokens</span>
+<span class="tc">│   ├─── </span><span class="tb">E2. Diffusion Models</span>
+<span class="tc">│   │   └─── </span><span class="tl">Forward Diffusion: adds noise, used for training. Reverse Diffusion: removes noise, used for inference.</span>
+<span class="tc">│   ├─── </span><span class="tb">E3. Multimodal Models</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Multimodal examples: Text + Image, Image + Audio</span>
+<span class="tc">│   │   └─── </span><span class="tl">Advanced use cases: complex Q&amp;A, video captioning, text-to-graphics generation</span>
+<span class="tc">│   ├─── </span><span class="tb">E4. Generative Adversarial Networks (GANs)</span>
+<span class="tc">│   │   └─── </span><span class="tl">GAN = Generator (creates fakes) vs Discriminator (detects fakes), trained adversarially until fakes are indistinguishable from real data</span>
+<span class="tc">│   └─── </span><span class="tb">E5. Variational Autoencoders (VAEs)</span>
+<span class="tc">│       └─── </span><span class="tl">VAE = Encoder (compresses) + Decoder (reconstructs), with a Gaussian-distributed latent space producing predictable results</span>
+<span class="tc">├─── </span><span class="ts">F. Model Optimization Techniques</span>
+<span class="tc">│   ├─── </span><span class="tb">F1. Prompt Engineering</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Instruction &mdash; Defines the task the model should perform</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Context &mdash; Supporting information that guides the model's response</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Input Data &mdash; The raw content being processed</span>
+<span class="tc">│   │   └─── </span><span class="tl">Output Indicator &mdash; Specifies the desired output format</span>
+<span class="tc">│   ├─── </span><span class="tb">F2. Fine-Tuning</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Fine-tuning uses supervised learning on a narrower dataset</span>
+<span class="tc">│   │   └─── </span><span class="tl">Two approaches: Instruction Tuning (response examples), RLHF (human feedback)</span>
+<span class="tc">│   └─── </span><span class="tb">F3. Retrieval-Augmented Generation (RAG)</span>
+<span class="tc">│       └─── </span><span class="tl">RAG &ne; Fine-Tuning: RAG never changes model weights &mdash; the module's key insight</span>
+<span class="tc">├─── </span><span class="ts">G. AWS AI/ML Infrastructure</span>
+<span class="tc">│   ├─── </span><span class="tb">G1. The ML Framework Layer: Amazon SageMaker</span>
+<span class="tc">│   │   └─── </span><span class="tl">SageMaker covers the full custom model lifecycle: build, train, deploy</span>
+<span class="tc">│   ├─── </span><span class="tb">G2. The AI/ML Services Layer</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Amazon Comprehend &mdash; NLP insights extraction</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Amazon Translate &mdash; Neural machine translation</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Amazon Textract &mdash; Document data extraction, OCR</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Amazon Lex &mdash; Chatbot/voice interfaces &mdash; ASR + NLU, built for AI agents</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Amazon Polly &mdash; Text-to-speech, voiceover generation</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Amazon Transcribe &mdash; Speech-to-text (Automatic Speech Recognition)</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Amazon Rekognition &mdash; Image and video analysis</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Amazon Kendra &mdash; Intelligent enterprise search</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Amazon Personalize &mdash; Recommendation generation</span>
+<span class="tc">│   │   └─── </span><span class="tl">AWS DeepRacer &mdash; Reinforcement learning platform</span>
+<span class="tc">│   └─── </span><span class="tb">G3. The Generative AI Layer</span>
+<span class="tc">│       ├─── </span><span class="tl">SageMaker JumpStart &mdash; Prebuilt ML solutions ready to deploy</span>
+<span class="tc">│       ├─── </span><span class="tl">Amazon Bedrock &mdash; Managed access to multiple Foundation Models</span>
+<span class="tc">│       ├─── </span><span class="tl">Amazon Q &mdash; AI assistant for business use</span>
+<span class="tc">│       └─── </span><span class="tl">Amazon Q Developer &mdash; AI code generation assistant</span>
+<span class="tc">├─── </span><span class="ts">H. Advantages of AWS AI Solutions</span>
+<span class="tc">│   └─── </span><span class="tb">H1. Six Core Advantages</span>
+<span class="tc">│       ├─── </span><span class="tl">Faster Development &mdash; Prebuilt tools and APIs shortcut months of infrastructure work</span>
+<span class="tc">│       ├─── </span><span class="tl">Scalability &mdash; Global infrastructure scales with demand automatically</span>
+<span class="tc">│       ├─── </span><span class="tl">Cost Efficiency &mdash; Pay-as-you-go pricing avoids large upfront investment</span>
+<span class="tc">│       ├─── </span><span class="tl">Flexibility &mdash; Wide access to multiple model families and providers</span>
+<span class="tc">│       ├─── </span><span class="tl">Integration &mdash; Seamless connection across the broader AWS ecosystem</span>
+<span class="tc">│       └─── </span><span class="tl">Security &mdash; Enterprise-grade protection built into the platform</span>
+<span class="tc">└─── </span><span class="ts">I. Cost Considerations in AWS AI</span>
+<span class="tc">    └─── </span><span class="tb">I1. Cost Trade-off Factors</span>
+<span class="tc">        ├─── </span><span class="tl">Responsiveness &mdash; Latency versus cost &mdash; faster response generally costs more</span>
+<span class="tc">        ├─── </span><span class="tl">Availability &mdash; Uptime versus resource cost &mdash; higher availability requires more redundant capacity</span>
+<span class="tc">        ├─── </span><span class="tl">Redundancy &mdash; Backup systems increase cost directly</span>
+<span class="tc">        ├─── </span><span class="tl">Performance &mdash; Compute power versus pricing &mdash; more capable instances cost more</span>
+<span class="tc">        ├─── </span><span class="tl">Token-Based Pricing &mdash; Cost scales directly with usage volume</span>
+<span class="tc">        ├─── </span><span class="tl">Provisioned Throughput &mdash; Reserved capacity costs more but guarantees availability</span>
+<span class="tc">        └─── </span><span class="tl">Custom Models &mdash; Training a custom model costs more than using a pre-trained one</span>
+  </div>
+  </div></div>
+
+</div>
+
+<footer class="snx-footer">
+  <div class="snx-footer-meta">
+    <span class="snx-footer-course">AWS-AI Masterclass</span>
+    <span class="snx-footer-divider">&middot;</span>
+    <span class="snx-footer-module">Module 1 &middot; Fundamentals of Machine Learning and Artificial Intelligence</span>
+  </div>
+  <nav class="snx-footer-nav" aria-label="Artifact navigation">
+    <div class="snx-nav-hub">
+      <a class="snx-hub-btn snx-hub-btn-module" href="../modules/01_aws-ai-masterclass-reviewer.html">Module</a>
+      <a class="snx-hub-btn snx-hub-btn-compact" href="../compact/01_aws-ai-masterclass-compact.html">Compact</a>
+      <a class="snx-hub-btn snx-hub-btn-tree" href="../trees/01_aws-ai-masterclass-tree.html" aria-current="page">Tree</a>
+      <a class="snx-hub-btn snx-hub-btn-quiz" href="../quizzes/01_aws-ai-masterclass-quiz.html">Quiz</a>
+      <a class="snx-hub-btn snx-hub-btn-recall" href="../recalls/01_aws-ai-masterclass-recall.html">Recall</a>
+    </div>
+    <a class="snx-nav-next" href="../trees/02_aws-ai-masterclass-tree.html">Next<span class="snx-nav-chevron">&rsaquo;</span></a>
+  </nav>
+</footer>
+</body>
+</html>

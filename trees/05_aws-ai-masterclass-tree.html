@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en" data-synaptix="3.1">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Developing Generative AI Solutions &mdash; AWS-AI Masterclass (Tree)</title>
+<link rel="stylesheet" href="../resources/css/synaptix-reviewer.css?v=3.1"/>
+<script src="../resources/js/synaptix-reviewer.js?v=3.1" defer></script>
+</head>
+<body>
+<div class="doc-wrap">
+<div class="doc-header">
+  <div class="badges">
+    <span class="badge badge-type">Tree &middot; Structure Only</span>
+    <span class="badge badge-mod">Module 5 of 5</span>
+  </div>
+  <div class="doc-title">Developing Generative AI Solutions</div>
+  <div class="doc-subtitle">source: L5 &mdash; Developing Generative AI Solutions (pasted notes) &middot; generated 2026-07-08 &middot; Synaptix v3.1</div>
+  <div class="stat-row">
+    <div class="stat-item"><div class="stat-val">6</div><div class="stat-lbl">Sections</div></div>
+    <div class="stat-item"><div class="stat-val">24</div><div class="stat-lbl">Subsections</div></div>
+    <div class="stat-item"><div class="stat-val">0</div><div class="stat-lbl">Code Blocks</div></div>
+    <div class="stat-item"><div class="stat-val">0</div><div class="stat-lbl">Enriched</div></div>
+  </div>
+</div>
+<div class="doc-body">
+  <div class="module-label"><span class="module-num">Module 5</span><div class="module-rule"></div></div>
+  <div class="module-title">Developing Generative AI Solutions</div>
+
+  <div class="section-card"><div class="section-body">
+  <div class="tree-block"><span class="tm">Module 5. Developing Generative AI Solutions</span>
+
+<span class="tc">├─── </span><span class="ts">A. The Generative AI Application Lifecycle</span>
+<span class="tc">│   ├─── </span><span class="tb">A1. Lifecycle Phases</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Six phases: Define &rarr; Select FM &rarr; Improve &rarr; Evaluate &rarr; Deploy &rarr; Iterate</span>
+<span class="tc">│   │   └─── </span><span class="tl">The lifecycle is iterative &mdash; teams cycle back to earlier phases as feedback arrives, not just run it once</span>
+<span class="tc">│   ├─── </span><span class="tb">A2. Iteration as a Core Property</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Gen AI Lifecycle is iterative &mdash; continuously refined, never a single pass</span>
+<span class="tc">│   │   └─── </span><span class="tl">Iteration is triggered by evaluation results, user feedback, and changing requirements</span>
+<span class="tc">│   ├─── </span><span class="tb">A3. Capabilities of Generative AI</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Adaptability &mdash; Works across multiple domains and task types without redesign</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Responsiveness &mdash; Generates outputs in real time, supporting interactive use cases</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Simplicity &mdash; Automates workflows that previously required multiple manual steps</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Creativity &mdash; Produces novel ideas, phrasing, or content rather than retrieving fixed answers</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Data Efficiency &mdash; Learns generalizable patterns from large-scale training data</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Personalization &mdash; Tailors outputs to an individual user's context or preferences</span>
+<span class="tc">│   │   └─── </span><span class="tl">Scalability &mdash; Generates content at a volume no human team could match</span>
+<span class="tc">│   └─── </span><span class="tb">A4. Challenges of Generative AI</span>
+<span class="tc">│       ├─── </span><span class="tl">Regulatory Violations &mdash; Misuse of sensitive, restricted, or regulated data in training or inference</span>
+<span class="tc">│       ├─── </span><span class="tl">Social Risks &mdash; Outputs that are harmful, misleading, or reinforce bias at scale</span>
+<span class="tc">│       ├─── </span><span class="tl">Privacy Concerns &mdash; Exposure of personal or confidential information through generated output</span>
+<span class="tc">│       ├─── </span><span class="tl">Toxicity &mdash; Offensive, unsafe, or inappropriate generated content</span>
+<span class="tc">│       ├─── </span><span class="tl">Hallucinations &mdash; Plausible-sounding but factually incorrect output presented with confidence</span>
+<span class="tc">│       ├─── </span><span class="tl">Interpretability &mdash; Difficulty explaining why a model produced a specific output</span>
+<span class="tc">│       └─── </span><span class="tl">Nondeterminism &mdash; Inconsistent output for the same input across separate runs</span>
+<span class="tc">├─── </span><span class="ts">B. Defining a Use Case</span>
+<span class="tc">│   ├─── </span><span class="tb">B1. Why Use Case Definition Comes First</span>
+<span class="tc">│   │   ├─── </span><span class="tl">A bad use case definition produces a failed AI project, regardless of model quality</span>
+<span class="tc">│   │   └─── </span><span class="tl">Use case definition also determines the success metrics used later in Evaluation</span>
+<span class="tc">│   ├─── </span><span class="tb">B2. Business Use Case Structure</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Use Case Name &mdash; A short, descriptive identifier for the use case</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Brief Description &mdash; A one-paragraph summary of the objective</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Actors &mdash; The users or systems that interact with the solution</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Preconditions &mdash; Conditions that must be true before the flow can start</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Basic Flow &mdash; The main, step-by-step success path</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Alternative Flows &mdash; Error handling and edge-case paths</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Postconditions &mdash; The system's final state after successful execution</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Business Rules &mdash; Policies and constraints the solution must respect</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Nonfunctional Requirements &mdash; Performance, security, and usability requirements</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Assumptions &mdash; Conditions expected to hold true in the environment</span>
+<span class="tc">│   │   └─── </span><span class="tl">Notes &mdash; Additional clarifications that don't fit elsewhere</span>
+<span class="tc">│   ├─── </span><span class="tb">B3. Key Metrics for Generative AI Use Cases</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Cost Savings &mdash; Reduction in operational expense versus the current process</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Time Savings &mdash; Faster completion of the target task</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Quality Improvement &mdash; Measurably better outputs than the current baseline</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Customer Satisfaction &mdash; Improved experience, typically tracked via survey or NPS</span>
+<span class="tc">│   │   └─── </span><span class="tl">Productivity Gains &mdash; Increased throughput or efficiency per team member</span>
+<span class="tc">│   └─── </span><span class="tb">B4. Common Approaches</span>
+<span class="tc">│       ├─── </span><span class="tl">Process Automation &mdash; Automating repetitive, rules-based tasks</span>
+<span class="tc">│       ├─── </span><span class="tl">Decision Support &mdash; Assisting &mdash; not replacing &mdash; human decision-making</span>
+<span class="tc">│       ├─── </span><span class="tl">Personalization &mdash; Tailoring experiences to individual users</span>
+<span class="tc">│       ├─── </span><span class="tl">Content Generation &mdash; Creating text, images, or other media</span>
+<span class="tc">│       └─── </span><span class="tl">Innovation Exploration &mdash; Generating new ideas or design directions</span>
+<span class="tc">├─── </span><span class="ts">C. Selecting a Foundation Model</span>
+<span class="tc">│   ├─── </span><span class="tb">C1. What a Foundation Model Is</span>
+<span class="tc">│   │   ├─── </span><span class="tl">An FM is the pre-trained base every Gen AI application builds on</span>
+<span class="tc">│   │   └─── </span><span class="tl">No single FM is universally best &mdash; selection is a trade-off exercise, not a leaderboard lookup</span>
+<span class="tc">│   ├─── </span><span class="tb">C2. Key Selection Criteria</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Cost &mdash; Compute expense, licensing fees, and customization cost</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Modality &mdash; Text, image, audio, or multimodal input/output support</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Latency &mdash; How fast the model must respond for the use case</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Multilingual Support &mdash; Which languages the model handles well</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Model Size &mdash; Trade-off between performance and resource consumption</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Model Complexity &mdash; Capability versus difficulty of deployment and operation</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Customization Ability &mdash; Whether and how well the model supports fine-tuning</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Input/Output Length &mdash; Context window and generation length limitations</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Responsibility &mdash; Bias, safety, and ethical behavior of the model</span>
+<span class="tc">│   │   └─── </span><span class="tl">Deployment Compatibility &mdash; Ease of integration into the target production environment</span>
+<span class="tc">│   └─── </span><span class="tb">C3. Example Models on Amazon Bedrock</span>
+<span class="tc">│       ├─── </span><span class="tl">AI21 Jurassic-2 &mdash; Optimized for text generation and summarization tasks where fluent, on-topic prose matters most.</span>
+<span class="tc">│       ├─── </span><span class="tl">Amazon Titan &mdash; AWS's own model family, offering embeddings alongside text and image generation &mdash; useful when the pipeline also needs vector search.</span>
+<span class="tc">│       ├─── </span><span class="tl">Anthropic Claude &mdash; Strong at reasoning, multi-turn chat, and coding tasks, making it a common choice for assistant-style and developer-facing applications.</span>
+<span class="tc">│       ├─── </span><span class="tl">Cohere Command &mdash; Tuned for a broad range of natural language processing (NLP) tasks such as classification and extraction.</span>
+<span class="tc">│       ├─── </span><span class="tl">Meta Llama &mdash; A general-purpose large language model (LLM) family suited to a wide range of tasks without heavy specialization.</span>
+<span class="tc">│       └─── </span><span class="tl">Mistral Large &mdash; Positioned for high reasoning capability, competing with larger models at a smaller footprint.</span>
+<span class="tc">├─── </span><span class="ts">D. Improving Foundation Model Performance</span>
+<span class="tc">│   ├─── </span><span class="tb">D1. Prompt Engineering: Core Techniques</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Design &mdash; Writing clear, structured prompts with explicit instructions</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Augmentation &mdash; Adding examples or constraints to narrow the model's behavior</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Tuning &mdash; Iteratively refining a prompt based on observed output quality</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Ensembling &mdash; Combining multiple prompts or prompt variants for a stronger result</span>
+<span class="tc">│   │   └─── </span><span class="tl">Mining &mdash; Systematically discovering prompt phrasings that perform well</span>
+<span class="tc">│   ├─── </span><span class="tb">D2. Common Prompting Methods</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Zero-shot &mdash; Asking the model to perform a task with no example provided</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Few-shot &mdash; Providing a small number of examples inside the prompt to guide format and style</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Chain-of-thought (CoT) &mdash; Prompting the model to reason step-by-step before answering</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Tree-of-thought (ToT) &mdash; Exploring multiple reasoning branches before selecting the best path</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Self-consistency &mdash; Sampling multiple reasoning paths and taking the majority answer</span>
+<span class="tc">│   │   └─── </span><span class="tl">ReAct &mdash; Interleaving reasoning steps with tool-use actions</span>
+<span class="tc">│   ├─── </span><span class="tb">D3. Retrieval Augmented Generation (RAG)</span>
+<span class="tc">│   │   ├─── </span><span class="tl">RAG = Retrieval System + Generative Model</span>
+<span class="tc">│   │   └─── </span><span class="tl">RAG directly targets the hallucination challenge from Section A by grounding answers in retrieved facts</span>
+<span class="tc">│   ├─── </span><span class="tb">D4. RAG Business Applications</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Question-Answering Systems &mdash; Answering user questions using an organization's own documents</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Knowledge Base Enhancement &mdash; Surfacing accurate information from large internal knowledge bases</span>
+<span class="tc">│   │   └─── </span><span class="tl">Content Generation &mdash; Producing content that must stay factually grounded in source material</span>
+<span class="tc">│   ├─── </span><span class="tb">D5. Fine-Tuning</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Fine-tuning methods: Instruction Tuning, RLHF</span>
+<span class="tc">│   │   └─── </span><span class="tl">Process: pre-trained model &rarr; prepare dataset &rarr; add task-specific layers &rarr; train &rarr; evaluate &amp; iterate</span>
+<span class="tc">│   ├─── </span><span class="tb">D6. Model from Scratch &amp; the Trade-Off Summary</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Pre-trained &mdash; Lowest cost</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Pre-trained &mdash; Least control over model behavior</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Fine-tuned &mdash; Balanced cost and control</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Fine-tuned &mdash; Requires a labeled domain dataset</span>
+<span class="tc">│   │   ├─── </span><span class="tl">From Scratch &mdash; Highest cost</span>
+<span class="tc">│   │   └─── </span><span class="tl">From Scratch &mdash; Highest customization and accuracy ceiling</span>
+<span class="tc">│   └─── </span><span class="tb">D7. Agents for Automation</span>
+<span class="tc">│       ├─── </span><span class="tl">Task Coordination &mdash; Sequencing and managing multi-step workflows</span>
+<span class="tc">│       ├─── </span><span class="tl">Logging and Reporting &mdash; Recording actions taken and outcomes produced</span>
+<span class="tc">│       ├─── </span><span class="tl">Scalability &mdash; Handling many concurrent workflow instances</span>
+<span class="tc">│       └─── </span><span class="tl">System Integration &mdash; Connecting to external tools, APIs, and data sources</span>
+<span class="tc">├─── </span><span class="ts">E. Evaluating Foundation Models</span>
+<span class="tc">│   ├─── </span><span class="tb">E1. Evaluation Methods</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Human Evaluation &mdash; Qualitative judgment from real reviewers &mdash; the highest-quality signal, but also the most costly and slowest to run at scale.</span>
+<span class="tc">│   │   ├─── </span><span class="tl">Benchmark Datasets &mdash; Standardized datasets that allow apples-to-apples comparison between different models or configurations.</span>
+<span class="tc">│   │   └─── </span><span class="tl">Automated Metrics &mdash; Fast, scalable scoring that can run continuously, but is not a substitute for human judgment on nuanced quality.</span>
+<span class="tc">│   ├─── </span><span class="tb">E2. Benchmark Examples</span>
+<span class="tc">│   │   ├─── </span><span class="tl">GLUE &mdash; General Language Understanding Evaluation &mdash; a suite of core NLP understanding tasks</span>
+<span class="tc">│   │   ├─── </span><span class="tl">SuperGLUE &mdash; A harder successor to GLUE, designed as earlier models saturated it</span>
+<span class="tc">│   │   ├─── </span><span class="tl">SQuAD &mdash; Stanford Question Answering Dataset &mdash; benchmarks reading-comprehension QA</span>
+<span class="tc">│   │   └─── </span><span class="tl">WMT &mdash; Workshop on Machine Translation &mdash; benchmarks translation quality</span>
+<span class="tc">│   ├─── </span><span class="tb">E3. Key Metrics</span>
+<span class="tc">│   │   ├─── </span><span class="tl">ROUGE &mdash; Measures overlap between generated and reference text &mdash; used for summarization quality</span>
+<span class="tc">│   │   ├─── </span><span class="tl">BLEU &mdash; Measures translation quality by comparing generated output to reference translations</span>
+<span class="tc">│   │   └─── </span><span class="tl">BERTScore &mdash; Measures semantic similarity using contextual embeddings, catching paraphrases that ROUGE/BLEU miss</span>
+<span class="tc">│   └─── </span><span class="tb">E4. Additional Metrics</span>
+<span class="tc">│       ├─── </span><span class="tl">Perplexity: prediction confidence (lower = better)</span>
+<span class="tc">│       └─── </span><span class="tl">F1 Score: balances precision and recall for classification-style outputs</span>
+<span class="tc">└─── </span><span class="ts">F. Deployment of Generative AI Applications</span>
+<span class="tc">    ├─── </span><span class="tb">F1. Key Deployment Considerations</span>
+<span class="tc">    │   ├─── </span><span class="tl">Cost &mdash; Pay-per-use resource pricing that scales with actual traffic</span>
+<span class="tc">    │   ├─── </span><span class="tl">Regions &mdash; Service availability differs by AWS region &mdash; latency and compliance both depend on this</span>
+<span class="tc">    │   ├─── </span><span class="tl">Quotas &mdash; Built-in resource limits that must be checked against expected load</span>
+<span class="tc">    │   └─── </span><span class="tl">Security &mdash; Shared responsibility between AWS and the user, plus risks specific to external/third-party models</span>
+<span class="tc">    └─── </span><span class="tb">F2. Deployment Goals</span>
+<span class="tc">        ├─── </span><span class="tl">Scalability &mdash; Handling growth in traffic and usage without redesign</span>
+<span class="tc">        ├─── </span><span class="tl">Reliability &mdash; Consistent availability and correct behavior over time</span>
+<span class="tc">        ├─── </span><span class="tl">Security &mdash; Protecting data, access, and model behavior from misuse</span>
+<span class="tc">        └─── </span><span class="tl">User Experience &mdash; Making the system fast, clear, and usable for its actual audience</span>
+  </div>
+  </div></div>
+
+</div>
+
+<footer class="snx-footer">
+  <div class="snx-footer-meta">
+    <span class="snx-footer-course">AWS-AI Masterclass</span>
+    <span class="snx-footer-divider">&middot;</span>
+    <span class="snx-footer-module">Module 5 &middot; Developing Generative AI Solutions</span>
+  </div>
+  <nav class="snx-footer-nav" aria-label="Artifact navigation">
+    <a class="snx-nav-prev" href="../trees/04_aws-ai-masterclass-tree.html"><span class="snx-nav-chevron">&lsaquo;</span>Previous</a>
+    <div class="snx-nav-hub">
+      <a class="snx-hub-btn snx-hub-btn-module" href="../modules/05_aws-ai-masterclass-reviewer.html">Module</a>
+      <a class="snx-hub-btn snx-hub-btn-compact" href="../compact/05_aws-ai-masterclass-compact.html">Compact</a>
+      <a class="snx-hub-btn snx-hub-btn-tree" href="../trees/05_aws-ai-masterclass-tree.html" aria-current="page">Tree</a>
+      <a class="snx-hub-btn snx-hub-btn-quiz" href="../quizzes/05_aws-ai-masterclass-quiz.html">Quiz</a>
+      <a class="snx-hub-btn snx-hub-btn-recall" href="../recalls/05_aws-ai-masterclass-recall.html">Recall</a>
+    </div>
+    <a class="snx-nav-next" href="../trees/06_aws-ai-masterclass-tree.html">Next<span class="snx-nav-chevron">&rsaquo;</span></a>
+  </nav>
+</footer>
+</body>
+</html>

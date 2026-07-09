@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en" data-synaptix="3.1">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Essentials of Prompt Engineering &mdash; AWS-AI Masterclass</title>
+<link rel="stylesheet" href="../resources/css/synaptix-reviewer.css?v=3.1"/>
+<script src="../resources/js/synaptix-reviewer.js?v=3.1" defer></script>
+</head>
+<body>
+<div class="doc-wrap">
+<div class="doc-header">
+  <div class="badges">
+    <span class="badge badge-type">Comprehensive &middot; High</span>
+    <span class="badge badge-mod">Module 8 of 8</span>
+  </div>
+  <div class="doc-title">Essentials of Prompt Engineering</div>
+  <div class="doc-subtitle">source: L5 &mdash; Developing Generative AI Solutions (pasted notes) &middot; generated 2026-07-08 &middot; Synaptix v3.1</div>
+  <div class="stat-row">
+    <div class="stat-item"><div class="stat-val">12</div><div class="stat-lbl">Sections</div></div>
+    <div class="stat-item"><div class="stat-val">37</div><div class="stat-lbl">Subsections</div></div>
+    <div class="stat-item"><div class="stat-val">0</div><div class="stat-lbl">Code Blocks</div></div>
+    <div class="stat-item"><div class="stat-val">1</div><div class="stat-lbl">Enriched</div></div>
+  </div>
+</div>
+<div class="doc-body">
+  <div class="module-label"><span class="module-num">Module 8</span><div class="module-rule"></div></div>
+  <div class="module-title">Essentials of Prompt Engineering</div>
+
+  <div class="overview">
+    <div class="overview-label">Module Overview</div>
+    <div class="overview-grid">
+      <div class="overview-item"><span class="ov-letter">A</span><div><div class="ov-title">Introduction to Prompt Engineering</div><div class="ov-desc">Why prompt quality directly determines output quality, illustrated through a worked failure case.</div></div></div>
+      <div class="overview-item"><span class="ov-letter">B</span><div><div class="ov-title">Understanding Prompts</div><div class="ov-desc">The four core components every effective prompt combines, plus negative prompting as a safety complement.</div></div></div>
+      <div class="overview-item"><span class="ov-letter">C</span><div><div class="ov-title">Modifying Prompts and Inference Parameters</div><div class="ov-desc">How temperature, Top P, Top K, and length settings let a fixed prompt produce more focused or more creative output.</div></div></div>
+      <div class="overview-item"><span class="ov-letter">D</span><div><div class="ov-title">Best Practices for Prompt Engineering</div><div class="ov-desc">Nine practical habits that improve prompt consistency and reliability across any domain.</div></div></div>
+      <div class="overview-item"><span class="ov-letter">E</span><div><div class="ov-title">Prompt Engineering Techniques</div><div class="ov-desc">Three named prompting patterns &mdash; Zero-Shot, Few-Shot, and Chain-of-Thought &mdash; and when each one fits.</div></div></div>
+      <div class="overview-item"><span class="ov-letter">F</span><div><div class="ov-title">Prompt Misuses and Risks</div><div class="ov-desc">The five categories of prompt-related risk that define the rest of this module's security-focused sections.</div></div></div>
+      <div class="overview-item"><span class="ov-letter">G</span><div><div class="ov-title">Poisoning Attacks</div><div class="ov-desc">How malicious or biased data inserted during training corrupts a model's behavior long before any prompt is ever written.</div></div></div>
+      <div class="overview-item"><span class="ov-letter">H</span><div><div class="ov-title">Hijacking and Prompt Injection</div><div class="ov-desc">Runtime attacks that embed malicious instructions inside a prompt to override a model's intended behavior.</div></div></div>
+      <div class="overview-item"><span class="ov-letter">I</span><div><div class="ov-title">Exposure and Prompt Leaking</div><div class="ov-desc">Two related but distinct risks: leaking a user's sensitive data versus leaking the system's own hidden instructions.</div></div></div>
+      <div class="overview-item"><span class="ov-letter">J</span><div><div class="ov-title">Jailbreaking</div><div class="ov-desc">Attempts to bypass a model's safety training entirely, distinct from manipulating a single output.</div></div></div>
+      <div class="overview-item"><span class="ov-letter">K</span><div><div class="ov-title">Defending Against Prompt Risks</div><div class="ov-desc">A four-layer defense model spanning organizational policy down to individual human review, plus industry-specific applications.</div></div></div>
+      <div class="overview-item"><span class="ov-letter">L</span><div><div class="ov-title">Practical Applications and Exam-Level Insights</div><div class="ov-desc">A consolidated mental model tying every risk category to the specific layer it targets &mdash; data, prompts, or safety mechanisms.</div></div></div>
+    </div>
+    <div class="overview-divider"></div>
+    <div class="meta-row">
+      <div class="meta-item"><div class="meta-lbl">Prerequisites</div><div class="meta-val">Module 5 (FM fundamentals), Module 6 (RAG, fine-tuning) &mdash; basic familiarity with how LLMs generate text</div></div>
+      <div class="meta-item"><div class="meta-lbl">Leads to</div><div class="meta-val">Advanced prompt template design, red-teaming exercises against the OWASP Top 10 (Module 7), production prompt-injection defenses</div></div>
+    </div>
+  </div>
+
+  <div class="intro">
+    <div class="intro-label">Module Introduction</div>
+    <p>Every technique in this masterclass so far &mdash; selecting a Foundation Model, optimizing it with RAG and fine-tuning, securing it with governance and compliance &mdash; assumes the model is actually being asked the right question. This module covers the layer underneath all of that: how the words in a prompt shape everything the model produces, and how those same words become an attack surface if left undefended.</p>
+    <p>The first half builds prompting skill directly &mdash; the four core components, inference parameters like temperature and Top P, best practices, and the three foundational techniques (Zero-Shot, Few-Shot, Chain-of-Thought). The second half turns the same lens toward risk: Poisoning, Prompt Injection, Exposure, Prompt Leaking, and Jailbreaking are five distinct ways prompts and data can be misused, each targeting a different layer of the system.</p>
+  </div>
+
+  <div class="section-card">
+    <div class="section-hdr">
+      <span class="section-letter" style="color:var(--sky);background:var(--sky-dim);border:1px solid rgba(93,184,242,0.2)">A</span>
+      <span class="section-title">Introduction to Prompt Engineering</span>
+      <span class="ghost-glyph">A</span>
+    </div>
+    <div class="section-body">
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">A1</span><span class="sub-title">What Prompt Engineering Is</span></div>
+        <div class="sub-body">
+          <p><span class="kw-cyan def">Prompt Engineering</span> is the process of designing instructions to guide AI outputs effectively. It matters because a <b class="b-orange">Foundation Model is powerful, but without proper prompting, its outputs may become irrelevant, generic, or inconsistent</b> &mdash; the model's raw capability doesn't guarantee a useful answer.</p>
+          <p>Prompting is the bridge between human intent and AI interpretation. In business contexts, well-engineered prompts automate repetitive analytical and creative tasks, directly improving operational efficiency and scalability.</p>
+          <div class="keypoints"><div class="kp-label">Key Points</div><ul class="kp-list"><li>Prompt quality directly affects output quality &mdash; the module's central premise</li><li>Prompting bridges human intent and AI interpretation</li></ul></div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">A2</span><span class="sub-title">The AnyCompany Scenario</span></div>
+        <div class="sub-body">
+          <p>A fintech company, AnyCompany, needed AI-generated market reports. Its initial prompt was vague, and the model produced an irrelevant <i>smart home</i> analysis instead &mdash; a concrete illustration of how little guidance a Foundation Model actually gets from an underspecified request.</p>
+          <div class="keypoints"><div class="kp-label">Key Points</div><ul class="kp-list"><li>A vague prompt from a finance company produced an unrelated smart-home analysis &mdash; the module's running example</li></ul></div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">A3</span><span class="sub-title">Why Weak Prompts Fail</span></div>
+        <div class="sub-body">
+          <p>AnyCompany's failure traces to four specific, recurring problems &mdash; recognizing them is the first diagnostic step in fixing any bad prompt.</p>
+          <div class="concept-grid"><div class="concept-card cc-orange"><div class="cc-label">Lack of Specificity</div><ul class="cc-list"><li>The request doesn't narrow down what's actually wanted</li></ul></div><div class="concept-card cc-sky"><div class="cc-label">Missing Domain Context</div><ul class="cc-list"><li>The model has no signal about the industry or audience</li></ul></div><div class="concept-card cc-cyan"><div class="cc-label">Unclear Output Structure</div><ul class="cc-list"><li>No indication of format, length, or organization</li></ul></div><div class="concept-card cc-purple"><div class="cc-label">Generic Responses</div><ul class="cc-list"><li>The result: outputs that could apply to almost any topic</li></ul></div></div>
+          <div class="keypoints"><div class="kp-label">Key Points</div><ul class="kp-list"><li>Improved prompting's goal: produce tailored, structured, domain-specific outputs</li></ul></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <div class="section-hdr">
+      <span class="section-letter" style="color:var(--cyan);background:var(--cyan-dim);border:1px solid rgba(94,234,212,0.2)">B</span>
+      <span class="section-title">Understanding Prompts</span>
+      <span class="ghost-glyph">B</span>
+    </div>
+    <div class="section-body">
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">B1</span><span class="sub-title">What a Prompt Is, and Its Benefits</span></div>
+        <div class="sub-body">
+          <p>A <span class="kw-cyan def">prompt</span> is the input instruction given to a generative AI model &mdash; it can include questions, commands, examples, or constraints. Effective prompting delivers four concrete benefits.</p>
+          <div class="concept-grid"><div class="concept-card cc-orange"><div class="cc-label">Enhances Model Performance</div><ul class="cc-list"><li>Better-guided models produce more accurate, on-target output</li></ul></div><div class="concept-card cc-sky"><div class="cc-label">Improves Output Safety</div><ul class="cc-list"><li>Reduces the chance of harmful or inappropriate content</li></ul></div><div class="concept-card cc-cyan"><div class="cc-label">Adds Domain-Specific Behavior</div><ul class="cc-list"><li>Tailors generic model knowledge to a specific field or task</li></ul></div><div class="concept-card cc-purple"><div class="cc-label">Produces Higher-Quality Responses</div><ul class="cc-list"><li>Clearer instructions consistently yield better-formed answers</li></ul></div></div>
+          <div class="keypoints"><div class="kp-label">Key Points</div><ul class="kp-list"><li>Prompt engineering methodologies: precise framing, output examples, intermediate reasoning steps, structured formatting</li></ul></div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">B2</span><span class="sub-title">The Four Core Prompt Components</span></div>
+        <div class="sub-body">
+          <p>Nearly every effective prompt combines the same four components. AnyCompany's ecommerce order-fulfillment example shows each one concretely.</p>
+          <div class="concept-grid"><div class="concept-card cc-orange"><div class="cc-label">Instructions</div><ul class="cc-list"><li>Defines the task to perform, e.g. &ldquo;Determine which orders can be fulfilled&rdquo;</li></ul></div><div class="concept-card cc-sky"><div class="cc-label">Context</div><ul class="cc-list"><li>Background that tailors the output to domain or audience, e.g. &ldquo;ecommerce inventory management task&rdquo;</li></ul></div><div class="concept-card cc-cyan"><div class="cc-label">Input Data</div><ul class="cc-list"><li>The actual content being processed, e.g. &ldquo;orders and inventory quantities&rdquo;</li></ul></div><div class="concept-card cc-purple"><div class="cc-label">Output Indicator</div><ul class="cc-list"><li>Specifies the expected format, e.g. &ldquo;fulfillment status&rdquo;</li></ul></div></div>
+          <div class="keypoints"><div class="kp-label">Key Points</div><ul class="kp-list"><li>Core prompt elements: Instructions, Context, Input Data, Output Indicator</li><li>Missing context and output indicators are the most common reasons prompts produce weak results</li></ul></div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">B3</span><span class="sub-title">Negative Prompting</span></div>
+        <div class="sub-body">
+          <p><span class="kw-cyan def">Negative Prompting</span> explicitly tells the model what NOT to generate &mdash; preventing hate speech, avoiding misinformation, and restricting unsafe recommendations. It's a direct complement to positive instructions, closing off failure modes rather than only describing the desired outcome.</p>
+          <div class="keypoints"><div class="kp-label">Key Points</div><ul class="kp-list"><li>Negative prompting increases the safety and appropriateness of responses by restricting specific undesired behaviors</li></ul></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <div class="section-hdr">
+      <span class="section-letter" style="color:var(--purple);background:var(--purple-dim);border:1px solid rgba(167,139,250,0.2)">C</span>
+      <span class="section-title">Modifying Prompts and Inference Parameters</span>
+      <span class="ghost-glyph">C</span>
+    </div>
+    <div class="section-body">
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">C1</span><span class="sub-title">Prompt Refinement and Inference Parameters</span></div>
+        <div class="sub-body">
+          <p><span class="kw-cyan def">Prompt Refinement</span> is the iterative process of improving prompts to enhance relevance, structure, and precision. <span class="kw-cyan def">Inference Parameters</span> are adjustable settings that influence model behavior independently of the prompt text itself &mdash; affecting creativity, coherence, diversity, and length.</p>
+          <div class="keypoints"><div class="kp-label">Key Points</div><ul class="kp-list"><li>Inference parameters and prompt wording are two separate levers on the same output</li></ul></div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">C2</span><span class="sub-title">Temperature, Top P, and Top K</span></div>
+        <div class="sub-body">
+          <p>Three parameters control randomness and diversity in token selection, each working slightly differently under the hood.</p>
+          <div class="concept-grid"><div class="concept-card cc-orange"><div class="cc-label">Temperature</div><ul class="cc-list"><li>Controls randomness/creativity directly</li><li>Low (0.2): conservative, predictable, more coherent</li><li>High (1.0): creative, diverse, potentially less coherent</li></ul></div><div class="concept-card cc-sky"><div class="cc-label">Top P</div><ul class="cc-list"><li>Probability-based token filtering</li><li>Low: smaller probability pool, more focused output</li><li>High: wider probability pool, more diverse language</li></ul></div><div class="concept-card cc-cyan"><div class="cc-label">Top K</div><ul class="cc-list"><li>Limits choices to the top K most probable words</li><li>Low: more constrained responses</li><li>High: larger vocabulary selection, greater creativity</li></ul></div></div>
+          <div class="keypoints"><div class="kp-label">Key Points</div><ul class="kp-list"><li>High creativity settings can improve innovation but may reduce factual accuracy or coherence &mdash; the module's key trade-off warning</li></ul></div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">C3</span><span class="sub-title">Length Parameters</span></div>
+        <div class="sub-body">
+          <p><b class="b-orange">Maximum Length</b> limits the total number of generated tokens, preventing excessively long responses. <b class="b-orange">Stop Sequences</b> are special tokens or phrases that end generation early &mdash; particularly useful in dialogue systems or structured outputs where a response should stop at a clear boundary.</p>
+          <div class="keypoints"><div class="kp-label">Key Points</div><ul class="kp-list"><li>Maximum Length caps token count; Stop Sequences end generation at a defined boundary</li></ul></div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">C4</span><span class="sub-title">AnyCompany's Prompt Improvements</span></div>
+        <div class="sub-body">
+          <p>Applying these levers, AnyCompany rebuilt its market-report prompt with six specific changes &mdash; the concrete before/after of everything covered in this section.</p>
+          <div class="concept-grid"><div class="concept-card cc-orange"><div class="cc-label">Added Finance Industry Context</div><ul class="cc-list"><li>Grounded the request in the correct domain</li></ul></div><div class="concept-card cc-sky"><div class="cc-label">Specified SMB Audience</div><ul class="cc-list"><li>Narrowed the intended reader</li></ul></div><div class="concept-card cc-cyan"><div class="cc-label">Defined Report Structure</div><ul class="cc-list"><li>Removed ambiguity about output format</li></ul></div><div class="concept-card cc-purple"><div class="cc-label">Set Professional Tone</div><ul class="cc-list"><li>Constrained the register of the writing</li></ul></div><div class="concept-card cc-green"><div class="cc-label">Increased Maximum Length</div><ul class="cc-list"><li>Allowed room for a fuller report</li></ul></div><div class="concept-card cc-amber"><div class="cc-label">Increased Temperature and Top P</div><ul class="cc-list"><li>Traded some predictability for more creative framing, appropriate once structure was locked down</li></ul></div></div>
+          <div class="keypoints"><div class="kp-label">Key Points</div><ul class="kp-list"><li>Six changes transformed AnyCompany's vague prompt into a targeted, structured one</li></ul></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <div class="section-hdr">
+      <span class="section-letter" style="color:var(--orange);background:var(--orange-dim);border:1px solid rgba(251,146,60,0.2)">D</span>
+      <span class="section-title">Best Practices for Prompt Engineering</span>
+      <span class="ghost-glyph">D</span>
+    </div>
+    <div class="section-body">
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">D1</span><span class="sub-title">Nine Core Best Practices</span></div>
+        <div class="sub-body">
+          <p>These nine practices recur across nearly every well-engineered prompt. None require special tooling &mdash; they're writing discipline applied to a new medium.</p>
+          <div class="concept-grid"><div class="concept-card cc-orange"><div class="cc-label">Be Clear and Concise</div><ul class="cc-list"><li>Use natural language and direct instructions, not overly technical wording</li><li>Good: &ldquo;What is the sum of these numbers?&rdquo; vs. bad: &ldquo;Compute the sum total&hellip;&rdquo;</li></ul></div><div class="concept-card cc-sky"><div class="cc-label">Include Context</div><ul class="cc-list"><li>Specify industry, audience, and business purpose to improve relevance</li></ul></div><div class="concept-card cc-cyan"><div class="cc-label">Use Directives</div><ul class="cc-list"><li>State the output type clearly: summary, poem, analysis, table, JSON</li></ul></div><div class="concept-card cc-purple"><div class="cc-label">Specify Desired Output</div><ul class="cc-list"><li>Define length, tone, structure, and included/excluded content</li></ul></div><div class="concept-card cc-green"><div class="cc-label">Start with Interrogatives</div><ul class="cc-list"><li>Frame requests with Who, What, Where, When, Why, How</li></ul></div><div class="concept-card cc-amber"><div class="cc-label">Provide Example Outputs</div><ul class="cc-list"><li>Demonstrate expected formatting or reasoning directly</li></ul></div><div class="concept-card cc-orange"><div class="cc-label">Break Up Complex Tasks</div><ul class="cc-list"><li>Divide into subtasks; ask the model to think step by step</li></ul></div><div class="concept-card cc-sky"><div class="cc-label">Experiment and Iterate</div><ul class="cc-list"><li>Compare prompt versions and refine based on output quality</li></ul></div><div class="concept-card cc-cyan"><div class="cc-label">Use Prompt Templates</div><ul class="cc-list"><li>Standardized, reusable structures improve consistency across workflows</li></ul></div></div>
+          <div class="keypoints"><div class="kp-label">Key Points</div><ul class="kp-list"><li>Prompt engineering is iterative &mdash; even strong prompts often need multiple refinements before reaching optimal results</li></ul></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <div class="section-hdr">
+      <span class="section-letter" style="color:var(--sky);background:var(--sky-dim);border:1px solid rgba(93,184,242,0.2)">E</span>
+      <span class="section-title">Prompt Engineering Techniques</span>
+      <span class="ghost-glyph">E</span>
+    </div>
+    <div class="section-body">
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">E1</span><span class="sub-title">Zero-Shot Prompting</span></div>
+        <div class="sub-body">
+          <p><span class="kw-cyan def">Zero-Shot Prompting</span> asks the model to perform a task with no examples, relying entirely on pretrained knowledge. It's efficient and requires minimal setup, but is less reliable for complex tasks.</p>
+          <p><span class="enrich-plus">[+]</span> Zero-shot reliability improves with larger models, instruction tuning, and RLHF &mdash; the same techniques covered in Module 6's fine-tuning section.</p>
+          <div class="keypoints"><div class="kp-label">Key Points</div><ul class="kp-list"><li>Zero-shot: no examples, relies on pretrained knowledge, fast but less reliable for complex tasks</li></ul></div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">E2</span><span class="sub-title">Few-Shot Prompting</span></div>
+        <div class="sub-body">
+          <p><span class="kw-cyan def">Few-Shot Prompting</span> includes examples of desired behavior directly in the prompt, conditioning the model toward the expected output. It improves consistency and formatting accuracy over zero-shot.</p>
+          <p>Best practice: use representative examples, avoid providing excessive examples, and maintain clarity and diversity across the examples given.</p>
+          <div class="keypoints"><div class="kp-label">Key Points</div><ul class="kp-list"><li>Few-shot: examples included, improves consistency and formatting accuracy over zero-shot</li></ul></div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">E3</span><span class="sub-title">Chain-of-Thought (CoT) Prompting</span></div>
+        <div class="sub-body">
+          <p><span class="kw-cyan def">Chain-of-Thought Prompting</span> encourages step-by-step reasoning, commonly triggered with the phrase &ldquo;Think step by step.&rdquo; It comes in two forms &mdash; Zero-shot CoT and Few-shot CoT &mdash; and is most useful across four application areas.</p>
+          <div class="concept-grid"><div class="concept-card cc-orange"><div class="cc-label">Mathematics</div><ul class="cc-list"><li>Multi-step calculations benefit from explicit intermediate steps</li></ul></div><div class="concept-card cc-sky"><div class="cc-label">Financial Analysis</div><ul class="cc-list"><li>Sequential reasoning through assumptions and figures</li></ul></div><div class="concept-card cc-cyan"><div class="cc-label">Logic Problems</div><ul class="cc-list"><li>Step-by-step elimination of possibilities</li></ul></div><div class="concept-card cc-purple"><div class="cc-label">Multi-Step Reasoning</div><ul class="cc-list"><li>Any task where the answer depends on an ordered chain of sub-conclusions</li></ul></div></div>
+          <div class="keypoints"><div class="kp-label">Key Points</div><ul class="kp-list"><li>CoT is most useful when tasks require reasoning, calculations, or multiple logical steps</li><li>AnyCompany applied CoT with report templates and structured categories, producing more aligned, professional reports</li></ul></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <div class="section-hdr">
+      <span class="section-letter" style="color:var(--cyan);background:var(--cyan-dim);border:1px solid rgba(94,234,212,0.2)">F</span>
+      <span class="section-title">Prompt Misuses and Risks</span>
+      <span class="ghost-glyph">F</span>
+    </div>
+    <div class="section-body">
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">F1</span><span class="sub-title">Prompt Misuse and Adversarial Prompting</span></div>
+        <div class="sub-body">
+          <p><span class="kw-cyan def">Prompt Misuse</span> is improper or malicious use of prompts against AI systems &mdash; it can manipulate outputs, expose sensitive data, or bypass safeguards. <span class="kw-cyan def">Adversarial Prompting</span> is the deliberate attempt to exploit FM vulnerabilities, often targeting safety filters, alignment rules, or system instructions specifically.</p>
+          <div class="keypoints"><div class="kp-label">Key Points</div><ul class="kp-list"><li>Improperly designed or malicious prompts can compromise security, privacy, fairness, and system integrity</li></ul></div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">F2</span><span class="sub-title">Main Categories of Prompt Risk</span></div>
+        <div class="sub-body">
+          <p>Five categories organize every prompt-security risk covered in this module &mdash; each gets its own dedicated section below.</p>
+          <div class="concept-grid"><div class="concept-card cc-orange"><div class="cc-label">Poisoning</div><ul class="cc-list"><li>Corrupts training data, not the prompt interface itself</li></ul></div><div class="concept-card cc-sky"><div class="cc-label">Hijacking and Prompt Injection</div><ul class="cc-list"><li>Manipulates model behavior at inference time via crafted prompts</li></ul></div><div class="concept-card cc-cyan"><div class="cc-label">Exposure</div><ul class="cc-list"><li>Unintentional disclosure of sensitive or confidential information</li></ul></div><div class="concept-card cc-purple"><div class="cc-label">Prompt Leaking</div><ul class="cc-list"><li>Disclosure of hidden system prompts or internal instructions</li></ul></div><div class="concept-card cc-green"><div class="cc-label">Jailbreaking</div><ul class="cc-list"><li>Circumvents safety restrictions to force prohibited output</li></ul></div></div>
+          <div class="keypoints"><div class="kp-label">Key Points</div><ul class="kp-list"><li>Most AI attacks target one of three layers: Data, Prompts, or Safety Mechanisms</li></ul></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <div class="section-hdr">
+      <span class="section-letter" style="color:var(--purple);background:var(--purple-dim);border:1px solid rgba(167,139,250,0.2)">G</span>
+      <span class="section-title">Poisoning Attacks</span>
+      <span class="ghost-glyph">G</span>
+    </div>
+    <div class="section-body">
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">G1</span><span class="sub-title">What Poisoning Is</span></div>
+        <div class="sub-body">
+          <p><span class="kw-cyan def">Poisoning</span> is the insertion of malicious or biased data into training datasets, manipulating model behavior during training. <b class="b-salmon">Poisoning attacks target the DATA itself, not necessarily the prompt interface</b> &mdash; the module's central distinction versus every other risk category here.</p>
+          <p>It happens primarily during training, fine-tuning, or dataset preparation, and can be intentional, accidental, or hidden within large datasets where it's hard to detect.</p>
+          <div class="keypoints"><div class="kp-label">Key Points</div><ul class="kp-list"><li>Poisoning's goal: corrupt outputs, introduce bias, cause unsafe responses, reduce trustworthiness</li><li>Poisoning happens at training/fine-tuning time, not at inference time</li></ul></div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">G2</span><span class="sub-title">Examples and Real-World Implications</span></div>
+        <div class="sub-body">
+          <p>Concrete examples span both intent and industry &mdash; poisoning isn't a purely theoretical risk.</p>
+          <div class="concept-grid"><div class="concept-card cc-orange"><div class="cc-label">Biased Training Examples</div><ul class="cc-list"><li>Injecting racist or biased examples into training data</li></ul></div><div class="concept-card cc-sky"><div class="cc-label">Manipulated Financial Data</div><ul class="cc-list"><li>Distorting predictions by manipulating financial datasets</li></ul></div><div class="concept-card cc-cyan"><div class="cc-label">Malicious Code Samples</div><ul class="cc-list"><li>Inserting malicious code into coding training datasets</li></ul></div><div class="concept-card cc-purple"><div class="cc-label">Misinformation in Corpora</div><ul class="cc-list"><li>Feeding misinformation into knowledge corpora used for training</li></ul></div></div>
+          <div class="keypoints"><div class="kp-label">Key Points</div><ul class="kp-list"><li>Real-world implications: healthcare AI recommending unsafe treatments, financial AI producing biased loan approvals, recruitment AI discriminating against applicants</li></ul></div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">G3</span><span class="sub-title">Mitigation Strategies</span></div>
+        <div class="sub-body">
+          <p>Six mitigation strategies target poisoning specifically at the data layer, before a model is ever deployed.</p>
+          <div class="concept-grid"><div class="concept-card cc-orange"><div class="cc-label">Dataset Validation</div><ul class="cc-list"><li>Systematically checking data before it enters training</li></ul></div><div class="concept-card cc-sky"><div class="cc-label">Human Review Processes</div><ul class="cc-list"><li>Manual review catches what automated checks miss</li></ul></div><div class="concept-card cc-cyan"><div class="cc-label">Bias Detection</div><ul class="cc-list"><li>Statistical checks for skew across training examples</li></ul></div><div class="concept-card cc-purple"><div class="cc-label">Data Provenance Tracking</div><ul class="cc-list"><li>Knowing exactly where each training example came from</li></ul></div><div class="concept-card cc-green"><div class="cc-label">Secure Fine-Tuning Pipelines</div><ul class="cc-list"><li>Controlling who can introduce new data into a fine-tuning run</li></ul></div><div class="concept-card cc-amber"><div class="cc-label">Regular Auditing</div><ul class="cc-list"><li>Ongoing checks, not a one-time validation pass</li></ul></div></div>
+          <div class="keypoints"><div class="kp-label">Key Points</div><ul class="kp-list"><li>Mitigation targets the data pipeline directly &mdash; validation, review, provenance, and auditing</li></ul></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <div class="section-hdr">
+      <span class="section-letter" style="color:var(--orange);background:var(--orange-dim);border:1px solid rgba(251,146,60,0.2)">H</span>
+      <span class="section-title">Hijacking and Prompt Injection</span>
+      <span class="ghost-glyph">H</span>
+    </div>
+    <div class="section-body">
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">H1</span><span class="sub-title">What Prompt Injection and Hijacking Are</span></div>
+        <div class="sub-body">
+          <p><span class="kw-cyan def">Prompt Injection</span> embeds malicious instructions into prompts, attempting to manipulate model behavior. <span class="kw-cyan def">Hijacking</span> redirects model outputs toward an attacker's objectives. Unlike poisoning, this <b class="b-orange">occurs during inference/runtime</b> and exploits the model's instruction-following behavior directly, often through indirect wording or roleplay.</p>
+          <p><b class="b-orange">Prompt injection exploits the model's tendency to prioritize recent or strongly worded instructions</b> &mdash; a structural quirk of how these models process conversational context.</p>
+          <div class="keypoints"><div class="kp-label">Key Points</div><ul class="kp-list"><li>Prompt injection targets the runtime prompt, not training data (contrast with Poisoning)</li><li>Goals: generate misinformation, bypass restrictions, produce malicious instructions, leak hidden instructions</li></ul></div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">H2</span><span class="sub-title">Common Prompt Injection Techniques</span></div>
+        <div class="sub-body">
+          <p>Four phrasing patterns recur across real prompt injection attempts &mdash; recognizing them is the first line of defense.</p>
+          <div class="concept-grid"><div class="concept-card cc-orange"><div class="cc-label">&ldquo;Ignore previous instructions&rdquo;</div><ul class="cc-list"><li>Directly attempts to override the system prompt</li></ul></div><div class="concept-card cc-sky"><div class="cc-label">&ldquo;Act as an unrestricted AI&rdquo;</div><ul class="cc-list"><li>Attempts to reframe the model's own identity and constraints</li></ul></div><div class="concept-card cc-cyan"><div class="cc-label">&ldquo;Pretend this is fictional&rdquo;</div><ul class="cc-list"><li>Uses fictional framing to justify otherwise-restricted content</li></ul></div><div class="concept-card cc-purple"><div class="cc-label">&ldquo;For educational purposes only&rdquo;</div><ul class="cc-list"><li>Uses a stated legitimate purpose to lower the model's guard</li></ul></div></div>
+          <div class="keypoints"><div class="kp-label">Key Points</div><ul class="kp-list"><li><span class="enrich-plus">[+]</span> Not every use of these patterns is malicious &mdash; legitimate cases include preserving product names in translation, customizing response tone, and controlling formatting behavior</li></ul></div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">H3</span><span class="sub-title">Poisoning vs. Prompt Injection</span></div>
+        <div class="sub-body">
+          <p>The two are easy to confuse but differ on every axis: poisoning targets <b class="b-orange">training data</b> during <b class="b-orange">training/fine-tuning</b> to corrupt long-term model behavior; prompt injection targets the <b class="b-orange">runtime prompt</b> at <b class="b-orange">inference time</b> to manipulate an immediate response. A biased dataset is the classic poisoning example; &ldquo;ignore previous instructions&rdquo; is the classic injection example.</p>
+          <div class="keypoints"><div class="kp-label">Key Points</div><ul class="kp-list"><li>Poisoning = training data, long-term. Prompt Injection = runtime prompt, immediate.</li></ul></div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">H4</span><span class="sub-title">Mitigation Strategies</span></div>
+        <div class="sub-body">
+          <p>Six defenses target prompt injection specifically at the interface where user input meets the model.</p>
+          <div class="concept-grid"><div class="concept-card cc-orange"><div class="cc-label">Input Sanitization</div><ul class="cc-list"><li>Cleaning user input before it reaches the model</li></ul></div><div class="concept-card cc-sky"><div class="cc-label">Instruction Hierarchy Enforcement</div><ul class="cc-list"><li>Ensuring system instructions can't be overridden by user text</li></ul></div><div class="concept-card cc-cyan"><div class="cc-label">Output Filtering</div><ul class="cc-list"><li>Catching problematic output after generation, before it reaches the user</li></ul></div><div class="concept-card cc-purple"><div class="cc-label">Human Oversight</div><ul class="cc-list"><li>Manual review for high-risk interactions</li></ul></div><div class="concept-card cc-green"><div class="cc-label">Context Isolation</div><ul class="cc-list"><li>Preventing user input from bleeding into system-level context</li></ul></div><div class="concept-card cc-amber"><div class="cc-label">Retrieval Safeguards</div><ul class="cc-list"><li>Protecting RAG pipelines from injected instructions hidden in retrieved documents</li></ul></div></div>
+          <div class="keypoints"><div class="kp-label">Key Points</div><ul class="kp-list"><li>Mitigation targets the prompt interface: sanitization, hierarchy enforcement, filtering, isolation</li></ul></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <div class="section-hdr">
+      <span class="section-letter" style="color:var(--sky);background:var(--sky-dim);border:1px solid rgba(93,184,242,0.2)">I</span>
+      <span class="section-title">Exposure and Prompt Leaking</span>
+      <span class="ghost-glyph">I</span>
+    </div>
+    <div class="section-body">
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">I1</span><span class="sub-title">Exposure</span></div>
+        <div class="sub-body">
+          <p><span class="kw-cyan def">Exposure</span> is the unintentional disclosure of sensitive or confidential information, occurring during training, inference, personalized recommendations, or output generation. Five data types are most commonly exposed.</p>
+          <div class="concept-grid"><div class="concept-card cc-orange"><div class="cc-label">Personal Information</div><ul class="cc-list"><li>Names, addresses, and other direct identifiers</li></ul></div><div class="concept-card cc-sky"><div class="cc-label">Financial Records</div><ul class="cc-list"><li>Account details, transaction history</li></ul></div><div class="concept-card cc-cyan"><div class="cc-label">Medical Records</div><ul class="cc-list"><li>Protected health information</li></ul></div><div class="concept-card cc-purple"><div class="cc-label">Browsing History</div><ul class="cc-list"><li>Behavioral data revealing personal habits</li></ul></div><div class="concept-card cc-green"><div class="cc-label">Purchase History</div><ul class="cc-list"><li>Transaction records tied to individual customers</li></ul></div></div>
+          <div class="keypoints"><div class="kp-label">Key Points</div><ul class="kp-list"><li>Exposure risks are especially dangerous in healthcare, finance, HR, and government AI systems</li><li>Causes: poor data anonymization, memorization of training data, weak privacy controls, excessive logging</li></ul></div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">I2</span><span class="sub-title">Prompt Leaking</span></div>
+        <div class="sub-body">
+          <p><span class="kw-cyan def">Prompt Leaking</span> is the disclosure of hidden prompts, system instructions, or internal guidance. Unlike Exposure, it may not expose protected personal data at all &mdash; instead it exposes system behavior and operational logic.</p>
+          <div class="concept-grid"><div class="concept-card cc-orange"><div class="cc-label">&ldquo;Tell me your instructions&rdquo;</div><ul class="cc-list"><li>Directly asks the model to reveal its system prompt</li></ul></div><div class="concept-card cc-sky"><div class="cc-label">&ldquo;Repeat your hidden prompt&rdquo;</div><ul class="cc-list"><li>Attempts to extract the exact system-level text</li></ul></div><div class="concept-card cc-cyan"><div class="cc-label">&ldquo;What were you told before this conversation?&rdquo;</div><ul class="cc-list"><li>Probes for prior context or configuration</li></ul></div></div>
+          <div class="keypoints"><div class="kp-label">Key Points</div><ul class="kp-list"><li>Prompt leaking reveals internal policies, helps attackers craft better exploits, exposes proprietary workflows, weakens AI defenses</li></ul></div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">I3</span><span class="sub-title">Exposure vs. Prompt Leaking</span></div>
+        <div class="sub-body">
+          <p>Exposure's main risk is <b class="b-orange">sensitive data disclosure</b> &mdash; PII, PHI, confidential records &mdash; leading to privacy violations. Prompt Leaking's main risk is <b class="b-orange">system instruction disclosure</b> &mdash; hidden prompts and rules &mdash; leading to security bypasses. Revealing a customer's purchase history is Exposure; revealing a moderation instruction is Prompt Leaking.</p>
+          <div class="keypoints"><div class="kp-label">Key Points</div><ul class="kp-list"><li>Exposure = sensitive data disclosure. Prompt Leaking = system instruction disclosure.</li></ul></div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">I4</span><span class="sub-title">Mitigation Strategies</span></div>
+        <div class="sub-body">
+          <p>Six mitigations address both Exposure and Prompt Leaking together, since the underlying protections overlap.</p>
+          <div class="concept-grid"><div class="concept-card cc-orange"><div class="cc-label">Data Anonymization</div><ul class="cc-list"><li>Removing identifying details before data is usable by the model</li></ul></div><div class="concept-card cc-sky"><div class="cc-label">Access Control</div><ul class="cc-list"><li>Limiting who and what can query sensitive systems</li></ul></div><div class="concept-card cc-cyan"><div class="cc-label">Encryption</div><ul class="cc-list"><li>Protecting data both at rest and in transit</li></ul></div><div class="concept-card cc-purple"><div class="cc-label">Prompt Isolation</div><ul class="cc-list"><li>Keeping system prompts separated from user-accessible context</li></ul></div><div class="concept-card cc-green"><div class="cc-label">Retrieval Restrictions</div><ul class="cc-list"><li>Limiting what a RAG pipeline can surface to a query</li></ul></div><div class="concept-card cc-amber"><div class="cc-label">Redaction Systems</div><ul class="cc-list"><li>Automatically stripping sensitive content from output before delivery</li></ul></div></div>
+          <div class="keypoints"><div class="kp-label">Key Points</div><ul class="kp-list"><li>Shared mitigations: anonymization, access control, encryption, isolation, restriction, redaction</li></ul></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <div class="section-hdr">
+      <span class="section-letter" style="color:var(--cyan);background:var(--cyan-dim);border:1px solid rgba(94,234,212,0.2)">J</span>
+      <span class="section-title">Jailbreaking</span>
+      <span class="ghost-glyph">J</span>
+    </div>
+    <div class="section-body">
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">J1</span><span class="sub-title">What Jailbreaking Is</span></div>
+        <div class="sub-body">
+          <p><span class="kw-cyan def">Jailbreaking</span> circumvents AI safety restrictions and safeguards, with the primary goal of forcing the model to produce prohibited outputs. <b class="b-salmon">Jailbreaking specifically attempts to bypass SAFETY CONTROLS, unlike normal prompting optimization</b> &mdash; the key distinction from everything covered in Sections C&ndash;E.</p>
+          <div class="concept-grid"><div class="concept-card cc-orange"><div class="cc-label">Roleplay</div><ul class="cc-list"><li>Asking the model to adopt a persona without the usual constraints</li></ul></div><div class="concept-card cc-sky"><div class="cc-label">Hypotheticals</div><ul class="cc-list"><li>Framing prohibited content as a fictional or theoretical scenario</li></ul></div><div class="concept-card cc-cyan"><div class="cc-label">Emotional Manipulation</div><ul class="cc-list"><li>Applying social pressure to get the model to comply</li></ul></div><div class="concept-card cc-purple"><div class="cc-label">Multi-Step Prompts</div><ul class="cc-list"><li>Building toward a prohibited output gradually across several turns</li></ul></div><div class="concept-card cc-green"><div class="cc-label">Instruction Overrides</div><ul class="cc-list"><li>Directly attempting to cancel prior safety instructions</li></ul></div></div>
+          <div class="keypoints"><div class="kp-label">Key Points</div><ul class="kp-list"><li>Jailbreaking's danger: harmful instructions, cyber abuse enablement, unsafe content, weakened AI trust and compliance</li></ul></div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">J2</span><span class="sub-title">Common Jailbreaking Approaches</span></div>
+        <div class="sub-body">
+          <p>Four named approaches recur across jailbreaking attempts, each attacking safety training from a different angle.</p>
+          <div class="concept-grid"><div class="concept-card cc-orange"><div class="cc-label">Character Simulation</div><ul class="cc-list"><li>&ldquo;Pretend you are a hacker&rdquo; or &ldquo;act as a fictional villain&rdquo;</li></ul></div><div class="concept-card cc-sky"><div class="cc-label">Recursive Instruction Attacks</div><ul class="cc-list"><li>Repeatedly re-framing the request to work around a refusal</li></ul></div><div class="concept-card cc-cyan"><div class="cc-label">Prompt Chaining</div><ul class="cc-list"><li>Building the prohibited request across multiple linked prompts</li></ul></div><div class="concept-card cc-purple"><div class="cc-label">Obfuscation Techniques</div><ul class="cc-list"><li>Disguising the actual request through encoding or indirection</li></ul></div></div>
+          <div class="keypoints"><div class="kp-label">Key Points</div><ul class="kp-list"><li>Enterprise risks: legal liability, regulatory violations, harmful public outputs, brand reputation damage</li></ul></div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">J3</span><span class="sub-title">Mitigation Strategies</span></div>
+        <div class="sub-body">
+          <p>Six defenses target jailbreaking at the model and process level, going beyond simple input filtering.</p>
+          <div class="concept-grid"><div class="concept-card cc-orange"><div class="cc-label">RLHF</div><ul class="cc-list"><li>Reinforcement Learning from Human Feedback aligns model behavior with safety expectations</li></ul></div><div class="concept-card cc-sky"><div class="cc-label">Safety Fine-Tuning</div><ul class="cc-list"><li>Additional training specifically targeting refusal behavior</li></ul></div><div class="concept-card cc-cyan"><div class="cc-label">Output Moderation</div><ul class="cc-list"><li>Screening generated content before it reaches the user</li></ul></div><div class="concept-card cc-purple"><div class="cc-label">Adversarial Testing</div><ul class="cc-list"><li>Deliberately probing for jailbreak vulnerabilities before attackers do</li></ul></div><div class="concept-card cc-green"><div class="cc-label">Behavioral Monitoring</div><ul class="cc-list"><li>Watching for patterns of repeated jailbreak attempts</li></ul></div><div class="concept-card cc-amber"><div class="cc-label">Human Review Systems</div><ul class="cc-list"><li>Escalating suspicious interactions for manual review</li></ul></div></div>
+          <div class="keypoints"><div class="kp-label">Key Points</div><ul class="kp-list"><li>Jailbreaking mitigation leans heavily on model-level defenses (RLHF, safety fine-tuning), not just input filtering</li></ul></div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">J4</span><span class="sub-title">Prompt Injection vs. Jailbreaking</span></div>
+        <div class="sub-body">
+          <p>Prompt Injection's objective is to <b class="b-orange">manipulate outputs</b> through embedded commands, altering a specific response. Jailbreaking's objective is to <b class="b-orange">bypass safeguards entirely</b> through roleplay or exploits, producing unsafe, unrestricted behavior more broadly. Injection changes an answer; jailbreaking removes the guardrails.</p>
+          <div class="keypoints"><div class="kp-label">Key Points</div><ul class="kp-list"><li>Prompt Injection = manipulate a specific output. Jailbreaking = remove safety restrictions broadly.</li></ul></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <div class="section-hdr">
+      <span class="section-letter" style="color:var(--purple);background:var(--purple-dim);border:1px solid rgba(167,139,250,0.2)">K</span>
+      <span class="section-title">Defending Against Prompt Risks</span>
+      <span class="ghost-glyph">K</span>
+    </div>
+    <div class="section-body">
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">K1</span><span class="sub-title">Four Categories of Defense</span></div>
+        <div class="sub-body">
+          <p>Defending against prompt risk requires four distinct layers, from organizational policy down to individual human judgment &mdash; a technical fix alone is never sufficient.</p>
+          <div class="concept-grid"><div class="concept-card cc-orange"><div class="cc-label">Organizational Best Practices</div><ul class="cc-list"><li>Establish AI governance policies, audit prompts/outputs regularly, restrict access, monitor abnormal behavior, train employees</li></ul></div><div class="concept-card cc-sky"><div class="cc-label">Technical Defenses</div><ul class="cc-list"><li>Prompt filtering, output moderation, context segmentation, access control, retrieval isolation, secure logging</li></ul></div><div class="concept-card cc-cyan"><div class="cc-label">Model-Level Defenses</div><ul class="cc-list"><li>RLHF alignment, adversarial training, safety fine-tuning, content moderation layers</li></ul></div><div class="concept-card cc-purple"><div class="cc-label">Human-Centered Defenses</div><ul class="cc-list"><li>Human-in-the-loop review, ethical oversight boards, escalation mechanisms, incident response plans</li></ul></div></div>
+          <div class="keypoints"><div class="kp-label">Key Points</div><ul class="kp-list"><li>AI security is not only a technical challenge but also a governance, legal, and organizational responsibility</li></ul></div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">K2</span><span class="sub-title">Industry-Specific Defense Examples</span></div>
+        <div class="sub-body">
+          <p>The same four-layer model applies differently depending on industry &mdash; the specific defense implemented reflects that industry's most sensitive data or process.</p>
+          <div class="concept-grid"><div class="concept-card cc-orange"><div class="cc-label">Healthcare</div><ul class="cc-list"><li>Mask patient identifiers</li></ul></div><div class="concept-card cc-sky"><div class="cc-label">Finance</div><ul class="cc-list"><li>Restrict transaction prompt access</li></ul></div><div class="concept-card cc-cyan"><div class="cc-label">HR</div><ul class="cc-list"><li>Audit recruitment AI for bias</li></ul></div><div class="concept-card cc-purple"><div class="cc-label">Government</div><ul class="cc-list"><li>Enforce classified data filtering</li></ul></div><div class="concept-card cc-green"><div class="cc-label">Ecommerce</div><ul class="cc-list"><li>Prevent prompt-based fraud generation</li></ul></div></div>
+          <div class="keypoints"><div class="kp-label">Key Points</div><ul class="kp-list"><li>Defense implementation is industry-specific, even when the underlying category is shared</li></ul></div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">K3</span><span class="sub-title">Common Indicators of Prompt Abuse</span></div>
+        <div class="sub-body">
+          <p>Five behavioral patterns signal a prompt-abuse attempt in progress, useful as a practical monitoring checklist.</p>
+          <div class="concept-grid"><div class="concept-card cc-orange"><div class="cc-label">Repeated Override Attempts</div><ul class="cc-list"><li>Multiple tries to cancel or bypass system instructions</li></ul></div><div class="concept-card cc-sky"><div class="cc-label">Requests for Hidden Prompts</div><ul class="cc-list"><li>Directly asking to see system-level instructions</li></ul></div><div class="concept-card cc-cyan"><div class="cc-label">Suspicious Roleplay Scenarios</div><ul class="cc-list"><li>Framing that exists mainly to lower safety guardrails</li></ul></div><div class="concept-card cc-purple"><div class="cc-label">Malware or Illegal Action Requests</div><ul class="cc-list"><li>Direct or indirect requests for clearly prohibited content</li></ul></div><div class="concept-card cc-green"><div class="cc-label">Attempts to Reveal Confidential Data</div><ul class="cc-list"><li>Probing for information the user shouldn't have access to</li></ul></div></div>
+          <div class="keypoints"><div class="kp-label">Key Points</div><ul class="kp-list"><li>These five indicators function as a practical monitoring checklist for abuse detection</li></ul></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <div class="section-hdr">
+      <span class="section-letter" style="color:var(--orange);background:var(--orange-dim);border:1px solid rgba(251,146,60,0.2)">L</span>
+      <span class="section-title">Practical Applications and Exam-Level Insights</span>
+      <span class="ghost-glyph">L</span>
+    </div>
+    <div class="section-body">
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">L1</span><span class="sub-title">Why These Risks Matter in Real Organizations</span></div>
+        <div class="sub-body">
+          <p>AI systems are increasingly integrated into banking, healthcare, customer support, government systems, and cybersecurity tools. A single prompt exploit in any of these contexts can leak sensitive data, manipulate outputs, harm customers, and cause compliance violations &mdash; the risks covered in this module aren't academic.</p>
+          <div class="keypoints"><div class="kp-label">Key Points</div><ul class="kp-list"><li>A single prompt exploit can cascade into data leaks, manipulated outputs, customer harm, and compliance violations</li></ul></div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">L2</span><span class="sub-title">The Mental Model: Attack Type to Target</span></div>
+        <div class="sub-body">
+          <p>The fastest way to distinguish these five risk categories is by asking one question: what does the attack actually target? This mapping resolves nearly every point of confusion between them.</p>
+          <div class="concept-grid"><div class="concept-card cc-orange"><div class="cc-label">Poisoning</div><ul class="cc-list"><li>Targets Training Data</li></ul></div><div class="concept-card cc-sky"><div class="cc-label">Prompt Injection</div><ul class="cc-list"><li>Targets Prompt Instructions</li></ul></div><div class="concept-card cc-cyan"><div class="cc-label">Exposure</div><ul class="cc-list"><li>Targets Sensitive Information</li></ul></div><div class="concept-card cc-purple"><div class="cc-label">Prompt Leaking</div><ul class="cc-list"><li>Targets System Prompts</li></ul></div><div class="concept-card cc-green"><div class="cc-label">Jailbreaking</div><ul class="cc-list"><li>Targets Safety Constraints</li></ul></div></div>
+          <div class="keypoints"><div class="kp-label">Key Points</div><ul class="kp-list"><li>Most AI attacks exploit either DATA, PROMPTS, or SAFETY MECHANISMS &mdash; identifying which layer is targeted is the module's final, most important insight</li></ul></div>
+        </div>
+      </div>
+      <div class="subsection">
+        <div class="sub-hdr"><span class="sub-num">L3</span><span class="sub-title">Common Exam Traps</span></div>
+        <div class="sub-body">
+          <p>Three confusions recur most often: confusing Prompt Leaking with Exposure (system instructions vs. personal data), confusing Prompt Injection with Jailbreaking (manipulating one output vs. removing safeguards broadly), and confusing Poisoning with inference-time attacks (training-time corruption vs. runtime manipulation).</p>
+          <div class="keypoints"><div class="kp-label">Key Points</div><ul class="kp-list"><li>Three recurring exam traps: Leaking vs. Exposure, Injection vs. Jailbreaking, Poisoning vs. inference-time attacks</li></ul></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="summary-block"><div class="summary-label">Module Summary</div><ul class="summary-list"><li>Prompt quality directly determines output quality; effective prompts combine Instructions, Context, Input Data, and an Output Indicator, and can be strengthened with negative prompting.</li><li>Inference parameters &mdash; Temperature, Top P, Top K, Maximum Length, Stop Sequences &mdash; let a fixed prompt trade coherence for creativity without changing the wording itself.</li><li>Zero-Shot, Few-Shot, and Chain-of-Thought are the three foundational prompting techniques, each suited to a different level of task complexity and reasoning demand.</li><li>Prompt risk splits into five categories &mdash; Poisoning (training data), Prompt Injection (runtime prompt), Exposure (sensitive data), Prompt Leaking (system instructions), and Jailbreaking (safety constraints) &mdash; each with its own mitigation strategy.</li><li>Defending against these risks requires four coordinated layers: organizational policy, technical controls, model-level alignment (RLHF, safety fine-tuning), and human review &mdash; AI security is a governance responsibility, not just a technical one.</li></ul></div>
+</div>
+
+<footer class="snx-footer">
+  <div class="snx-footer-meta">
+    <span class="snx-footer-course">AWS-AI Masterclass</span>
+    <span class="snx-footer-divider">&middot;</span>
+    <span class="snx-footer-module">Module 8 &middot; Essentials of Prompt Engineering</span>
+  </div>
+  <nav class="snx-footer-nav" aria-label="Artifact navigation">
+    <a class="snx-nav-prev" href="../modules/07_aws-ai-masterclass-reviewer.html"><span class="snx-nav-chevron">&lsaquo;</span>Previous</a>
+    <div class="snx-nav-hub">
+      <a class="snx-hub-btn snx-hub-btn-module" href="../modules/08_aws-ai-masterclass-reviewer.html" aria-current="page">Module</a>
+      <a class="snx-hub-btn snx-hub-btn-compact" href="../compact/08_aws-ai-masterclass-compact.html">Compact</a>
+      <a class="snx-hub-btn snx-hub-btn-tree" href="../trees/08_aws-ai-masterclass-tree.html">Tree</a>
+      <a class="snx-hub-btn snx-hub-btn-quiz" href="../quizzes/08_aws-ai-masterclass-quiz.html">Quiz</a>
+      <a class="snx-hub-btn snx-hub-btn-recall" href="../recalls/08_aws-ai-masterclass-recall.html">Recall</a>
+    </div>
+    <a class="snx-nav-next" href="../modules/09_aws-ai-masterclass-reviewer.html">Next<span class="snx-nav-chevron">&rsaquo;</span></a>
+  </nav>
+</footer>
+</body>
+</html>
